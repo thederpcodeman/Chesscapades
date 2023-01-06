@@ -33,7 +33,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             chessBoard.add(square);
             boolean isBlack;
             isBlack = i % 2 == 1;
-            if(!((i / 8) % 2 == 1)) {
+            if(!((i / 8) % 2 == 0)) {
                 isBlack = !isBlack;
             }
             if (!isBlack)
