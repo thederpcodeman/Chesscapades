@@ -5,6 +5,7 @@ public class Main {
         JFrame frame = new ChessGame();
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frame.pack();
+        frame.setTitle("Chess");
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
