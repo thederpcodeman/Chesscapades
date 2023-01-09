@@ -1,3 +1,5 @@
+import pieces.Rook;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -33,19 +35,16 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             chessBoard.add(square);
             boolean isBlack;
             isBlack = i % 2 == 1;
-            if(!((i / 8) % 2 == 0)) {
+            if (!((i / 8) % 2 == 0)) {
                 isBlack = !isBlack;
             }
-            if (!isBlack)
-            {
+            if (!isBlack) {
                 square.setBackground(tan);
-            }
-            else {
+            } else {
                 square.setBackground(red);
             }
         }
     }
-
 
     @Override
     public void mouseClicked(MouseEvent e) {

@@ -1,7 +1,9 @@
+package pieces;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class Piece {
+public abstract class Piece {
     private final int color;
     private String imgPath;
 
@@ -17,8 +19,10 @@ public class Piece {
         return color;
     }
 
-    public void draw(Graphics g) {
-    //TODO: implement
+    public boolean isMovable() {
+        return isMovable();
     }
+
+
 
 }
