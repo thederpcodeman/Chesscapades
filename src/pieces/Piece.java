@@ -1,7 +1,6 @@
 package pieces;
 
 import javax.swing.*;
-import java.awt.*;
 
 public abstract class Piece {
     private final int color;
@@ -19,10 +18,20 @@ public abstract class Piece {
         return color;
     }
 
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public String setImgPath() {
+        this.imgPath = imgPath;
+        return imgPath;
+    }
     public boolean isMovable() {
         return isMovable();
     }
 
-
+    public boolean canJump() {
+        return canJump();
+    }
 
 }

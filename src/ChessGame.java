@@ -44,6 +44,11 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 square.setBackground(red);
             }
         }
+
+        JLabel piece = new JLabel( new ImageIcon("src/resources/wKing.png"));
+        JPanel panel = (JPanel)chessBoard.getComponent(5);
+        panel.add(piece);
+
     }
 
     @Override
