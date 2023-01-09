@@ -1,3 +1,4 @@
+import pieces.Piece;
 import pieces.Rook;
 
 import javax.swing.*;
@@ -12,6 +13,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     JLabel chessPiece;
     int xAdjustment;
     int yAdjustment;
+    Board board = new Board();
     Color tan = new Color(255, 248, 232);
     Color red = new Color(215, 122, 97);
 
@@ -44,11 +46,14 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 square.setBackground(red);
             }
         }
-
-        JLabel piece = new JLabel( new ImageIcon("src/resources/wKing.png"));
-        JPanel panel = (JPanel)chessBoard.getComponent(5);
-        panel.add(piece);
-
+        //Board board = new Board();
+        for(int i = 0; i < 64; i++) {
+            Piece piece = board.getPieceFromPosition(i);
+            if(piece != null)
+            {
+                //render piece
+            }
+        }
     }
 
     @Override
