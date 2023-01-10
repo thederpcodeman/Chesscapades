@@ -12,7 +12,7 @@ public class King extends Piece {
         if(color == 0) {
             return(new ImageIcon("src/resources/bKing.png"));
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wKing.pngvvvv"));
+            return(new ImageIcon("src/resources/wKing.png"));
         } else {
             return null;
         }
