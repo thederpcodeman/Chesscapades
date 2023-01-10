@@ -3,15 +3,21 @@ package pieces;
 import javax.swing.*;
 
 public abstract class Piece {
-    private final int color;
-    private String imgPath;
+    public final int color;
+    public String imgPath;
 
-    public Piece(int color, String imgPath) {
+    public Piece(int color) {
         this.color = color;
-        this.imgPath = imgPath;
+    }
 
-        ImageIcon img = new ImageIcon(imgPath);
-
+    public ImageIcon pieceColor() {
+        if(color == 0) {
+            return null;
+        } else if(color == 1) {
+            return null;
+        } else {
+            return null;
+        }
     }
 
     public int getColor() {

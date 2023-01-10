@@ -1,5 +1,4 @@
-import pieces.Piece;
-import pieces.Rook;
+import pieces.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -46,6 +45,26 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 square.setBackground(red);
             }
         }
+
+        Pawn pawn = new Pawn(0);
+        Rook rook = new Rook(0);
+        Queen queen = new Queen(0);
+        Knight knight = new Knight(0);
+        King king = new King(0);
+        Bishop bishop = new Bishop(0);
+
+        JLabel placer = new JLabel(rook.pieceColor());
+        JPanel panel = (JPanel)chessBoard.getComponent(0);
+        panel.add(placer);
+
+
+
+        for(int x = 8; x < 16; x++) {
+            placer = new JLabel(pawn.pieceColor());
+            panel = (JPanel) chessBoard.getComponent(x);
+            panel.add(placer);
+        }
+
         //Board board = new Board();
         for(int i = 0; i < 64; i++) {
             Piece piece = board.getPieceFromPosition(i);
