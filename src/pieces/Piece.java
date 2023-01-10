@@ -10,14 +10,8 @@ public abstract class Piece {
         this.color = color;
     }
 
-    public ImageIcon pieceColor() {
-        if(color == 0) {
-            return null;
-        } else if(color == 1) {
-            return null;
-        } else {
-            return null;
-        }
+    public ImageIcon getImageIcon() {
+        return null;
     }
 
     public int getColor() {

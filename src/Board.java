@@ -1,12 +1,45 @@
-import pieces.Piece;
+import pieces.*;
 
 public class Board {
 
     Piece[][] board = new Piece[8][8];
 
     public Board() {
+        board[0][0] = new Rook(1);
+        board[0][1] = new Knight(1);
+        board[0][2] = new Bishop(1);
+        board[0][3] = new Queen(1);
+        board[0][4] = new King(1);
+        board[0][5] = new Bishop(1);
+        board[0][6] = new Knight(1);
+        board[0][7] = new Rook(1);
+        board[1][0] = new Pawn(1);
+        board[1][1] = new Pawn(1);
+        board[1][2] = new Pawn(1);
+        board[1][3] = new Pawn(1);
+        board[1][4] = new Pawn(1);
+        board[1][5] = new Pawn(1);
+        board[1][6] = new Pawn(1);
+        board[1][7] = new Pawn(1);
 
+        board[7][0] = new Rook(0);
+        board[7][1] = new Knight(0);
+        board[7][2] = new Bishop(0);
+        board[7][3] = new Queen(0);
+        board[7][4] = new King(0);
+        board[7][5] = new Bishop(0);
+        board[7][6] = new Knight(0);
+        board[7][7] = new Rook(0);
+        board[6][0] = new Pawn(0);
+        board[6][1] = new Pawn(0);
+        board[6][2] = new Pawn(0);
+        board[6][3] = new Pawn(0);
+        board[6][4] = new Pawn(0);
+        board[6][5] = new Pawn(0);
+        board[6][6] = new Pawn(0);
+        board[6][7] = new Pawn(0);
     }
+
 
     Piece getPieceFromPosition(int location) {
         int column = location / 8;

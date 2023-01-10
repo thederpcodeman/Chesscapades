@@ -8,7 +8,7 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public ImageIcon pieceColor() {
+    public ImageIcon getImageIcon() {
         if(color == 0) {
             return(new ImageIcon("src/resources/bPawn.png"));
         } else if(color == 1) {

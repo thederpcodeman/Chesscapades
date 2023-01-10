@@ -46,35 +46,25 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             }
         }
 
-        Pawn pawn = new Pawn(0);
-        Rook rook = new Rook(0);
-        Queen queen = new Queen(0);
-        Knight knight = new Knight(0);
-        King king = new King(0);
-        Bishop bishop = new Bishop(0);
-
-        JLabel placer = new JLabel(rook.pieceColor());
-        JPanel panel = (JPanel)chessBoard.getComponent(0);
-        panel.add(placer);
-
-
-
-        for(int x = 8; x < 16; x++) {
-            placer = new JLabel(pawn.pieceColor());
-            panel = (JPanel) chessBoard.getComponent(x);
-            panel.add(placer);
-        }
-
+        renderPieces();
         //Board board = new Board();
+
+    }
+
+    public void renderPieces() {
         for(int i = 0; i < 64; i++) {
             Piece piece = board.getPieceFromPosition(i);
             if(piece != null)
             {
-                //render piece
+                JLabel placer = new JLabel(piece.getImageIcon());
+                if(placer != null)
+                {
+                    JPanel panel = (JPanel)chessBoard.getComponent(convertStupidSwingNumber(i));
+                    panel.add(placer);
+                }
             }
         }
     }
-
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -109,4 +99,10 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     public void mouseMoved(MouseEvent e) {
 
     }
+
+    private int convertStupidSwingNumber (int i) {
+        return 63 - i;
+    }
+
+
 }

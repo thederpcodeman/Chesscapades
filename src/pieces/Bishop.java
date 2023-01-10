@@ -8,7 +8,7 @@ public class Bishop extends Piece {
     }
 
     @Override
-    public ImageIcon pieceColor() {
+    public ImageIcon getImageIcon() {
         if(color == 0) {
             return(new ImageIcon("src/resources/bBishop.png"));
         } else if(color == 1) {
