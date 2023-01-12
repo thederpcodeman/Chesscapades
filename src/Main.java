@@ -1,3 +1,5 @@
+import Game.ChessGame;
+
 import javax.swing.*;
 
 public class Main {

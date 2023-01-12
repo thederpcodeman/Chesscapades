@@ -2,6 +2,9 @@ package pieces;
 
 import javax.swing.*;
 
+import Game.Board;
+import Game.Tile;
+
 public abstract class Piece {
     public final int color;
     public Piece(int color) {
@@ -24,7 +27,12 @@ public abstract class Piece {
         return false;
     }
 
-    public boolean isLegalMove(int location, JPanel c, JPanel chessBoard) {
+    public boolean isLegalMove(int location, JPanel c, JPanel chessBoard) {return true;}
+
+    public Tile[] FindLegalMoves(Piece piece, Board board) {return null;}
+
+    private static boolean isLegalBoardState(Board board, int turn)
+    {
         return true;
     }
 }

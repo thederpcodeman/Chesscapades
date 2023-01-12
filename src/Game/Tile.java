@@ -1,3 +1,5 @@
+package Game;
+
 import pieces.Piece;
 
 import javax.swing.*;
@@ -11,7 +13,9 @@ public class Tile extends JPanel {
 
     private final Color normalColor;
 
-    public Tile(int location, BorderLayout layout)
+    int size;
+
+    public Tile(int location, BorderLayout layout, int size)
     {
         super(layout);
         this.location = location;
@@ -26,6 +30,7 @@ public class Tile extends JPanel {
             normalColor = red;
         }
         setBackground(normalColor);
+        this.size = size;
     }
 
     public boolean isOccupied()
@@ -45,7 +50,8 @@ public class Tile extends JPanel {
         }
         if(piece != null)
         {
-            JLabel image = new JLabel(piece.getImageIcon());
+            ImageIcon imageIcon = new ImageIcon(piece.getImageIcon().getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+            JLabel image = new JLabel(imageIcon);
             add(image);
             revalidate();
             repaint();
