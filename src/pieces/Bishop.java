@@ -1,5 +1,7 @@
 package pieces;
 
+import Game.Board;
+
 import javax.swing.*;
 
 public class Bishop extends Piece {
@@ -16,5 +18,13 @@ public class Bishop extends Piece {
         } else {
             return null;
         }
+    }
+    public boolean isLegalMove(int x, int y, int newx, int newy, Board board){
+        int yoffset = newy - y;
+        int xoffset = newx - x;
+        if (Math.abs(xoffset) == Math.abs(yoffset)){
+            return true;
+        }
+        return false;
     }
 }
