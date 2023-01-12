@@ -1,6 +1,5 @@
 package Game;
 
-import Game.Board;
 import pieces.*;
 
 import javax.swing.*;
@@ -16,7 +15,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     int turn;
 
     public ChessGame(){
-        Dimension boardSize = new Dimension(1200, 1200);
+        Dimension boardSize = new Dimension(1000, 1000);
 
         layeredPane = new JLayeredPane();
         getContentPane().add(layeredPane);
@@ -95,7 +94,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 return;
             }
         }
-        if(selectedTile != null && selectedTile.getPiece().isMovable())
+        if(selectedTile != null && selectedTile.getPiece().isMovable() && selectedTile.isLegalMove(tile.getLocationOnBoard(), chessBoard))
         {
             tile.setPiece(selectedTile.getPiece());
             selectedTile.setPiece(null);

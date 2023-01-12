@@ -27,9 +27,7 @@ public abstract class Piece {
         return false;
     }
 
-    public boolean isLegalMove(int location, JPanel c, JPanel chessBoard) {return true;}
-
-    public Tile[] FindLegalMoves(Piece piece, Board board) {return null;}
+    public boolean isLegalMove(int x, int y, int newX, int newY, Board board) {return true;}
 
     private static boolean isLegalBoardState(Board board, int turn)
     {

@@ -66,4 +66,17 @@ public class Tile extends JPanel {
     public Color getColor() {
         return normalColor;
     }
+
+    public boolean isLegalMove(int location, Board chessBoard) {
+        if(getPiece() == null)
+        {
+            return false;
+        }
+        int x = getLocationOnBoard() % 8;
+        int y = getLocationOnBoard() / 8;
+
+        int newX = location % 8;
+        int newY = location / 8;
+        return getPiece().isLegalMove(x, y, newX, newY, chessBoard);
+    }
 }

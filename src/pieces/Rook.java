@@ -1,5 +1,8 @@
 package pieces;
 
+import Game.Board;
+import Game.Tile;
+
 import javax.swing.*;
 
 public class Rook extends Piece {
@@ -17,4 +20,7 @@ public class Rook extends Piece {
             return null;
         }
     }
+
+
+
 }
