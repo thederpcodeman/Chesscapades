@@ -17,11 +17,14 @@ public abstract class Piece {
     }
 
     public boolean isMovable() {
-        return isMovable();
+        return true;
     }
 
     public boolean canJump() {
-        return canJump();
+        return false;
     }
 
+    public boolean isLegalMove(int location, JPanel c, JPanel chessBoard) {
+        return true;
+    }
 }
