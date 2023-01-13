@@ -24,7 +24,7 @@ public class Rook extends Piece {
         int yoffset = newy - y;
         int xoffset = newx - x;
         if (yoffset == 0){
-            for (int i = 1; i < Math.abs(yoffset); i++){
+            for (int i = 1; i < Math.abs(xoffset); i++){
                 if (board.getTile(Board.getLocationFromCords((int)(x + (i * Math.signum(xoffset))), y)).getPiece() != null){
                     return false;
                 }
