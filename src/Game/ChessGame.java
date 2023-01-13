@@ -80,17 +80,23 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             turn = 1 - turn;
             return;
         }
+        Tile[] tiles = chessBoard.getTiles();
+        for(Tile rTile:tiles)
+        {
+            rTile.setBackground(rTile.getColor());
+        }
         Tile tile = (Tile) chessBoard.getComponentAt(e.getX(), e.getY());
         Piece piece = tile.getPiece();
         if(piece != null)
         {
             if (piece.getColor() == turn) {
-                if(selectedTile != null)
-                {
-                    selectedTile.setBackground(selectedTile.getColor());
-                }
                 selectedTile = tile;
                 tile.setBackground(Color.green);
+                Tile[] legalMoves = tile.getLegalMoves(chessBoard);
+                for (Tile legalTile: legalMoves)
+                {
+                    legalTile.setBackground(Color.BLUE);
+                }
                 return;
             }
         }

@@ -4,6 +4,7 @@ import pieces.Piece;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Tile extends JPanel {
     private Piece piece;
@@ -67,7 +68,7 @@ public class Tile extends JPanel {
         return normalColor;
     }
 
-    public boolean isLegalMove(int location, Board chessBoard) {
+    public boolean isLegalMove(int location, Board board) {
         if(getPiece() == null)
         {
             return false;
@@ -77,6 +78,20 @@ public class Tile extends JPanel {
 
         int newX = location % 8;
         int newY = location / 8;
-        return getPiece().isLegalMove(x, y, newX, newY, chessBoard);
+        return getPiece().isLegalMove(x, y, newX, newY, board);
+    }
+
+    public Tile[] getLegalMoves(Board board) {
+        Tile[] allTiles = board.getTiles();
+        ArrayList<Tile> goodTiles = new ArrayList();
+        for (Tile tile:allTiles) {
+            if(isLegalMove(tile.getLocationOnBoard(), board))
+            {
+                goodTiles.add(tile);
+            }
+        }
+        Tile[] arr = new Tile[goodTiles.size()];
+        arr = goodTiles.toArray(arr);
+        return arr;
     }
 }
