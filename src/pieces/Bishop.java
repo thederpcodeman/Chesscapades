@@ -25,7 +25,6 @@ public class Bishop extends Piece {
         if (Math.abs(xoffset) == Math.abs(yoffset)){
             for (int i = 1; i < Math.abs(yoffset); i++){
                 if (board.getTile(Board.getLocationFromCords((int)(x + (i * Math.signum(xoffset))), (int)(y + (i * Math.signum(yoffset))))).getPiece() != null){
-                    System.out.print(board.getTile(Board.getLocationFromCords((int)(x + (i * Math.signum(xoffset))), (int)(y + (i * Math.signum(yoffset))))));
                     return false;
                 }
             }
