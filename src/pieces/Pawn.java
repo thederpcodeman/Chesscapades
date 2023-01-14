@@ -30,7 +30,7 @@ public class Pawn extends Piece {
             int dx = Math.abs(newX - x);
             if (dx == 1)
             {
-                if(destination.isOccupied() && dy == 1)
+                if(destination.isOccupied() && dy == getForwardDirection())
                 {
                     if (destination.getPiece().getColor() != getColor())
                     {
