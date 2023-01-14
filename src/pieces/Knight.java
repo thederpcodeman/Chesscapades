@@ -1,6 +1,7 @@
 package pieces;
 
 import Game.Board;
+import Game.Tile;
 
 import javax.swing.*;
 
@@ -25,9 +26,16 @@ public class Knight extends Piece {
         int xoffset = newX - x;
         int yoffset = newY - y;
         if (((Math.abs(xoffset) == 1) && (Math.abs(yoffset) == 2)) || ((Math.abs(xoffset) == 2) && (Math.abs(yoffset) == 1))){
+            Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
+            if(destination.isOccupied())
+            {
+                if(destination.getPiece().getColor() == getColor())
+                {
+                    return false;
+                }
+            }
             return true;
-        }else{
-            return false;
         }
+        return false;
     }
 }
