@@ -23,19 +23,27 @@ public class Pawn extends Piece {
 
     @Override
     public boolean isLegalMove(int x, int y, int newX, int newY, Board board) {
+        Tile destination = board.getTile(board.getLocationFromCords(newX, newY));
+        int dy = newY - y;
         if (newX != x)
+        {
+            int dx = Math.abs(newX - x);
+            if (dx == 1)
+            {
+                if(destination.isOccupied() && dy == 1)
+                {
+                    if (destination.getPiece().getColor() != getColor())
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        if(destination.isOccupied())
         {
             return false;
         }
-        Tile destination = board.getTile(board.getLocationFromCords(newX, newY));
-        if(destination.isOccupied())
-        {
-            if(destination.getPiece().getColor() == getColor())
-            {
-                return false;
-            }
-        }
-        int dy = newY - y;
         if(dy == getForwardDirection() || (isOnStartingSquare(y) && dy == getForwardDirection() * 2))
         {
             return true;

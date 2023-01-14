@@ -97,7 +97,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             if (piece.getColor() == turn) {
                 selectedTile = tile;
                 tile.setBackground(Color.green);
-                Tile[] legalMoves = tile.getLegalMoves(chessBoard);
+                Tile[] legalMoves = tile.getPlayableMoves(chessBoard);
                 for (Tile legalTile: legalMoves)
                 {
                     legalTile.setBackground(Color.BLUE);

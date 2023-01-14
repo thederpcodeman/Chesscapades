@@ -98,13 +98,13 @@ public class Tile extends JPanel {
             return false;
         }
         int color = getPiece().getColor();
-        Tile king = board.getKing(color);
         Tile[] enemyPieces = board.getOccupiedTilesOfColor(1 - color);
         Tile destination = board.getTile(location);
         Piece currentPiece = getPiece();
         Piece destinationCurrentPiece = destination.getPiece();
         destination.quietlyUpdatePiece(getPiece());
         quietlyUpdatePiece(null);
+        Tile king = board.getKing(color);
         for(Tile tile: enemyPieces)
         {
             for(Tile tile2: tile.getLegalMoves(board))
