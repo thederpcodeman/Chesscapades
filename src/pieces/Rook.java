@@ -20,6 +20,7 @@ public class Rook extends Piece {
             return null;
         }
     }
+    @Override
     public boolean isLegalMove(int x, int y, int newx, int newy, Board board){
         int yoffset = newy - y;
         int xoffset = newx - x;

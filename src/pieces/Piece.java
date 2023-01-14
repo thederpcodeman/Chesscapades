@@ -7,6 +7,7 @@ import Game.Tile;
 
 public abstract class Piece {
     public final int color;
+
     public Piece(int color) {
         this.color = color;
     }
