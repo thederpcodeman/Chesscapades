@@ -1,9 +1,11 @@
 package Game;
 
-import pieces.Piece;
+import pieces.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Tile extends JPanel {
@@ -57,6 +59,11 @@ public class Tile extends JPanel {
             revalidate();
             repaint();
         }
+
+        //check for pawn being on the top or bottom rows
+        if (Board.getYFromLocation(getLocationOnBoard()) % 7 == 0 && getPiece() instanceof Pawn) {
+            promPawn();
+        }
     }
 
     public int getLocationOnBoard()
@@ -93,5 +100,29 @@ public class Tile extends JPanel {
         Tile[] arr = new Tile[goodTiles.size()];
         arr = goodTiles.toArray(arr);
         return arr;
+    }
+
+    public void promPawn() {
+        int input;
+
+        String[] possibilities = {"Queen", "Rook", "Knight", "Bishop"};
+        JPanel jPanel = new JPanel(new GridBagLayout());
+        JComboBox comboBox = new JComboBox(possibilities);
+        input = JOptionPane.showConfirmDialog(null, comboBox, "Choose a piece to promote to: ", JOptionPane.DEFAULT_OPTION);
+        jPanel.add(comboBox);
+
+        if(input == JOptionPane.OK_OPTION) {
+            String s = (String) comboBox.getSelectedItem();
+
+            if (s == "Queen") {
+                setPiece(new Queen(1));
+            } else if (s == "Rook") {
+                setPiece(new Rook(1));
+            } else if (s == "Knight") {
+                setPiece(new Knight(1));
+            } else if (s == "Bishop") {
+                setPiece(new Bishop(1));
+            }
+        }
     }
 }
