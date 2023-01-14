@@ -14,8 +14,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     Tile selectedTile;
     int turn;
 
-    public ChessGame(){
-        Dimension boardSize = new Dimension(1000, 1000);
+    public ChessGame(int size){
+        Dimension boardSize = new Dimension(size, size);
 
         layeredPane = new JLayeredPane();
         getContentPane().add(layeredPane);
@@ -30,7 +30,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         chessBoard.setBounds(0,0, boardSize.width, boardSize.height);
 
         for (int i = 0; i < 64; i++) {
-            Tile tile = new Tile(i, new BorderLayout(), boardSize.height/8);
+            Tile tile = new Tile(i, new BorderLayout(), size/8);
             chessBoard.add(tile);
         }
 
@@ -76,14 +76,15 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
     @Override
     public void mousePressed(MouseEvent e) {
-        if (e.getButton() == MouseEvent.BUTTON3) {
-            turn = 1 - turn;
-            return;
-        }
         Tile[] tiles = chessBoard.getTiles();
         for(Tile rTile:tiles)
         {
             rTile.setBackground(rTile.getColor());
+        }
+        if (e.getButton() == MouseEvent.BUTTON3) {
+            turn = 1 - turn;
+            selectedTile = null;
+            return;
         }
         Tile tile = (Tile) chessBoard.getComponentAt(e.getX(), e.getY());
         Piece piece = tile.getPiece();
@@ -100,7 +101,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 return;
             }
         }
-        if(selectedTile != null && selectedTile.getPiece().isMovable() && selectedTile.isLegalMove(tile.getLocationOnBoard(), chessBoard))
+        if(selectedTile != null && selectedTile.isLegalMove(tile.getLocationOnBoard(), chessBoard))
         {
             tile.setPiece(selectedTile.getPiece());
             selectedTile.setPiece(null);
