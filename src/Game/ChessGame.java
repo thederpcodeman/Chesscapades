@@ -87,6 +87,10 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             return;
         }
         Tile tile = (Tile) chessBoard.getComponentAt(e.getX(), e.getY());
+        if (e.getButton() == MouseEvent.BUTTON2) {
+            selectedTile.setPiece(null);
+            return;
+        }
         Piece piece = tile.getPiece();
         if(piece != null)
         {
@@ -101,7 +105,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 return;
             }
         }
-        if(selectedTile != null && selectedTile.isLegalMove(tile.getLocationOnBoard(), chessBoard))
+        if(selectedTile != null && selectedTile.isPlayableMove(tile.getLocationOnBoard(), chessBoard))
         {
             tile.setPiece(selectedTile.getPiece());
             selectedTile.setPiece(null);

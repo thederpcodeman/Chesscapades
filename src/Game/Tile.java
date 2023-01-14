@@ -66,6 +66,10 @@ public class Tile extends JPanel {
         }
     }
 
+    public void quietlyUpdatePiece(Piece piece) {
+        this.piece = piece;
+    }
+
     public int getLocationOnBoard()
     {
         return location;
@@ -86,6 +90,50 @@ public class Tile extends JPanel {
         int newX = location % 8;
         int newY = location / 8;
         return getPiece().isLegalMove(x, y, newX, newY, board);
+    }
+
+    public boolean isPlayableMove(int location, Board board) {
+        if(!isLegalMove(location, board))
+        {
+            return false;
+        }
+        int color = getPiece().getColor();
+        Tile king = board.getKing(color);
+        Tile[] enemyPieces = board.getOccupiedTilesOfColor(1 - color);
+        Tile destination = board.getTile(location);
+        Piece currentPiece = getPiece();
+        Piece destinationCurrentPiece = destination.getPiece();
+        destination.quietlyUpdatePiece(getPiece());
+        quietlyUpdatePiece(null);
+        for(Tile tile: enemyPieces)
+        {
+            for(Tile tile2: tile.getLegalMoves(board))
+            {
+                if(tile2 == king)
+                {
+                    quietlyUpdatePiece(currentPiece);
+                    destination.quietlyUpdatePiece(destinationCurrentPiece);
+                    return false;
+                }
+            }
+        }
+        quietlyUpdatePiece(currentPiece);
+        destination.quietlyUpdatePiece(destinationCurrentPiece);
+        return true;
+    }
+
+    public Tile[] getPlayableMoves(Board board) {
+        Tile[] allTiles = board.getTiles();
+        ArrayList<Tile> goodTiles = new ArrayList();
+        for (Tile tile:allTiles) {
+            if(isPlayableMove(tile.getLocationOnBoard(), board))
+            {
+                goodTiles.add(tile);
+            }
+        }
+        Tile[] arr = new Tile[goodTiles.size()];
+        arr = goodTiles.toArray(arr);
+        return arr;
     }
 
     public Tile[] getLegalMoves(Board board) {
