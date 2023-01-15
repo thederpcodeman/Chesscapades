@@ -4,8 +4,6 @@ import pieces.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Tile extends JPanel {
@@ -15,7 +13,7 @@ public class Tile extends JPanel {
     static final Color red = new Color(215, 122, 97);
 
     private final Color normalColor;
-
+    private boolean castleable;
     int size;
 
     public Tile(int location, BorderLayout layout, int size)
@@ -45,8 +43,17 @@ public class Tile extends JPanel {
         return piece;
     }
 
+    public boolean isCastleable() {
+        return castleable;
+    }
+
+    public void setCastleable(boolean b) {
+        castleable = b;
+    }
+
     public void setPiece(Piece piece) {
         this.piece = piece;
+        setCastleable(false);
         for(int i = 0; i < getComponentCount(); i++)
         {
             remove(i);
@@ -56,14 +63,13 @@ public class Tile extends JPanel {
             ImageIcon imageIcon = new ImageIcon(piece.getImageIcon().getImage().getScaledInstance(size * 7 / 8, size * 7 / 8, Image.SCALE_DEFAULT));
             JLabel image = new JLabel(imageIcon);
             add(image);
-            revalidate();
-            repaint();
         }
-
         //check for pawn being on the top or bottom rows
         if (Board.getYFromLocation(getLocationOnBoard()) % 7 == 0 && getPiece() instanceof Pawn) {
             promPawn();
         }
+        revalidate();
+        repaint();
     }
 
     public void quietlyUpdatePiece(Piece piece) {
@@ -79,7 +85,7 @@ public class Tile extends JPanel {
         return normalColor;
     }
 
-    public boolean isLegalMove(int location, Board board) {
+    public boolean isLegalMove(int location, Board board, boolean forReal) {
         if(getPiece() == null)
         {
             return false;
@@ -89,11 +95,11 @@ public class Tile extends JPanel {
 
         int newX = location % 8;
         int newY = location / 8;
-        return getPiece().isLegalMove(x, y, newX, newY, board);
+        return getPiece().isLegalMove(x, y, newX, newY, board, forReal);
     }
 
-    public boolean isPlayableMove(int location, Board board) {
-        if(!isLegalMove(location, board))
+    public boolean isPlayableMove(int location, Board board, boolean forReal) {
+        if(!isLegalMove(location, board, forReal))
         {
             return false;
         }
@@ -126,7 +132,7 @@ public class Tile extends JPanel {
         Tile[] allTiles = board.getTiles();
         ArrayList<Tile> goodTiles = new ArrayList();
         for (Tile tile:allTiles) {
-            if(isPlayableMove(tile.getLocationOnBoard(), board))
+            if(isPlayableMove(tile.getLocationOnBoard(), board, false))
             {
                 goodTiles.add(tile);
             }
@@ -140,7 +146,7 @@ public class Tile extends JPanel {
         Tile[] allTiles = board.getTiles();
         ArrayList<Tile> goodTiles = new ArrayList();
         for (Tile tile:allTiles) {
-            if(isLegalMove(tile.getLocationOnBoard(), board))
+            if(isLegalMove(tile.getLocationOnBoard(), board, false))
             {
                 goodTiles.add(tile);
             }

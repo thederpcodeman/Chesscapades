@@ -22,7 +22,7 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public boolean isLegalMove(int x, int y, int newX, int newY, Board board) {
+    public boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal) {
         Tile destination = board.getTile(board.getLocationFromCords(newX, newY));
         int dy = newY - y;
         if (newX != x)

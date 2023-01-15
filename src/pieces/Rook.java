@@ -6,8 +6,11 @@ import Game.Tile;
 import javax.swing.*;
 
 public class Rook extends Piece {
+
+    private boolean canCastle;
     public Rook(int color) {
         super(color);
+        canCastle = true;
     }
 
     @Override
@@ -21,7 +24,7 @@ public class Rook extends Piece {
         }
     }
     @Override
-    public boolean isLegalMove(int x, int y, int newX, int newY, Board board){
+    public boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal){
         int yoffset = newY - y;
         int xoffset = newX - x;
         Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
@@ -49,5 +52,15 @@ public class Rook extends Piece {
         }else{
             return false;
         }
+    }
+
+    public boolean canCastle()
+    {
+        return canCastle;
+    }
+
+    public void setCastleable(boolean b)
+    {
+        canCastle = b;
     }
 }

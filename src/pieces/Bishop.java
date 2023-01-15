@@ -21,7 +21,7 @@ public class Bishop extends Piece {
         }
     }
     @Override
-    public boolean isLegalMove(int x, int y, int newX, int newY, Board board){
+    public boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal){
         int yoffset = newY - y;
         int xoffset = newX - x;
         if (Math.abs(xoffset) == Math.abs(yoffset)){

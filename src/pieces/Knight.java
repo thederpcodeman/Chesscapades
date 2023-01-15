@@ -22,7 +22,7 @@ public class Knight extends Piece {
     }
 
     @Override
-    public boolean isLegalMove(int x, int y, int newX, int newY, Board board) {
+    public boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal) {
         int xoffset = newX - x;
         int yoffset = newY - y;
         if (((Math.abs(xoffset) == 1) && (Math.abs(yoffset) == 2)) || ((Math.abs(xoffset) == 2) && (Math.abs(yoffset) == 1))){

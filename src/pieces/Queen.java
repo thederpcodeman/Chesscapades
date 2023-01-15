@@ -21,7 +21,7 @@ public class Queen extends Piece {
         }
     }
     @Override
-    public boolean isLegalMove(int x, int y, int newX, int newY, Board board){
+    public boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal){
         int yoffset = newY - y;
         int xoffset = newX - x;
         Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));

@@ -41,14 +41,17 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     
     public void setupPieces() {
         //setup black pieces
-        chessBoard.getTile(0).setPiece(new Rook(0));;
-        chessBoard.getTile(7).setPiece(new Rook(0));;
-        chessBoard.getTile(1).setPiece(new Knight(0));;
-        chessBoard.getTile(6).setPiece(new Knight(0));;
-        chessBoard.getTile(2).setPiece(new Bishop(0));;
-        chessBoard.getTile(5).setPiece(new Bishop(0));;
-        chessBoard.getTile(3).setPiece(new Queen(0));;
-        chessBoard.getTile(4).setPiece(new King(0));;
+        chessBoard.getTile(0).setPiece(new Rook(0));
+        chessBoard.getTile(7).setPiece(new Rook(0));
+        chessBoard.getTile(0).setCastleable(true);
+        chessBoard.getTile(7).setCastleable(true);
+        chessBoard.getTile(1).setPiece(new Knight(0));
+        chessBoard.getTile(6).setPiece(new Knight(0));
+        chessBoard.getTile(2).setPiece(new Bishop(0));
+        chessBoard.getTile(5).setPiece(new Bishop(0));
+        chessBoard.getTile(3).setPiece(new Queen(0));
+        chessBoard.getTile(4).setPiece(new King(0));
+        chessBoard.getTile(4).setCastleable(true);
         for (int i = 8; i < 16; i++) 
         {
             chessBoard.getTile(i).setPiece(new Pawn(0));
@@ -56,12 +59,15 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         //setup white pieces
         chessBoard.getTile(56).setPiece(new Rook(1));
         chessBoard.getTile(63).setPiece(new Rook(1));
+        chessBoard.getTile(56).setCastleable(true);
+        chessBoard.getTile(63).setCastleable(true);
         chessBoard.getTile(57).setPiece(new Knight(1));
         chessBoard.getTile(62).setPiece(new Knight(1));
         chessBoard.getTile(58).setPiece(new Bishop(1));
         chessBoard.getTile(61).setPiece(new Bishop(1));
         chessBoard.getTile(59).setPiece(new Queen(1));
         chessBoard.getTile(60).setPiece(new King(1));
+        chessBoard.getTile(60).setCastleable(true);
         for (int i = 48; i < 56; i++)
         {
             Tile tile = (Tile) chessBoard.getComponent(i);
@@ -105,7 +111,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 return;
             }
         }
-        if(selectedTile != null && selectedTile.isPlayableMove(tile.getLocationOnBoard(), chessBoard))
+        int location = tile.getLocationOnBoard();
+        if(selectedTile != null && selectedTile.isPlayableMove(location, chessBoard, true))
         {
             tile.setPiece(selectedTile.getPiece());
             selectedTile.setPiece(null);
