@@ -88,13 +88,16 @@ public class King extends Piece {
         int color = getColor();
         Tile[] enemyPieces = board.getOccupiedTilesOfColor(1 - color);
         Tile king = board.getKing(color);
-        for(Tile tile: enemyPieces)
-        {
-            for(Tile tile2: tile.getLegalMoves(board))
+        for(Tile tile: enemyPieces) {
+
+            if (!(tile.getPiece() instanceof King))
             {
-                if(tile2 == king)
+                for (Tile tile2 : tile.getLegalMoves(board))
                 {
-                    return true;
+                    if (tile2 == king)
+                    {
+                        return true;
+                    }
                 }
             }
         }
