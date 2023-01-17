@@ -10,6 +10,7 @@ public class Main {
 
         JFrame frame = new ChessGame(height-200);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/wKnight.png"));
         frame.pack();
         frame.setTitle("Chesscapades");
         frame.setResizable(false);
