@@ -119,6 +119,24 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             selectedTile.setBackground(selectedTile.getColor());
             selectedTile = null;
             turn = 1 - turn;
+            //check for checkmate / stalemate
+            Tile[] enemyTiles = chessBoard.getOccupiedTilesOfColor(turn);
+            for(Tile enemyTile:enemyTiles){
+                if (enemyTile.getPlayableMoves(chessBoard).length > 0) {
+                    return;
+                }
+            }
+            King king = (King) chessBoard.getKing(turn).getPiece();
+            if (king.isInCheck(chessBoard))
+            {
+                //checkmate
+                System.out.println("This is checkmate!");
+            }
+            else
+            {
+                //stalemate
+                System.out.println("This is stalemate!");
+            }
         }
     }
 
