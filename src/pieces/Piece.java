@@ -28,10 +28,6 @@ public abstract class Piece {
         return false;
     }
 
-    public boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal) {return false;}
+    public abstract boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal);
 
-    private static boolean isLegalBoardState(Board board, int turn)
-    {
-        return true;
-    }
 }

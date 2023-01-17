@@ -50,6 +50,11 @@ public class King extends Piece {
                 {
                     direction = -1;
                     tile = board.getTile(Board.getLocationFromCords(0, y));
+                    Tile extraTile = board.getTile(Board.getLocationFromCords(1, y));
+                    if(extraTile.getPiece() != null)
+                    {
+                        return false;
+                    }
                 }
                 else if (newX == 6)
                 {
@@ -83,7 +88,7 @@ public class King extends Piece {
         canCastle = b;
     }
 
-    private boolean isInCheck(Board board)
+    public boolean isInCheck(Board board)
     {
         int color = getColor();
         Tile[] enemyPieces = board.getOccupiedTilesOfColor(1 - color);
