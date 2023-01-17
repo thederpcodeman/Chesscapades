@@ -169,13 +169,13 @@ public class Tile extends JPanel {
             String s = (String) comboBox.getSelectedItem();
 
             if (s == "Queen") {
-                setPiece(new Queen(1));
+                setPiece(new Queen(piece.getColor()));
             } else if (s == "Rook") {
-                setPiece(new Rook(1));
+                setPiece(new Rook(piece.getColor()));
             } else if (s == "Knight") {
-                setPiece(new Knight(1));
+                setPiece(new Knight(piece.getColor()));
             } else if (s == "Bishop") {
-                setPiece(new Bishop(1));
+                setPiece(new Bishop(piece.getColor()));
             }
         }
     }
