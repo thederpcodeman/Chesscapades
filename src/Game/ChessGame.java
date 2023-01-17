@@ -7,12 +7,15 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 public class ChessGame extends JFrame implements MouseListener, MouseMotionListener {
     JLayeredPane layeredPane;
     Board chessBoard;
     Tile selectedTile;
     int turn;
+
+    ArrayList<String> fens;
 
     public ChessGame(int size){
         Dimension boardSize = new Dimension(size, size);
@@ -37,8 +40,10 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         setupPieces();
         turn = 1;
 
+        fens = new ArrayList<String>();
+        fens.add(chessBoard.computeFen(turn));
     }
-    
+
     public void setupPieces() {
         //setup black pieces
         chessBoard.getTile(0).setPiece(new Rook(0));
@@ -73,6 +78,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             Tile tile = (Tile) chessBoard.getComponent(i);
             tile.setPiece(new Pawn(1));
         }
+        System.out.println(chessBoard.computeFen(1));
     }
 
     @Override
@@ -86,16 +92,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         for (Tile rTile : tiles) {
             rTile.setBackground(rTile.getColor());
         }
-        if (e.getButton() == MouseEvent.BUTTON3) {
-            turn = 1 - turn;
-            selectedTile = null;
-            return;
-        }
         Tile tile = (Tile) chessBoard.getComponentAt(e.getX(), e.getY());
-        if (e.getButton() == MouseEvent.BUTTON2) {
-            selectedTile.setPiece(null);
-            return;
-        }
         Piece piece = tile.getPiece();
         if (piece != null) {
             if (piece.getColor() == turn) {
@@ -110,53 +107,91 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         }
         int location = tile.getLocationOnBoard();
         if (selectedTile != null && selectedTile.isPlayableMove(location, chessBoard, true)) {
+            //process move
             tile.setPiece(selectedTile.getPiece());
             selectedTile.setPiece(null);
             selectedTile.setBackground(selectedTile.getColor());
             selectedTile = null;
             turn = 1 - turn;
-            //check for checkmate / stalemate
+
+            //compute fen
+            String fen = chessBoard.computeFen(turn);
+            fens.add(fen);
+
+
             Tile[] enemyTiles = chessBoard.getOccupiedTilesOfColor(turn);
+
+            boolean canMove = false;
             for (Tile enemyTile : enemyTiles) {
-                if (enemyTile.getPlayableMoves(chessBoard).length > 0) {
-                    return;
+                if (enemyTile.getPlayableMoves(chessBoard).length > 0)
+                {
+                    canMove = true;
+                    break;
                 }
             }
+
             King king = (King) chessBoard.getKing(turn).getPiece();
-
-            int option;
-            String buttons[] = {"Replay", "Quit"};
-            if (king.isInCheck(chessBoard)) {
-                //checkmate
-
-                if (turn == 1) {
-                    option = JOptionPane.showOptionDialog(null, "White wins! Play again or quit?", "Checkmate", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, buttons, "default");
-                } else {
-                    option = JOptionPane.showOptionDialog(null, "Black wins! Play again or quit?", "Checkmate", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, buttons, "default");
+            if (!canMove)
+            {
+                if (king.isInCheck(chessBoard)) {
+                    checkmate();
                 }
-
-                if (option == 0) {
-                    for (int i = 0; i < 64; i++) {
-                        chessBoard.getTile(i).setPiece(null);
-                    }
-                    setupPieces();
-                } else {
-                    System.exit(0);
-                }
-            } else {
-                //stalemate
-
-                option = JOptionPane.showOptionDialog(null, "Stalemate! Play again or quit?", "Stalemate", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, buttons, "default");
-
-                if (option == 0) {
-                    for (int i = 0; i < 64; i++) {
-                        chessBoard.getTile(i).setPiece(null);
-                    }
-                    setupPieces();
-                } else {
-                    System.exit(0);
+                else
+                {
+                    stalemate();
                 }
             }
+
+            //check for three move repetition
+            int priorOccurrences = 0;
+            for (String oldFen: fens)
+            {
+                if (fen.equals(oldFen))
+                {
+                    priorOccurrences++;
+                }
+            }
+            if (priorOccurrences >= 3)
+            {
+                stalemate();
+            }
+
+        }
+    }
+
+    void checkmate()
+    {
+        int option;
+        String buttons[] = {"Replay", "Quit"};
+        if (turn == 1) {
+            option = JOptionPane.showOptionDialog(null, "White wins! Play again or quit?", "Checkmate", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, buttons, "default");
+        } else {
+            option = JOptionPane.showOptionDialog(null, "Black wins! Play again or quit?", "Checkmate", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, buttons, "default");
+        }
+
+        if (option == 0) {
+            for (int i = 0; i < 64; i++) {
+                chessBoard.getTile(i).setPiece(null);
+            }
+            setupPieces();
+        } else {
+            System.exit(0);
+        }
+    }
+
+    void stalemate()
+    {
+        int option;
+        String buttons[] = {"Replay", "Quit"};
+        option = JOptionPane.showOptionDialog(null, "Stalemate! Play again or quit?", "Stalemate", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, buttons, "default");
+
+        if (option == 0) {
+            for (int i = 0; i < 64; i++) {
+                chessBoard.getTile(i).setPiece(null);
+            }
+            setupPieces();
+        } else {
+            System.exit(0);
         }
     }
 
