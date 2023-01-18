@@ -45,6 +45,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
+        AudioPlayer.play("src/resources/audio/startgame.wav");
+
         //setup black pieces
         chessBoard.getTile(0).setPiece(new Rook(0));
         chessBoard.getTile(7).setPiece(new Rook(0));
@@ -134,10 +136,12 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             if (!canMove)
             {
                 if (king.isInCheck(chessBoard)) {
+                    AudioPlayer.play("src/resources/audio/win.wav");
                     checkmate();
                 }
                 else
                 {
+                    AudioPlayer.play("src/resources/audio/stalemate.wav");
                     stalemate();
                 }
             }
