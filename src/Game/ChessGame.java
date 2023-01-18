@@ -45,6 +45,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
+        fens.clear();
         AudioPlayer.play("src/resources/audio/startgame.wav");
 
         //setup black pieces
