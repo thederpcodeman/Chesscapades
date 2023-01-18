@@ -113,6 +113,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             selectedTile.setPiece(null);
             selectedTile.setBackground(selectedTile.getColor());
             selectedTile = null;
+            AudioPlayer.play("src/resources/audio/move-self.wav");
             turn = 1 - turn;
 
             //compute fen
