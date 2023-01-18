@@ -45,7 +45,6 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
-        fens.clear();
         AudioPlayer.play("src/resources/audio/startgame.wav");
 
         //setup black pieces
@@ -81,7 +80,6 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             Tile tile = (Tile) chessBoard.getComponent(i);
             tile.setPiece(new Pawn(1));
         }
-        System.out.println(chessBoard.computeFen(1));
     }
 
     @Override
@@ -178,6 +176,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             for (int i = 0; i < 64; i++) {
                 chessBoard.getTile(i).setPiece(null);
             }
+            fens.clear();
             setupPieces();
         } else {
             System.exit(0);
@@ -194,6 +193,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             for (int i = 0; i < 64; i++) {
                 chessBoard.getTile(i).setPiece(null);
             }
+            fens.clear();
             setupPieces();
         } else {
             System.exit(0);
