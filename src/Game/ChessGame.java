@@ -38,7 +38,6 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         }
 
         setupPieces();
-        turn = 1;
 
         fens = new ArrayList<String>();
         fens.add(chessBoard.computeFen(turn));
@@ -80,7 +79,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             Tile tile = (Tile) chessBoard.getComponent(i);
             tile.setPiece(new Pawn(1));
         }
-        System.out.println(chessBoard.computeFen(1));
+        turn = 1;
     }
 
     @Override
@@ -165,6 +164,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
     void checkmate()
     {
+        System.out.println("Checkmate! Here's the FEN for the final position!");
+        System.out.println(fens.get(fens.size() - 1));
         int option;
         String buttons[] = {"Replay", "Quit"};
         if (turn == 1) {
@@ -172,7 +173,6 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         } else {
             option = JOptionPane.showOptionDialog(null, "Black wins! Play again or quit?", "Checkmate", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, buttons, "default");
         }
-
         if (option == 0) {
             for (int i = 0; i < 64; i++) {
                 chessBoard.getTile(i).setPiece(null);
@@ -185,10 +185,11 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
     void stalemate()
     {
+        System.out.println("Stalemate! Here's the FEN for the final position!");
+        System.out.println(fens.get(fens.size() - 1));
         int option;
         String buttons[] = {"Replay", "Quit"};
         option = JOptionPane.showOptionDialog(null, "Stalemate! Play again or quit?", "Stalemate", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, buttons, "default");
-
         if (option == 0) {
             for (int i = 0; i < 64; i++) {
                 chessBoard.getTile(i).setPiece(null);
@@ -223,6 +224,4 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     public void mouseMoved(MouseEvent e) {
 
     }
-
-
 }
