@@ -14,6 +14,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     Board chessBoard;
     Tile selectedTile;
     int turn;
+    Color selectedColor = new Color(86, 44, 44);
+    Color highlightedColor = new Color(50, 150, 93);
 
     ArrayList<String> fens;
 
@@ -98,10 +100,10 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         if (piece != null) {
             if (piece.getColor() == turn) {
                 selectedTile = tile;
-                tile.setBackground(Color.green);
+                tile.setBackground(selectedColor);
                 Tile[] legalMoves = tile.getPlayableMoves(chessBoard);
                 for (Tile legalTile : legalMoves) {
-                    legalTile.setBackground(Color.BLUE);
+                    legalTile.setBackground(highlightedColor);
                 }
                 return;
             }
