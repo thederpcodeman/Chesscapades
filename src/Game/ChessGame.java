@@ -170,9 +170,9 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         int option;
         String buttons[] = {"Replay", "Quit"};
         if (turn == 1) {
-            option = JOptionPane.showOptionDialog(null, "White wins! Play again or quit?", "Checkmate", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, buttons, "default");
-        } else {
             option = JOptionPane.showOptionDialog(null, "Black wins! Play again or quit?", "Checkmate", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, buttons, "default");
+        } else {
+            option = JOptionPane.showOptionDialog(null, "White wins! Play again or quit?", "Checkmate", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, buttons, "default");
         }
         if (option == 0) {
             for (int i = 0; i < 64; i++) {
