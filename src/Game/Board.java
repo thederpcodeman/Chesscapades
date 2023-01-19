@@ -244,27 +244,34 @@ public class Board extends JPanel {
     {
         int x = getXFromLocation(location);
         int y = getYFromLocation(location);
-        Integer codeN = 8 - x;
+        Integer codeN = 8 - y;
         char codeA;
-        switch (y)
+        switch (x)
         {
             case 0:
                 codeA = 'h';
                 break;
             case 1:
                 codeA = 'g';
+                break;
             case 2:
                 codeA = 'f';
+                break;
             case 3:
                 codeA = 'e';
+                break;
             case 4:
                 codeA = 'd';
+                break;
             case 5:
                 codeA = 'c';
+                break;
             case 6:
                 codeA = 'b';
+                break;
             case 7:
                 codeA = 'a';
+                break;
             default:
                 throw new IllegalArgumentException();
         }
