@@ -186,7 +186,8 @@ public class Board extends JPanel {
                     if (piece.moved2 == 1)
                     {
                         int y = Board.getYFromLocation(i) - pawn.getForwardDirection();
-                        passantLoc = y;
+                        int location = getLocationFromCords(Board.getXFromLocation(i), y);
+                        passantLoc = location;
                     }
                     if (piece.getColor() == 1)
                     {
@@ -235,7 +236,7 @@ public class Board extends JPanel {
         }
         if (passantLoc != 0)
         {
-            fen.append(convertLocationToCode(' ' + passantLoc));
+            fen.append(' ' + convertLocationToCode(passantLoc));
         }
         System.out.println(fen.toString());
         return fen.toString();
@@ -248,28 +249,28 @@ public class Board extends JPanel {
         char codeA;
         switch (x)
         {
-            case 0:
+            case 7:
                 codeA = 'h';
                 break;
-            case 1:
+            case 6:
                 codeA = 'g';
                 break;
-            case 2:
+            case 5:
                 codeA = 'f';
                 break;
-            case 3:
+            case 4:
                 codeA = 'e';
                 break;
-            case 4:
+            case 3:
                 codeA = 'd';
                 break;
-            case 5:
+            case 2:
                 codeA = 'c';
                 break;
-            case 6:
+            case 1:
                 codeA = 'b';
                 break;
-            case 7:
+            case 0:
                 codeA = 'a';
                 break;
             default:
