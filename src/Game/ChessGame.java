@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class ChessGame extends JFrame implements MouseListener, MouseMotionListener {
     JLayeredPane layeredPane;
+    Stockfish stockfish = new Stockfish();
     Board chessBoard;
     Tile selectedTile;
     int turn;
@@ -43,6 +44,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
         fens = new ArrayList<String>();
         fens.add(chessBoard.computeFen(turn));
+
+        stockfish.startEngine();
     }
 
     public void setupPieces() {
@@ -161,7 +164,9 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             {
                 stalemate();
             }
-
+            new Thread(() -> {
+                System.out.println(stockfish.getBestMove(fens.get(fens.size()-1), 10000));
+            }).start();
         }
     }
 
