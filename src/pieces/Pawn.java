@@ -51,7 +51,7 @@ public class Pawn extends Piece {
         {
             return false;
         }
-        if(dy == getForwardDirection() || ((isOnStartingSquare(y) && dy == getForwardDirection() * 2)) && !board.getTile(Board.getLocationFromCords(newX, newY - 1)).isOccupied())
+        if(dy == getForwardDirection() || ((isOnStartingSquare(y) && dy == getForwardDirection() * 2)) && !board.getTile(Board.getLocationFromCords(newX, newY - getForwardDirection())).isOccupied())
         {
             if (forReal) {
                 moved2 = 2;
