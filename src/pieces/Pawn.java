@@ -61,7 +61,7 @@ public class Pawn extends Piece {
         return false;
     }
 
-    private int getForwardDirection()
+    public int getForwardDirection()
     {
         if(getColor() == 0)
         {

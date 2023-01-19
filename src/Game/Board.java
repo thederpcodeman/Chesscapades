@@ -99,6 +99,7 @@ public class Board extends JPanel {
     {
         StringBuilder fen = new StringBuilder();
         int empty = 0;
+        int passantLoc = 0;
         for (int i = 0; i < 64; i++)
         {
             Piece piece = getTile(i).getPiece();
@@ -179,6 +180,12 @@ public class Board extends JPanel {
                 }
                 else if (piece instanceof Pawn)
                 {
+                    Pawn pawn = (Pawn) piece;
+                    if (piece.moved2 == 1)
+                    {
+                        int y = Board.getYFromLocation(i) - pawn.getForwardDirection();
+                        passantLoc = y;
+                    }
                     if (piece.getColor() == 1)
                     {
                         fen.append('P');
@@ -224,6 +231,42 @@ public class Board extends JPanel {
         {
             fen.append('-');
         }
+        if (passantLoc != 0)
+        {
+            fen.append(convertLocationToCode(' ' + passantLoc));
+        }
+        System.out.println(fen.toString());
         return fen.toString();
     }
+    public static String convertLocationToCode(int location)
+    {
+        int x = getXFromLocation(location);
+        int y = getYFromLocation(location);
+        Integer codeN = 8 - x;
+        char codeA;
+        switch (y)
+        {
+            case 0:
+                codeA = 'h';
+                break;
+            case 1:
+                codeA = 'g';
+            case 2:
+                codeA = 'f';
+            case 3:
+                codeA = 'e';
+            case 4:
+                codeA = 'd';
+            case 5:
+                codeA = 'c';
+            case 6:
+                codeA = 'b';
+            case 7:
+                codeA = 'a';
+            default:
+                throw new IllegalArgumentException();
+        }
+        return (codeN.toString() + codeA);
+    }
+
 }
