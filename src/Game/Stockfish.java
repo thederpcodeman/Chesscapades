@@ -26,7 +26,6 @@ public class Stockfish {
 		{
 			String[] commands = {PATH};
 			engineProcess = Runtime.getRuntime().exec(commands);
-			System.out.println(engineProcess);
 			processReader = new BufferedReader(new InputStreamReader(
 					engineProcess.getInputStream()));
 			processWriter = new OutputStreamWriter(
@@ -104,6 +103,13 @@ public class Stockfish {
 			e.printStackTrace();
 		}
 		return "";
+	}
+
+	public String getBestMoveCode(String fen, int waitTime)
+	{
+		String toParse = getBestMove(fen, waitTime);
+		String result = new String(new char[]{toParse.charAt(9), toParse.charAt(10), toParse.charAt(11), toParse.charAt(12)});
+		return result;
 	}
 
 	/**

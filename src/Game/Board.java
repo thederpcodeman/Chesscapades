@@ -33,6 +33,8 @@ public class Board extends JPanel {
         return y * 8 + x;
     }
 
+
+
     public Tile[] getTiles()
     {
         Component[] components = getComponents();

@@ -4,9 +4,7 @@ import pieces.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 public class ChessGame extends JFrame implements MouseListener, MouseMotionListener {
@@ -18,9 +16,11 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     Color selectedColor = new Color(86, 44, 44);
     Color highlightedColor = new Color(50, 150, 93);
 
+    Action spaceAction;
+
     ArrayList<String> fens;
 
-    public ChessGame(int size){
+    public ChessGame(int size) {
         Dimension boardSize = new Dimension(size, size);
 
         layeredPane = new JLayeredPane();
@@ -29,14 +29,18 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         layeredPane.addMouseListener(this);
         layeredPane.addMouseMotionListener(this);
 
+        spaceAction = new SpaceAction();
+
+
+
         chessBoard = new Board();
         layeredPane.add(chessBoard, JLayeredPane.DEFAULT_LAYER);
         chessBoard.setLayout(new GridLayout(8, 8));
         chessBoard.setPreferredSize(boardSize);
-        chessBoard.setBounds(0,0, boardSize.width, boardSize.height);
+        chessBoard.setBounds(0, 0, boardSize.width, boardSize.height);
 
         for (int i = 0; i < 64; i++) {
-            Tile tile = new Tile(i, new BorderLayout(), size/8);
+            Tile tile = new Tile(i, new BorderLayout(), size / 8);
             chessBoard.add(tile);
         }
 
@@ -44,7 +48,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
         fens = new ArrayList<String>();
         fens.add(chessBoard.computeFen(turn));
-
+        chessBoard.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), spaceAction);
+        chessBoard.getActionMap().put(spaceAction, spaceAction);
         stockfish.startEngine();
     }
 
@@ -63,8 +68,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         chessBoard.getTile(3).setPiece(new Queen(0));
         chessBoard.getTile(4).setPiece(new King(0));
         chessBoard.getTile(4).setCastleable(true);
-        for (int i = 8; i < 16; i++) 
-        {
+        for (int i = 8; i < 16; i++) {
             chessBoard.getTile(i).setPiece(new Pawn(0));
         }
         //setup white pieces
@@ -79,8 +83,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         chessBoard.getTile(59).setPiece(new Queen(1));
         chessBoard.getTile(60).setPiece(new King(1));
         chessBoard.getTile(60).setCastleable(true);
-        for (int i = 48; i < 56; i++)
-        {
+        for (int i = 48; i < 56; i++) {
             Tile tile = (Tile) chessBoard.getComponent(i);
             tile.setPiece(new Pawn(1));
         }
@@ -120,6 +123,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             selectedTile = null;
             AudioPlayer.play("src/resources/audio/move-self.wav");
             turn = 1 - turn;
+            stockfish.sendCommand("stop");
 
             //compute fen
             String fen = chessBoard.computeFen(turn);
@@ -130,22 +134,18 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
             boolean canMove = false;
             for (Tile enemyTile : enemyTiles) {
-                if (enemyTile.getPlayableMoves(chessBoard).length > 0)
-                {
+                if (enemyTile.getPlayableMoves(chessBoard).length > 0) {
                     canMove = true;
                     break;
                 }
             }
 
             King king = (King) chessBoard.getKing(turn).getPiece();
-            if (!canMove)
-            {
+            if (!canMove) {
                 if (king.isInCheck(chessBoard)) {
                     AudioPlayer.play("src/resources/audio/win.wav");
                     checkmate();
-                }
-                else
-                {
+                } else {
                     AudioPlayer.play("src/resources/audio/stalemate.wav");
                     stalemate();
                 }
@@ -153,25 +153,18 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
             //check for three move repetition
             int priorOccurrences = 0;
-            for (String oldFen: fens)
-            {
-                if (fen.equals(oldFen))
-                {
+            for (String oldFen : fens) {
+                if (fen.equals(oldFen)) {
                     priorOccurrences++;
                 }
             }
-            if (priorOccurrences >= 3)
-            {
+            if (priorOccurrences >= 3) {
                 stalemate();
             }
-            new Thread(() -> {
-                System.out.println(stockfish.getBestMove(fens.get(fens.size()-1), 10000));
-            }).start();
         }
     }
 
-    void checkmate()
-    {
+    void checkmate() {
         System.out.println("Checkmate! Here's the FEN for the final position!");
         System.out.println(fens.get(fens.size() - 1));
         int option;
@@ -192,8 +185,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         }
     }
 
-    void stalemate()
-    {
+    void stalemate() {
         System.out.println("Stalemate! Here's the FEN for the final position!");
         System.out.println(fens.get(fens.size() - 1));
         int option;
@@ -235,5 +227,17 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
     }
 
+    private void playBestMove() {
+        String bestMove = stockfish.getBestMoveCode(fens.get(fens.size() - 1), 10000);
 
+    }
+
+    public class SpaceAction extends AbstractAction {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            new Thread(() -> {
+                System.out.println(stockfish.getBestMoveCode(fens.get(fens.size() - 1), 10000));
+            }).start();
+        }
+    }
 }
