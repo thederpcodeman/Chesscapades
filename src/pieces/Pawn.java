@@ -44,7 +44,7 @@ public class Pawn extends Piece {
         {
             return false;
         }
-        if(dy == getForwardDirection() || (isOnStartingSquare(y) && dy == getForwardDirection() * 2))
+        if(dy == getForwardDirection() || ((isOnStartingSquare(y) && dy == getForwardDirection() * 2)) && !board.getTile(Board.getLocationFromCords(newX, newY - 1)).isOccupied())
         {
             return true;
         }
