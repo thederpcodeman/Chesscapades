@@ -1,6 +1,7 @@
 package pieces;
 
 import Game.Board;
+import Game.ChessGame;
 import Game.Tile;
 
 import javax.swing.*;
@@ -36,7 +37,13 @@ public class Pawn extends Piece {
                     {
                         return true;
                     }
+                } else if ((board.getTile(Board.getLocationFromCords(newX, y)).isOccupied() && (dy == getForwardDirection()))){
+                     if (board.getTile(Board.getLocationFromCords(newX, y)).getPiece().moved2 != 0){
+                        return true;
+                    }
+                    return false;
                 }
+
             }
             return false;
         }
@@ -46,6 +53,9 @@ public class Pawn extends Piece {
         }
         if(dy == getForwardDirection() || ((isOnStartingSquare(y) && dy == getForwardDirection() * 2)) && !board.getTile(Board.getLocationFromCords(newX, newY - 1)).isOccupied())
         {
+            if (forReal) {
+                moved2 = 2;
+            }
             return true;
         }
         return false;

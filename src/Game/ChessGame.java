@@ -111,12 +111,27 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         int location = tile.getLocationOnBoard();
         if (selectedTile != null && selectedTile.isPlayableMove(location, chessBoard, true)) {
             //process move
+            if (selectedTile.getPiece() instanceof Pawn){
+                if (chessBoard.getTile(location + ((turn * 16)- 8)).getPiece() instanceof Pawn){
+                    if (((Pawn) chessBoard.getTile(location + ((turn * 16)- 8)).getPiece()).moved2 == 1){
+                        chessBoard.getTile(location + ((turn * 16)- 8)).setPiece(null);
+                    }
+                }
+            }
+
             tile.setPiece(selectedTile.getPiece());
             selectedTile.setPiece(null);
             selectedTile.setBackground(selectedTile.getColor());
             selectedTile = null;
             AudioPlayer.play("src/resources/audio/move-self.wav");
             turn = 1 - turn;
+            for (int check = 0; check < 64; check++){
+                Piece checked = chessBoard.getTile(check).getPiece();
+                if (checked instanceof Pawn){
+                    Pawn p = (Pawn) checked;
+                    if (p.moved2 > 0) {p.moved2 -=1;}
+                }
+            }
 
             //compute fen
             String fen = chessBoard.computeFen(turn);
