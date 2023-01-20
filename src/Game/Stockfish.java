@@ -107,7 +107,6 @@ public class Stockfish {
 
 	public String getBestMoveCode(String fen, int waitTime) {
 		String toParse = getBestMove(fen, waitTime);
-		System.out.println(toParse);
 		String result;
 		if (toParse.length() > 13) {
 			result = new String(new char[]{toParse.charAt(9), toParse.charAt(10), toParse.charAt(11), toParse.charAt(12), toParse.charAt(13)});
