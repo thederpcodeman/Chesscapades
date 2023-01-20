@@ -72,6 +72,24 @@ public class Tile extends JPanel {
         repaint();
     }
 
+    public void forceSetPiece(Piece piece)
+    {
+        this.piece = piece;
+        setCastleable(false);
+        for(int i = 0; i < getComponentCount(); i++)
+        {
+            remove(i);
+        }
+        if(piece != null)
+        {
+            ImageIcon imageIcon = new ImageIcon(piece.getImageIcon().getImage().getScaledInstance(size * 7 / 8, size * 7 / 8, Image.SCALE_DEFAULT));
+            JLabel image = new JLabel(imageIcon);
+            add(image);
+        }
+        revalidate();
+        repaint();
+    }
+
     public void quietlyUpdatePiece(Piece piece) {
         this.piece = piece;
     }

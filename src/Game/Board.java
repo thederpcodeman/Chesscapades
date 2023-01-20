@@ -238,7 +238,6 @@ public class Board extends JPanel {
         {
             fen.append(' ' + convertLocationToCode(passantLoc));
         }
-        System.out.println(fen.toString());
         return fen.toString();
     }
     public static String convertLocationToCode(int location)
@@ -277,6 +276,44 @@ public class Board extends JPanel {
                 throw new IllegalArgumentException();
         }
         return (codeN.toString() + codeA);
+    }
+
+    public static int convertCodeToLocation(String code)
+    {
+        char codeA = code.charAt(0);
+        int codeN = Integer.parseInt(Character.toString(code.charAt(1)));
+        int y = 8 - codeN;
+        int x;
+        switch (codeA)
+        {
+            case 'h':
+                x = 7;
+                break;
+            case 'g':
+                x = 6;
+                break;
+            case 'f':
+                x = 5;
+                break;
+            case 'e':
+                x = 4;
+                break;
+            case 'd':
+                x = 3;
+                break;
+            case 'c':
+                x = 2;
+                break;
+            case 'b':
+                x = 1;
+                break;
+            case 'a':
+                x = 0;
+                break;
+            default:
+                throw new IllegalArgumentException();
+        }
+        return getLocationFromCords(x, y);
     }
 
 }
