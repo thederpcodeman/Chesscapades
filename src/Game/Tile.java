@@ -116,10 +116,10 @@ public class Tile extends JPanel {
         return getPiece().isLegalMove(x, y, newX, newY, board, forReal);
     }
 
-    public boolean isPlayableMove(int location, Board board, boolean forReal) {
+    public int isPlayableMove(int location, Board board, boolean forReal) {
         if(!isLegalMove(location, board, forReal))
         {
-            return false;
+            return 0;
         }
         int color = getPiece().getColor();
         Tile[] enemyPieces = board.getOccupiedTilesOfColor(1 - color);
@@ -137,20 +137,20 @@ public class Tile extends JPanel {
                 {
                     quietlyUpdatePiece(currentPiece);
                     destination.quietlyUpdatePiece(destinationCurrentPiece);
-                    return false;
+                    return 2;
                 }
             }
         }
         quietlyUpdatePiece(currentPiece);
         destination.quietlyUpdatePiece(destinationCurrentPiece);
-        return true;
+        return 1;
     }
 
     public Tile[] getPlayableMoves(Board board) {
         Tile[] allTiles = board.getTiles();
         ArrayList<Tile> goodTiles = new ArrayList();
         for (Tile tile:allTiles) {
-            if(isPlayableMove(tile.getLocationOnBoard(), board, false))
+            if((isPlayableMove(tile.getLocationOnBoard(), board, false) != 0))
             {
                 goodTiles.add(tile);
             }
@@ -179,7 +179,7 @@ public class Tile extends JPanel {
 
         AudioPlayer.play("src/resources/audio/promote.wav");
 
-        String[] possibilities = {"Queen", "Rook", "Knight", "Bishop"};
+        String[] possibilities = {"Queen", "Rook", "Knight", "Bishop", "King"};
         JPanel jPanel = new JPanel(new GridBagLayout());
         JComboBox comboBox = new JComboBox(possibilities);
         input = JOptionPane.showConfirmDialog(null, comboBox, "Choose a piece to promote to: ", JOptionPane.DEFAULT_OPTION);
@@ -196,6 +196,8 @@ public class Tile extends JPanel {
                 setPiece(new Knight(piece.getColor()));
             } else if (s == "Bishop") {
                 setPiece(new Bishop(piece.getColor()));
+            } else if (s == "King") {
+                setPiece(new King(piece.getColor()));
             }
         }
     }

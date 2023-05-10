@@ -94,7 +94,7 @@ public class Board extends JPanel {
                 return tile;
             }
         }
-        throw new IllegalStateException("Board is missing a king!");
+        return getTile(0);
     }
 
     public String computeFen(int turn)

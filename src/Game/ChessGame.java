@@ -15,10 +15,12 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     int turn;
     Color selectedColor = new Color(86, 44, 44);
     Color highlightedColor = new Color(50, 150, 93);
+    Color dangerColor = new Color(150, 50, 40);
 
     Action spaceAction;
 
     ArrayList<String> fens;
+    public int gameRule;
 
     public ChessGame(int size){
         Dimension boardSize = new Dimension(size, size);
@@ -54,6 +56,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
+        gameRule = (int) (1);
         AudioPlayer.play("src/resources/audio/startgame.wav");
 
         //setup black pieces
@@ -107,16 +110,27 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             if (piece.getColor() == turn) {
                 selectedTile = tile;
                 tile.setBackground(selectedColor);
-                Tile[] legalMoves = tile.getPlayableMoves(chessBoard);
+                Tile[] legalMoves = chessBoard.getTiles();
                 for (Tile legalTile : legalMoves) {
-                    legalTile.setBackground(highlightedColor);
+                    if (tile.isPlayableMove(legalTile.getLocationOnBoard(), chessBoard, false) == 1){
+                        legalTile.setBackground(highlightedColor);
+                    }else if (tile.isPlayableMove(legalTile.getLocationOnBoard(), chessBoard, false) == 2) {
+                        legalTile.setBackground(dangerColor);
+                    }
+
                 }
                 return;
             }
         }
         int location = tile.getLocationOnBoard();
-        if (selectedTile != null && selectedTile.isPlayableMove(location, chessBoard, true)) {
+        if (selectedTile != null && (selectedTile.isPlayableMove(location, chessBoard, true) != 0)) {
             //process move
+
+            if (chessBoard.getTile(location).getPiece() != null){
+                nuke(location, true, false);
+                obliterate(selectedTile.getLocationOnBoard(), true, false);
+            }
+
             if (selectedTile.getPiece() instanceof Pawn){
                 if (chessBoard.getTile(location + ((turn * 16)- 8)).getPiece() instanceof Pawn){
                     if (((Pawn) chessBoard.getTile(location + ((turn * 16)- 8)).getPiece()).moved2 == 1){
@@ -125,10 +139,14 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 }
             }
 
+
             tile.setPiece(selectedTile.getPiece());
             selectedTile.setPiece(null);
+
+
             selectedTile.setBackground(selectedTile.getColor());
             selectedTile = null;
+
             AudioPlayer.play("src/resources/audio/move-self.wav");
             turn = 1 - turn;
             for (int check = 0; check < 64; check++){
@@ -139,29 +157,70 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 }
             }
 
+
             //compute fen
             String fen = chessBoard.computeFen(turn);
             fens.add(fen);
 
 
             Tile[] enemyTiles = chessBoard.getOccupiedTilesOfColor(turn);
-
-            boolean canMove = false;
-            for (Tile enemyTile : enemyTiles) {
-                if (enemyTile.getPlayableMoves(chessBoard).length > 0) {
-                    canMove = true;
-                    break;
+            boolean wKing = false;
+            boolean bKing = false;
+            for (int square = 0; square < 63; square ++){
+                if ((chessBoard.getTile(square).getPiece() != null ) && (chessBoard.getTile(square).getPiece() instanceof King)){
+                    if (chessBoard.getTile(square).getPiece().getColor() == 1){
+                        wKing = true;
+                    } else{
+                        bKing = true;
+                    }
                 }
             }
-
-            King king = (King) chessBoard.getKing(turn).getPiece();
-            if (!canMove) {
-                if (king.isInCheck(chessBoard)) {
-                    AudioPlayer.play("src/resources/audio/win.wav");
-                    checkmate();
+            if (!wKing){
+                if (!bKing){
+                    System.out.println("Here's the FEN for the final position!");
+                    System.out.println(fens.get(fens.size() - 1));
+                    int option;
+                    String buttons[] = {"Replay", "Quit"};
+                    option = JOptionPane.showOptionDialog(null, "A tie? Too bad. Play again?", "Draw", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, buttons, "default");
+                    if (option == 0) {
+                        for (int i = 0; i < 64; i++) {
+                            chessBoard.getTile(i).setPiece(null);
+                        }
+                        fens.clear();
+                        setupPieces();
+                    } else {
+                        System.exit(0);
+                    }
                 } else {
-                    AudioPlayer.play("src/resources/audio/stalemate.wav");
-                    stalemate();
+                    System.out.println("Here's the FEN for the final position!");
+                    System.out.println(fens.get(fens.size() - 1));
+                    int option;
+                    String buttons[] = {"Replay", "Quit"};
+                    option = JOptionPane.showOptionDialog(null, "Black wins! Play again?", "Checkmate", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, buttons, "default");
+                    if (option == 0) {
+                        for (int i = 0; i < 64; i++) {
+                            chessBoard.getTile(i).setPiece(null);
+                        }
+                        fens.clear();
+                        setupPieces();
+                    } else {
+                        System.exit(0);
+                    }
+                }
+            } else if (!bKing){
+                System.out.println("Here's the FEN for the final position!");
+                System.out.println(fens.get(fens.size() - 1));
+                int option;
+                String buttons[] = {"Replay", "Quit"};
+                option = JOptionPane.showOptionDialog(null, "White wins! Play again?", "Checkmate", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, buttons, "default");
+                if (option == 0) {
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    setupPieces();
+                } else {
+                    System.exit(0);
                 }
             }
 
@@ -176,6 +235,26 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 stalemate();
             }
 
+        }
+    }
+    public void obliterate(int square, boolean kingSlayer, boolean pawnSlayer){
+        if ( (chessBoard.getTile(square) != null) && (chessBoard.getTile(square).getPiece() != null) && (kingSlayer || !(chessBoard.getTile(square).getPiece() instanceof King)) && (pawnSlayer || !(chessBoard.getTile(square).getPiece() instanceof Pawn))) {
+            chessBoard.getTile(square).setPiece(null);
+        }
+    }
+    public void nuke(int square, boolean kingSlayer, boolean pawnSlayer) {
+        int y = Board.getYFromLocation(square);
+        int x = Board.getXFromLocation(square);
+        int Yoff = -1;
+        while (Yoff <= 1){
+            int Xoff = -1;
+            while (Xoff <= 1){
+                if ((y + Yoff >= 0) && (y + Yoff < 8) && (x + Xoff >= 0) && (x + Xoff < 8)){
+                    obliterate(Board.getLocationFromCords(x + Xoff,y + Yoff ), kingSlayer, pawnSlayer);
+                }
+                Xoff ++;
+            }
+            Yoff ++;
         }
     }
 
@@ -251,7 +330,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         Tile selected = chessBoard.getTile(currentLocation);
         Tile destination = chessBoard.getTile(newLocation);
 
-        if (selected != null && selected.isPlayableMove(newLocation, chessBoard, true)) {
+        if (selected != null && (selected.isPlayableMove(newLocation, chessBoard, true) != 0)) {
             if (selected.getPiece() instanceof Pawn) {
                 if (chessBoard.getTile(newLocation + ((turn * 16) - 8)).getPiece() instanceof Pawn) {
                     if (((Pawn) chessBoard.getTile(newLocation + ((turn * 16) - 8)).getPiece()).moved2 == 1) {

@@ -67,7 +67,7 @@ public class King extends Piece {
                 }
                 int newRookDestination = Board.getLocationFromCords(newX - direction, newY);
                 Tile newRookTile = board.getTile(newRookDestination);
-                if (start.isPlayableMove(newRookDestination, board, false)) {
+                if (start.isPlayableMove(newRookDestination, board, false) != 0) {
                     if (tile.isCastleable() && !isInCheck(board))
                     {
                         if(forReal)
