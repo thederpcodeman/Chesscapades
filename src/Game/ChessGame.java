@@ -13,9 +13,13 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     Board chessBoard;
     Tile selectedTile;
     int turn;
-    Color selectedColor = new Color(86, 44, 44);
-    Color highlightedColor = new Color(50, 150, 93);
-    Color dangerColor = new Color(150, 50, 40);
+    static final Color highlightedColor = new Color(00, 100, 200);
+    static final Color selfColor = new Color(55, 160, 80);
+    static final Color dangerColor = new Color(179, 0, 27);
+
+    static final Color highlightedColor2 = new Color(48, 134, 215);
+    static final Color allyTan = new Color(215, 255, 222);
+    static final Color allyRed = new Color(150, 122, 97);
 
     Action spaceAction;
 
@@ -109,13 +113,25 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         if (piece != null) {
             if (piece.getColor() == turn) {
                 selectedTile = tile;
-                tile.setBackground(selectedColor);
+                tile.setBackground(selfColor);
                 Tile[] legalMoves = chessBoard.getTiles();
                 for (Tile legalTile : legalMoves) {
                     if (tile.isPlayableMove(legalTile.getLocationOnBoard(), chessBoard, false) == 1){
-                        legalTile.setBackground(highlightedColor);
+                        if (legalTile.getColor() == Tile.tan) {
+                            legalTile.setBackground(highlightedColor2);
+                        } else {
+                            legalTile.setBackground(highlightedColor);
+                        }
                     }else if (tile.isPlayableMove(legalTile.getLocationOnBoard(), chessBoard, false) == 2) {
                         legalTile.setBackground(dangerColor);
+                    }else if (tile == legalTile){
+                        legalTile.setBackground(selfColor);
+                    }else if ((legalTile.getPiece() != null) && (legalTile.getPiece().getColor() == turn)) {
+                        if (legalTile.getColor() == Tile.tan){
+                            legalTile.setBackground(allyTan);
+                        }else {
+                            legalTile.setBackground(allyRed);
+                        }
                     }
 
                 }
