@@ -164,7 +164,10 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     ps = true;
                 }
                 nuke(location, ks, ps);
-                obliterate(selectedTile.getLocationOnBoard(), ks, ps);
+                if (ranged == 0){
+                    obliterate(selectedTile.getLocationOnBoard(), ks, ps);
+                }
+
             } //nuke based on gamemode
 
             if (selectedTile.getPiece() instanceof Pawn){
@@ -175,9 +178,11 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 }
             }
 
-            if (ranged == 0){
+            if ((ranged == 0) || (tile.getPiece() == null)){
                 tile.setPiece(selectedTile.getPiece());
                 selectedTile.setPiece(null);
+            } else {
+                tile.setPiece(null);
             }
 
 
