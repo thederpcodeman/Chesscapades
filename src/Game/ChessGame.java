@@ -25,6 +25,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
     ArrayList<String> fens;
     public int atomic;
+    public int ranged;
 
     public ChessGame(int size){
         Dimension boardSize = new Dimension(size, size);
@@ -66,6 +67,12 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         } else {
             atomic -= 15;
         }
+        if ((Math.random() * 5) == 1){
+            ranged = 1;
+        } else {
+            ranged = 0;
+        }
+
         AudioPlayer.play("src/resources/audio/startgame.wav");
 
         //setup black pieces
@@ -168,9 +175,11 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 }
             }
 
+            if (ranged == 0){
+                tile.setPiece(selectedTile.getPiece());
+                selectedTile.setPiece(null);
+            }
 
-            tile.setPiece(selectedTile.getPiece());
-            selectedTile.setPiece(null);
 
 
             selectedTile.setBackground(selectedTile.getColor());
