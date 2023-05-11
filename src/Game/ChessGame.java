@@ -24,7 +24,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     Action spaceAction;
 
     ArrayList<String> fens;
-    public int gameRule;
+    public int atomic;
 
     public ChessGame(int size){
         Dimension boardSize = new Dimension(size, size);
@@ -60,7 +60,12 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
-        gameRule = (int) (1);
+        atomic = (int) (Math.random() * 20);
+        if (atomic < 16){
+            atomic = 0;
+        } else {
+            atomic -= 15;
+        }
         AudioPlayer.play("src/resources/audio/startgame.wav");
 
         //setup black pieces
@@ -142,10 +147,18 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         if (selectedTile != null && (selectedTile.isPlayableMove(location, chessBoard, true) != 0)) {
             //process move
 
-            if (chessBoard.getTile(location).getPiece() != null){
-                nuke(location, true, false);
-                obliterate(selectedTile.getLocationOnBoard(), true, false);
-            }
+            if ((chessBoard.getTile(location).getPiece() != null) && (atomic > 0)){
+                boolean ks = false;
+                boolean ps = false;
+                if ((atomic - 1) / 2 == 0){
+                    ks = true;
+                }
+                if (atomic % 2 == 1){
+                    ps = true;
+                }
+                nuke(location, ks, ps);
+                obliterate(selectedTile.getLocationOnBoard(), ks, ps);
+            } //nuke based on gamemode
 
             if (selectedTile.getPiece() instanceof Pawn){
                 if (chessBoard.getTile(location + ((turn * 16)- 8)).getPiece() instanceof Pawn){
