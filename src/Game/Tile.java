@@ -65,7 +65,8 @@ public class Tile extends JPanel {
             add(image);
         }
         //check for pawn being on the top or bottom rows
-        if (Board.getYFromLocation(getLocationOnBoard()) % 7 == 0 && getPiece() instanceof Pawn) {
+
+        if ( (getPiece() instanceof Pawn) && (((Board.getYFromLocation(getLocationOnBoard()) == 0) && (((Pawn) getPiece()).getForwardDirection() == -1)) || ((Board.getYFromLocation(getLocationOnBoard()) == 7) && (((Pawn) getPiece()).getForwardDirection() == 1)))){
             promPawn();
         }
         revalidate();
@@ -182,7 +183,7 @@ public class Tile extends JPanel {
 
         AudioPlayer.play("src/resources/audio/promote.wav");
 
-        String[] possibilities = {"Queen", "Rook", "Knight", "Bishop", "King"};
+        String[] possibilities = {"Queen", "Rook", "Knight", "Bishop", "King", "Turn around"};
         JPanel jPanel = new JPanel(new GridBagLayout());
         JComboBox comboBox = new JComboBox(possibilities);
         input = JOptionPane.showConfirmDialog(null, comboBox, "Choose a piece to promote to: ", JOptionPane.DEFAULT_OPTION);
@@ -201,6 +202,8 @@ public class Tile extends JPanel {
                 setPiece(new Bishop(piece.getColor()));
             } else if (s == "King") {
                 setPiece(new King(piece.getColor()));
+            }  else if (s == "Turn around") {
+                setPiece(new rPawn(piece.getColor()));
             }
         }
     }

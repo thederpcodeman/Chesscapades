@@ -77,11 +77,11 @@ public class Pawn extends Piece {
     {
         if(getColor() == 0)
         {
-            return y == 1;
+            return y <= 1;
         }
         else
         {
-            return y == 6;
+            return y >= 6;
         }
     }
 }
