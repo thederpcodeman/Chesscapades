@@ -7,6 +7,7 @@ import Game.Tile;
 import javax.swing.*;
 
 public class Pawn extends Piece {
+    private int forwards;
     public Pawn(int color) {
         super(color);
     }
@@ -61,21 +62,11 @@ public class Pawn extends Piece {
         return false;
     }
 
-    public int getForwardDirection()
-    {
-        if(getColor() == 0)
-        {
-            return 1;
-        }
-        else
-        {
-            return -1;
-        }
-    }
+
 
     private boolean isOnStartingSquare(int y)
     {
-        if(getColor() == 0)
+        if(getForwardDirection() == 1)
         {
             return y <= 1;
         }

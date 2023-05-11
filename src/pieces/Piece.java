@@ -7,11 +7,15 @@ import Game.Tile;
 
 public abstract class Piece {
     public int moved2;
+    private int forwards;
     public final int color;
 
     public Piece(int color) {
         this.color = color;
         this.moved2 = 0;
+        if(getColor() == 0)
+        {forwards = 1;}
+        else {forwards = -1;}
     }
 
     public ImageIcon getImageIcon() {
@@ -30,6 +34,14 @@ public abstract class Piece {
         return false;
     }
 
+    public int getForwardDirection()
+    {
+        return forwards;
+    }
+
+    public void setForwardDirection(int value){
+        forwards = value;
+    }
     public abstract boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal);
 
 }

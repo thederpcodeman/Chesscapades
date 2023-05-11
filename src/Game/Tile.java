@@ -203,7 +203,7 @@ public class Tile extends JPanel {
             } else if (s == "King") {
                 setPiece(new King(piece.getColor()));
             }  else if (s == "Turn around") {
-                setPiece(new rPawn(piece.getColor()));
+                getPiece().setForwardDirection(getPiece().getForwardDirection() * -1);
             }
         }
     }
