@@ -97,6 +97,19 @@ public class Board extends JPanel {
         return getTile(0);
     }
 
+    public ArrayList<Tile> getKings(int color)
+    {
+        ArrayList<Tile> kings = new ArrayList<Tile>();
+        for (Tile tile:getOccupiedTilesOfColor(color))
+        {
+            if (tile.getPiece() instanceof King)
+            {
+                kings.add(tile);
+            }
+        }
+        return kings;
+    }
+
     public String computeFen(int turn)
     {
         StringBuilder fen = new StringBuilder();

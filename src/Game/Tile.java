@@ -128,19 +128,22 @@ public class Tile extends JPanel {
         Piece destinationCurrentPiece = destination.getPiece();
         destination.quietlyUpdatePiece(getPiece());
         quietlyUpdatePiece(null);
-        Tile king = board.getKing(color);
-        for(Tile tile: enemyPieces)
-        {
-            for(Tile tile2: tile.getLegalMoves(board))
+        ArrayList<Tile> kings = board.getKings(color);
+        for (Tile king : kings){
+            for(Tile tile: enemyPieces)
             {
-                if(tile2 == king)
+                for(Tile tile2: tile.getLegalMoves(board))
                 {
-                    quietlyUpdatePiece(currentPiece);
-                    destination.quietlyUpdatePiece(destinationCurrentPiece);
-                    return 2;
+                    if(tile2 == king)
+                    {
+                        quietlyUpdatePiece(currentPiece);
+                        destination.quietlyUpdatePiece(destinationCurrentPiece);
+                        return 2;
+                    }
                 }
             }
         }
+
         quietlyUpdatePiece(currentPiece);
         destination.quietlyUpdatePiece(destinationCurrentPiece);
         return 1;
