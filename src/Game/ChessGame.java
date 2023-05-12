@@ -113,45 +113,10 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     public void mouseClicked(MouseEvent e) {
 
     }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        Tile[] tiles = chessBoard.getTiles();
-        for (Tile rTile : tiles) {
-            rTile.setBackground(rTile.getColor());
-        }
-        Tile tile = (Tile) chessBoard.getComponentAt(e.getX(), e.getY());
-        Piece piece = tile.getPiece();
-        if (piece != null) {
-            if (piece.getColor() == turn) {
-                selectedTile = tile;
-                tile.setBackground(selfColor);
-                Tile[] legalMoves = chessBoard.getTiles();
-                for (Tile legalTile : legalMoves) {
-                    if (tile.isPlayableMove(legalTile.getLocationOnBoard(), chessBoard, false) == 1){
-                        if (legalTile.getColor() == Tile.tan) {
-                            legalTile.setBackground(highlightedColor2);
-                        } else {
-                            legalTile.setBackground(highlightedColor);
-                        }
-                    }else if (tile.isPlayableMove(legalTile.getLocationOnBoard(), chessBoard, false) == 2) {
-                        legalTile.setBackground(dangerColor);
-                    }else if (tile == legalTile){
-                        legalTile.setBackground(selfColor);
-                    }else if ((legalTile.getPiece() != null) && (legalTile.getPiece().getColor() == turn)) {
-                        if (legalTile.getColor() == Tile.tan){
-                            legalTile.setBackground(allyTan);
-                        }else {
-                            legalTile.setBackground(allyRed);
-                        }
-                    }
-
-                }
-                return;
-            }
-        }
-        int location = tile.getLocationOnBoard();
-        if (selectedTile != null && (selectedTile.isPlayableMove(location, chessBoard, true) != 0)) {
+    public void playMove(moveInfo move){
+        int location = move.end.getLocationOnBoard();
+        Tile start = move.start;
+        if (start != null && (start.isPlayableMove(location, chessBoard, true) != 0)) {
             //process move
 
             if ((chessBoard.getTile(location).getPiece() != null) && (atomic > 0)){
@@ -165,21 +130,21 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 }
                 nuke(location, ks, ps);
                 if (ranged == 0){
-                    obliterate(selectedTile.getLocationOnBoard(), ks, ps);
+                    obliterate(start.getLocationOnBoard(), ks, ps);
                 }
 
             }
 
-            if ((ranged == 0) || (tile.getPiece() == null)){
-                tile.setPiece(selectedTile.getPiece());
-                selectedTile.setPiece(null);
+            if ((ranged == 0) || (move.end.getPiece() == null)){
+                move.end.setPiece(start.getPiece());
+                start.setPiece(null);
             } else {
-                tile.setPiece(null);
+                move.end.setPiece(null);
             }
 
 
 
-            selectedTile.setBackground(selectedTile.getColor());
+            start.setBackground(start.getColor());
             selectedTile = null;
 
             AudioPlayer.play("src/resources/audio/move-self.wav");
@@ -272,6 +237,45 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
         }
     }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        Tile[] tiles = chessBoard.getTiles();
+        for (Tile rTile : tiles) {
+            rTile.setBackground(rTile.getColor());
+        }
+        Tile tile = (Tile) chessBoard.getComponentAt(e.getX(), e.getY());
+        Piece piece = tile.getPiece();
+        if (piece != null) {
+            if (piece.getColor() == turn) {
+                selectedTile = tile;
+                tile.setBackground(selfColor);
+                Tile[] legalMoves = chessBoard.getTiles();
+                for (Tile legalTile : legalMoves) {
+                    if (tile.isPlayableMove(legalTile.getLocationOnBoard(), chessBoard, false) == 1){
+                        if (legalTile.getColor() == Tile.tan) {
+                            legalTile.setBackground(highlightedColor2);
+                        } else {
+                            legalTile.setBackground(highlightedColor);
+                        }
+                    }else if (tile.isPlayableMove(legalTile.getLocationOnBoard(), chessBoard, false) == 2) {
+                        legalTile.setBackground(dangerColor);
+                    }else if (tile == legalTile){
+                        legalTile.setBackground(selfColor);
+                    }else if ((legalTile.getPiece() != null) && (legalTile.getPiece().getColor() == turn)) {
+                        if (legalTile.getColor() == Tile.tan){
+                            legalTile.setBackground(allyTan);
+                        }else {
+                            legalTile.setBackground(allyRed);
+                        }
+                    }
+
+                }
+                return;
+            }
+        }
+        playMove(new moveInfo(selectedTile, tile));
+    }
     public void obliterate(int square, boolean kingSlayer, boolean pawnSlayer){
         if ( (chessBoard.getTile(square) != null) && (chessBoard.getTile(square).getPiece() != null) && (kingSlayer || !(chessBoard.getTile(square).getPiece() instanceof King)) && (pawnSlayer || !(chessBoard.getTile(square).getPiece() instanceof Pawn))) {
             chessBoard.getTile(square).setPiece(null);
@@ -357,6 +361,29 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     public void mouseMoved(MouseEvent e) {
 
     }
+    private void playGoodishMove(){
+        ArrayList<moveInfo> choices = new ArrayList<moveInfo>();
+        for (Tile myDude : chessBoard.getOccupiedTilesOfColor(turn)){
+            for (Tile place : myDude.getLegalMoves(chessBoard)){
+                choices.add(new moveInfo(myDude, place));
+            }
+        }
+        if (choices.size() == 0){
+            System.exit(0);
+        }
+        double moveMin = -999999;
+        int selected = 0;
+        for (int mov = 0; mov < choices.size(); mov++){
+            double sc = choices.get(mov).score();
+            if (sc > moveMin){
+                moveMin = sc;
+                selected = mov;
+            }
+        }
+        playMove(choices.get(selected));
+
+
+    }
 
     private void playBestMove() {
         String bestMove = stockfish.getBestMoveCode(fens.get(fens.size() - 1), 1000);
@@ -436,7 +463,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     public class SpaceAction extends AbstractAction {
         @Override
         public void actionPerformed(ActionEvent e) {
-            playBestMove();
+            playGoodishMove();
         }
     }
 }
