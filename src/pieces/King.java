@@ -12,6 +12,7 @@ public class King extends Piece {
         super(color);
         royal = true;
         canCastle = true;
+        value = 3;
     }
 
     @Override

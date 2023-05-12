@@ -274,7 +274,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 return;
             }
         }
-        playMove(new moveInfo(selectedTile, tile));
+        playMove(new moveInfo(selectedTile, tile, chessBoard));
     }
     public void obliterate(int square, boolean kingSlayer, boolean pawnSlayer){
         if ( (chessBoard.getTile(square) != null) && (chessBoard.getTile(square).getPiece() != null) && (kingSlayer || !(chessBoard.getTile(square).getPiece() instanceof King)) && (pawnSlayer || !(chessBoard.getTile(square).getPiece() instanceof Pawn))) {
@@ -365,7 +365,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         ArrayList<moveInfo> choices = new ArrayList<moveInfo>();
         for (Tile myDude : chessBoard.getOccupiedTilesOfColor(turn)){
             for (Tile place : myDude.getLegalMoves(chessBoard)){
-                choices.add(new moveInfo(myDude, place));
+                choices.add(new moveInfo(myDude, place, chessBoard));
             }
         }
         if (choices.size() == 0){

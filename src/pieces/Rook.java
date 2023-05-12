@@ -11,6 +11,7 @@ public class Rook extends Piece {
     public Rook(int color) {
         super(color);
         canCastle = true;
+        value = 5;
     }
 
     @Override

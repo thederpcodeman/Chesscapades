@@ -10,6 +10,7 @@ public class Pawn extends Piece {
     private int forwards;
     public Pawn(int color) {
         super(color);
+        value = 1;
     }
 
     @Override

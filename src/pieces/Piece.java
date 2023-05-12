@@ -11,8 +11,10 @@ public abstract class Piece {
     public final int color;
     public boolean royal;
     public boolean wall;
+    public int value;
 
     public Piece(int color) {
+        value = 0;
         royal = false;
         wall = false;
         this.color = color;

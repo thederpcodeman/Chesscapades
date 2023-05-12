@@ -8,6 +8,7 @@ import javax.swing.*;
 public class Bishop extends Piece {
     public Bishop(int color) {
         super(color);
+        value = 3;
     }
 
     @Override
