@@ -105,7 +105,7 @@ public class Tile extends JPanel {
     }
 
     public boolean isLegalMove(int location, Board board, boolean forReal) {
-        if(getPiece() == null)
+        if((getPiece() == null) || ((board.getTile(location).getPiece() != null) && (board.getTile(location).getPiece().wall == true)))
         {
             return false;
         }
