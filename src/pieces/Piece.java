@@ -9,8 +9,12 @@ public abstract class Piece {
     public int moved2;
     private int forwards;
     public final int color;
+    public boolean royal;
+    public boolean wall;
 
     public Piece(int color) {
+        royal = false;
+        wall = false;
         this.color = color;
         this.moved2 = 0;
         if(getColor() == 0)

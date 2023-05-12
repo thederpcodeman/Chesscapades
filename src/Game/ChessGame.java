@@ -202,7 +202,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             boolean wKing = false;
             boolean bKing = false;
             for (int square = 0; square < 63; square ++){
-                if ((chessBoard.getTile(square).getPiece() != null ) && (chessBoard.getTile(square).getPiece() instanceof King)){
+                if ((chessBoard.getTile(square).getPiece() != null ) && (chessBoard.getTile(square).getPiece().royal)){
                     if (chessBoard.getTile(square).getPiece().getColor() == 1){
                         wKing = true;
                     } else{

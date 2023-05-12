@@ -102,7 +102,7 @@ public class Board extends JPanel {
         ArrayList<Tile> kings = new ArrayList<Tile>();
         for (Tile tile:getOccupiedTilesOfColor(color))
         {
-            if (tile.getPiece() instanceof King)
+            if (tile.getPiece().royal)
             {
                 kings.add(tile);
             }
