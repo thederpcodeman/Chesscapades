@@ -168,14 +168,6 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     obliterate(selectedTile.getLocationOnBoard(), ks, ps);
                 }
 
-            } //nuke based on gamemode
-
-            if ((selectedTile.getPiece() instanceof Pawn) && (location % 56 > 7)){
-                if (chessBoard.getTile(location + ((turn * 16)- 8)).getPiece() instanceof Pawn){
-                    if (((Pawn) chessBoard.getTile(location + ((turn * 16)- 8)).getPiece()).moved2 == 1){
-                        chessBoard.getTile(location + ((turn * 16)- 8)).setPiece(null);
-                    }
-                }
             }
 
             if ((ranged == 0) || (tile.getPiece() == null)){
