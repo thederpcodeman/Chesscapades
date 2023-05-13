@@ -14,12 +14,11 @@ public class moveInfo {
     }
     public double score(){
         double score = 0;
-        score -= start.getPiece().value / 2.0;
+        score -= start.getPiece().value / 3.0;
         if (end.getPiece() != null){
-            score += end.getPiece().value;
-            score += Math.random() * 3;
+            score += (end.getPiece().value * 4.5);
             if (end.getPiece().royal) {
-                score += 10 + (Math.random() * 5);
+                score += 100;
             }
         }
         for (Tile king : board.getKings(start.getPiece().getColor())) {
@@ -31,9 +30,21 @@ public class moveInfo {
             }
         }
         if (start.isPlayableMove(end.getLocationOnBoard(), board, false) == 2) {
-            score -= 5 + (Math.random() * 5);
+            score -= 20;
         }
-        score += Math.random() * 3;
+        Piece store = end.getPiece();
+        end.setPiece(null);
+        for (Tile foe : board.getOccupiedTiles()){
+            if ((foe.isLegalMove(end.getLocationOnBoard(), board, false)) && (foe.getPiece().getColor() != start.getPiece().getColor())) {
+                score -= start.getPiece().value * 5.5;
+            }
+        }
+        end.setPiece(store);
+        if ((end.getY() - start.getY()) * start.getPiece().getForwardDirection() > 0){ // i'm a dingus who used jpanel .get y ad is too lazy to change it and just divided by 100
+            score += (end.getY() - start.getY()) * start.getPiece().getForwardDirection()  / 400;
+
+        }
+        score += Math.random();
         return score;
     }
 }
