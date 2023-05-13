@@ -89,7 +89,7 @@ public class Board extends JPanel {
     {
         for (Tile tile:getOccupiedTilesOfColor(color))
         {
-            if (tile.getPiece() instanceof King)
+            if (tile.getPiece().royal)
             {
                 return tile;
             }
@@ -102,8 +102,10 @@ public class Board extends JPanel {
         ArrayList<Tile> kings = new ArrayList<Tile>();
         for (Tile tile:getOccupiedTilesOfColor(color))
         {
+            System.out.println("Piece at: " + tile.getLocationOnBoard());
             if (tile.getPiece().royal)
             {
+                System.out.println("king at: " + tile.getLocationOnBoard());
                 kings.add(tile);
             }
         }

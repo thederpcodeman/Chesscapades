@@ -1,7 +1,8 @@
-package pieces;
+package Game;
 
 import Game.Board;
 import Game.Tile;
+import pieces.Piece;
 
 public class moveInfo {
     public Tile start;
