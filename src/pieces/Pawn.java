@@ -40,7 +40,7 @@ public class Pawn extends Piece {
                         return true;
                     }
                 } else if ((Board.getLocationFromCords(newX, y) >= 0) && (Board.getLocationFromCords(newX, y) <= 63) && (board.getTile(Board.getLocationFromCords(newX, y)).isOccupied() && (dy == getForwardDirection()))){
-                     if (board.getTile(Board.getLocationFromCords(newX, y)).getPiece().moved2 != 0){
+                     if ((board.getTile(Board.getLocationFromCords(newX, y)).getPiece().moved2 != 0) && (board.getTile(Board.getLocationFromCords(newX, y)).getPiece().getForwardDirection() == getForwardDirection() * -1)){
                          if (forReal){
                              board.getTile(Board.getLocationFromCords(newX, y)).setPiece(null);
                          }
@@ -48,7 +48,7 @@ public class Pawn extends Piece {
                     }
                     return false;
                 } else if ((Board.getLocationFromCords(newX, y + (2 * getForwardDirection())) >= 0) && (Board.getLocationFromCords(newX, y + (2 * getForwardDirection())) <= 63) && (board.getTile(Board.getLocationFromCords(newX, y + (2 * getForwardDirection()))).isOccupied() && (dy == getForwardDirection()))){
-                    if (board.getTile(Board.getLocationFromCords(newX, y + (2 * dy))).getPiece().moved2 != 0){
+                    if ((board.getTile(Board.getLocationFromCords(newX, y + (2 * dy))).getPiece().moved2 != 0) && (board.getTile(Board.getLocationFromCords(newX, y + (2 * dy))).getPiece().getForwardDirection() == getForwardDirection())){
                         if (forReal){
                             board.getTile(Board.getLocationFromCords(newX, y + (2 * dy))).setPiece(null);
                         }
