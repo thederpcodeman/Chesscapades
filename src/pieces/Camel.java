@@ -8,7 +8,7 @@ import javax.swing.*;
 public class Camel extends Piece {
     public Camel(int color) {
         super(color);
-        value = 3;
+        value = 2;
     }
 
     @Override

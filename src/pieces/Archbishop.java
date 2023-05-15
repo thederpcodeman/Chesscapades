@@ -5,18 +5,18 @@ import Game.Tile;
 
 import javax.swing.*;
 
-public class Amazon extends Piece {
-    public Amazon(int color) {
+public class Archbishop extends Piece {
+    public Archbishop(int color) {
         super(color);
-        value = 12;
+        value = 7;
     }
 
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/bAmazon.png"));
+            return(new ImageIcon("src/resources/bArchbishop.png"));
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wAmazon.png"));
+            return(new ImageIcon("src/resources/wArchbishop.png"));
         } else {
             return null;
         }
@@ -35,32 +35,15 @@ public class Amazon extends Piece {
         }
         if (((Math.abs(xoffset) == 1) && (Math.abs(yoffset) == 2)) || ((Math.abs(xoffset) == 2) && (Math.abs(yoffset) == 1))){
             return true;
-        }
-        if (Math.abs(xoffset) == Math.abs(yoffset)){
+        } else if (Math.abs(xoffset) == Math.abs(yoffset)){
             for (int i = 1; i < Math.abs(yoffset); i++){
                 if (board.getTile(Board.getLocationFromCords((int)(x + (i * Math.signum(xoffset))), (int)(y + (i * Math.signum(yoffset))))).getPiece() != null){
                     return false;
                 }
             }
+
             return true;
-        }else{
-            if (yoffset == 0){
-                for (int i = 1; i < Math.abs(xoffset); i++){
-                    if (board.getTile(Board.getLocationFromCords((int)(x + (i * Math.signum(xoffset))), y)).getPiece() != null){
-                        return false;
-                    }
-                }
-                return true;
-            }else if (xoffset == 0){
-                for (int i = 1; i < Math.abs(yoffset); i++){
-                    if (board.getTile(Board.getLocationFromCords(x, (int)(y + (i * Math.signum(yoffset))))).getPiece() != null){
-                        return false;
-                    }
-                }
-                return true;
-            }else{
-                return false;
-            }
         }
+        return false;
     }
 }
