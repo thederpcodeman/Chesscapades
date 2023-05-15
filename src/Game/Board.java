@@ -100,7 +100,7 @@ public class Board extends JPanel {
     public ArrayList<Tile> getKings(int color)
     {
         ArrayList<Tile> kings = new ArrayList<Tile>();
-        for (Tile tile:getOccupiedTilesOfColor(color))
+        for (Tile tile : getOccupiedTilesOfColor(color))
         {
             if (tile.getPiece().royal)
             {
