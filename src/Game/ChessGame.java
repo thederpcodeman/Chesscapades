@@ -77,8 +77,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         AudioPlayer.play("src/resources/audio/startgame.wav");
 
         //setup black pieces
-        chessBoard.getTile(0).setPiece(new Rook(0));
-        chessBoard.getTile(7).setPiece(new Rook(0));
+        chessBoard.getTile(0).setPiece(new Chancellor(0));
+        chessBoard.getTile(7).setPiece(new Chancellor(0));
         chessBoard.getTile(0).setCastleable(true);
         chessBoard.getTile(7).setCastleable(true);
         chessBoard.getTile(1).setPiece(new Camel(0));
@@ -92,8 +92,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             chessBoard.getTile(i).setPiece(new Pawn(0));
         }
         //setup white pieces
-        chessBoard.getTile(56).setPiece(new Rook(1));
-        chessBoard.getTile(63).setPiece(new Rook(1));
+        chessBoard.getTile(56).setPiece(new Chancellor(1));
+        chessBoard.getTile(63).setPiece(new Chancellor(1));
         chessBoard.getTile(56).setCastleable(true);
         chessBoard.getTile(63).setCastleable(true);
         chessBoard.getTile(57).setPiece(new Camel(1));
