@@ -81,8 +81,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         chessBoard.getTile(7).setPiece(new Frog(0));
         chessBoard.getTile(0).setCastleable(true);
         chessBoard.getTile(7).setCastleable(true);
-        chessBoard.getTile(1).setPiece(new Knight(0));
-        chessBoard.getTile(6).setPiece(new Knight(0));
+        chessBoard.getTile(1).setPiece(new Bull(0));
+        chessBoard.getTile(6).setPiece(new Bull(0));
         chessBoard.getTile(2).setPiece(new Elephant(0));
         chessBoard.getTile(5).setPiece(new Elephant(0));
         chessBoard.getTile(3).setPiece(new Lion(0));
@@ -96,8 +96,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         chessBoard.getTile(63).setPiece(new Frog(1));
         chessBoard.getTile(56).setCastleable(true);
         chessBoard.getTile(63).setCastleable(true);
-        chessBoard.getTile(57).setPiece(new Knight(1));
-        chessBoard.getTile(62).setPiece(new Knight(1));
+        chessBoard.getTile(57).setPiece(new Bull(1));
+        chessBoard.getTile(62).setPiece(new Bull(1));
         chessBoard.getTile(58).setPiece(new Elephant(1));
         chessBoard.getTile(61).setPiece(new Elephant(1));
         chessBoard.getTile(59).setPiece(new Lion(1));

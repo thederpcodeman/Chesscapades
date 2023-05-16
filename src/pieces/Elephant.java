@@ -8,7 +8,7 @@ import javax.swing.*;
 public class Elephant extends Piece {
     public Elephant(int color) {
         super(color);
-        value = 3;
+        value = 2;
     }
 
     @Override

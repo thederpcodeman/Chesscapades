@@ -8,7 +8,7 @@ import javax.swing.*;
 public class Frog extends Piece {
     public Frog(int color) {
         super(color);
-        value = 3;
+        value = 2;
     }
 
     @Override

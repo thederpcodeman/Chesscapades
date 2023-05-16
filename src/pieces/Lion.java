@@ -8,7 +8,7 @@ import javax.swing.*;
 public class Lion extends Piece {
     public Lion(int color) {
         super(color);
-        value = 3;
+        value = 8;
     }
 
     @Override
