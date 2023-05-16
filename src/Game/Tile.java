@@ -191,13 +191,16 @@ public class Tile extends JPanel {
         possibilities.add("Knight");
         possibilities.add("Bishop");
         possibilities.add("King 2, electric boogaloo");
-
         possibilities.add("Amazon");
         possibilities.add("Archbishop");
         possibilities.add("Chancellor");
         possibilities.add("Camel");
         possibilities.add("General");
-        //Collections.shuffle(possibilities);
+        possibilities.add("Lion");
+        possibilities.add("Frog");
+        possibilities.add("Elephant");
+        possibilities.add("Bull");
+        Collections.shuffle(possibilities);
         String[] options = new String[3];
         options[0] = possibilities.get(0);
         options[1] = possibilities.get(1);
@@ -233,6 +236,14 @@ public class Tile extends JPanel {
                 setPiece(new Camel(piece.getColor()));
             } else if (s == "General") {
                 setPiece(new General(piece.getColor()));
+            } else if (s == "Lion") {
+                setPiece(new Lion(piece.getColor()));
+            } else if (s == "Frog") {
+                setPiece(new Frog(piece.getColor()));
+            } else if (s == "Elephant") {
+                setPiece(new Elephant(piece.getColor()));
+            } else if (s == "Bull") {
+                setPiece(new Bull(piece.getColor()));
             }
         }
     }
