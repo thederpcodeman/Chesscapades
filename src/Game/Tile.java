@@ -5,6 +5,7 @@ import pieces.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Tile extends JPanel {
     private Piece piece;
@@ -183,9 +184,25 @@ public class Tile extends JPanel {
 
         AudioPlayer.play("src/resources/audio/promote.wav");
 
-        String[] possibilities = {"Queen", "Rook", "Knight", "Bishop", "King", "Turn around"};
+        ArrayList<String> possibilities = new ArrayList<String>();
+        possibilities.add("Queen");
+        possibilities.add("Rook");
+        possibilities.add("Knight");
+        possibilities.add("Bishop");
+        possibilities.add("King 2, electric boogaloo");
+        possibilities.add("Turn around");
+        possibilities.add("Amazon");
+        possibilities.add("Archbishop");
+        possibilities.add("Chancellor");
+        possibilities.add("Camel");
+        possibilities.add("General");
+        Collections.shuffle(possibilities);
+        String[] options = new String[3];
+        options[0] = possibilities.get(0);
+        options[1] = possibilities.get(1);
+        options[2] = possibilities.get(2);
         JPanel jPanel = new JPanel(new GridBagLayout());
-        JComboBox comboBox = new JComboBox(possibilities);
+        JComboBox comboBox = new JComboBox(options);
         input = JOptionPane.showConfirmDialog(null, comboBox, "Choose a piece to promote to: ", JOptionPane.DEFAULT_OPTION);
         jPanel.add(comboBox);
 
@@ -200,10 +217,20 @@ public class Tile extends JPanel {
                 setPiece(new Knight(piece.getColor()));
             } else if (s == "Bishop") {
                 setPiece(new Bishop(piece.getColor()));
-            } else if (s == "King") {
+            } else if (s == "King 2, electric boogaloo") {
                 setPiece(new King(piece.getColor()));
             }  else if (s == "Turn around") {
                 getPiece().setForwardDirection(getPiece().getForwardDirection() * -1);
+            } else if (s == "Amazon") {
+                setPiece(new Amazon(piece.getColor()));
+            } else if (s == "Archbishop") {
+                setPiece(new Archbishop(piece.getColor()));
+            } else if (s == "Chancellor") {
+                setPiece(new Chancellor(piece.getColor()));
+            } else if (s == "Camel") {
+                setPiece(new Camel(piece.getColor()));
+            } else if (s == "King") {
+                setPiece(new King(piece.getColor()));
             }
         }
     }
