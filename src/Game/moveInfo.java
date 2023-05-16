@@ -15,7 +15,7 @@ public class moveInfo {
     }
     public double score(){
         double score = 0;
-        score -= start.getPiece().value / 3.0;
+        score -= start.getPiece().value / 8.9;
         if (end.getPiece() != null){
             score += (end.getPiece().value * 4.5);
             if (end.getPiece().royal) {
@@ -45,7 +45,7 @@ public class moveInfo {
             score += (end.getY() - start.getY()) * start.getPiece().getForwardDirection()  / 400;
 
         }
-        score += Math.random();
+        score += Math.random() * 5;
         return score;
     }
 }
