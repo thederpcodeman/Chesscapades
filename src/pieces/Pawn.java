@@ -16,9 +16,18 @@ public class Pawn extends Piece {
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/bPawn.png"));
+            if (getForwardDirection() == 1){
+                return(new ImageIcon("src/resources/bPawn.png"));
+            }else{
+                return(new ImageIcon("src/resources/bupPawn.png"));
+            }
+
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wPawn.png"));
+            if (getForwardDirection() == -1){
+                return(new ImageIcon("src/resources/wPawn.png"));
+            }else{
+                return(new ImageIcon("src/resources/wupPawn.png"));
+            }
         } else {
             return null;
         }

@@ -185,18 +185,19 @@ public class Tile extends JPanel {
         AudioPlayer.play("src/resources/audio/promote.wav");
 
         ArrayList<String> possibilities = new ArrayList<String>();
+        possibilities.add("Turn around");
         possibilities.add("Queen");
         possibilities.add("Rook");
         possibilities.add("Knight");
         possibilities.add("Bishop");
         possibilities.add("King 2, electric boogaloo");
-        possibilities.add("Turn around");
+
         possibilities.add("Amazon");
         possibilities.add("Archbishop");
         possibilities.add("Chancellor");
         possibilities.add("Camel");
         possibilities.add("General");
-        Collections.shuffle(possibilities);
+        //Collections.shuffle(possibilities);
         String[] options = new String[3];
         options[0] = possibilities.get(0);
         options[1] = possibilities.get(1);
@@ -221,6 +222,7 @@ public class Tile extends JPanel {
                 setPiece(new King(piece.getColor()));
             }  else if (s == "Turn around") {
                 getPiece().setForwardDirection(getPiece().getForwardDirection() * -1);
+                setPiece(getPiece());
             } else if (s == "Amazon") {
                 setPiece(new Amazon(piece.getColor()));
             } else if (s == "Archbishop") {
@@ -229,8 +231,8 @@ public class Tile extends JPanel {
                 setPiece(new Chancellor(piece.getColor()));
             } else if (s == "Camel") {
                 setPiece(new Camel(piece.getColor()));
-            } else if (s == "King") {
-                setPiece(new King(piece.getColor()));
+            } else if (s == "General") {
+                setPiece(new General(piece.getColor()));
             }
         }
     }
