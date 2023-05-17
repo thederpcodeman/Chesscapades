@@ -9,8 +9,12 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Board extends JPanel {
+    public static int wRadness;
+    public static int bRadness;
     public Board() {
         super();
+        wRadness = 3;
+        bRadness = 3;
     }
 
     public Tile getTile(int i)
@@ -32,6 +36,8 @@ public class Board extends JPanel {
     {
         return y * 8 + x;
     }
+
+
 
 
 

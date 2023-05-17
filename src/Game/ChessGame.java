@@ -28,6 +28,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     public int atomic;
     public int ranged;
 
+
     public ChessGame(int size){
         Dimension boardSize = new Dimension(size, size);
 
@@ -62,6 +63,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
+        chessBoard.wRadness = 3;
+        chessBoard.bRadness = 3;
         atomic = (int) (Math.random() * 20);
         if (atomic < 16){
             atomic = 0;
@@ -371,38 +374,6 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         int selected = 0;
         for (int mov = 0; mov < choices.size(); mov++){
             double sc = choices.get(mov).score();
-            if (sc > moveMin){
-                moveMin = sc;
-                selected = mov;
-            }
-        }
-        playMove(choices.get(selected));
-    }
-    private void playAwesomeMove(){
-        ArrayList<moveInfo> choices = new ArrayList<moveInfo>();
-        for (Tile myDude : chessBoard.getOccupiedTilesOfColor(turn)){
-            for (Tile place : myDude.getLegalMoves(chessBoard)){
-                choices.add(new moveInfo(myDude, place, chessBoard));
-            }
-        }
-        if (choices.size() == 0){
-            System.exit(0);
-        }
-        Collections.shuffle(choices);
-        double moveMin = -100;
-        int selected = 0;
-        for (int mov = 0; mov < choices.size(); mov++){
-
-            Board b = new Board();
-            for (int i = 0; i < 64; i++) {
-                Tile tile = new Tile(i, new BorderLayout(), 20);
-                b.add(tile);
-            }
-            for (Tile i : chessBoard.getOccupiedTiles()){
-                b.getTile(i.getLocationOnBoard()).setPiece(i.getPiece());
-            }
-
-            double sc = fakeGame.score(b, turn, 1,turn, atomic,ranged);
             if (sc > moveMin){
                 moveMin = sc;
                 selected = mov;

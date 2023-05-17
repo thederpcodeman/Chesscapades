@@ -60,6 +60,11 @@ public class Pawn extends Piece {
                     if ((board.getTile(Board.getLocationFromCords(newX, y + (2 * dy))).getPiece().moved2 != 0) && (board.getTile(Board.getLocationFromCords(newX, y + (2 * dy))).getPiece().getForwardDirection() == getForwardDirection())){
                         if (forReal){
                             board.getTile(Board.getLocationFromCords(newX, y + (2 * dy))).setPiece(null);
+                            if (color == 1){
+                                board.wRadness += 1;
+                            }else if (color == 0){
+                                board.bRadness += 1;
+                            }
                         }
                         return true;
                     }

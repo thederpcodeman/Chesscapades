@@ -204,10 +204,16 @@ public class Tile extends JPanel {
         possibilities.add("No thank you.");
         possibilities.add("Boaty Mc Boatface");
         Collections.shuffle(possibilities);
-        String[] options = new String[3];
-        options[0] = possibilities.get(0);
-        options[1] = possibilities.get(1);
-        options[2] = possibilities.get(2);
+        int o = 3;
+        if (getPiece().getColor() == 0){
+            o = Board.bRadness;
+        }else if (getPiece().getColor() == 1){
+            o = Board.wRadness;
+        }
+        String[] options = new String[0];
+        for (int i = 0; i < o; i++){
+            options[i] = possibilities.get(i);
+        }
         JPanel jPanel = new JPanel(new GridBagLayout());
         JComboBox comboBox = new JComboBox(options);
         input = JOptionPane.showConfirmDialog(null, comboBox, "Choose a piece to promote to: ", JOptionPane.DEFAULT_OPTION);
@@ -227,6 +233,11 @@ public class Tile extends JPanel {
             } else if (s == "King 2, electric boogaloo") {
                 setPiece(new King(piece.getColor()));
             }  else if (s == "Turn around") {
+                if (getPiece().getColor() == 1){
+                    Board.wRadness += 3;
+                }else if (getPiece().getColor() == 0){
+                    Board.bRadness += 3;
+                }
                 getPiece().setForwardDirection(getPiece().getForwardDirection() * -1);
                 setPiece(getPiece());
             } else if (s == "Amazon") {
@@ -250,6 +261,11 @@ public class Tile extends JPanel {
             } else if (s == "Gryphon") {
                 setPiece(new Gryphon(piece.getColor()));
             } else if (s == "No thank you.") {
+                if (getPiece().getColor() == 1){
+                    Board.wRadness += 3;
+                }else if (getPiece().getColor() == 0){
+                    Board.bRadness += 3;
+                }
                 setPiece(null);
             } else if (s == "Boaty Mc Boatface") {
                 setPiece(new Boat(piece.getColor()));
