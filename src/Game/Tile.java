@@ -202,6 +202,7 @@ public class Tile extends JPanel {
         possibilities.add("Bull");
         possibilities.add("Gryphon");
         possibilities.add("No thank you.");
+        possibilities.add("Boaty Mc Boatface");
         Collections.shuffle(possibilities);
         String[] options = new String[3];
         options[0] = possibilities.get(0);
@@ -250,6 +251,8 @@ public class Tile extends JPanel {
                 setPiece(new Gryphon(piece.getColor()));
             } else if (s == "No thank you.") {
                 setPiece(null);
+            } else if (s == "Boaty Mc Boatface") {
+                setPiece(new Boat(piece.getColor()));
             }
         }
     }
