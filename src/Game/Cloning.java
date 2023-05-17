@@ -5,7 +5,7 @@ import pieces.*;
 
 public class Cloning {
     public static Piece Common(int color){
-        int ran = (int) (Math.random() * 7);
+        int ran = (int) (Math.random() * 8);
         if (ran == 0){
             return new Elephant(color);
         } else if (ran == 1){
@@ -20,6 +20,8 @@ public class Cloning {
             return new Camel(color);
         } else if (ran == 6){
             return new Bull(color);
+        } else if (ran == 7){
+            return Cloning.Advanced(color);
         }
         return null;
     }
@@ -35,13 +37,13 @@ public class Cloning {
         } else if (ran == 2){
             return new Chancellor(color);
         } else if (ran == 3){
-            return new General(color);
+            return Cloning.Royal(color);
         } else if (ran == 4){
-            return new King(color);
-        } else if (ran == 5){
             return new Lion(color);
-        } else if (ran == 6){
+        } else if (ran == 5){
             return new Queen(color);
+        } else if (ran == 6){
+            return new Gryphon(color);
         }
         return null;
     }

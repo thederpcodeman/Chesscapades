@@ -34,7 +34,6 @@ public class Gryphon extends Piece {
             }
         }
         if (dy == 0 || dx == 0){
-            System.out.println(newX + "" + newY);
             return false;
         }
         if (dx == 1){
@@ -124,7 +123,7 @@ public class Gryphon extends Piece {
                         c = false;
                     }
                 }
-                if (c){//
+                if (c){
                     return true;
                 }
             }
