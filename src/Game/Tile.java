@@ -210,6 +210,9 @@ public class Tile extends JPanel {
         }else if (getPiece().getColor() == 1){
             o = Board.wRadness;
         }
+        if (o > 10){
+            o = 10;
+        }
         String[] options = new String[0];
         for (int i = 0; i < o; i++){
             options[i] = possibilities.get(i);
