@@ -99,7 +99,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         chessBoard.getTile(60).setPiece(Cloning.Royal(1));
         chessBoard.getTile(60).setCastleable(true);
         for (int i = 48; i < 56; i++) {
-            Tile tile = (Tile) chessBoard.getComponent(i);
+            Tile tile = (Tile) chessBoard.getComponent(i);//
             tile.setPiece(new Pawn(1));
         }
         turn = 1;

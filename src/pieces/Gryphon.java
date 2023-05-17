@@ -124,7 +124,7 @@ public class Gryphon extends Piece {
                         c = false;
                     }
                 }
-                if (c){
+                if (c){//
                     return true;
                 }
             }

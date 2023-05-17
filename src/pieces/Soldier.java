@@ -11,5 +11,5 @@ public class Soldier extends Pawn{
             return false;
         }
         return true;
-    }
+    }//
 }
