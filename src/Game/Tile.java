@@ -61,7 +61,12 @@ public class Tile extends JPanel {
         }
         if(piece != null)
         {
-            ImageIcon imageIcon = new ImageIcon(piece.getImageIcon().getImage().getScaledInstance(size * 7 / 8, size * 7 / 8, Image.SCALE_DEFAULT));
+            ImageIcon imageIcon;
+            if (ChessGame.myst == true){
+                imageIcon = new ImageIcon(new ImageIcon("src/resources/Unknown.png").getImage().getScaledInstance(size * 7 / 8, size * 7 / 8, Image.SCALE_DEFAULT));
+            }else{
+                imageIcon = new ImageIcon(piece.getImageIcon().getImage().getScaledInstance(size * 7 / 8, size * 7 / 8, Image.SCALE_DEFAULT));
+            }
             JLabel image = new JLabel(imageIcon);
             add(image);
         }
@@ -213,7 +218,7 @@ public class Tile extends JPanel {
         if (o > 10){
             o = 10;
         }
-        String[] options = new String[0];
+        String[] options = new String[o];
         for (int i = 0; i < o; i++){
             options[i] = possibilities.get(i);
         }

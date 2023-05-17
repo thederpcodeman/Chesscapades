@@ -27,6 +27,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     ArrayList<String> fens;
     public int atomic;
     public int ranged;
+    public static boolean myst;
 
 
     public ChessGame(int size){
@@ -63,6 +64,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
+        myst = ((int) (Math.random() * 7) == 1);
         chessBoard.wRadness = 3;
         chessBoard.bRadness = 3;
         atomic = (int) (Math.random() * 20);
