@@ -27,6 +27,10 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     ArrayList<String> fens;
     public int atomic;
     public int ranged;
+
+    public boolean touchRule;
+
+    public boolean tLocked;
     public static boolean myst;
 
 
@@ -64,7 +68,12 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
+        touchRule = ((int) (Math.random() * 8) == 1);
+        tLocked = false;
         myst = ((int) (Math.random() * 7) == 1);
+        if (myst && !touchRule){
+            touchRule = ((int) (Math.random() * 2) == 1);
+        }
         chessBoard.wRadness = 3;
         chessBoard.bRadness = 3;
         atomic = (int) (Math.random() * 20);
@@ -119,7 +128,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         Tile start = move.start;
         if (start != null && (start.isPlayableMove(location, chessBoard, true) != 0)) {
             //process move
-
+            tLocked = false;
             if ((chessBoard.getTile(location).getPiece() != null) && (atomic > 0)){
                 boolean ks = false;
                 boolean ps = false;
@@ -146,7 +155,12 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
 
             start.setBackground(start.getColor());
-            selectedTile = null;
+            if (!tLocked){
+                selectedTile = null;
+                for (Tile rTile : chessBoard.getTiles()) {
+                    rTile.setBackground(rTile.getColor());
+                }
+            }
 
             AudioPlayer.play("src/resources/audio/move-self.wav");
             turn = 1 - turn;
@@ -242,14 +256,18 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     @Override
     public void mousePressed(MouseEvent e) {
         Tile[] tiles = chessBoard.getTiles();
-        for (Tile rTile : tiles) {
-            rTile.setBackground(rTile.getColor());
+        if (!tLocked){
+            for (Tile rTile : tiles) {
+                rTile.setBackground(rTile.getColor());
+            }
         }
         Tile tile = (Tile) chessBoard.getComponentAt(e.getX(), e.getY());
         Piece piece = tile.getPiece();
-        if (piece != null) {
+        if (piece != null && !tLocked) {
             if (piece.getColor() == turn) {
-                selectedTile = tile;
+                if (!tLocked){
+                    selectedTile = tile;
+                }
                 tile.setBackground(selfColor);
                 Tile[] legalMoves = chessBoard.getTiles();
                 for (Tile legalTile : legalMoves) {
@@ -259,6 +277,10 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                         } else {
                             legalTile.setBackground(highlightedColor);
                         }
+                        if (touchRule) {
+                            tLocked = true;
+                        }
+
                     }else if (tile.isPlayableMove(legalTile.getLocationOnBoard(), chessBoard, false) == 2) {
                         legalTile.setBackground(dangerColor);
                     }else if (tile == legalTile){
