@@ -33,6 +33,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     public boolean tLocked;
     public static boolean myst;
 
+    public boolean bStab;
+
 
     public ChessGame(int size){
         Dimension boardSize = new Dimension(size, size);
@@ -68,6 +70,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
+        bStab = true;
         touchRule = ((int) (Math.random() * 8) == 1);
         tLocked = false;
         myst = ((int) (Math.random() * 7) == 1);
@@ -143,6 +146,23 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     obliterate(start.getLocationOnBoard(), ks, ps);
                 }
 
+            }
+
+            if (bStab && start.getPiece() != null){
+                System.out.println("sup");
+                if (location >= 8){
+                    Tile t = chessBoard.getTile(location - 8);
+                    System.out.println("sup2");
+                    if (t.getPiece() != null && t.getPiece().getColor() == start.getPiece().getColor() && t.getPiece().getForwardDirection() == -1){
+                        obliterate(location - 8, false, true);
+                    }
+                }else if (location < 56){
+                    Tile t = chessBoard.getTile(location + 8);
+                    System.out.println("sup3");
+                    if (t.getPiece() != null && t.getPiece().getColor() == start.getPiece().getColor() && t.getPiece().getForwardDirection() == 1){
+                        obliterate(location + 8, false, true);
+                    }
+                }
             }
 
             if ((ranged == 0) || (move.end.getPiece() == null)){
