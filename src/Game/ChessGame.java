@@ -95,33 +95,70 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         }
 
         AudioPlayer.play("src/resources/audio/startgame.wav");
+        int rand = (int) (Math.random() * 3);
+         if (rand == 1 || rand == 0){
+             //setup black pieces
+             chessBoard.getTile(0).setPiece(Cloning.Common(0));
+             chessBoard.getTile(7).setPiece(Cloning.Common(0));
+             chessBoard.getTile(1).setPiece(Cloning.Common(0));
+             chessBoard.getTile(6).setPiece(Cloning.Common(0));
+             chessBoard.getTile(2).setPiece(Cloning.Common(0));
+             chessBoard.getTile(5).setPiece(Cloning.Common(0));
+             chessBoard.getTile(3).setPiece(Cloning.Advanced(0));
+             chessBoard.getTile(4).setPiece(Cloning.Royal(0));
+             for (int i = 8; i < 16; i++) {
+                 chessBoard.getTile(i).setPiece(new Pawn(0));
+             }
+             //setup white pieces
+             chessBoard.getTile(56).setPiece(Cloning.Common(1));
+             chessBoard.getTile(63).setPiece(Cloning.Common(1));
+             chessBoard.getTile(57).setPiece(Cloning.Common(1));
+             chessBoard.getTile(62).setPiece(Cloning.Common(1));
+             chessBoard.getTile(58).setPiece(Cloning.Common(1));
+             chessBoard.getTile(61).setPiece(Cloning.Common(1));
+             chessBoard.getTile(59).setPiece(Cloning.Advanced(1));
+             chessBoard.getTile(60).setPiece(Cloning.Royal(1));
+             chessBoard.getTile(60).setCastleable(true);
+             for (int i = 48; i < 56; i++) {
+                 Tile tile = (Tile) chessBoard.getComponent(i);
+                 tile.setPiece(new Pawn(1));
+             }
+         }else if (rand == 2){
+             //setup black pieces
+             chessBoard.getTile(0).setPiece(Cloning.Advanced(0));
+             chessBoard.getTile(7).setPiece(Cloning.Advanced(0));
+             chessBoard.getTile(1).setPiece(Cloning.Advanced(0));
+             chessBoard.getTile(6).setPiece(Cloning.Advanced(0));
+             chessBoard.getTile(2).setPiece(Cloning.Royal(0));
+             chessBoard.getTile(5).setPiece(Cloning.Royal(0));
+             chessBoard.getTile(3).setPiece(Cloning.Advanced(0));
+             chessBoard.getTile(4).setPiece(Cloning.Advanced(0));
+             for (int i = 8; i < 16; i++) {
+                 chessBoard.getTile(i).setPiece(Cloning.Common(0));
+             }
+             for (int i = 17; i < 24; i++) {
+                 chessBoard.getTile(i).setPiece(Cloning.Common(0));
+             }
+             //setup white pieces
+             chessBoard.getTile(56).setPiece(Cloning.Advanced(1));
+             chessBoard.getTile(63).setPiece(Cloning.Advanced(1));
+             chessBoard.getTile(57).setPiece(Cloning.Advanced(1));
+             chessBoard.getTile(62).setPiece(Cloning.Advanced(1));
+             chessBoard.getTile(58).setPiece(Cloning.Royal(1));
+             chessBoard.getTile(61).setPiece(Cloning.Royal(1));
+             chessBoard.getTile(59).setPiece(Cloning.Advanced(1));
+             chessBoard.getTile(60).setPiece(Cloning.Advanced(1));
+             chessBoard.getTile(60).setCastleable(true);
+             for (int i = 48; i < 56; i++) {
+                 Tile tile = (Tile) chessBoard.getComponent(i);
+                 tile.setPiece(Cloning.Common(1));
+             }
+             for (int i = 40; i < 48; i++) {
+                 Tile tile = (Tile) chessBoard.getComponent(i);
+                 tile.setPiece(Cloning.Common(1));
+             }
+         }
 
-        //setup black pieces
-        chessBoard.getTile(0).setPiece(Cloning.Common(0));
-        chessBoard.getTile(7).setPiece(Cloning.Common(0));
-        chessBoard.getTile(1).setPiece(Cloning.Common(0));
-        chessBoard.getTile(6).setPiece(Cloning.Common(0));
-        chessBoard.getTile(2).setPiece(Cloning.Common(0));
-        chessBoard.getTile(5).setPiece(Cloning.Common(0));
-        chessBoard.getTile(3).setPiece(Cloning.Advanced(0));
-        chessBoard.getTile(4).setPiece(Cloning.Royal(0));
-        for (int i = 8; i < 16; i++) {
-            chessBoard.getTile(i).setPiece(new Pawn(0));
-        }
-        //setup white pieces
-        chessBoard.getTile(56).setPiece(Cloning.Common(1));
-        chessBoard.getTile(63).setPiece(Cloning.Common(1));
-        chessBoard.getTile(57).setPiece(Cloning.Common(1));
-        chessBoard.getTile(62).setPiece(Cloning.Common(1));
-        chessBoard.getTile(58).setPiece(Cloning.Common(1));
-        chessBoard.getTile(61).setPiece(Cloning.Common(1));
-        chessBoard.getTile(59).setPiece(Cloning.Advanced(1));
-        chessBoard.getTile(60).setPiece(Cloning.Royal(1));
-        chessBoard.getTile(60).setCastleable(true);
-        for (int i = 48; i < 56; i++) {
-            Tile tile = (Tile) chessBoard.getComponent(i);
-            tile.setPiece(new Pawn(1));
-        }
         turn = 1;
     }
 
