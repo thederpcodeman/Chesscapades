@@ -35,6 +35,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
     public boolean bStab;
 
+    public boolean bTrayal;
+
 
     public ChessGame(int size){
         Dimension boardSize = new Dimension(size, size);
@@ -70,7 +72,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
-        bStab = ((int) (Math.random() * 5) == 1);
+        bTrayal = ((int) (Math.random() * 6.5) == 1);
+        bStab = ((int) (Math.random() * 5.5) == 1);
         touchRule = ((int) (Math.random() * 8) == 1);
         tLocked = false;
         myst = ((int) (Math.random() * 7) == 1);
@@ -165,6 +168,11 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             if ((ranged == 0) || (move.end.getPiece() == null)){
                 move.end.setPiece(start.getPiece());
                 start.setPiece(null);
+                if (bTrayal && move.end.getPiece() != null && move.end.getPiece().royal == false && (int) (Math.random() * 5) == 1){
+                    move.end.getPiece().color = (move.end.getPiece().color + 1) % 2;
+                    move.end.getPiece().setForwardDirection(move.end.getPiece().getForwardDirection() * -1);
+                    move.end.setPiece(move.end.getPiece());
+                }
             } else {
                 move.end.setPiece(null);
             }

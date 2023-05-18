@@ -8,7 +8,7 @@ import Game.Tile;
 public abstract class Piece {
     public int moved2;
     private int forwards;
-    public final int color;
+    public int color;
     public boolean royal;
     public boolean wall;
     public int value;
