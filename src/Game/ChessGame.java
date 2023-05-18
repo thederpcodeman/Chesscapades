@@ -83,7 +83,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         if (atomic < 16){
             atomic = 0;
         } else {
-            atomic -= 15;
+            atomic -= 15;//
         }
         if ((Math.random() * 5) == 1){
             ranged = 1;
