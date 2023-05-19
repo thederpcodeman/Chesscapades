@@ -61,9 +61,13 @@ public class Tile extends JPanel {
         }
         if(piece != null)
         {
-            ImageIcon imageIcon;
+            ImageIcon imageIcon = null;
             if (ChessGame.myst == true){
-                imageIcon = new ImageIcon(new ImageIcon("src/resources/Unknown.png").getImage().getScaledInstance(size * 7 / 8, size * 7 / 8, Image.SCALE_DEFAULT));
+                if (getPiece().color == 1){
+                    imageIcon = new ImageIcon(new ImageIcon("src/resources/wUnknown.png").getImage().getScaledInstance(size * 7 / 8, size * 7 / 8, Image.SCALE_DEFAULT));
+                }else if (getPiece().color == 0){
+                    imageIcon = new ImageIcon(new ImageIcon("src/resources/bUnknown.png").getImage().getScaledInstance(size * 7 / 8, size * 7 / 8, Image.SCALE_DEFAULT));
+                }
             }else{
                 imageIcon = new ImageIcon(piece.getImageIcon().getImage().getScaledInstance(size * 7 / 8, size * 7 / 8, Image.SCALE_DEFAULT));
             }

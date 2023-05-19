@@ -76,7 +76,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         bStab = ((int) (Math.random() * 5.5) == 1);
         touchRule = ((int) (Math.random() * 8) == 1);
         tLocked = false;
-        myst = ((int) (Math.random() * 7) == 1);
+        //myst = ((int) (Math.random() * 7) == 1);
+        myst = true;
         if (myst && !touchRule){
             touchRule = ((int) (Math.random() * 2) == 1);
         }
