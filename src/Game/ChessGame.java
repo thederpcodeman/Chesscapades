@@ -22,6 +22,14 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     static final Color allyTan = new Color(215, 255, 222);
     static final Color allyRed = new Color(150, 122, 97);
 
+    static final Color rTan = new Color(255, 248, 182);
+
+    static final Color rRed = new Color(235, 142, 57);
+
+    static final Color pTan = new Color(255, 228, 252);
+
+    static final Color pRed = new Color(215, 102, 117);
+
     Action spaceAction;
 
     ArrayList<String> fens;
@@ -349,9 +357,24 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                         legalTile.setBackground(selfColor);
                     }else if ((legalTile.getPiece() != null) && (legalTile.getPiece().getColor() == turn)) {
                         if (legalTile.getColor() == Tile.tan){
-                            legalTile.setBackground(allyTan);
+                            if (legalTile.getPiece().royal){
+                                legalTile.setBackground(rTan);
+                            }else{
+                                legalTile.setBackground(allyTan);
+                            }
+
                         }else {
-                            legalTile.setBackground(allyRed);
+                            if (legalTile.getPiece().royal){
+                                legalTile.setBackground(rRed);
+                            }else{
+                                legalTile.setBackground(allyRed);
+                            }
+                        }
+                    }else if ((legalTile.getPiece() != null) && (legalTile.getPiece().getColor() != turn) && legalTile.getPiece().royal) {
+                        if (legalTile.getColor() == Tile.tan){
+                            legalTile.setBackground(pTan);
+                        }else {
+                            legalTile.setBackground(pRed);
                         }
                     }
 
