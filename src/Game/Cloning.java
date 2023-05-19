@@ -58,4 +58,7 @@ public class Cloning {
         }
         return null;
     }
+    public static Piece rPawn(int color){
+        return new Pawn(color);
+    }
 }

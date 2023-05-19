@@ -76,8 +76,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         bStab = ((int) (Math.random() * 5.5) == 1);
         touchRule = ((int) (Math.random() * 8) == 1);
         tLocked = false;
-        //myst = ((int) (Math.random() * 7) == 1);
-        myst = true;
+        myst = ((int) (Math.random() * 7) == 1);
         if (myst && !touchRule){
             touchRule = ((int) (Math.random() * 2) == 1);
         }
@@ -137,8 +136,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
              for (int i = 8; i < 16; i++) {
                  chessBoard.getTile(i).setPiece(Cloning.Common(0));
              }
-             for (int i = 17; i < 24; i++) {
-                 chessBoard.getTile(i).setPiece(Cloning.Common(0));
+             for (int i = 16; i < 24; i++) {
+                 chessBoard.getTile(i).setPiece(Cloning.rPawn(0));
              }
              //setup white pieces
              chessBoard.getTile(56).setPiece(Cloning.Advanced(1));
@@ -156,7 +155,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
              }
              for (int i = 40; i < 48; i++) {
                  Tile tile = (Tile) chessBoard.getComponent(i);
-                 tile.setPiece(Cloning.Common(1));
+                 tile.setPiece(Cloning.rPawn(1));
              }
          }
 
