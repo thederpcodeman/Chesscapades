@@ -24,19 +24,9 @@ public class Knight extends Piece {
 
     @Override
     public boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal) {
-        int xoffset = newX - x;
-        int yoffset = newY - y;
-        if (((Math.abs(xoffset) == 1) && (Math.abs(yoffset) == 2)) || ((Math.abs(xoffset) == 2) && (Math.abs(yoffset) == 1))){
-            Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
-            if(destination.isOccupied())
-            {
-                if(destination.getPiece().getColor() == getColor())
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        return false;
+        int dx = newX - x;
+        int dy = newY - y;
+        Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
+        return (Moves.allClear(getColor(), destination) && Moves.knightMove(dx, dy));
     }
 }
