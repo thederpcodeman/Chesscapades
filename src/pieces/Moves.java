@@ -37,4 +37,16 @@ public class Moves {
             return false;
         }
     }
+
+    public static boolean bishopMove(int x, int y, int dx, int dy, Board board){
+        if (Math.abs(dx) == Math.abs(dy)){
+            for (int i = 1; i < Math.abs(dy); i++){
+                if (board.getTile(Board.getLocationFromCords((int)(x + (i * Math.signum(dx))), (int)(y + (i * Math.signum(dy))))).getPiece() != null){
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
 }

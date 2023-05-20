@@ -23,24 +23,9 @@ public class Bishop extends Piece {
     }
     @Override
     public boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal){
-        int yoffset = newY - y;
-        int xoffset = newX - x;
-        if (Math.abs(xoffset) == Math.abs(yoffset)){
-            for (int i = 1; i < Math.abs(yoffset); i++){
-                if (board.getTile(Board.getLocationFromCords((int)(x + (i * Math.signum(xoffset))), (int)(y + (i * Math.signum(yoffset))))).getPiece() != null){
-                    return false;
-                }
-            }
-            Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
-            if(destination.isOccupied())
-            {
-                if(destination.getPiece().getColor() == getColor())
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        return false;
+        int dy = newY - y;
+        int dx = newX - x;
+        Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
+        return(Moves.allClear(getColor(), destination) && Moves.bishopMove(x, y, dx, dy, board));
     }
 }
