@@ -181,11 +181,11 @@ public class Board extends JPanel {
                 {
                     if (piece.getColor() == 1)
                     {
-                        fen.append('N');
+                        fen.append("KN");
                     }
                     else
                     {
-                        fen.append('n');
+                        fen.append("kn");
                     }
                 }
                 else if (piece instanceof Rook)
@@ -197,6 +197,127 @@ public class Board extends JPanel {
                     else
                     {
                         fen.append('r');
+                    }
+                }
+                else if (piece instanceof Chancellor)
+                {
+                    if (piece.getColor() == 1)
+                    {
+                        fen.append("CH");
+                    }
+                    else
+                    {
+                        fen.append("CH");
+                    }
+                }
+                else if (piece instanceof Archbishop)
+                {
+                    if (piece.getColor() == 1)
+                    {
+                        fen.append('A');
+                    }
+                    else
+                    {
+                        fen.append('a');
+                    }
+                }
+                else if (piece instanceof Amazon)
+                {
+                    if (piece.getColor() == 1)
+                    {
+                        fen.append("AM");
+                    }
+                    else
+                    {
+                        fen.append("am");
+                    }
+                }
+                else if (piece instanceof Boat)
+                {
+                    if (piece.getColor() == 1)
+                    {
+                        fen.append("BO");
+                    }
+                    else
+                    {
+                        fen.append("bo");
+                    }
+                }
+                else if (piece instanceof Bull)
+                {
+                    if (piece.getColor() == 1)
+                    {
+                        fen.append("BU");
+                    }
+                    else
+                    {
+                        fen.append("bu");
+                    }
+                }
+                else if (piece instanceof Camel)
+                {
+                    if (piece.getColor() == 1)
+                    {
+                        fen.append('C');
+                    }
+                    else
+                    {
+                        fen.append('c');
+                    }
+                }
+                else if (piece instanceof Elephant)
+                {
+                    if (piece.getColor() == 1)
+                    {
+                        fen.append('E');
+                    }
+                    else
+                    {
+                        fen.append('e');
+                    }
+                }
+                else if (piece instanceof Frog)
+                {
+                    if (piece.getColor() == 1)
+                    {
+                        fen.append('F');
+                    }
+                    else
+                    {
+                        fen.append('f');
+                    }
+                }
+                else if (piece instanceof General)
+                {
+                    if (piece.getColor() == 1)
+                    {
+                        fen.append('G');
+                    }
+                    else
+                    {
+                        fen.append('g');
+                    }
+                }
+                else if (piece instanceof Gryphon)
+                {
+                    if (piece.getColor() == 1)
+                    {
+                        fen.append("GRY");
+                    }
+                    else
+                    {
+                        fen.append("gry");
+                    }
+                }
+                else if (piece instanceof Lion)
+                {
+                    if (piece.getColor() == 1)
+                    {
+                        fen.append('L');
+                    }
+                    else
+                    {
+                        fen.append('l');
                     }
                 }
                 else if (piece instanceof Pawn)
