@@ -49,4 +49,104 @@ public class Moves {
         }
         return false;
     }
+    public static boolean GryphonMove(int x, int y, int dx, int dy, Board board){
+        int newX = x + dx;
+        int newY = y + dy;
+        if (dy == 0 || dx == 0){
+            return false;
+        }
+        if (dx == 1){
+            if (dy >= 1){
+                boolean c = true;
+                for (int i = 1; i < dy; i++){
+                    if (board.getTile(Board.getLocationFromCords(newX, (int)(y + i))).getPiece() != null){
+                        c = false;
+                    }
+                }
+                if (c){
+                    return true;
+                }
+            } else if (dy <= 1){
+                boolean c = true;
+                for (int i = -1; i > dy; i--){
+                    if (board.getTile(Board.getLocationFromCords(newX, (int)(y + i))).getPiece() != null){
+                        c = false;
+                    }
+                }
+                if (c){
+                    return true;
+                }
+            }
+        }
+        if (dy == 1){
+            if (dx >= 1){
+                boolean c = true;
+                for (int i = 1; i < dx; i++){
+                    if (board.getTile(Board.getLocationFromCords((int)(x + i), newY)).getPiece() != null){
+                        c = false;
+                    }
+                }
+                if (c){
+                    return true;
+                }
+            } else if (dy <= 1){
+                boolean c = true;
+                for (int i = -1; i > dx; i--){
+                    if (board.getTile(Board.getLocationFromCords((int)(x + i), newY)).getPiece() != null){
+                        c = false;
+                    }
+                }
+                if (c){
+                    return true;
+                }
+            }
+        }
+        if (dx == -1){
+            if (dy >= 1){
+                boolean c = true;
+                for (int i = 1; i < dy; i++){
+                    if (board.getTile(Board.getLocationFromCords(newX, (int)(y + i))).getPiece() != null){
+                        c = false;
+                    }
+                }
+                if (c){
+                    return true;
+                }
+            } else if (dy <= 1){
+                boolean c = true;
+                for (int i = -1; i > dy; i--){
+                    if (board.getTile(Board.getLocationFromCords(newX, (int)(y + i))).getPiece() != null){
+                        c = false;
+                    }
+                }
+                if (c){
+                    return true;
+                }
+            }
+        }
+        if (dy == -1){
+            if (dx >= 1){
+                boolean c = true;
+                for (int i = 1; i < dx; i++){
+                    if (board.getTile(Board.getLocationFromCords((int)(x + i), newY)).getPiece() != null){
+                        c = false;
+                    }
+                }
+                if (c){
+                    return true;
+                }
+            } else if (dy <= 1){
+                boolean c = true;
+                for (int i = -1; i > dx; i--){
+                    if (board.getTile(Board.getLocationFromCords((int)(x + i), newY)).getPiece() != null){
+                        c = false;
+                    }
+                }
+                if (c){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
