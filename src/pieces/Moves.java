@@ -149,4 +149,13 @@ public class Moves {
         }
         return false;
     }
+    public static boolean pegasusMove(int x, int y, int dx, int dy, Board board){
+        if (Moves.knightMove(dx, dy)){
+            return true;
+        }
+        if (((Math.abs(dx) == 2) && (Math.abs(dy) == 4)) || ((Math.abs(dx) == 4) && (Math.abs(dy) == 2))){
+            return (board.getTile(Board.getLocationFromCords(x + (dx / 2), y + (dy / 2))) == null);
+        }
+        return false;
+    }
 }
