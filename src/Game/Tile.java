@@ -210,6 +210,8 @@ public class Tile extends JPanel {
         possibilities.add("Elephant");
         possibilities.add("Bull");
         possibilities.add("Gryphon");
+        possibilities.add("Pegasus rider");
+        possibilities.add("Tyrant");
         possibilities.add("No thank you.");
         possibilities.add("Boaty Mc Boatface");
         Collections.shuffle(possibilities);
@@ -233,6 +235,7 @@ public class Tile extends JPanel {
 
         if(input == JOptionPane.OK_OPTION) {
             String s = (String) comboBox.getSelectedItem();
+            boolean roy = (getPiece() instanceof Prince);
 
             if (s == "Queen") {
                 setPiece(new Queen(piece.getColor()));
@@ -281,6 +284,14 @@ public class Tile extends JPanel {
                 setPiece(null);
             } else if (s == "Boaty Mc Boatface") {
                 setPiece(new Boat(piece.getColor()));
+            } else if (s == "Pegasus rider") {
+                setPiece(new Pegasus(piece.getColor()));
+            } else if (s == "Tyrant") {
+                setPiece(new Tyrant(piece.getColor()));
+            }
+
+            if (roy){
+                getPiece().royal = true;
             }
         }
     }
