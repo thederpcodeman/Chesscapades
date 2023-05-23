@@ -8,6 +8,7 @@ import javax.swing.*;
     public class Prince extends Pawn{
         public Prince(int color){
             super(color);
+            value = 2;
         }
 
         public ImageIcon getImageIcon() {
