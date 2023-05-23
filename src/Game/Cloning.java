@@ -31,7 +31,7 @@ public class Cloning {
         return new Pawn(color);
     }
     public static Piece Advanced(int color){
-        int ran = (int) (Math.random() * 7);
+        int ran = (int) (Math.random() * 8);
         if (ran == 0){
             return new Amazon(color);
         } else if (ran == 1){
@@ -46,15 +46,19 @@ public class Cloning {
             return new Queen(color);
         } else if (ran == 6){
             return new Gryphon(color);
+        } else if (ran == 7){
+            return new Pegasus(color);
         }
         return null;
     }
     public static Piece Royal(int color){
-        int ran = (int) (Math.random() * 3);
+        int ran = (int) (Math.random() * 4);
         if (ran == 0 || ran == 1){
             return new King(color);
         } else if (ran == 2){
             return new General(color);
+        } else if (ran == 3){
+            return new Tyrant(color);
         }
         return null;
     }
