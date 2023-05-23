@@ -333,8 +333,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         }
         Tile tile = (Tile) chessBoard.getComponentAt(e.getX(), e.getY());
         Piece piece = tile.getPiece();
-        if (piece != null && !tLocked) {
-            if (piece.getColor() == turn) {
+        if (piece != null) {
+            if (piece.getColor() == turn && !tLocked && selectedTile.isLegalMove(tile.getLocationOnBoard(), chessBoard,false)) {
                 if (!tLocked){
                     selectedTile = tile;
                 }
