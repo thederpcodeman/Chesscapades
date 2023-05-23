@@ -3,9 +3,30 @@ package pieces;
 import Game.Board;
 import Game.Tile;
 
+import javax.swing.*;
+
 public class Soldier extends Pawn{
     public Soldier(int color){
         super(color);
+    }
+
+    public ImageIcon getImageIcon() {
+        if(color == 0) {
+            if (getForwardDirection() == 1){
+                return(new ImageIcon("src/resources/bSoldier.png"));
+            }else{
+                return(new ImageIcon("src/resources/bupSoldier.png"));
+            }
+
+        } else if(color == 1) {
+            if (getForwardDirection() == -1){
+                return(new ImageIcon("src/resources/wSoldier.png"));
+            }else{
+                return(new ImageIcon("src/resources/wupSoldier.png"));
+            }
+        } else {
+            return null;
+        }
     }
     public boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal) {
         Tile destination = board.getTile(board.getLocationFromCords(newX, newY));

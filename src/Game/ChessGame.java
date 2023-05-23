@@ -115,7 +115,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
              chessBoard.getTile(3).setPiece(Cloning.Advanced(0));
              chessBoard.getTile(4).setPiece(Cloning.Royal(0));
              for (int i = 8; i < 16; i++) {
-                 chessBoard.getTile(i).setPiece(new Pawn(0));
+                 chessBoard.getTile(i).setPiece(Cloning.rPawn(0));
              }
              //setup white pieces
              chessBoard.getTile(56).setPiece(Cloning.Common(1));
@@ -129,7 +129,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
              chessBoard.getTile(60).setCastleable(true);
              for (int i = 48; i < 56; i++) {
                  Tile tile = (Tile) chessBoard.getComponent(i);
-                 tile.setPiece(new Pawn(1));
+                 tile.setPiece(Cloning.rPawn(1));
              }
          }else if (rand == 2){
              //setup black pieces
