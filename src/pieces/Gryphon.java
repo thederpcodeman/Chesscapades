@@ -27,6 +27,6 @@ public class Gryphon extends Piece {
         int dx = newX - x;
         int dy = newY - y;
         Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
-        return (Moves.allClear(getColor(), destination) && Moves.GryphonMove(x, y, dx, dy, board));
+        return (Moves.allClear(getColor(), destination) && Moves.gryphonMove(x, y, dx, dy, board));
     }
 }

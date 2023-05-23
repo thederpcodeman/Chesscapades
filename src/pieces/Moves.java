@@ -49,7 +49,7 @@ public class Moves {
         }
         return false;
     }
-    public static boolean GryphonMove(int x, int y, int dx, int dy, Board board){
+    public static boolean gryphonMove(int x, int y, int dx, int dy, Board board){
         int newX = x + dx;
         int newY = y + dy;
         if (dy == 0 || dx == 0){
