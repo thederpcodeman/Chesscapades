@@ -154,7 +154,7 @@ public class Moves {
             return true;
         }
         if (((Math.abs(dx) == 2) && (Math.abs(dy) == 4)) || ((Math.abs(dx) == 4) && (Math.abs(dy) == 2))){
-            return (board.getTile(Board.getLocationFromCords(x + (dx / 2), y + (dy / 2))) == null);
+            return (board.getTile(Board.getLocationFromCords(x + (dx / 2), y + (dy / 2))).getPiece() == null);
         }
         return false;
     }
