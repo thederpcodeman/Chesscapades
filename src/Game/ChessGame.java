@@ -84,7 +84,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         bStab = ((int) (Math.random() * 5.5) == 1);
         touchRule = ((int) (Math.random() * 8) == 1);
         tLocked = false;
-        myst = ((int) (Math.random() * 7) == 1);
+        myst = ((int) (Math.random() * 8.2) == 1);
         if (myst && !touchRule){
             touchRule = ((int) (Math.random() * 2) == 1);
         }
@@ -333,8 +333,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         }
         Tile tile = (Tile) chessBoard.getComponentAt(e.getX(), e.getY());
         Piece piece = tile.getPiece();
-        if (piece != null) {
-            if (piece.getColor() == turn && !tLocked && selectedTile.isLegalMove(tile.getLocationOnBoard(), chessBoard,false)) {
+        if (piece != null && !(selectedTile != null && selectedTile.isLegalMove(tile.getLocationOnBoard(), chessBoard, false))) {
+            if (piece.getColor() == turn && !tLocked) {
                 if (!tLocked){
                     selectedTile = tile;
                 }

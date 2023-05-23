@@ -28,6 +28,6 @@ public class Tyrant extends Piece {
         int dx = newX - x;
         int dy = newY - y;
         Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
-        return (Moves.allClear(getColor(), destination) && Moves.pegasusMove(x, y, dx, dy, board));
+        return (Moves.pegasusMove(x, y, dx, dy, board));
     }
 }

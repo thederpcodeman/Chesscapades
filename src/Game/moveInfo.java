@@ -17,10 +17,19 @@ public class moveInfo {
         double score = 0;
         score -= start.getPiece().value / 8.9;
         if (end.getPiece() != null){
-            score += (end.getPiece().value * 4.5);
-            if (end.getPiece().royal) {
-                score += 100;
+            if (end.getPiece().color != start.getPiece().getColor()){
+                score += (end.getPiece().value * 4.5);
+                if (end.getPiece().royal) {
+                    score += 100;
+                }
+            }else{
+                score -= (end.getPiece().value * 4.5);
+                if (end.getPiece().royal) {
+                    score -= 100;
+                }
+                score -= 10;
             }
+
         }
         for (Tile king : board.getKings(start.getPiece().getColor())) {
             int c = start.isPlayableMove(king.getLocationOnBoard(), board, false);
