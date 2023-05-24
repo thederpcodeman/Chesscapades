@@ -31,7 +31,7 @@ public class Cloning {
         return new Pawn(color);
     }
     public static Piece Advanced(int color){
-        int ran = (int) (Math.random() * 8);
+        int ran = (int) (Math.random() * 9);
         if (ran == 0){
             return new Amazon(color);
         } else if (ran == 1){
@@ -48,6 +48,8 @@ public class Cloning {
             return new Gryphon(color);
         } else if (ran == 7){
             return new Pegasus(color);
+        } else if (ran == 8){
+            return new Wyvern(color);
         }
         return null;
     }
