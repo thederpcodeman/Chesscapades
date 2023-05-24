@@ -23,20 +23,9 @@ public class Elephant extends Piece {
     }
     @Override
     public boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal){
-        int yoffset = newY - y;
-        int xoffset = newX - x;
-        if (Math.abs(xoffset) == Math.abs(yoffset)){
-            Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
-            if(destination.isOccupied()) {
-                if (destination.getPiece().getColor() == getColor()) {
-                    return false;
-                }
-            }
-            if (Math.abs(yoffset) > 2){
-                return false;
-            }
-            return true;
-        }
-        return false;
+        int dy = newY - y;
+        int dx = newX - x;
+        Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
+        return (Moves.allClear(getColor(), destination) && Moves.elephantMove(dx, dy, board));
     }
 }
