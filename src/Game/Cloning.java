@@ -69,13 +69,15 @@ public class Cloning {
         return null;
     }
     public static Piece rPawn(int color){
-        int ran = (int) (Math.random() * 5);
+        int ran = (int) (Math.random() * 6);
         if (ran == 0 || ran == 1 || ran == 2){
             return new Pawn(color);
         } else if (ran == 3){
             return new Soldier(color);
         } else if (ran == 4){
             return new Prince(color);
+        } else if (ran == 5){
+            return new Pikeman(color);
         }
         return null;
     }
