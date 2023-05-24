@@ -45,8 +45,14 @@ public class moveInfo {
         Piece store = end.getPiece();
         end.setPiece(null);
         for (Tile foe : board.getOccupiedTiles()){
-            if ((foe.isLegalMove(end.getLocationOnBoard(), board, false)) && (foe.getPiece().getColor() != start.getPiece().getColor())) {
-                score -= start.getPiece().value * 5.5;
+            try{
+                if (foe != null && foe.getPiece() != null){
+                    if ((foe.isLegalMove(end.getLocationOnBoard(), board, false)) && (foe.getPiece().getColor() != start.getPiece().getColor())) {
+                        score -= start.getPiece().value * 5.5;
+                    }
+                }
+            }catch (Exception e){
+                score -= Math.random() * 3;
             }
         }
         end.setPiece(store);
