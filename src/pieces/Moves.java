@@ -161,10 +161,10 @@ public class Moves {
 
     public static boolean wyvernMove(int x, int y, int dx, int dy, Board board){
         boolean a = false;
-        a = (a || (Board.getLocationFromCords(x, y + 1) >= 0 && Board.getLocationFromCords(x, y + 1) < 64 && board.getTile(Board.getLocationFromCords(x, y + 1)).getPiece() != null && Moves.bishopMove(x, y + 1, dx, dy - 1, board)));
-        a = (a || (Board.getLocationFromCords(x, y + 1) >= 0 && Board.getLocationFromCords(x, y + 1) < 64 && board.getTile(Board.getLocationFromCords(x, y - 1)).getPiece() != null && Moves.bishopMove(x, y - 1, dx, dy + 1, board)));
-        a = (a || (Board.getLocationFromCords(x, y + 1) >= 0 && Board.getLocationFromCords(x, y + 1) < 64 && board.getTile(Board.getLocationFromCords(x + 1, y)).getPiece() != null && Moves.bishopMove(x + 1, y, dx - 1, dy, board)));
-        a = (a || (Board.getLocationFromCords(x, y + 1) >= 0 && Board.getLocationFromCords(x, y + 1) < 64 && board.getTile(Board.getLocationFromCords(x - 1, y)).getPiece() != null && Moves.bishopMove(x - 1, y, dx + 1, dy, board)));
+        a = (a || (Board.getLocationFromCords(x, y + 1) >= 0 && Board.getLocationFromCords(x, y + 1) < 64 && board.getTile(Board.getLocationFromCords(x, y + 1)).getPiece() == null && Moves.bishopMove(x, y + 1, dx, dy - 1, board)));
+        a = (a || (Board.getLocationFromCords(x, y - 1) >= 0 && Board.getLocationFromCords(x, y - 1) < 64 && board.getTile(Board.getLocationFromCords(x, y - 1)).getPiece() == null && Moves.bishopMove(x, y - 1, dx, dy + 1, board)));
+        a = (a || (Board.getLocationFromCords(x + 1, y) >= 0 && Board.getLocationFromCords(x + 1, y) < 64 && board.getTile(Board.getLocationFromCords(x + 1, y)).getPiece() == null && Moves.bishopMove(x + 1, y, dx - 1, dy, board)));
+        a = (a || (Board.getLocationFromCords(x - 1, y) >= 0 && Board.getLocationFromCords(x - 1, y) < 64 && board.getTile(Board.getLocationFromCords(x - 1, y)).getPiece() == null && Moves.bishopMove(x - 1, y, dx + 1, dy, board)));
         return a;
     }
 }
