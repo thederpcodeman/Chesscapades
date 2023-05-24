@@ -31,7 +31,7 @@ public class Cloning {
         return new Pawn(color);
     }
     public static Piece Advanced(int color){
-        int ran = (int) (Math.random() * 10);
+        int ran = (int) (Math.random() * 11);
         if (ran == 0){
             return new Amazon(color);
         } else if (ran == 1){
@@ -52,6 +52,8 @@ public class Cloning {
             return new Wyvern(color);
         } else if (ran == 9){
             return new Greatwyrm(color);
+        } else if (ran == 10){
+            return new Bladesinger(color);
         }
         return null;
     }
