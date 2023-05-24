@@ -29,7 +29,7 @@ public class Bladesinger extends Piece {
         Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
         if ((Math.abs(dx) > 1 || Math.abs(dy) > 1) && destination.getPiece() == null){
             return ((Moves.wyvernMove(newX, newY, dx * -1, dy * - 1, board) || Moves.gryphonMove(newX, newY, dx * -1, dy * -1, board) || (Moves.wyvernMove(x, y, dx, dy, board) || Moves.gryphonMove(x, y, dx, dy, board))));
-        }else if (Math.abs(dx) <= 1 && Math.abs(dy) <= 1 && destination.getPiece() != null && Moves.allClear(getColor(),destination)){
+        }else if (Math.abs(dx) <= 1 && Math.abs(dy) <= 1 && destination.getPiece() != null){
             return true;
         }
         return false;
