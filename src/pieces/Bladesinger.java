@@ -8,7 +8,7 @@ import javax.swing.*;
 public class Bladesinger extends Piece {
     public Bladesinger(int color) {
         super(color);
-        value = 14;
+        value = 6;
     }
 
     @Override
