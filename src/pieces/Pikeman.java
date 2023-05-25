@@ -38,7 +38,7 @@ public class Pikeman extends Piece {
         Tile destination = board.getTile(board.getLocationFromCords(newX, newY));
         int dy = newY - y;
         int dx = newX - x;
-        if (Math.abs(dx) >= 1){
+        if (Math.abs(dx) > 1){
             return false;
         }else if (Math.abs(dx) == 1){
             return (dy == 0 && board.getTile(Board.getLocationFromCords(newX, newY)).getPiece() == null);
