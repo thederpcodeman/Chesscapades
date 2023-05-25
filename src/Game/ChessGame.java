@@ -104,7 +104,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
         AudioPlayer.play("src/resources/audio/startgame.wav");
         int rand = (int) (Math.random() * 5);
-         if (rand == 1 || rand == 0){
+        rand = 4;
+        if (rand == 1 || rand == 0){
              //setup black pieces
              chessBoard.getTile(0).setPiece(Cloning.Common(0));
              chessBoard.getTile(7).setPiece(Cloning.Common(0));
@@ -130,7 +131,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                  Tile tile = (Tile) chessBoard.getComponent(i);
                  tile.setPiece(Cloning.rPawn(1));
              }
-         }else if (rand == 2){
+        }else if (rand == 2){
              //setup black pieces
              chessBoard.getTile(0).setPiece(Cloning.Advanced(0));
              chessBoard.getTile(7).setPiece(Cloning.Advanced(0));
@@ -163,7 +164,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                  Tile tile = (Tile) chessBoard.getComponent(i);
                  tile.setPiece(Cloning.rPawn(1));
              }
-         }else if (rand == 3) {
+        }else if (rand == 3) {
              //setup black pieces
              chessBoard.getTile(0).setPiece(new Rook(0));
              chessBoard.getTile(7).setPiece(new Rook(0));
@@ -189,7 +190,16 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                  Tile tile = (Tile) chessBoard.getComponent(i);
                  tile.setPiece(Cloning.rPawn(1));
              }
-         }else{
+        }else if (rand == 4){
+             for (int i = 0; i < 16; i++) {
+                 Tile tile = (Tile) chessBoard.getComponent(i);
+                 tile.setPiece(Cloning.Fear(0));
+             }
+             for (int i = 48; i < 64; i++) {
+                 Tile tile = (Tile) chessBoard.getComponent(i);
+                 tile.setPiece(Cloning.Fear(1));
+             }
+        }else{
              // 1/3 960
              //setup black pieces
              chessBoard.getTile(0).setPiece(new Rook(0));

@@ -83,4 +83,51 @@ public class Cloning {
         }
         return null;
     }
+    public static Piece Fear(int color){
+        int ran = (int) (Math.random() * 22);
+        if (ran == 0){
+            return new Elephant(color);
+        } else if (ran == 1){
+            return new Rook(color);
+        } else if (ran == 2){
+            return new Bishop(color);
+        } else if (ran == 3){
+            return new Frog(color);
+        } else if (ran == 4){
+            return new Knight(color);
+        } else if (ran == 5){
+            return new Camel(color);
+        } else if (ran == 6) {
+            return new Bull(color);
+        } else if (ran == 8) {
+            return new Boat(color);
+        } else if (ran == 9) {
+            return new King(color);
+        } else if (ran == 10) {
+            return new General(color);
+        } else if (ran == 11) {
+            return new Tyrant(color);
+        } else if (ran == 12) {
+            return new Amazon(color);
+        } else if (ran == 13) {
+            return new Archbishop(color);
+        } else if (ran == 14) {
+            return new Chancellor(color);
+        } else if (ran == 15) {
+            return new Lion(color);
+        } else if (ran == 16) {
+            return new Queen(color);
+        } else if (ran == 17) {
+            return new Gryphon(color);
+        } else if (ran == 18) {
+            return new Pegasus(color);
+        } else if (ran == 19) {
+            return new Wyvern(color);
+        } else if (ran == 20) {
+            return new Greatwyrm(color);
+        } else if (ran == 21) {
+            return new Bladesinger(color);
+        }
+        return (null);
+    }
 }
