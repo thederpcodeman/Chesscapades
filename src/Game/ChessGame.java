@@ -104,7 +104,6 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
         AudioPlayer.play("src/resources/audio/startgame.wav");
         int rand = (int) (Math.random() * 10);
-        rand = 10;
          if (rand == 1 || rand == 0){
              //setup black pieces
              chessBoard.getTile(0).setPiece(Cloning.Common(0));
