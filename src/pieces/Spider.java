@@ -5,18 +5,18 @@ import Game.Tile;
 
 import javax.swing.*;
 
-public class Elephant extends Piece {
-    public Elephant(int color) {
+public class Spider extends Piece {
+    public Spider(int color) {
         super(color);
-        value = 2;
+        value = 5;
     }
 
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/bElephant.png"));
+            return(new ImageIcon("src/resources/bFrog.png"));
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wElephant.png"));
+            return(new ImageIcon("src/resources/wFrog.png"));
         } else {
             return null;
         }
@@ -26,6 +26,6 @@ public class Elephant extends Piece {
         int dy = newY - y;
         int dx = newX - x;
         Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
-        return (Moves.allClear(getColor(), destination) && Moves.elephantMove(dx, dy));
+        return (Moves.allClear(getColor(), destination) && (Moves.frogMove(dx, dy) || Moves.elephantMove(dx, dy)));
     }
 }

@@ -167,13 +167,13 @@ public class Moves {
         a = (a || (Board.getLocationFromCords(x - 1, y) >= 0 && Board.getLocationFromCords(x - 1, y) < 64 && board.getTile(Board.getLocationFromCords(x - 1, y)).getPiece() == null && Moves.bishopMove(x - 1, y, dx + 1, dy, board)));
         return a;
     }
-    public static boolean frogMove(int dx, int dy, Board board){
+    public static boolean frogMove(int dx, int dy){
         if (((dx == 0) && (Math.abs(dy) <= 2)) || ((Math.abs(dx) <= 2) && (dy == 0))){
             return true;
         }
         return false;
     }
-    public static boolean elephantMove(int dx, int dy, Board board){
+    public static boolean elephantMove(int dx, int dy){
         if (Math.abs(dx) == Math.abs(dy) && ((Math.abs(dx) <= 2))){
             return true;
         }

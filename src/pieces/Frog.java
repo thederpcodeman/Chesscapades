@@ -26,6 +26,6 @@ public class Frog extends Piece {
         int dy = newY - y;
         int dx = newX - x;
         Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
-        return (Moves.allClear(getColor(), destination) && Moves.frogMove(dx, dy, board));
+        return (Moves.allClear(getColor(), destination) && Moves.frogMove(dx, dy));
     }
 }
