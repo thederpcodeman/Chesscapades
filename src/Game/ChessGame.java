@@ -326,7 +326,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 }
             }
         }
-        if (Math.random() * 7 == 1){
+        if (true){
             epic = true;
             for (Tile i : chessBoard.getOccupiedTiles()){
                 if (i.getPiece() != null && (i.getPiece() instanceof Pawn)){
