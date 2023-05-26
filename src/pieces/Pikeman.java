@@ -6,7 +6,7 @@ import Game.Tile;
 
 import javax.swing.*;
 
-public class Pikeman extends Piece {
+public class Pikeman extends Pawn {
     private int forwards;
     public Pikeman(int color) {
         super(color);

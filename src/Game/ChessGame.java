@@ -45,6 +45,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
     public boolean bTrayal;
 
+    public static boolean epic;
+
 
     public ChessGame(int size){
         Dimension boardSize = new Dimension(size, size);
@@ -80,6 +82,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
+        epic = false;
         bTrayal = ((int) (Math.random() * 6.5) == 1);
         bStab = ((int) (Math.random() * 5.5) == 1);
         touchRule = ((int) (Math.random() * 8) == 1);
@@ -103,7 +106,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         }
 
         AudioPlayer.play("src/resources/audio/startgame.wav");
-        int rand = (int) (Math.random() * 6);
+        int rand = (int) (Math.random() * 8);
         if (rand == 1 || rand == 0){
              //setup black pieces
              chessBoard.getTile(0).setPiece(Cloning.Common(0));
@@ -210,7 +213,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
              int i = (int) (Math.random() * 8);
              chessBoard.getTile(i).setPiece(Cloning.Royal(0));
              i = (int) (Math.random() * 8);
-             chessBoard.getTile(i + 56).setPiece(Cloning.Royal(0));
+             chessBoard.getTile(i + 56).setPiece(Cloning.Royal(1));
         }else if (rand == 5){
 
             //grand chess
@@ -315,6 +318,24 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                  }
              }
          }
+        // modifiers
+        if (Math.random() * 7 == 1){
+            for (Tile i : chessBoard.getOccupiedTiles()){
+                if (i.getPiece() != null && !(i.getPiece() instanceof Pawn)){
+                    i.getPiece().royal = true;
+                }
+            }
+        }
+        if (Math.random() * 7 == 1){
+            epic = true;
+            for (Tile i : chessBoard.getOccupiedTiles()){
+                if (i.getPiece() != null && (i.getPiece() instanceof Pawn)){
+                    i.getPiece().wall = true;
+                }
+            }
+        }else{
+            epic = false;
+        }
         turn = 1;
     }
 
