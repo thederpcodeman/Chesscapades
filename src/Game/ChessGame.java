@@ -47,6 +47,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
     public static boolean epic;
 
+    public static boolean chaos;
+
 
     public ChessGame(int size){
         Dimension boardSize = new Dimension(size, size);
@@ -82,6 +84,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
+        chaos = ((int) (Math.random() * 15.0) == 1);
         epic = false;
         bTrayal = ((int) (Math.random() * 6.5) == 1);
         bStab = ((int) (Math.random() * 5.5) == 1);
@@ -326,7 +329,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 }
             }
         }
-        if (true){
+        if (Math.random() * 7 == 1){
             epic = true;
             for (Tile i : chessBoard.getOccupiedTiles()){
                 if (i.getPiece() != null && (i.getPiece() instanceof Pawn)){
@@ -551,7 +554,12 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 return;
             }
         }
+        boolean ch = (chaos && selectedTile != null && tile != null && selectedTile.isLegalMove(tile.getLocationOnBoard(), chessBoard, false));
         playMove(new moveInfo(selectedTile, tile, chessBoard));
+        if (ch){
+            playGoodishMove();
+            playGoodishMove();
+        }
     }
     public void obliterate(int square, boolean kingSlayer, boolean pawnSlayer){
         if ( (chessBoard.getTile(square) != null) && (chessBoard.getTile(square).getPiece() != null) && (kingSlayer || !(chessBoard.getTile(square).getPiece() instanceof King)) && (pawnSlayer || !(chessBoard.getTile(square).getPiece() instanceof Pawn))) {
