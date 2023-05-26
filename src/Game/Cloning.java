@@ -84,7 +84,7 @@ public class Cloning {
         return null;
     }
     public static Piece Fear(int color){
-        int ran = (int) (Math.random() * 22);
+        int ran = (int) (Math.random() * 21);
         if (ran == 0){
             return new Elephant(color);
         } else if (ran == 1){
@@ -99,35 +99,36 @@ public class Cloning {
             return new Camel(color);
         } else if (ran == 6) {
             return new Bull(color);
-        } else if (ran == 8) {
+        } else if (ran == 7) {
             return new Boat(color);
-        } else if (ran == 9) {
+        } else if (ran == 8) {
             return new King(color);
-        } else if (ran == 10) {
+        } else if (ran == 9) {
             return new General(color);
-        } else if (ran == 11) {
+        } else if (ran == 10) {
             return new Tyrant(color);
-        } else if (ran == 12) {
+        } else if (ran == 11) {
             return new Amazon(color);
-        } else if (ran == 13) {
+        } else if (ran == 12) {
             return new Archbishop(color);
-        } else if (ran == 14) {
+        } else if (ran == 13) {
             return new Chancellor(color);
-        } else if (ran == 15) {
+        } else if (ran == 14) {
             return new Lion(color);
-        } else if (ran == 16) {
+        } else if (ran == 15) {
             return new Queen(color);
-        } else if (ran == 17) {
+        } else if (ran == 16) {
             return new Gryphon(color);
-        } else if (ran == 18) {
+        } else if (ran == 17) {
             return new Pegasus(color);
-        } else if (ran == 19) {
+        } else if (ran == 18) {
             return new Wyvern(color);
-        } else if (ran == 20) {
+        } else if (ran == 19) {
             return new Greatwyrm(color);
-        } else if (ran == 21) {
+        } else if (ran == 20) {
             return new Bladesinger(color);
         }
+        System.out.println(ran);
         return (null);
     }
 }
