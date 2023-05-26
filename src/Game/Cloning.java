@@ -128,7 +128,6 @@ public class Cloning {
         } else if (ran == 20) {
             return new Bladesinger(color);
         }
-        System.out.println(ran);
         return (null);
     }
 }
