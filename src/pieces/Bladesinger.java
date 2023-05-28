@@ -14,9 +14,9 @@ public class Bladesinger extends Piece {
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/bUnknown.png"));
+            return(new ImageIcon("src/resources/wBladesinger.png"));
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wUnknown.png"));
+            return(new ImageIcon("src/resources/bBladesinger.png"));
         } else {
             return null;
         }
@@ -26,9 +26,12 @@ public class Bladesinger extends Piece {
     public boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal) {
         int dx = newX - x;
         int dy = newY - y;
+        if (dy == 0 && dx == 0){
+            return false;
+        }
         Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
         if ((Math.abs(dx) > 1 || Math.abs(dy) > 1) && destination.getPiece() == null){
-            return ((Moves.wyvernMove(newX, newY, dx * -1, dy * - 1, board) || Moves.gryphonMove(newX, newY, dx * -1, dy * -1, board) || (Moves.wyvernMove(x, y, dx, dy, board) || Moves.gryphonMove(x, y, dx, dy, board))));
+            return ((Moves.wyvernMove(x, y, dx, dy, board) || Moves.gryphonMove(x, y, dx, dy, board) || (Moves.rookMove(x, y, dx, dy, board) || Moves.bishopMove(x, y, dx, dy, board))));
         }else if (Math.abs(dx) <= 1 && Math.abs(dy) <= 1 && destination.getPiece() != null){
             return true;
         }
