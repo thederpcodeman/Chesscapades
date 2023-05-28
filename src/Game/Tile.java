@@ -135,6 +135,9 @@ public class Tile extends JPanel {
         int color = getPiece().getColor();
         Tile[] enemyPieces = board.getOccupiedTilesOfColor(1 - color);
         Tile destination = board.getTile(location);
+        if (destination.getPiece() != null && destination.getPiece().royal == true && destination.getPiece().color == color){
+            return 2;
+        }
         Piece currentPiece = getPiece();
         Piece destinationCurrentPiece = destination.getPiece();
         destination.quietlyUpdatePiece(getPiece());
