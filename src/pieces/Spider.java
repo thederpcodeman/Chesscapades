@@ -14,9 +14,9 @@ public class Spider extends Piece {
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/bFrog.png"));
+            return(new ImageIcon("src/resources/bSpider.png"));
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wFrog.png"));
+            return(new ImageIcon("src/resources/wSpider.png"));
         } else {
             return null;
         }

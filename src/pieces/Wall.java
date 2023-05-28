@@ -12,22 +12,7 @@ public class Wall extends Pawn{
     }
 
     public ImageIcon getImageIcon() {
-        if(color == 0) {
-            if (getForwardDirection() == 1){
-                return(new ImageIcon("src/resources/wUnknown.png"));
-            }else{
-                return(new ImageIcon("src/resources/wUnknown.png"));
-            }
-
-        } else if(color == 1) {
-            if (getForwardDirection() == -1){
-                return(new ImageIcon("src/resources/bUnknown.png"));
-            }else{
-                return(new ImageIcon("src/resources/bUnknown.png"));
-            }
-        } else {
-            return null;
-        }
+        return(new ImageIcon("src/resources/Wall.png"));
     }
     public boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal) {
         Tile destination = board.getTile(board.getLocationFromCords(newX, newY));
