@@ -214,6 +214,10 @@ public class Tile extends JPanel {
         possibilities.add("Tyrant");
         possibilities.add("No thank you.");
         possibilities.add("Boaty Mc Boatface");
+        possibilities.add("Spider");
+        possibilities.add("Assassin's creed fanboy");
+        possibilities.add("Wyvern");
+        possibilities.add("Greatwyrm");
         Collections.shuffle(possibilities);
         int o = 3;
         if (getPiece().getColor() == 0){
@@ -288,6 +292,14 @@ public class Tile extends JPanel {
                 setPiece(new Pegasus(piece.getColor()));
             } else if (s == "Tyrant") {
                 setPiece(new Tyrant(piece.getColor()));
+            } else if (s == "Assassin's creed fanboy") {
+                setPiece(new Bladesinger(piece.getColor()));
+            } else if (s == "Spider") {
+                setPiece(new Spider(piece.getColor()));
+            } else if (s == "Wyvern") {
+                setPiece(new Wyvern(piece.getColor()));
+            } else if (s == "Greatwyrm") {
+                setPiece(new Greatwyrm(piece.getColor()));
             }
 
             if (roy){
