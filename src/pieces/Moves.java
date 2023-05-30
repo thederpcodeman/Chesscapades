@@ -1,6 +1,7 @@
 package pieces;
 
 import Game.Board;
+import Game.ChessGame;
 import Game.Tile;
 
 public class Moves {
@@ -8,7 +9,7 @@ public class Moves {
     public static boolean allClear(int color, Tile destination){
         if(destination.getPiece() != null && destination.getPiece().getColor() == color)
         {
-            return false;
+            return !ChessGame.ruth;
         }
         return true;
     }
