@@ -13,7 +13,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     Stockfish stockfish = new Stockfish();
     Board chessBoard;
     Tile selectedTile;
-    int turn;
+    public static int turn;
     static final Color highlightedColor = new Color(00, 100, 200);
     static final Color selfColor = new Color(55, 160, 80);
     static final Color dangerColor = new Color(179, 0, 27);
