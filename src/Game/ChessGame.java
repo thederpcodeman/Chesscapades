@@ -41,8 +41,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     public boolean tLocked;
     public static boolean myst;
 
-    public static boolean ff;
-    public static boolean ffcheck;
+    public static boolean re;
+    public static boolean recheck;
 
     public boolean bStab;
 
@@ -87,9 +87,9 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
-        ff = true;
-        ffcheck = false;
-        chaos = ((int) (Math.random() * 15.0) == 1);
+        re = ((int) (Math.random() * 12.0) == 1);
+        recheck = false;
+        chaos = ((int) (Math.random() * 20.0) == 1);
         epic = false;
         bTrayal = ((int) (Math.random() * 6.5) == 1);
         bStab = ((int) (Math.random() * 5.5) == 1);
@@ -354,7 +354,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     public void playMove(moveInfo move){
         int location = move.end.getLocationOnBoard();
         Tile start = move.start;
-        boolean resp = (move.end.getPiece() != null && ff);
+        boolean resp = (move.end.getPiece() != null && re);
         if (start != null && (start.isPlayableMove(location, chessBoard, true) != 0)) {
             //process move
             tLocked = false;
@@ -426,11 +426,11 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             String fen = chessBoard.computeFen(turn);
             fens.add(fen);
 
-            if (resp && !ffcheck){
-                ffcheck = true;
+            if (resp && !recheck){
+                recheck = true;
                 playGoodishMove();
                 turn = 1 - turn;
-                ffcheck = false;
+                recheck = false;
 
             }
 
