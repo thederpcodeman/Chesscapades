@@ -48,7 +48,7 @@ public class Checker extends Pawn{
                         if (forReal){
                             hop.setPiece(null);
                             moved2 = 2;
-                            ChessGame.turn = (ChessGame.turn + 1) % 2;
+                            ChessGame.turn = (1 - ChessGame.turn);
                         }
                         return true;
                     }
