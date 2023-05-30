@@ -196,6 +196,12 @@ public class Tile extends JPanel {
 
         AudioPlayer.play("src/resources/audio/promote.wav");
 
+        if (getPiece() instanceof Checker){
+            getPiece().royal = true;
+            forceSetPiece(getPiece());
+            return ;
+        }
+
         ArrayList<String> possibilities = new ArrayList<String>();
         possibilities.add("Turn around");
         possibilities.add("Queen");
