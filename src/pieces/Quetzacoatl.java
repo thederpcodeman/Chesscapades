@@ -5,18 +5,18 @@ import Game.Tile;
 
 import javax.swing.*;
 
-public class Buffalo extends Piece {
-    public Buffalo(int color) {
+public class Quetzacoatl extends Piece {
+    public Quetzacoatl(int color) {
         super(color);
-        value = 6;
+        value = 5;
     }
 
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/bKnight.png"));
+            return(new ImageIcon("src/resources/bPsus.png"));
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wKnight.png"));
+            return(new ImageIcon("src/resources/wPsus.png"));
         } else {
             return null;
         }
@@ -27,6 +27,6 @@ public class Buffalo extends Piece {
         int dx = newX - x;
         int dy = newY - y;
         Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
-        return (Moves.allClear(getColor(), destination) && (Moves.knightMove(dx, dy) || Moves.camelMove(dx, dy) || Moves.bullMove(dx, dy)));
+        return (Moves.allClear(getColor(), destination) && Moves.quetzMove(x, y, dx, dy, board));
     }
 }

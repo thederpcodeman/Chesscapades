@@ -33,6 +33,12 @@ public class Moves {
         }
         return false;
     }
+    public static boolean falconMove(int dx, int dy){
+        if (((Math.abs(dx) == 4) && (Math.abs(dy) == 3)) || ((Math.abs(dx) == 3) && (Math.abs(dy) == 4))){
+            return true;
+        }
+        return false;
+    }
 
     public static boolean rookMove(int x, int y, int dx, int dy, Board board) {
         if (dy == 0) {
@@ -170,6 +176,15 @@ public class Moves {
             return true;
         }
         if (((Math.abs(dx) == 2) && (Math.abs(dy) == 4)) || ((Math.abs(dx) == 4) && (Math.abs(dy) == 2))){
+            return (board.getTile(Board.getLocationFromCords(x + (dx / 2), y + (dy / 2))).getPiece() == null);
+        }
+        return false;
+    }
+    public static boolean quetzMove(int x, int y, int dx, int dy, Board board){
+        if (Moves.knightMove(dx, dy) || Moves.camelMove(dx, dy) || Moves.bullMove(dx, dy)){
+            return true;
+        }
+        if (((Math.abs(dx) == 6) && (Math.abs(dy) == 4)) || ((Math.abs(dx) == 4) && (Math.abs(dy) == 6)) || ((Math.abs(dx) == 6) && (Math.abs(dy) == 2)) || ((Math.abs(dx) == 2) && (Math.abs(dy) == 6)) || ((Math.abs(dx) == 2) && (Math.abs(dy) == 4)) || ((Math.abs(dx) == 4) && (Math.abs(dy) == 2))){
             return (board.getTile(Board.getLocationFromCords(x + (dx / 2), y + (dy / 2))).getPiece() == null);
         }
         return false;

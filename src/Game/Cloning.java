@@ -58,7 +58,7 @@ public class Cloning {
         } else if (ran == 10){
             return new Bladesinger(color);
         } else if (ran == 11){
-            return new Buffalo(color);
+            return new Quetzacoatl(color);
         }
         return null;
     }
