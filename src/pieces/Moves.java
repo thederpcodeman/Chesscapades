@@ -19,6 +19,21 @@ public class Moves {
         }
         return false;
     }
+
+    public static boolean camelMove(int dx, int dy){
+        if (((Math.abs(dx) == 1) && (Math.abs(dy) == 3)) || ((Math.abs(dx) == 3) && (Math.abs(dy) == 1))){
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean bullMove(int dx, int dy){
+        if (((Math.abs(dx) == 4) && (Math.abs(dy) == 3)) || ((Math.abs(dx) == 3) && (Math.abs(dy) == 4))){
+            return true;
+        }
+        return false;
+    }
+
     public static boolean rookMove(int x, int y, int dx, int dy, Board board) {
         if (dy == 0) {
             for (int i = 1; i < Math.abs(dx); i++) {
@@ -161,6 +176,9 @@ public class Moves {
     }
 
     public static boolean wyvernMove(int x, int y, int dx, int dy, Board board){
+        if ((Math.abs(dy) == 1 && dx == 0) || (Math.abs(dx) == 1 && dy == 0)){
+            return true;
+        }
         boolean a = false;
         a = (a || (Board.getLocationFromCords(x, y + 1) >= 0 && Board.getLocationFromCords(x, y + 1) < 64 && board.getTile(Board.getLocationFromCords(x, y + 1)).getPiece() == null && Moves.bishopMove(x, y + 1, dx, dy - 1, board)));
         a = (a || (Board.getLocationFromCords(x, y - 1) >= 0 && Board.getLocationFromCords(x, y - 1) < 64 && board.getTile(Board.getLocationFromCords(x, y - 1)).getPiece() == null && Moves.bishopMove(x, y - 1, dx, dy + 1, board)));

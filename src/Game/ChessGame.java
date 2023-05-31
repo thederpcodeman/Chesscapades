@@ -90,7 +90,6 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
     public void setupPieces() {
         ruth = !((int) (Math.random() * 6.0) == 1);
-        ruth = false;
         re = ((int) (Math.random() * 10.3) == 1);
         recheck = false;
         chaos = ((int) (Math.random() * 20.0) == 1);

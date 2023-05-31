@@ -24,19 +24,9 @@ public class Bull extends Piece {
 
     @Override
     public boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal) {
-        int xoffset = newX - x;
-        int yoffset = newY - y;
-        if (((Math.abs(xoffset) == 3) && (Math.abs(yoffset) == 4)) || ((Math.abs(xoffset) == 4) && (Math.abs(yoffset) == 3))){
-            Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
-            if(destination.isOccupied())
-            {
-                if(destination.getPiece().getColor() == getColor())
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        return false;
+        int dx = newX - x;
+        int dy = newY - y;
+        Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
+        return (Moves.allClear(getColor(), destination) && Moves.bullMove(dx, dy));
     }
 }

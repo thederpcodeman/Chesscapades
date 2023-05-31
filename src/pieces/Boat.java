@@ -27,61 +27,6 @@ public class Boat extends Piece {
         int dx = newX - x;
         int dy = newY - y;
         Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
-        if(destination.isOccupied()) {
-            if(destination.getPiece().getColor() == getColor())
-            {
-                return false;
-            }
-        }
-        if (dy == 0 || dx == 0){
-            return false;
-        }
-        if (dx == 1){
-            if (dy >= 1){
-                boolean c = true;
-                for (int i = 1; i < dy; i++){
-                    if (board.getTile(Board.getLocationFromCords(newX, (int)(y + i))).getPiece() != null){
-                        c = false;
-                    }
-                }
-                if (c){
-                    return true;
-                }
-            } else if (dy <= 1){
-                boolean c = true;
-                for (int i = -1; i > dy; i--){
-                    if (board.getTile(Board.getLocationFromCords(newX, (int)(y + i))).getPiece() != null){
-                        c = false;
-                    }
-                }
-                if (c){
-                    return true;
-                }
-            }
-        }
-        if (dx == -1){
-            if (dy >= 1){
-                boolean c = true;
-                for (int i = 1; i < dy; i++){
-                    if (board.getTile(Board.getLocationFromCords(newX, (int)(y + i))).getPiece() != null){
-                        c = false;
-                    }
-                }
-                if (c){
-                    return true;
-                }
-            } else if (dy <= 1){
-                boolean c = true;
-                for (int i = -1; i > dy; i--){
-                    if (board.getTile(Board.getLocationFromCords(newX, (int)(y + i))).getPiece() != null){
-                        c = false;
-                    }
-                }
-                if (c){
-                    return true;
-                }
-            }
-        }
-        return false;
+        return (Math.abs(dx) <= 1 && Moves.allClear(getColor(), destination) && Moves.gryphonMove(x, y, dx, dy, board));
     }
 }

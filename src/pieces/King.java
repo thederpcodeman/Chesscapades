@@ -29,12 +29,8 @@ public class King extends Piece {
     @Override
     public boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal) {
         Tile destinationTile = board.getTile(board.getLocationFromCords(newX, newY));
-        if(destinationTile.isOccupied())
-        {
-            if(destinationTile.getPiece().getColor() == getColor())
-            {
-                return false;
-            }
+        if (!Moves.allClear(getColor(), destinationTile)){
+            return false;
         }
         int dx = Math.abs(newX - x);
         int dy = Math.abs(newY - y);

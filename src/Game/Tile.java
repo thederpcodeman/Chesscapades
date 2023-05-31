@@ -119,6 +119,9 @@ public class Tile extends JPanel {
         {
             return false;
         }
+        if (location == getLocationOnBoard()) {
+            return false;
+        }
         int x = getLocationOnBoard() % 8;
         int y = getLocationOnBoard() / 8;
 
