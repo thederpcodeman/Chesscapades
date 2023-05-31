@@ -33,9 +33,6 @@ public class Cloning {
         return new Pawn(color);
     }
     public static Piece Advanced(int color){
-        if (true){
-            return new Buffalo(color);
-        }
 
         int ran = (int) (Math.random() * 12);
         if (ran == 0){
