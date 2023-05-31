@@ -28,7 +28,7 @@ public class Moves {
     }
 
     public static boolean bullMove(int dx, int dy){
-        if (((Math.abs(dx) == 4) && (Math.abs(dy) == 3)) || ((Math.abs(dx) == 3) && (Math.abs(dy) == 4))){
+        if (((Math.abs(dx) == 2) && (Math.abs(dy) == 3)) || ((Math.abs(dx) == 3) && (Math.abs(dy) == 2))){
             return true;
         }
         return false;
