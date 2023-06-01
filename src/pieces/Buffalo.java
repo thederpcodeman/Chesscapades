@@ -14,9 +14,9 @@ public class Buffalo extends Piece {
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/bKnight.png"));
+            return(new ImageIcon("src/resources/bBuffalo.png"));
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wKnight.png"));
+            return(new ImageIcon("src/resources/wBuffalo.png"));
         } else {
             return null;
         }

@@ -14,9 +14,9 @@ public class Quetzacoatl extends Piece {
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/bPsus.png"));
+            return(new ImageIcon("src/resources/bQuetz.png"));
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wPsus.png"));
+            return(new ImageIcon("src/resources/wQuetz.png"));
         } else {
             return null;
         }
