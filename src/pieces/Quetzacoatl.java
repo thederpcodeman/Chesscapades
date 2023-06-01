@@ -8,7 +8,7 @@ import javax.swing.*;
 public class Quetzacoatl extends Piece {
     public Quetzacoatl(int color) {
         super(color);
-        value = 5;
+        value = 9;
     }
 
     @Override
