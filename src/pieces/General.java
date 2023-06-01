@@ -28,24 +28,12 @@ public class General extends King{
     @Override
     public boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal) {
         Tile destinationTile = board.getTile(board.getLocationFromCords(newX, newY));
-        if(destinationTile.isOccupied())
-        {
-            if(destinationTile.getPiece().getColor() == getColor())
-            {
-                return false;
-            }
+        if (!Moves.allClear(getColor(), destinationTile)){
+            return false;
         }
         int dx = Math.abs(newX - x);
         int dy = Math.abs(newY - y);
 
-        if (((Math.abs(dx) == 1) && (Math.abs(dy) == 2)) || ((Math.abs(dx) == 2) && (Math.abs(dy) == 1))) {
-            return true;
-        }
-
-        if(dx <= 1 && dy <= 1)
-        {
-            return true;
-        }
-        return false;
+        return ((dx <= 1 && dy <= 1) || Moves.knightMove(dx, dy)) ;
     }
 }
