@@ -515,12 +515,15 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     @Override
     public void mousePressed(MouseEvent e) {
         Tile[] tiles = chessBoard.getTiles();
+        Tile tile = (Tile) chessBoard.getComponentAt(e.getX(), e.getY());
         if (!tLocked){
             for (Tile rTile : tiles) {
                 rTile.setBackground(rTile.getColor());
             }
+            if (selectedTile != null && (!selectedTile.isLegalMove(tile.getLocationOnBoard(), chessBoard, false))){
+                selectedTile = null;
+            }
         }
-        Tile tile = (Tile) chessBoard.getComponentAt(e.getX(), e.getY());
         Piece piece = tile.getPiece();
         if (piece != null && !(selectedTile != null && selectedTile.isLegalMove(tile.getLocationOnBoard(), chessBoard, false))) {
             if (piece.getColor() == turn && !tLocked) {
