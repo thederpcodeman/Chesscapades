@@ -438,16 +438,27 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             }
 
             Tile[] enemyTiles = chessBoard.getOccupiedTilesOfColor(turn);
+            int wNumPieces = 0;
+            int bNumPieces = 0;
             boolean wKing = false;
             boolean bKing = false;
-            for (int square = 0; square < 64; square ++){
-                if ((chessBoard.getTile(square).getPiece() != null ) && (chessBoard.getTile(square).getPiece().royal)){
-                    if (chessBoard.getTile(square).getPiece().getColor() == 1){
-                        wKing = true;
-                    } else{
-                        bKing = true;
-                    }
+            for (Tile i : chessBoard.getOccupiedTilesOfColor(0)){
+                bNumPieces ++;
+                if (i.getPiece().royal){
+                    bKing = true;
                 }
+            }
+            if (bNumPieces <= 1){
+                bKing = false;
+            }
+            for (Tile i : chessBoard.getOccupiedTilesOfColor(1)){
+                wNumPieces ++;
+                if (i.getPiece().royal){
+                    wKing = true;
+                }
+            }
+            if (wNumPieces <= 1){
+                wKing = false;
             }
             if (!wKing){
                 if (!bKing){
