@@ -5,7 +5,7 @@ import pieces.*;
 
 public class Cloning {
     public static Piece Common(int color){
-        int ran = (int) (Math.random() * 11);
+        int ran = (int) (Math.random() * 10);
         if (ran == 0){
             return new Elephant(color);
         } else if (ran == 1){
@@ -26,8 +26,6 @@ public class Cloning {
             return new Boat(color);
         }  else if (ran == 9) {
             return new Spider(color);
-        }  else if (ran == 10) {
-            return new Buffalo(color);
         }
         return null;
     }
@@ -35,17 +33,15 @@ public class Cloning {
         return new Pawn(color);
     }
     public static Piece Advanced(int color){
-        int ran = (int) (Math.random() * 12);
+        int ran = (int) (Math.random() * 11);
         if (ran == 0){
-            return new Amazon(color);
-        } else if (ran == 1){
             return new Archbishop(color);
-        } else if (ran == 2){
+        } else if (ran == 1){
             return new Chancellor(color);
-        } else if (ran == 3){
+        } else if (ran == 2){
             return Cloning.Royal(color);
-        } else if (ran == 4){
-            return new Lion(color);
+        } else if (ran == 3 || ran == 4){
+            return Cloning.Super(color);
         } else if (ran == 5){
             return new Queen(color);
         } else if (ran == 6){
@@ -55,10 +51,22 @@ public class Cloning {
         } else if (ran == 8){
             return new Wyvern(color);
         } else if (ran == 9){
-            return new Greatwyrm(color);
-        } else if (ran == 10){
             return new Bladesinger(color);
-        } else if (ran == 11){
+        } else if (ran == 10) {
+            return new Buffalo(color);
+        }
+        return null;
+    }
+
+    public static Piece Super(int color){
+        int ran = (int) (Math.random() * 4);
+        if (ran == 0){
+            return new Amazon(color);
+        } else if (ran == 1){
+            return new Lion(color);
+        } else if (ran == 2){
+            return new Greatwyrm(color);
+        } else if (ran == 3){
             return new Quetzacoatl(color);
         }
         return null;

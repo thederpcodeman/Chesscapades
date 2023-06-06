@@ -329,8 +329,10 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 }
             }
         }
+
+        // ensures* fairness*
         boolean unfair = true;
-        int max = 6;
+        int max = 20;
         while (unfair) {
             int bVal = 0;
             int wVal = 1;
@@ -346,10 +348,11 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     wVal += 5;
                 }
             }
-            if (Math.abs(bVal - wVal) > 6){
+            if (Math.abs(bVal - wVal) > 5){
                 max -= 1;
                 if (max <= 0){
                     unfair = false;
+                    System.out.println("BS");
                 }
                 int rteam = 0;
                 int r = (int) (Math.random() * 8);

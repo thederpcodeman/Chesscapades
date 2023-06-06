@@ -8,7 +8,7 @@ import javax.swing.*;
 public class Buffalo extends Piece {
     public Buffalo(int color) {
         super(color);
-        value = 6;
+        value = 7;
     }
 
     @Override
