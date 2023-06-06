@@ -347,7 +347,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 if (t.getPiece().royal){
                     wVal += 5;
                 }
-            }
+            }//
             if (Math.abs(bVal - wVal) > 5){
                 max -= 1;
                 if (max <= 0){
