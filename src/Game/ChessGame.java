@@ -352,7 +352,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 if (t.getPiece().royal){
                     wVal += 5;
                 }
-            }//
+            }
             if (Math.abs(bVal - wVal) > 5){
                 max -= 1;
                 if (max <= 0){
@@ -376,12 +376,40 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
         // modifiers
         if (Math.random() * 7 == 1){
+            Tile sel;
+            int tries = 10;
+            while (tries > 0){
+                tries --;
+                Tile[] tot = chessBoard.getOccupiedTilesOfColor(1);
+                sel = tot[(int)(Math.random() * tot.length)];
+                if (!sel.getPiece().royal){
+                    sel.getPiece().bomb = true;
+                    tries = 0;
+                }
+            }
+            tries = 10;
+            while (tries > 0){
+                tries --;
+                Tile[] tot = chessBoard.getOccupiedTilesOfColor(0);
+                sel = tot[(int)(Math.random() * tot.length)];
+                if (!sel.getPiece().royal){
+                    sel.getPiece().bomb = true;
+                    tries = 0;
+                }
+            }
+
+
+
+        }
+
+        if (Math.random() * 7 == 1){
             for (Tile i : chessBoard.getOccupiedTiles()){
                 if (i.getPiece() != null && !(i.getPiece() instanceof Pawn)){
                     i.getPiece().royal = true;
                 }
             }
         }
+
         if (Math.random() * 7 == 1){
             epic = true;
             for (Tile i : chessBoard.getOccupiedTiles()){
@@ -420,6 +448,11 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     obliterate(start.getLocationOnBoard(), ks, ps);
                 }
 
+            } else if ((chessBoard.getTile(location).getPiece() != null) && (chessBoard.getTile(location).getPiece().bomb) ) {
+                nuke(location, false, true);
+                if (ranged == 0){
+                    obliterate(start.getLocationOnBoard(), false, true);
+                }
             }
 
             if (bStab && start.getPiece() != null){
@@ -656,7 +689,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         }
     }
     public void obliterate(int square, boolean kingSlayer, boolean pawnSlayer){
-        if ( (chessBoard.getTile(square) != null) && (chessBoard.getTile(square).getPiece() != null) && (kingSlayer || !(chessBoard.getTile(square).getPiece() instanceof King)) && (pawnSlayer || !(chessBoard.getTile(square).getPiece() instanceof Pawn))) {
+        if ( (chessBoard.getTile(square) != null) && (chessBoard.getTile(square).getPiece() != null) && (kingSlayer || !(chessBoard.getTile(square).getPiece().royal)) && (pawnSlayer || !(chessBoard.getTile(square).getPiece() instanceof Pawn))) {
             chessBoard.getTile(square).setPiece(null);
         }
     }

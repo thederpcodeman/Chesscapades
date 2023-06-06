@@ -12,8 +12,10 @@ public abstract class Piece {
     public boolean royal;
     public boolean wall;
     public int value;
+    public boolean bomb;
 
     public Piece(int color) {
+        bomb = false;
         value = 0;
         royal = false;
         wall = false;
