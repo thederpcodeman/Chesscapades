@@ -54,6 +54,9 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
     public static boolean ruth;
 
+    public boolean decay;
+
+    public int cooldown;
 
     public ChessGame(int size){
         Dimension boardSize = new Dimension(size, size);
@@ -89,6 +92,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
+        cooldown = 0;
+        decay = !((int) (Math.random() * 7.0) == 1);
         ruth = !((int) (Math.random() * 6.0) == 1);
         re = ((int) (Math.random() * 10.3) == 1);
         recheck = false;
@@ -98,7 +103,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         bStab = ((int) (Math.random() * 5.5) == 1);
         touchRule = ((int) (Math.random() * 8) == 1);
         tLocked = false;
-        myst = ((int) (Math.random() * 8.5) == 1);
+        myst = ((int) (Math.random() * 8.85) == 1);
         if (myst && !touchRule){
             touchRule = ((int) (Math.random() * 2) == 1);
         }
@@ -110,7 +115,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         } else {
             atomic -= 15;//
         }
-        if ((Math.random() * 5) == 1){
+        if ((int) (Math.random() * 5.2) == 1){
             ranged = 1;
         } else {
             ranged = 0;
@@ -474,7 +479,25 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 playGoodishMove();
                 turn = 1 - turn;
                 recheck = false;
+            }
 
+            if (decay){
+                cooldown += 1;
+                if (cooldown == 5){
+                    cooldown = 0;
+                    Tile[] wh = chessBoard.getOccupiedTilesOfColor(1);
+                    Tile sel = wh[((int) (Math.random() * wh.length))];
+                    if (sel.getPiece().royal){
+                        sel = wh[((int) (Math.random() * wh.length))];
+                    }
+                    sel.setPiece(null);
+                    Tile[] bl = chessBoard.getOccupiedTilesOfColor(0);
+                    sel = bl[((int) (Math.random() * bl.length))];
+                    if (sel.getPiece().royal){
+                        sel = bl[((int) (Math.random() * bl.length))];
+                    }
+                    sel.setPiece(null);
+                }
             }
 
             Tile[] enemyTiles = chessBoard.getOccupiedTilesOfColor(turn);
