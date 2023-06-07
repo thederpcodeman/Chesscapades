@@ -58,6 +58,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
     public int cooldown;
 
+    public int gravity;
+
     public ChessGame(int size){
         Dimension boardSize = new Dimension(size, size);
 
@@ -92,6 +94,10 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
+        gravity = (((int) (Math.random() * 3) -1));
+        if ((int) (Math.random() * 7.0) != 1){
+            gravity = 0;
+        }
         cooldown = 0;
         decay = !((int) (Math.random() * 7.0) == 1);
         ruth = !((int) (Math.random() * 6.0) == 1);
@@ -481,6 +487,17 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 move.end.setPiece(null);
             }
 
+            if (gravity == 1){
+                if (move.end.getPiece() != null && Board.getXFromLocation(move.end.getLocationOnBoard()) < 7 && chessBoard.getTile(move.end.getLocationOnBoard() + 1).getPiece() == null){
+                    chessBoard.getTile(move.end.getLocationOnBoard() + 1).setPiece(move.end.getPiece());
+                    move.end.setPiece(null);
+                }
+            }else if (gravity == -1){
+                if (move.end.getPiece() != null && Board.getXFromLocation(move.end.getLocationOnBoard()) > 0 && chessBoard.getTile(move.end.getLocationOnBoard() - 1).getPiece() == null){
+                    chessBoard.getTile(move.end.getLocationOnBoard() - 1).setPiece(move.end.getPiece());
+                    move.end.setPiece(null);
+                }
+            }
 
 
             start.setBackground(start.getColor());
@@ -490,6 +507,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     rTile.setBackground(rTile.getColor());
                 }
             }
+
+
 
             AudioPlayer.play("src/resources/audio/move-self.wav");
             turn = 1 - turn;
