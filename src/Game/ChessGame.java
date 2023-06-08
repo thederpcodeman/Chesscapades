@@ -99,7 +99,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             gravity = 0;
         }
         cooldown = 0;
-        decay = !((int) (Math.random() * 7.0) == 1);
+        decay = ((int) (Math.random() * 7.0) == 1);
         ruth = !((int) (Math.random() * 6.0) == 1);
         re = ((int) (Math.random() * 10.3) == 1);
         recheck = false;
@@ -128,7 +128,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         }
 
         AudioPlayer.play("src/resources/audio/startgame.wav");
-        int rand = (int) (Math.random() * 8);
+        int rand = (int) (Math.random() * 9);
         if (rand == 1 || rand == 0){
              //setup black pieces
              chessBoard.getTile(0).setPiece(Cloning.Common(0));
@@ -262,6 +262,35 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             chessBoard.getTile(59).setPiece(Cloning.rPawn(1));
             chessBoard.getTile(60).setPiece(Cloning.rPawn(1));
             for (int i = 40; i < 56; i++) {
+                Tile tile = (Tile) chessBoard.getComponent(i);
+                tile.setPiece(Cloning.rPawn(1));
+            }
+        }else if (rand == 6) {
+
+            //B.S.O.P. chess
+
+            //setup black pieces
+            chessBoard.getTile(0).setPiece(Cloning.Super(0));
+            chessBoard.getTile(7).setPiece(Cloning.Super(0));
+            chessBoard.getTile(1).setPiece(Cloning.Super(0));
+            chessBoard.getTile(6).setPiece(Cloning.Super(0));
+            chessBoard.getTile(2).setPiece(Cloning.Super(0));
+            chessBoard.getTile(5).setPiece(Cloning.Super(0));
+            chessBoard.getTile(3).setPiece(Cloning.Super(0));
+            chessBoard.getTile(4).setPiece(Cloning.Royal(0));
+            for (int i = 8; i < 16; i++) {
+                chessBoard.getTile(i).setPiece(Cloning.rPawn(0));
+            }
+            //setup white pieces
+            chessBoard.getTile(56).setPiece(Cloning.Super(1));
+            chessBoard.getTile(63).setPiece(Cloning.Super(1));
+            chessBoard.getTile(57).setPiece(Cloning.Super(1));
+            chessBoard.getTile(62).setPiece(Cloning.Super(1));
+            chessBoard.getTile(58).setPiece(Cloning.Super(1));
+            chessBoard.getTile(61).setPiece(Cloning.Super(1));
+            chessBoard.getTile(59).setPiece(Cloning.Super(1));
+            chessBoard.getTile(60).setPiece(Cloning.Royal(1));
+            for (int i = 48; i < 56; i++) {
                 Tile tile = (Tile) chessBoard.getComponent(i);
                 tile.setPiece(Cloning.rPawn(1));
             }
