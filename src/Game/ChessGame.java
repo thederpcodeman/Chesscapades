@@ -50,8 +50,6 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
     public static boolean epic;
 
-    public static boolean chaos;
-
     public static boolean ruth;
 
     public boolean decay;
@@ -103,7 +101,6 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         ruth = !((int) (Math.random() * 6.0) == 1);
         re = ((int) (Math.random() * 10.3) == 1);
         recheck = false;
-        chaos = ((int) (Math.random() * 25.0) == 1);
         epic = false;
         bTrayal = ((int) (Math.random() * 6.5) == 1);
         bStab = ((int) (Math.random() * 5.5) == 1);
@@ -729,12 +726,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 return;
             }
         }
-        boolean ch = (chaos && selectedTile != null && tile != null && selectedTile.isLegalMove(tile.getLocationOnBoard(), chessBoard, false));
         playMove(new moveInfo(selectedTile, tile, chessBoard));
-        if (ch){
-            playGoodishMove();
-            playGoodishMove();
-        }
     }
     public void obliterate(int square, boolean kingSlayer, boolean pawnSlayer){
         if ( (chessBoard.getTile(square) != null) && (chessBoard.getTile(square).getPiece() != null) && (kingSlayer || !(chessBoard.getTile(square).getPiece().royal)) && (pawnSlayer || !(chessBoard.getTile(square).getPiece() instanceof Pawn))) {
