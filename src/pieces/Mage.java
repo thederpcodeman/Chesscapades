@@ -6,17 +6,19 @@ import Game.Tile;
 import javax.swing.*;
 
 public class Mage extends Piece {
+    public int mana;
     public Mage(int color) {
         super(color);
         value = 7;
+        mana = -1;
     }
 
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/bUnknown.png"));
+            return(new ImageIcon("src/resources/bMage.png"));
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wUnknown.png"));
+            return(new ImageIcon("src/resources/wMage.png"));
         } else {
             return null;
         }
@@ -28,9 +30,26 @@ public class Mage extends Piece {
 
         Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
         if (Math.abs(dy) <= 1 && Math.abs(dx) <= 1){
-            System.out.println("ahh");
             return (destination.getPiece() == null);
         }
-        return (dx == 0 && Moves.allClear(getColor(), destination) && (Math.abs(dy) == dy * getForwardDirection()));
+        if (board.getTile(Board.getLocationFromCords(newX, newY)).getPiece() == null){
+            return (false);
+        }
+        if (dx == 0){
+            if (Moves.allClear(getColor(), destination) && (Math.abs(dy) <= mana)){
+                if (forReal){
+                    mana -= Math.abs(dy) + 1;
+                }
+                return true;
+            }
+        }else if (dy == 0){
+            if (Moves.allClear(getColor(), destination) && (Math.abs(dx) <= mana)){
+                if (forReal){
+                    mana -= Math.abs(dx) + 1;
+                }
+                return true;
+            }
+        }
+        return false;
     }
 }

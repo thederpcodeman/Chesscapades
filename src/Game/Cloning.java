@@ -5,7 +5,7 @@ import pieces.*;
 
 public class Cloning {
     public static Piece Common(int color){
-        int ran = (int) (Math.random() * 10);
+        int ran = (int) (Math.random() * 11);
         if (ran == 0){
             return new Elephant(color);
         } else if (ran == 1){
@@ -26,6 +26,8 @@ public class Cloning {
             return new Boat(color);
         }  else if (ran == 9) {
             return new Spider(color);
+        }  else if (ran == 10) {
+        return new Mage(color);
         }
         return null;
     }
@@ -100,7 +102,7 @@ public class Cloning {
         return null;
     }
     public static Piece Fear(int color){
-        int ran = (int) (Math.random() * 24);
+        int ran = (int) (Math.random() * 25);
         if (ran == 0){
             return new Elephant(color);
         } else if (ran == 1){
@@ -149,6 +151,8 @@ public class Cloning {
             return new Checker(color);
         } else if (ran == 23){
             return new Buffalo(color);
+        } else if (ran == 24){
+            return new Mage(color);
         }
         return (null);
     }
