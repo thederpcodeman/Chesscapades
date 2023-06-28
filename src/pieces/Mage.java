@@ -9,7 +9,7 @@ public class Mage extends Piece {
     public int mana;
     public Mage(int color) {
         super(color);
-        value = 7;
+        value = 5;
         mana = -1;
     }
 
