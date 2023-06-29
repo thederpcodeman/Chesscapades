@@ -33,8 +33,8 @@ public class moveInfo {
             score -= 1000;
         }
         Piece store = end.getPiece();
-        end.setPiece(start.getPiece());
-        start.setPiece(null);
+        end.quietlyUpdatePiece(start.getPiece());
+        start.quietlyUpdatePiece(null);
         for (Tile foe : board.getOccupiedTilesOfColor(1 - end.getPiece().getColor())){
             if (foe.isLegalMove(end.getLocationOnBoard(), board, false)){
                 score -= end.getPiece().value * 5;
@@ -55,8 +55,8 @@ public class moveInfo {
                 }
             }
         }
-        start.setPiece(end.getPiece());
-        end.setPiece(store);
+        start.quietlyUpdatePiece(end.getPiece());
+        end.quietlyUpdatePiece(store);
         score += Math.random() * 5;
         return score;
     }
