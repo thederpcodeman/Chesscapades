@@ -4,7 +4,7 @@ import pieces.*;
 
 public class Cloning {
     public static Piece Common(int color){
-        int ran = (int) (Math.random() * 11);
+        int ran = (int) (Math.random() * 12);
         if (ran == 0){
             return new Elephant(color);
         } else if (ran == 1){
@@ -27,6 +27,8 @@ public class Cloning {
             return new Spider(color);
         }  else if (ran == 10) {
         return new Mage(color);
+        }  else if (ran == 11) {
+            return new Bow(color);
         }
         return null;
     }
@@ -73,13 +75,15 @@ public class Cloning {
         return null;
     }
     public static Piece Royal(int color){
-        int ran = (int) (Math.random() * 4);
+        int ran = (int) (Math.random() * 5);
         if (ran == 0 || ran == 1){
             return new King(color);
         } else if (ran == 2){
             return new General(color);
         } else if (ran == 3){
             return new Tyrant(color);
+        } else if (ran == 4){
+            return new Empress(color);
         }
         return null;
     }

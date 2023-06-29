@@ -8,7 +8,7 @@ import javax.swing.*;
 public class Tyrant extends Piece {
     public Tyrant(int color) {
         super(color);
-        value = 4;
+        value = 3;
         this.royal = true;
     }
 
