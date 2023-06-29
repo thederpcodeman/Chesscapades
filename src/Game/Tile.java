@@ -76,8 +76,11 @@ public class Tile extends JPanel {
         }
         //check for pawn being on the top or bottom rows
 
-        if ( (getPiece() instanceof Pawn) && (((Board.getYFromLocation(getLocationOnBoard()) == 0) && (((Pawn) getPiece()).getForwardDirection() == -1)) || ((Board.getYFromLocation(getLocationOnBoard()) == 7) && (((Pawn) getPiece()).getForwardDirection() == 1)))){
+        if ( (getPiece() instanceof Pawn && (((Board.getYFromLocation(getLocationOnBoard()) == 0) && (( getPiece()).getForwardDirection() == -1)) || ((Board.getYFromLocation(getLocationOnBoard()) == 7) && (( getPiece()).getForwardDirection() == 1))))){
             promPawn();
+        }else if ( (getPiece() instanceof Mage && (((Board.getYFromLocation(getLocationOnBoard()) == 0) && (( getPiece()).getForwardDirection() == -1)) || ((Board.getYFromLocation(getLocationOnBoard()) == 7) && (( getPiece()).getForwardDirection() == 1))))){
+            setPiece(new Archmage(getPiece().getColor()));
+            return;
         }
         revalidate();
         repaint();
