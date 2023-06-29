@@ -5,8 +5,8 @@ import Game.Tile;
 
 import javax.swing.*;
 
-public class Wyvern extends Piece {
-    public Wyvern(int color) {
+public class Manticore extends Piece {
+    public Manticore(int color) {
         super(color);
         value = 8;
     }

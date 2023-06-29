@@ -1,6 +1,5 @@
 package Game;
 
-import com.sun.org.apache.bcel.internal.generic.SWITCH;
 import pieces.*;
 
 public class Cloning {
@@ -51,7 +50,7 @@ public class Cloning {
         } else if (ran == 7){
             return new Pegasus(color);
         } else if (ran == 8){
-            return new Wyvern(color);
+            return new Manticore(color);
         } else if (ran == 9){
             return new Bladesinger(color);
         } else if (ran == 10) {
@@ -140,7 +139,7 @@ public class Cloning {
         } else if (ran == 17) {
             return new Pegasus(color);
         } else if (ran == 18) {
-            return new Wyvern(color);
+            return new Manticore(color);
         } else if (ran == 19) {
             return new Greatwyrm(color);
         } else if (ran == 20) {
