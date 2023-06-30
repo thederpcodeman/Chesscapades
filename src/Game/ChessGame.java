@@ -501,7 +501,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 }
             }
 
-            if (((ranged == 0) || (move.end.getPiece() == null))  && !(start.getPiece() != null && (start.getPiece() instanceof Mage || start.getPiece() instanceof Archmage) && move.end.getPiece() != null)){
+            if (((ranged == 0 && !(start.getPiece() instanceof Mage || start.getPiece() instanceof Archmage)) || (move.end.getPiece() == null))){
                 move.end.setPiece(start.getPiece());
                 start.setPiece(null);
                 if (bTrayal && move.end.getPiece() != null && move.end.getPiece().royal == false && (int) (Math.random() * 5) == 1){
