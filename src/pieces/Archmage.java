@@ -11,7 +11,7 @@ public class Archmage extends Piece {
         super(color);
         value = 8;
         mana = -1;
-        name = "High Mage";
+        name = "High Mage (mana: ∞)";
     }
 
     @Override

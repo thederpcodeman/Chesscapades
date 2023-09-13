@@ -1,5 +1,4 @@
 import Game.ChessGame;
-import Game.Stockfish;
 
 import javax.swing.*;
 import java.awt.*;

@@ -674,7 +674,26 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         if (tile.getPiece() == null){
             setTitle("Chesscapades");
         }else{
-            setTitle(tile.getPiece().name);
+            String newname = "";
+            if (myst){
+                newname = "Unknown Piece";
+                if (tile.getPiece().royal){
+                    newname += " [Royal]";
+                }
+
+            }else{
+                newname = tile.getPiece().name;
+                if (tile.getPiece() instanceof Mage){
+                    newname += " (mana: " + (((Mage) tile.getPiece()).mana - 1) + ")";
+                }
+                if (tile.getPiece().royal){
+                    newname += " [Royal]";
+                }
+                if (tile.getPiece().wall){
+                    newname += " [Protected]";
+                }
+            }
+            setTitle(newname);
         }
 
         if (!tLocked){
