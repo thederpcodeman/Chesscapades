@@ -12,6 +12,7 @@ public class Rook extends Piece {
         super(color);
         canCastle = true;
         value = 5;
+        name = "Rook";
     }
 
     @Override

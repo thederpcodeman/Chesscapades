@@ -10,6 +10,7 @@ public class Chancellor extends Piece{
     public Chancellor(int color) {
         super(color);
         value = 9;
+        name = "Chancellor";
     }
 
     @Override

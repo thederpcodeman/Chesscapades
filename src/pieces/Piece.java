@@ -13,8 +13,10 @@ public abstract class Piece {
     public boolean wall;
     public int value;
     public boolean bomb;
+    public String name;
 
     public Piece(int color) {
+        name = "Piece";
         bomb = false;
         value = 0;
         royal = false;

@@ -9,6 +9,7 @@ public class Greatwyrm extends Piece {
     public Greatwyrm(int color) {
         super(color);
         value = 14;
+        name = "Greatwyrm";
     }
 
     @Override

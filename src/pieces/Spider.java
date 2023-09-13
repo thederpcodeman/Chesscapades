@@ -9,6 +9,7 @@ public class Spider extends Piece {
     public Spider(int color) {
         super(color);
         value = 5;
+        name = "Spider";
     }
 
     @Override

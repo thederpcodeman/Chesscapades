@@ -11,6 +11,7 @@ public class Pawn extends Piece {
     public Pawn(int color) {
         super(color);
         value = 1;
+        name = "Pawn";
     }
 
     @Override

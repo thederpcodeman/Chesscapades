@@ -9,6 +9,7 @@ public class Pegasus extends Piece {
     public Pegasus(int color) {
         super(color);
         value = 5;
+        name = "Pegasus";
     }
 
     @Override

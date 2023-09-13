@@ -9,6 +9,7 @@ public class Quetzacoatl extends Piece {
     public Quetzacoatl(int color) {
         super(color);
         value = 9;
+        name = "Quetzacoatl";
     }
 
     @Override

@@ -11,6 +11,7 @@ public class Pikeman extends Pawn {
     public Pikeman(int color) {
         super(color);
         value = 1;
+        name = "Pikeman (pawn)";
     }
 
     @Override

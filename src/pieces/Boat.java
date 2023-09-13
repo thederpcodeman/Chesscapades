@@ -9,6 +9,7 @@ public class Boat extends Piece {
     public Boat(int color) {
         super(color);
         value = 4;
+        name = "Ship";
     }
 
     @Override

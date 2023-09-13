@@ -9,7 +9,8 @@ public class Buffalo extends Piece {
     public Buffalo(int color) {
         super(color);
         value = 7;
-    }//
+        name = "Buffalo";
+    }
 
     @Override
     public ImageIcon getImageIcon() {

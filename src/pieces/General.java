@@ -12,6 +12,7 @@ public class General extends King{
         super(color);
         canCastle = false;
         value = 5;
+        name = "General";
     }
 
     @Override

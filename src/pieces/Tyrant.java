@@ -10,6 +10,7 @@ public class Tyrant extends Piece {
         super(color);
         value = 3;
         this.royal = true;
+        name = "Tyrant";
     }
 
     @Override

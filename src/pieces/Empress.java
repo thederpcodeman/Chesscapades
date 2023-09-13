@@ -10,6 +10,7 @@ public class Empress extends Piece {
         super(color);
         value = 6;
         royal = true;
+        name = "Empress";
     }
 
     @Override

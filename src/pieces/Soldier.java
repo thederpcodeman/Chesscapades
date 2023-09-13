@@ -8,6 +8,7 @@ import javax.swing.*;
 public class Soldier extends Pawn{
     public Soldier(int color){
         super(color);
+        name = "Soldier (pawn)";
     }
 
     public ImageIcon getImageIcon() {

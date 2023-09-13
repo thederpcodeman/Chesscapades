@@ -13,6 +13,7 @@ public class King extends Piece {
         royal = true;
         canCastle = true;
         value = 3;
+        name = "King";
     }
 
     @Override

@@ -10,6 +10,7 @@ public class Checker extends Pawn{
     public Checker(int color){
         super(color);
         value = 2;
+        name = "Checker (pawn)";
     }
 
     public ImageIcon getImageIcon() {

@@ -9,6 +9,7 @@ public class Bladesinger extends Piece {
     public Bladesinger(int color) {
         super(color);
         value = 6;
+        name = "Assassin";
     }
 
     @Override

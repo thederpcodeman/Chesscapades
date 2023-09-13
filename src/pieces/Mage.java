@@ -11,6 +11,7 @@ public class Mage extends Piece {
         super(color);
         value = 5;
         mana = -1;
+        name = "Mage";
     }
 
     @Override

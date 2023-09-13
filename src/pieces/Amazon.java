@@ -9,6 +9,7 @@ public class Amazon extends Piece {
     public Amazon(int color) {
         super(color);
         value = 12;
+        name = "Amazon";
     }
 
     @Override

@@ -9,6 +9,7 @@ public class Archbishop extends Piece {
     public Archbishop(int color) {
         super(color);
         value = 7;
+        name = "Archbishop";
     }
 
     @Override

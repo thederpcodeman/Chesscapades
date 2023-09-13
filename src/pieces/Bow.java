@@ -9,6 +9,7 @@ public class Bow extends Piece {
     public Bow(int color) {
         super(color);
         value = 7;
+        name = "Archer";
     }
 
     @Override

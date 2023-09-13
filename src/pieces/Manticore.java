@@ -9,6 +9,7 @@ public class Manticore extends Piece {
     public Manticore(int color) {
         super(color);
         value = 8;
+        name = "Manticore";
     }
 
     @Override
