@@ -545,6 +545,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     if (p.moved2 > 0) {p.moved2 -=1;}
                 } else if (checked instanceof Mage){
                     ((Mage) checked).mana += 1;
+                    chessBoard.getTile(check).setPiece(chessBoard.getTile(check).getPiece());
                 }
             }
 
