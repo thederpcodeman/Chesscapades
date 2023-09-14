@@ -323,7 +323,7 @@ public class Setup {
 
         //if Royal no protection
         for (Tile i : chessBoard.getOccupiedTiles()){
-            if (i.getPiece() != null && !(i.getPiece().royal)){
+            if (i.getPiece() != null && (i.getPiece().royal)){
                 i.getPiece().wall = false;
             }
         }

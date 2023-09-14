@@ -30,6 +30,10 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
     static final Color pRed = new Color(215, 102, 117);
 
+    static final Color wRed = new Color(144, 44, 44);
+
+    static final Color wTan = new Color(119, 132, 114);
+
     Action spaceAction;
 
     ArrayList<String> fens;
@@ -410,22 +414,34 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                         if (legalTile.getColor() == Tile.tan){
                             if (legalTile.getPiece().royal){
                                 legalTile.setBackground(rTan);
-                            }else{
+                            }else if (legalTile.getPiece().wall){
+                                legalTile.setBackground(allyTan);
+                            }else {
                                 legalTile.setBackground(allyTan);
                             }
 
                         }else {
                             if (legalTile.getPiece().royal){
                                 legalTile.setBackground(rRed);
+                            }else if (legalTile.getPiece().wall){
+                                legalTile.setBackground(allyRed);
                             }else{
                                 legalTile.setBackground(allyRed);
                             }
                         }
-                    }else if ((legalTile.getPiece() != null) && (legalTile.getPiece().getColor() != turn) && legalTile.getPiece().royal) {
-                        if (legalTile.getColor() == Tile.tan){
-                            legalTile.setBackground(pTan);
-                        }else {
-                            legalTile.setBackground(pRed);
+                    }else if ((legalTile.getPiece() != null) && (legalTile.getPiece().getColor() != turn)){
+                        if (legalTile.getPiece().royal) {
+                            if (legalTile.getColor() == Tile.tan) {
+                                legalTile.setBackground(pTan);
+                            } else {
+                                legalTile.setBackground(pRed);
+                            }
+                        }else if (legalTile.getPiece().wall) {
+                            if (legalTile.getColor() == Tile.tan) {
+                                legalTile.setBackground(wTan);
+                            } else {
+                                legalTile.setBackground(wRed);
+                            }
                         }
                     }
 
