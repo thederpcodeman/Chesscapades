@@ -38,7 +38,7 @@ public class Soldier extends Pawn{
 
         if (dy == getForwardDirection()){
             return true;
-        } else if (dy == 2 * getForwardDirection() && isOnStartingSquare(y) && board.getTile(Board.getLocationFromCords(newX, newY)).getPiece() == null){
+        } else if (dy == 2 * getForwardDirection() && isOnStartingSquare(y) && board.getTile(Board.getLocationFromCords(newX, newY - getForwardDirection())).getPiece() == null){
             if (forReal){
                 moved2 = 2;
             }
