@@ -10,7 +10,6 @@ import java.util.Collections;
 
 public class ChessGame extends JFrame implements MouseListener, MouseMotionListener {
     JLayeredPane layeredPane;
-    Stockfish stockfish = new Stockfish();
     Board chessBoard;
     Tile selectedTile;
     public static int turn;
@@ -92,7 +91,6 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         fens.add(chessBoard.computeFen(turn));
         chessBoard.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), spaceAction);
         chessBoard.getActionMap().put(spaceAction, spaceAction);
-        stockfish.startEngine();
     }
 
     public void setupPieces() {
