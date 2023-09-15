@@ -356,6 +356,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         Tile tile = (Tile) chessBoard.getComponentAt(e.getX(), e.getY());
         if (tile.getPiece() == null){
             setTitle("Chesscapades");
+            setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/wKnight.png"));
         }else{
             String newname = "";
             if (myst){
@@ -363,9 +364,14 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 if (tile.getPiece().royal){
                     newname += " [Royal]";
                 }
-
+                if (tile.getPiece().color == 1){
+                    setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/wUnknown.png"));
+                }else{
+                    setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/bUnknown.png"));
+                }
             }else{
                 newname = tile.getPiece().name;
+                setIconImage(tile.getPiece().getImageIcon().getImage());
                 if (tile.getPiece() instanceof Mage){
                     newname += " (mana: " + (((Mage) tile.getPiece()).mana - 1) + ")";
                 }
