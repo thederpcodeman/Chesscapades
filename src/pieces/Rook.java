@@ -27,6 +27,9 @@ public class Rook extends Piece {
     }
     @Override
     public boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal){
+        if (forReal){
+            canCastle = false;
+        }
         int dy = newY - y;
         int dx = newX - x;
         Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
