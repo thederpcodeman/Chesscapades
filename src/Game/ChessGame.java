@@ -34,6 +34,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     static final Color wTan = new Color(119, 132, 114);
 
     Action spaceAction;
+    Action helpAction;
 
     ArrayList<String> fens;
     public int atomic;
@@ -71,6 +72,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         layeredPane.addMouseMotionListener(this);
 
         spaceAction = new SpaceAction();
+        helpAction = new HelpAction();
 
 
 
@@ -90,7 +92,9 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         fens = new ArrayList<String>();
         fens.add(chessBoard.computeFen(turn));
         chessBoard.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), spaceAction);
+        chessBoard.getInputMap().put(KeyStroke.getKeyStroke("H"), helpAction);
         chessBoard.getActionMap().put(spaceAction, spaceAction);
+        chessBoard.getActionMap().put(helpAction, helpAction);
     }
 
     public void setupPieces() {
@@ -383,6 +387,12 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             setTitle(newname);
         }
 
+
+
+
+
+
+
         if (!tLocked){
             for (Tile rTile : tiles) {
                 rTile.setBackground(rTile.getColor());
@@ -566,6 +576,87 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         @Override
         public void actionPerformed(ActionEvent e) {
             playGoodishMove();
+        }
+    }
+    public class HelpAction extends AbstractAction {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JFrame frame = new JFrame("A Simple GUI");
+            frame.setVisible(true);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(500, 500);
+            frame.setLocation(430, 100);
+
+            JPanel panel = new JPanel();
+
+            frame.add(panel);
+
+            JLabel lbl = new JLabel("Chesscapades help menu");
+            lbl.setVisible(true);
+
+            panel.add(lbl);
+
+            String[] choices = { "Basic Rules","Randomized Rules", "Piece Specific Rules","Setup Variants"};
+
+            final JComboBox<String> cb = new JComboBox<String>(choices);
+            frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/wKnight.png"));
+            cb.setVisible(true);
+            panel.add(cb);
+
+            JButton btn = new JButton("OK");
+
+            JTextField txtfld = new JTextField();
+            txtfld.setBounds(5, 5, 280, 50);
+            panel.add(txtfld);
+            btn.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent e){
+                    if (cb.getSelectedItem().toString() == "Basic Rules"){
+                        txtfld.setText("Each player takes turns moving 1 piece, to another square,\n Royal pieces are highlighted in gold/purple.\nCapture all the opponents Royal pieces to win.");
+                        cb.removeAllItems();
+                        cb.addItem("Basic Rules");
+                        cb.addItem("Randomized Rules");
+                        cb.addItem("Piece Specific Rules");
+                        cb.addItem("Setup Variants");
+                    }else if (cb.getSelectedItem().toString() == "Randomized Rules"){
+
+                    }else if (cb.getSelectedItem().toString() == "Piece Specific Rules"){
+
+                    }else if (cb.getSelectedItem().toString() == "Setup Variants"){
+
+                    }else if (cb.getSelectedItem().toString() == "Basic rules"){
+
+                    }else if (cb.getSelectedItem().toString() == "Basic rules"){
+
+                    }else if (cb.getSelectedItem().toString() == "Basic rules"){
+
+                    }else if (cb.getSelectedItem().toString() == "Basic rules"){
+
+                    }else if (cb.getSelectedItem().toString() == "Basic rules"){
+
+                    }else if (cb.getSelectedItem().toString() == "Basic rules"){
+
+                    }else if (cb.getSelectedItem().toString() == "Basic rules"){
+
+                    }else if (cb.getSelectedItem().toString() == "Basic rules"){
+
+                    }else if (cb.getSelectedItem().toString() == "Basic rules"){
+
+                    }else if (cb.getSelectedItem().toString() == "Basic rules"){
+
+                    }else if (cb.getSelectedItem().toString() == "Basic rules"){
+
+                    }else if (cb.getSelectedItem().toString() == "Basic rules"){
+
+                    }else if (cb.getSelectedItem().toString() == "Basic rules"){
+
+                    }else if (cb.getSelectedItem().toString() == "Basic rules"){
+
+                    }
+                }
+            });
+            panel.add(btn);
+
+
         }
     }
 }
