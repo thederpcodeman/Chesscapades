@@ -6,6 +6,7 @@ import java.awt.*;
 public class Main {
     public static void main(String args[]) {
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+
         int height = (int)size.getHeight();
 
         JFrame frame = new ChessGame(height-200);

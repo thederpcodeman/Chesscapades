@@ -581,7 +581,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     public class HelpAction extends AbstractAction {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFrame frame = new JFrame("A Simple GUI");
+            JFrame frame = new JFrame("Chesscapades Help Menu");
             frame.setVisible(true);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(500, 500);
@@ -591,10 +591,25 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
             frame.add(panel);
 
-            JLabel lbl = new JLabel("Chesscapades help menu");
+            JLabel lbl = new JLabel("");
             lbl.setVisible(true);
-
             panel.add(lbl);
+
+            JLabel lbl2 = new JLabel("");
+            lbl2.setVisible(true);
+            panel.add(lbl2);
+
+            JLabel lbl3 = new JLabel("");
+            lbl3.setVisible(true);
+            panel.add(lbl3);
+
+            JLabel lbl4 = new JLabel("");
+            lbl4.setVisible(true);
+            panel.add(lbl4);
+
+            JLabel lbl5 = new JLabel("");
+            lbl5.setVisible(true);
+            panel.add(lbl5);
 
             String[] choices = { "Basic Rules","Randomized Rules", "Piece Specific Rules","Setup Variants"};
 
@@ -604,27 +619,54 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             panel.add(cb);
 
             JButton btn = new JButton("OK");
-
-            JTextField txtfld = new JTextField();
-            txtfld.setBounds(5, 5, 280, 50);
-            panel.add(txtfld);
             btn.addActionListener(new ActionListener(){
                 public void actionPerformed(ActionEvent e){
                     if (cb.getSelectedItem().toString() == "Basic Rules"){
-                        txtfld.setText("Each player takes turns moving 1 piece, to another square,\n Royal pieces are highlighted in gold/purple.\nCapture all the opponents Royal pieces to win.");
+                        lbl.setText("Each player takes turns moving 1 piece, to another square,");
+                        lbl2.setText("Royal pieces are highlighted in gold/purple.");
+                        lbl3.setText("Capture all the opponents Royal pieces to win.");
+                        lbl4.setText("");
+                        lbl5.setText("");
                         cb.removeAllItems();
                         cb.addItem("Basic Rules");
                         cb.addItem("Randomized Rules");
                         cb.addItem("Piece Specific Rules");
                         cb.addItem("Setup Variants");
                     }else if (cb.getSelectedItem().toString() == "Randomized Rules"){
-
+                        lbl.setText("Some additional rules have a random chance to be in play,");
+                        lbl2.setText("These are hidden,");
+                        lbl3.setText("you must find out which are in play during the game.");
+                        lbl4.setText("Good luck!");
+                        lbl5.setText("(here is the list of rules)");
+                        cb.removeAllItems();
+                        cb.addItem("Ok");
+                        cb.addItem("Traitor Chess");
+                        cb.addItem("Mystery Chess");
+                        cb.addItem("Epic Chess");
+                        cb.addItem("Riffle Chess");
+                        cb.addItem("Atomic Chess");
+                        cb.addItem("Gravity Chess");
+                        cb.addItem("Secret bomber Chess");
+                        cb.addItem("Formal Chess");
+                        cb.addItem("Backstab Chess");
+                        cb.addItem("Friendly fire Chess");
+                        cb.addItem("Chaos Chess");
+                        cb.addItem("Fast & Furious Chess");
                     }else if (cb.getSelectedItem().toString() == "Piece Specific Rules"){
 
                     }else if (cb.getSelectedItem().toString() == "Setup Variants"){
 
-                    }else if (cb.getSelectedItem().toString() == "Basic rules"){
-
+                    }else if (cb.getSelectedItem().toString() == "OK"){
+                        lbl.setText("");
+                        lbl2.setText("");
+                        lbl3.setText("");
+                        lbl4.setText("");
+                        lbl5.setText("");
+                        cb.removeAllItems();
+                        cb.addItem("Basic Rules");
+                        cb.addItem("Randomized Rules");
+                        cb.addItem("Piece Specific Rules");
+                        cb.addItem("Setup Variants");
                     }else if (cb.getSelectedItem().toString() == "Basic rules"){
 
                     }else if (cb.getSelectedItem().toString() == "Basic rules"){
