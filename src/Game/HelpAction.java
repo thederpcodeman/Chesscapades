@@ -155,6 +155,7 @@ public class HelpAction extends AbstractAction {
                     cb.addItem("Archer");
                     cb.addItem("Assassin");
                     cb.addItem("Mage");
+                    cb.addItem("High Mage");
                     cb.addItem("---");
                     cb.addItem("Archbishop");
                     cb.addItem("Chancellor");
@@ -171,84 +172,273 @@ public class HelpAction extends AbstractAction {
                     cb.addItem("Quetzalcoatl");
 
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Atomic Chess")) {
-
+                    lbl.setText("When a piece is captured");
+                    lbl2.setText("it explodes. Taking out ");
+                    lbl3.setText("everything in a 3x3 area. ");
+                    lbl4.setText("It is random whether it works on");
+                    lbl5.setText("Pawns, and Royal pieces (independently)");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Rifle Chess")) {
-
+                    lbl.setText("When capturing a Piece");
+                    lbl2.setText("Don't move.");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Backstab Chess")) {
-
+                    lbl.setText("When moving behind an ");
+                    lbl2.setText("enemy piece, it dies. ");
+                    lbl3.setText("Doesn't effect Royals.");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Mystery Chess")) {
-
+                    lbl.setText("You cannot see what pieces are, ");
+                    lbl2.setText("Only their team. ");
+                    lbl3.setText("(the cpu can) ");
+                    lbl4.setText("(50% to apply formal chess)");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("Formal Chess");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Traitor Chess")) {
-
+                    lbl.setText("When a piece is moved ");
+                    lbl2.setText("there is a 20% chance for ");
+                    lbl3.setText("it to switch to the other side. ");
+                    lbl4.setText("(Doesn't effect Royals)");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Gravity Chess")) {
-
+                    lbl.setText("When a piece is moved ");
+                    lbl2.setText("it slides in the direction ");
+                    lbl3.setText("of gravity ");
+                    lbl4.setText("unless something is in the way.");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Fast and Furious chess")) {
-
+                    lbl.setText("When a piece is moved ");
+                    lbl2.setText("it slides in the direction ");
+                    lbl3.setText("of gravity ");
+                    lbl4.setText("unless something is in the way.");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Decay Chess")) {
-
+                    lbl.setText("Every 5 turns a ");
+                    lbl2.setText("random piece on ");
+                    lbl3.setText("each side dies. ");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Friendly Fire Chess")) {
-
+                    lbl.setText("You may capture ");
+                    lbl2.setText("allies.");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Chaos Chess")) {
 
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Formal Chess")) {
-
+                    lbl.setText("The touch move rule ");
+                    lbl2.setText("is enforced. ");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Total War Chess")) {
-
+                    lbl.setText("All pieces ");
+                    lbl2.setText("(not pawns) ");
+                    lbl3.setText("are made Royal.");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Epic Chess")) {
-
+                    lbl.setText("All pawns ");
+                    lbl2.setText("cannot be captured, ");
+                    lbl3.setText("Pawns may capture ");
+                    lbl4.setText("pieces that can't be captured.");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Secret Bomber Chess")) {
-
+                    lbl.setText("1 piece on each side ");
+                    lbl2.setText("chosen secretly, ");
+                    lbl3.setText("at random, ");
+                    lbl4.setText("will explode as if it were atomic.");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("Atomic Chess");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Pawn")) {
-
+                    lbl.setText("Can move but not capture 1 space forwards.");
+                    lbl2.setText("Can capture 1 space diagonally forwards.");
+                    lbl3.setText("Can move but not capture 2 spaces forwards, ");
+                    lbl4.setText("but only on it's first move, and not if too far forwards. ");
+                    lbl5.setText("Promotes randomly.");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Pikeman")) {
-
+                    lbl.setText("Can move but not capture 1 space ");
+                    lbl2.setText("in any direction but backwards. ");
+                    lbl3.setText("Can capture 2 spaces forwards. ");
+                    lbl4.setText("");
+                    lbl5.setText("Promotes randomly.");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Soldier")) {
-
+                    lbl.setText("Can move 1 space forwards. ");
+                    lbl2.setText("");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("Promotes randomly.");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Prince")) {
-
+                    lbl.setText("Can move capture 1 space in any ");
+                    lbl2.setText("direction, even diagonally, ");
+                    lbl3.setText("but cannot move backwards. ");
+                    lbl4.setText("Promotes randomly, then becomes Royal.");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Wall")) {
-
+                    lbl.setText("Can move but not capture 1 space forwards. ");
+                    lbl2.setText("Cannot be captured");
+                    lbl3.setText("");
+                    lbl4.setText("Promotes randomly. ");
+                    lbl5.setText("Can be captured again once promoting.");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Checker")) {
-
+                    lbl.setText("Can move but not capture 1 space diagonally forwards. ");
+                    lbl2.setText("Cam jump 2 spaces diagonally over a foe, ");
+                    lbl3.setText("this cannot capture normally, but removes the piece it ");
+                    lbl4.setText("jumps over, then it's your turn again. When this would ");
+                    lbl5.setText("promote, it becomes Royal instead, and can move backwards.");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "King")) {
-
+                    lbl.setText("Can move 1 space orthogonally or diagonally. ");
+                    lbl2.setText("Can \"castle\"? ");
+                    lbl3.setText("Is Royal.");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("Castling");
+                    cb.addItem("Royalty");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "General")) {
-
+                    lbl.setText("Moves like a King, or a Knight. ");
+                    lbl2.setText("Is Royal.");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("King");
+                    cb.addItem("Knight");
+                    cb.addItem("Royalty");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Empress")) {
-
+                    lbl.setText("Moves like an Archer. ");
+                    lbl2.setText("Is Royal.");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("Archer");
+                    cb.addItem("Royalty");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Tyrant")) {
-
+                    lbl.setText("Moves like a Pegasus. ");
+                    lbl2.setText("Can capture friendly pieces. ");
+                    lbl3.setText("Is Royal.");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("Pegasus");
+                    cb.addItem("Royalty");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Knight")) {
-
+                    lbl.setText("Moves 2 spaces in 1 dimension, and 1 in the other. ");
+                    lbl2.setText("Jumps over pieces. ");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Rook")) {
-
+                    lbl.setText("Slides orthogonally any number of spaces.");
+                    lbl2.setText("");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Bishop")) {
-
+                    lbl.setText("Slides diagonally any number of spaces.");
+                    lbl2.setText("");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Camel")) {
-
+                    lbl.setText("Moves 3 spaces in 1 dimension, and 1 in the other. ");
+                    lbl2.setText("Jumps over pieces. ");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Elephant")) {
 
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Frog")) {
 
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Ship")) {
 
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Bull")) {
 
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Archer")) {
 
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Assassin")) {
 
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Mage")) {
 
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "High Mage")) {
 
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Archbishop")) {
 
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Chancellor")) {
 
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Queen")) {
 
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Spider")) {
+
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Gryphon")) {
+
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Manticore")) {
+
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Buffalo")) {
+
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Pegasus")) {
+
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Amazon")) {
+
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Lion")) {
+
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Greatwyrm")) {
+
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Quetzalcoatl")) {
 
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
 
