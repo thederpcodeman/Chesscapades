@@ -369,9 +369,9 @@ public class HelpAction extends AbstractAction {
                     cb.addItem("Pegasus");
                     cb.addItem("Royalty");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Knight")) {
-                    lbl.setText("Moves 2 spaces in 1 dimension, and 1 in the other. ");
-                    lbl2.setText("Jumps over pieces. ");
-                    lbl3.setText("");
+                    lbl.setText("Moves 2 spaces in a dimension, ");
+                    lbl2.setText("and 1 in the other. ");
+                    lbl3.setText("Jumps over pieces. ");
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
@@ -393,52 +393,219 @@ public class HelpAction extends AbstractAction {
                     cb.removeAllItems();
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Camel")) {
-                    lbl.setText("Moves 3 spaces in 1 dimension, and 1 in the other. ");
-                    lbl2.setText("Jumps over pieces. ");
-                    lbl3.setText("");
+                    lbl.setText("Moves 3 spaces in a dimension, ");
+                    lbl2.setText("and 1 in the other. ");
+                    lbl3.setText("Jumps over pieces.");
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Elephant")) {
-
+                    lbl.setText("Moves up to 2 spaces diagonally. ");
+                    lbl2.setText("");
+                    lbl3.setText("Jumps over pieces.");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Frog")) {
-
+                    lbl.setText("Moves up to 2 spaces orthogonally. ");
+                    lbl2.setText("");
+                    lbl3.setText("Jumps over pieces.");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Ship")) {
-
+                    lbl.setText("Moves 1 space diagonally, ");
+                    lbl2.setText("then slides any number of spaces vertically");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Bull")) {
-
+                    lbl.setText("Moves 3 spaces in a dimension, ");
+                    lbl2.setText("and 2 in the other. ");
+                    lbl3.setText("Jumps over pieces.");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Archer")) {
-
+                    lbl.setText("Slides orthogonally or diagonally ");
+                    lbl2.setText("at least 2 spaces. ");
+                    lbl3.setText("(Queen - King)");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("Queen");
+                    cb.addItem("King");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Assassin")) {
-
+                    lbl.setText("Moves but cant capture like a ");
+                    lbl2.setText("Queen or a Greatwyrm, but can ");
+                    lbl3.setText("only move like a King to capture. ");
+                    lbl4.setText("Can capture friendly pieces.");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("Queen");
+                    cb.addItem("Greatwyrm");
+                    cb.addItem("King");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Mage")) {
-
+                    lbl.setText("Moves but can't capture like a King. ");
+                    lbl2.setText("Gains mana over time. ");
+                    lbl3.setText("Spends mana to destroy orthogonal foes. ");
+                    lbl4.setText("The stars indicate range at this level of mana. ");
+                    lbl5.setText("Promotes to High Mage.");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("King");
+                    cb.addItem("High Mage");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "High Mage")) {
-
+                    lbl.setText("Moves but can't capture like a King. ");
+                    lbl2.setText("Can capture orthogonally or diagonally, ");
+                    lbl3.setText("but not like a King, ");
+                    lbl4.setText("jumping over pieces, ");
+                    lbl5.setText("Does not move when capturing.");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("King");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Archbishop")) {
-
+                    lbl.setText("Moves like a Bishop or a Knight.");
+                    lbl2.setText("");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("Bishop");
+                    cb.addItem("Knight");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Chancellor")) {
-
+                    lbl.setText("Moves like a Rook or a Knight.");
+                    lbl2.setText("");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("Rook");
+                    cb.addItem("Knight");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Queen")) {
-
+                    lbl.setText("Moves like a Bishop or a Rook.");
+                    lbl2.setText("");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("Bishop");
+                    cb.addItem("Rook");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Spider")) {
-
+                    lbl.setText("Moves like a Elephant or a Frog.");
+                    lbl2.setText("");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("Elephant");
+                    cb.addItem("Frog");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Gryphon")) {
-
+                    lbl.setText("Moves 1 space diagonally, ");
+                    lbl2.setText("then slides any number of spaces orthogonally.");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Manticore")) {
-
+                    lbl.setText("Moves 1 space orthogonally, ");
+                    lbl2.setText("then slides any number of spaces diagonally.");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Buffalo")) {
-
+                    lbl.setText("Moves like a Knight, ");
+                    lbl2.setText("Camel, or Bull.");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("Knight");
+                    cb.addItem("Camel");
+                    cb.addItem("Bull");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Pegasus")) {
-
+                    lbl.setText("Moves like a Knight ");
+                    lbl2.setText("if the space is empty, it can move again once.");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("Knight");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Amazon")) {
-
+                    lbl.setText("Moves like a Queen or a Knight ");
+                    lbl2.setText("");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("Queen");
+                    cb.addItem("Knight");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Lion")) {
-
+                    lbl.setText("Moves up to 2 spaces orthogonally, ");
+                    lbl2.setText("and up to 2 spaces diagonally");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Greatwyrm")) {
-
+                    lbl.setText("Moves like a Gryphon or a Manticore ");
+                    lbl2.setText("");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("Gryphon");
+                    cb.addItem("Manticore");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Quetzalcoatl")) {
+                    lbl.setText("Moves like a Buffalo ");
+                    lbl2.setText("if the space is empty, it can move again once.");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                    cb.addItem("Buffalo");
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Castling")) {
+                    lbl.setText("...");
+                    lbl2.setText("");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Royalty")) {
+                    lbl.setText("A player louses when all of their Royal ");
+                    lbl2.setText("pieces are captured, a move will be ");
+                    lbl3.setText("highlighted in red if it would ");
+                    lbl4.setText("put a Royal piece in danger.");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
+
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
+
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
 
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
 
