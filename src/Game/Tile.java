@@ -68,6 +68,8 @@ public class Tile extends JPanel {
                 }else if (getPiece().color == 0){
                     imageIcon = new ImageIcon(new ImageIcon("src/resources/bUnknown.png").getImage().getScaledInstance(size * 7 / 8, size * 7 / 8, Image.SCALE_DEFAULT));
                 }
+            }else if (ChessGame.skatter){
+                imageIcon = Skatterer.rimage(getPiece().getColor(), size);
             }else{
                 imageIcon = new ImageIcon(piece.getImageIcon().getImage().getScaledInstance(size * 7 / 8, size * 7 / 8, Image.SCALE_DEFAULT));
             }

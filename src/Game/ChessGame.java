@@ -58,6 +58,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     public static boolean ruth;
 
     public boolean decay;
+    public static boolean skatter;
 
     public int cooldown;
 
@@ -113,8 +114,12 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         bStab = ((int) (Math.random() * 5.5) == 1);
         touchRule = ((int) (Math.random() * 8.5) == 1);
         tLocked = false;
-        myst = ((int) (Math.random() * 9) == 1);
-        if (myst && !touchRule){
+        myst = ((int) (Math.random() * 12) == 1);
+        skatter = false;
+        if (!myst){
+            skatter = ((int) (Math.random() * 2) == 1);
+        }
+        if (myst || skatter && !touchRule){
             touchRule = ((int) (Math.random() * 2) == 1);
         }
         chessBoard.wRadness = 3;
@@ -362,16 +367,19 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/wKnight.png"));
         }else{
             String newname = "";
-            if (myst){
+            if (myst) {
                 newname = "Unknown Piece";
-                if (tile.getPiece().royal){
+                if (tile.getPiece().royal) {
                     newname += " [Royal]";
                 }
-                if (tile.getPiece().color == 1){
+                if (tile.getPiece().color == 1) {
                     setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/wUnknown.png"));
-                }else{
+                } else {
                     setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/bUnknown.png"));
                 }
+            }else if (skatter){
+                newname = "Chesscapades";
+                setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/wKnight.png"));
             }else{
                 newname = tile.getPiece().name;
                 setIconImage(tile.getPiece().getImageIcon().getImage());
