@@ -78,7 +78,6 @@ public class HelpAction extends AbstractAction {
                     cb.addItem("Formal Chess");
                     cb.addItem("Backstab Chess");
                     cb.addItem("Friendly fire Chess");
-                    cb.addItem("Chaos Chess");
                     cb.addItem("Fast & Furious Chess");
                     cb.addItem("Total War Chess");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Piece Specific Rules")) {
@@ -179,7 +178,7 @@ public class HelpAction extends AbstractAction {
                     lbl5.setText("Pawns, and Royal pieces (independently)");
                     cb.removeAllItems();
                     cb.addItem("OK");
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "Rifle Chess")) {
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Riffle Chess")) {
                     lbl.setText("When capturing a Piece");
                     lbl2.setText("Don't move.");
                     lbl3.setText("");
@@ -220,7 +219,7 @@ public class HelpAction extends AbstractAction {
                     lbl5.setText("");
                     cb.removeAllItems();
                     cb.addItem("OK");
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "Fast and Furious chess")) {
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Fast & Furious Chess")) {
                     lbl.setText("When a piece is moved ");
                     lbl2.setText("it slides in the direction ");
                     lbl3.setText("of gravity ");
@@ -236,7 +235,7 @@ public class HelpAction extends AbstractAction {
                     lbl5.setText("");
                     cb.removeAllItems();
                     cb.addItem("OK");
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "Friendly Fire Chess")) {
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Friendly fire Chess")) {
                     lbl.setText("You may capture ");
                     lbl2.setText("allies.");
                     lbl3.setText("");
@@ -244,8 +243,6 @@ public class HelpAction extends AbstractAction {
                     lbl5.setText("");
                     cb.removeAllItems();
                     cb.addItem("OK");
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "Chaos Chess")) {
-
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Formal Chess")) {
                     lbl.setText("The touch move rule ");
                     lbl2.setText("is enforced. ");
@@ -270,7 +267,7 @@ public class HelpAction extends AbstractAction {
                     lbl5.setText("");
                     cb.removeAllItems();
                     cb.addItem("OK");
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "Secret Bomber Chess")) {
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Secret bomber Chess")) {
                     lbl.setText("1 piece on each side ");
                     lbl2.setText("chosen secretly, ");
                     lbl3.setText("at random, ");
