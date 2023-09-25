@@ -601,17 +601,41 @@ public class HelpAction extends AbstractAction {
                     lbl5.setText("");
                     cb.removeAllItems();
                     cb.addItem("OK");
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "2/3 Chess")) {
+                    lbl.setText("Each piece has a 1/3 chance ");
+                    lbl2.setText("to be a random piece of it's type.");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Chess 960")) {
+                    lbl.setText("Each piece is a random ");
+                    lbl2.setText("piece of it's type.");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Power Chess")) {
+                    lbl.setText("each side has a row of ");
+                    lbl2.setText("random pawns with a row of ");
+                    lbl3.setText("random common pieces behind ");
+                    lbl4.setText("it, and behind that a row of ");
+                    lbl5.setText("queen like pieces, with at least 2 royals");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Fear Chess")) {
+                    lbl.setText("each side has 2 rows of ");
+                    lbl2.setText("random pieces ");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Grand Chess")) {
 
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
-
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
-
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
-
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
-
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Revolt Chess")) {
 
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
 
