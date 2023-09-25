@@ -30,9 +30,9 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
     static final Color pRed = new Color(215, 102, 117);
 
-    static final Color wRed = new Color(144, 44, 44);
+    static final Color Invicible = new Color(51, 24, 50);
 
-    static final Color wTan = new Color(119, 132, 114);
+    static final Color InvicibleAlly = new Color(160, 160, 160);
 
     Action spaceAction;
     Action helpAction;
@@ -438,7 +438,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                             if (legalTile.getPiece().royal){
                                 legalTile.setBackground(rTan);
                             }else if (legalTile.getPiece().wall){
-                                legalTile.setBackground(allyTan);
+                                legalTile.setBackground(InvicibleAlly);
                             }else {
                                 legalTile.setBackground(allyTan);
                             }
@@ -447,7 +447,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                             if (legalTile.getPiece().royal){
                                 legalTile.setBackground(rRed);
                             }else if (legalTile.getPiece().wall){
-                                legalTile.setBackground(allyRed);
+                                legalTile.setBackground(InvicibleAlly);
                             }else{
                                 legalTile.setBackground(allyRed);
                             }
@@ -460,10 +460,10 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                                 legalTile.setBackground(pRed);
                             }
                         }else if (legalTile.getPiece().wall) {
-                            if (legalTile.getColor() == Tile.tan) {
-                                legalTile.setBackground(wTan);
+                            if (legalTile.getPiece().color == turn){
+                                legalTile.setBackground(InvicibleAlly);
                             } else {
-                                legalTile.setBackground(wRed);
+                                legalTile.setBackground(Invicible);
                             }
                         }
                     }
