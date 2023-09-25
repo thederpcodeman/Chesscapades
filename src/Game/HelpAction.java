@@ -634,9 +634,21 @@ public class HelpAction extends AbstractAction {
                     cb.removeAllItems();
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Grand Chess")) {
-
+                    lbl.setText("each side has 2 Royals, ");
+                    lbl2.setText("2 powerful pieces ");
+                    lbl3.setText("and a ton of random pawns.");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Revolt Chess")) {
-
+                    lbl.setText("Pawns are random pawns, ");
+                    lbl2.setText("and are in the center of the board. ");
+                    lbl3.setText("");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
 
                 }
