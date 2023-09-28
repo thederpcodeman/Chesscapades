@@ -178,6 +178,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("It is random whether it works on");
                     lbl5.setText("Pawns, and Royal pieces (independently)");
                     cb.removeAllItems();
+                    cb.addItem("Randomized Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Riffle Chess")) {
                     lbl.setText("When capturing a Piece");
@@ -186,6 +187,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Randomized Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Backstab Chess")) {
                     lbl.setText("When moving behind an ");
@@ -194,6 +196,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Randomized Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Mystery Chess")) {
                     lbl.setText("You cannot see what pieces are, ");
@@ -202,8 +205,9 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("(50% to apply formal chess)");
                     lbl5.setText("");
                     cb.removeAllItems();
-                    cb.addItem("OK");
+                    cb.addItem("Randomized Rules");
                     cb.addItem("Formal Chess");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Traitor Chess")) {
                     lbl.setText("When a piece is moved ");
                     lbl2.setText("there is a 20% chance for ");
@@ -211,6 +215,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("(Doesn't effect Royals)");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Randomized Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Gravity Chess")) {
                     lbl.setText("When a piece is moved ");
@@ -219,6 +224,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("unless something is in the way.");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Randomized Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Fast & Furious Chess")) {
                     lbl.setText("When a piece is moved ");
@@ -227,6 +233,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("unless something is in the way.");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Randomized Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Decay Chess")) {
                     lbl.setText("Every 5 turns a ");
@@ -235,6 +242,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Randomized Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Friendly fire Chess")) {
                     lbl.setText("You may capture ");
@@ -243,6 +251,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Randomized Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Formal Chess")) {
                     lbl.setText("The touch move rule ");
@@ -251,6 +260,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Randomized Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Total War Chess")) {
                     lbl.setText("All pieces ");
@@ -259,6 +269,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Randomized Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Epic Chess")) {
                     lbl.setText("All pawns ");
@@ -267,6 +278,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("pieces that can't be captured.");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Randomized Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Secret bomber Chess")) {
                     lbl.setText("1 piece on each side ");
@@ -275,8 +287,9 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("will explode as if it were atomic.");
                     lbl5.setText("");
                     cb.removeAllItems();
-                    cb.addItem("OK");
+                    cb.addItem("Randomized Rules");
                     cb.addItem("Atomic Chess");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Pawn")) {
                     lbl.setText("Can move but not capture 1 space forwards.");
                     lbl2.setText("Can capture 1 space diagonally forwards.");
@@ -284,6 +297,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("but only on it's first move, and not if too far forwards. ");
                     lbl5.setText("Promotes randomly.");
                     cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Pikeman")) {
                     lbl.setText("Can move but not capture 1 space ");
@@ -292,6 +306,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("Promotes randomly.");
                     cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Soldier")) {
                     lbl.setText("Can move 1 space forwards. ");
@@ -300,6 +315,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("Promotes randomly.");
                     cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Prince")) {
                     lbl.setText("Can move capture 1 space in any ");
@@ -308,6 +324,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("Promotes randomly, then becomes Royal.");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Wall")) {
                     lbl.setText("Can move but not capture 1 space forwards. ");
@@ -316,6 +333,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("Promotes randomly. ");
                     lbl5.setText("Can be captured again once promoting.");
                     cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Checker")) {
                     lbl.setText("Can move but not capture 1 space diagonally forwards. ");
@@ -324,6 +342,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("jumps over, then it's your turn again. When this would ");
                     lbl5.setText("promote, it becomes Royal instead, and can move backwards.");
                     cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "King")) {
                     lbl.setText("Can move 1 space orthogonally or diagonally. ");
@@ -332,9 +351,10 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
-                    cb.addItem("OK");
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("Castling");
                     cb.addItem("Royalty");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "General")) {
                     lbl.setText("Moves like a King, or a Knight. ");
                     lbl2.setText("Is Royal.");
@@ -342,10 +362,12 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
-                    cb.addItem("OK");
+
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("King");
                     cb.addItem("Knight");
                     cb.addItem("Royalty");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Empress")) {
                     lbl.setText("Moves like an Archer. ");
                     lbl2.setText("Is Royal.");
@@ -353,9 +375,10 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
-                    cb.addItem("OK");
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("Archer");
                     cb.addItem("Royalty");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Tyrant")) {
                     lbl.setText("Moves like a Pegasus. ");
                     lbl2.setText("Can capture friendly pieces. ");
@@ -363,9 +386,10 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
-                    cb.addItem("OK");
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("Pegasus");
                     cb.addItem("Royalty");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Knight")) {
                     lbl.setText("Moves 2 spaces in a dimension, ");
                     lbl2.setText("and 1 in the other. ");
@@ -373,6 +397,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Rook")) {
                     lbl.setText("Slides orthogonally any number of spaces.");
@@ -381,6 +406,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Bishop")) {
                     lbl.setText("Slides diagonally any number of spaces.");
@@ -389,6 +415,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Camel")) {
                     lbl.setText("Moves 3 spaces in a dimension, ");
@@ -397,6 +424,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Elephant")) {
                     lbl.setText("Moves up to 2 spaces diagonally. ");
@@ -405,6 +433,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Frog")) {
                     lbl.setText("Moves up to 2 spaces orthogonally. ");
@@ -413,6 +442,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Ship")) {
                     lbl.setText("Moves 1 space diagonally, ");
@@ -421,6 +451,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Bull")) {
                     lbl.setText("Moves 3 spaces in a dimension, ");
@@ -429,6 +460,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Archer")) {
                     lbl.setText("Slides orthogonally or diagonally ");
@@ -437,9 +469,10 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
-                    cb.addItem("OK");
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("Queen");
                     cb.addItem("King");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Assassin")) {
                     lbl.setText("Moves but cant capture like a ");
                     lbl2.setText("Queen or a Greatwyrm, but can ");
@@ -447,10 +480,11 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("Can capture friendly pieces.");
                     lbl5.setText("");
                     cb.removeAllItems();
-                    cb.addItem("OK");
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("Queen");
                     cb.addItem("Greatwyrm");
                     cb.addItem("King");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Mage")) {
                     lbl.setText("Moves but can't capture like a King. ");
                     lbl2.setText("Gains mana over time. ");
@@ -458,9 +492,10 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("The stars indicate range at this level of mana. ");
                     lbl5.setText("Promotes to High Mage.");
                     cb.removeAllItems();
-                    cb.addItem("OK");
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("King");
                     cb.addItem("High Mage");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "High Mage")) {
                     lbl.setText("Moves but can't capture like a King. ");
                     lbl2.setText("Can capture orthogonally or diagonally, ");
@@ -468,8 +503,9 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("jumping over pieces, ");
                     lbl5.setText("Does not move when capturing.");
                     cb.removeAllItems();
-                    cb.addItem("OK");
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("King");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Archbishop")) {
                     lbl.setText("Moves like a Bishop or a Knight.");
                     lbl2.setText("");
@@ -477,9 +513,10 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
-                    cb.addItem("OK");
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("Bishop");
                     cb.addItem("Knight");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Chancellor")) {
                     lbl.setText("Moves like a Rook or a Knight.");
                     lbl2.setText("");
@@ -487,9 +524,10 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
-                    cb.addItem("OK");
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("Rook");
                     cb.addItem("Knight");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Queen")) {
                     lbl.setText("Moves like a Bishop or a Rook.");
                     lbl2.setText("");
@@ -497,9 +535,10 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
-                    cb.addItem("OK");
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("Bishop");
                     cb.addItem("Rook");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Spider")) {
                     lbl.setText("Moves like a Elephant or a Frog.");
                     lbl2.setText("");
@@ -507,9 +546,10 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
-                    cb.addItem("OK");
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("Elephant");
                     cb.addItem("Frog");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Gryphon")) {
                     lbl.setText("Moves 1 space diagonally, ");
                     lbl2.setText("then slides any number of spaces orthogonally.");
@@ -517,6 +557,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Manticore")) {
                     lbl.setText("Moves 1 space orthogonally, ");
@@ -525,6 +566,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Buffalo")) {
                     lbl.setText("Moves like a Knight, ");
@@ -533,10 +575,11 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
-                    cb.addItem("OK");
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("Knight");
                     cb.addItem("Camel");
                     cb.addItem("Bull");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Pegasus")) {
                     lbl.setText("Moves like a Knight ");
                     lbl2.setText("if the space is empty, it can move again once.");
@@ -544,8 +587,9 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
-                    cb.addItem("OK");
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("Knight");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Amazon")) {
                     lbl.setText("Moves like a Queen or a Knight ");
                     lbl2.setText("");
@@ -553,9 +597,10 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
-                    cb.addItem("OK");
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("Queen");
                     cb.addItem("Knight");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Lion")) {
                     lbl.setText("Moves up to 2 spaces orthogonally, ");
                     lbl2.setText("and up to 2 spaces diagonally");
@@ -563,6 +608,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Greatwyrm")) {
                     lbl.setText("Moves like a Gryphon or a Manticore ");
@@ -571,9 +617,10 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
-                    cb.addItem("OK");
                     cb.addItem("Gryphon");
                     cb.addItem("Manticore");
+                    cb.addItem("Piece Specific Rules");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Quetzalcoatl")) {
                     lbl.setText("Moves like a Buffalo ");
                     lbl2.setText("if the space is empty, it can move again once.");
@@ -581,8 +628,9 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
-                    cb.addItem("OK");
+                    cb.addItem("Piece Specific Rules");
                     cb.addItem("Buffalo");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Castling")) {
                     lbl.setText("...");
                     lbl2.setText("");
@@ -606,6 +654,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Setup Variants");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Chess 960")) {
                     lbl.setText("Each piece is a random ");
@@ -614,6 +663,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Setup Variants");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Power Chess")) {
                     lbl.setText("each side has a row of ");
@@ -622,6 +672,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("it, and behind that a row of ");
                     lbl5.setText("queen like pieces, with at least 2 royals");
                     cb.removeAllItems();
+                    cb.addItem("Setup Variants");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Fear Chess")) {
                     lbl.setText("each side has 2 rows of ");
@@ -630,6 +681,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Setup Variants");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Grand Chess")) {
                     lbl.setText("each side has 2 Royals, ");
@@ -638,6 +690,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Setup Variants");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Revolt Chess")) {
                     lbl.setText("Pawns are random pawns, ");
@@ -646,6 +699,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Setup Variants");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Skatter Chess")) {
                     lbl.setText("All pieces render ");
@@ -654,6 +708,7 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("random piece when they move.");
                     lbl5.setText("");
                     cb.removeAllItems();
+                    cb.addItem("Setup Variants");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
 
