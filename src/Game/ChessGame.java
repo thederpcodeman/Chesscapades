@@ -36,6 +36,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
     Action spaceAction;
     Action helpAction;
+    Action resetAction;
 
     ArrayList<String> fens;
     public int atomic;
@@ -75,6 +76,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
         spaceAction = new SpaceAction();
         helpAction = new HelpAction();
+        resetAction = new ResetAction();
 
 
 
@@ -95,8 +97,10 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         fens.add(chessBoard.computeFen(turn));
         chessBoard.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), spaceAction);
         chessBoard.getInputMap().put(KeyStroke.getKeyStroke("H"), helpAction);
+        chessBoard.getInputMap().put(KeyStroke.getKeyStroke("R"), resetAction);
         chessBoard.getActionMap().put(spaceAction, spaceAction);
         chessBoard.getActionMap().put(helpAction, helpAction);
+        chessBoard.getActionMap().put(resetAction, resetAction);
     }
 
     public void setupPieces() {
@@ -585,6 +589,16 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         @Override
         public void actionPerformed(ActionEvent e) {
             playGoodishMove();
+        }
+    }
+    public class ResetAction extends AbstractAction {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            for (int i = 0; i < 64; i++) {
+                chessBoard.getTile(i).setPiece(null);
+            }
+            fens.clear();
+            setupPieces();
         }
     }
 }
