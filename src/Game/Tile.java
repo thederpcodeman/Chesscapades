@@ -99,6 +99,9 @@ public class Tile extends JPanel {
         if(piece != null)
         {
             ImageIcon imageIcon = new ImageIcon(piece.getImageIcon().getImage().getScaledInstance(size * 7 / 8, size * 7 / 8, Image.SCALE_DEFAULT));
+            if (ChessGame.myst){
+                imageIcon = new ImageIcon(new ImageIcon("src/resources/bAmazon.png").getImage().getScaledInstance(size * 7 / 8, size * 7 / 8, Image.SCALE_DEFAULT));
+            }
             JLabel image = new JLabel(imageIcon);
             add(image);
         }
