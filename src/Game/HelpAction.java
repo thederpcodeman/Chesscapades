@@ -11,7 +11,7 @@ public class HelpAction extends AbstractAction {
     public void actionPerformed(ActionEvent e) {
         JFrame frame = new JFrame("Chesscapades Help Menu");
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(500, 500);
         frame.setLocation(430, 100);
 
