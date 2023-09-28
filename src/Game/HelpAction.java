@@ -70,6 +70,7 @@ public class HelpAction extends AbstractAction {
                     cb.addItem("OK");
                     cb.addItem("Traitor Chess");
                     cb.addItem("Mystery Chess");
+                    cb.addItem("Skatter Chess");
                     cb.addItem("Epic Chess");
                     cb.addItem("Riffle Chess");
                     cb.addItem("Atomic Chess");
@@ -646,6 +647,18 @@ public class HelpAction extends AbstractAction {
                     lbl5.setText("");
                     cb.removeAllItems();
                     cb.addItem("OK");
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Skatter Chess")) {
+                    lbl.setText("All pieces render ");
+                    lbl2.setText("as random pieces. ");
+                    lbl3.setText("They become a different ");
+                    lbl4.setText("random piece when they move.");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("OK");
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
+
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
+
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
 
                 }
