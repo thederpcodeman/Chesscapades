@@ -104,6 +104,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
+        selectedTile = null;
         gravity = (((int) (Math.random() * 3) -1));
         if ((int) (Math.random() * 7.0) != 1){
             gravity = 0;
@@ -118,10 +119,10 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         bStab = ((int) (Math.random() * 5.5) == 1);
         touchRule = ((int) (Math.random() * 8.5) == 1);
         tLocked = false;
-        myst = ((int) (Math.random() * 10) == 1);
+        myst = ((int) (Math.random() * 15) == 1);
         skatter = false;
         if (!myst){
-            skatter = ((int) (Math.random() * 12) == 1);
+            skatter = ((int) (Math.random() * 20) == 1);
         }
         if (myst || skatter && !touchRule){
             touchRule = ((int) (Math.random() * 2.5) == 1);
@@ -138,6 +139,9 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             ranged = 1;
         } else {
             ranged = 0;
+        }
+        for (Tile i : chessBoard.getTiles()){
+            i.setBackground(i.getColor());
         }
 
         AudioPlayer.play("src/resources/audio/startgame.wav");
