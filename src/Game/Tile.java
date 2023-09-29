@@ -239,6 +239,8 @@ public class Tile extends JPanel {
         possibilities.add("Manticore");
         possibilities.add("Greatwyrm");
         possibilities.add("Mage");
+        possibilities.add("Immortal");
+        possibilities.add("Spearman");
         Collections.shuffle(possibilities);
         int o = 3;
         if (getPiece().getColor() == 0){
@@ -325,6 +327,10 @@ public class Tile extends JPanel {
                 Piece spin = new Mage(piece.getColor());
                 spin.setForwardDirection(getPiece().getForwardDirection() * -1);
                 setPiece(spin);
+            } else if (s == "Spearman") {
+                setPiece(new Spearman(piece.getColor()));
+            } else if (s == "Immortal") {
+                setPiece(new Immortal(piece.getColor()));
             }
 
             if (roy){
