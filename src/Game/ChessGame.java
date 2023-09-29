@@ -34,6 +34,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
     static final Color InvicibleAlly = new Color(160, 160, 160);
 
+    static final Color IRoyal = new Color(255, 0, 85);
+
     Action spaceAction;
     Action helpAction;
     Action resetAction;
@@ -444,7 +446,11 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     }else if ((legalTile.getPiece() != null) && (legalTile.getPiece().getColor() == turn)) {
                         if (legalTile.getColor() == Tile.tan){
                             if (legalTile.getPiece().royal){
-                                legalTile.setBackground(rTan);
+                                if (legalTile.getPiece().wall){
+                                    legalTile.setBackground(IRoyal);
+                                }else{
+                                    legalTile.setBackground(rTan);
+                                }
                             }else if (legalTile.getPiece().wall){
                                 legalTile.setBackground(InvicibleAlly);
                             }else {
@@ -453,7 +459,11 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
                         }else {
                             if (legalTile.getPiece().royal){
-                                legalTile.setBackground(rRed);
+                                if (legalTile.getPiece().wall){
+                                    legalTile.setBackground(IRoyal);
+                                }else{
+                                    legalTile.setBackground(rRed);
+                                }
                             }else if (legalTile.getPiece().wall){
                                 legalTile.setBackground(InvicibleAlly);
                             }else{
