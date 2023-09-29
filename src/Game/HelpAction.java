@@ -151,7 +151,9 @@ public class HelpAction extends AbstractAction {
                     cb.addItem("Frog");
                     cb.addItem("Ship");
                     cb.addItem("Bull");
+                    cb.addItem("Spearman");
                     cb.addItem("---");
+                    cb.addItem("Immortal");
                     cb.addItem("Archer");
                     cb.addItem("Assassin");
                     cb.addItem("Mage");
@@ -328,8 +330,8 @@ public class HelpAction extends AbstractAction {
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Wall")) {
                     lbl.setText("Can move but not capture 1 space forwards. ");
-                    lbl2.setText("Cannot be captured");
-                    lbl3.setText("");
+                    lbl2.setText("Can only be captured by ");
+                    lbl3.setText("Royal pieces ");
                     lbl4.setText("Promotes randomly. ");
                     lbl5.setText("Can be captured again once promoting.");
                     cb.removeAllItems();
@@ -710,10 +712,26 @@ public class HelpAction extends AbstractAction {
                     cb.removeAllItems();
                     cb.addItem("Setup Variants");
                     cb.addItem("OK");
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
-
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
-
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Immortal")) {
+                    lbl.setText("Moves like a king ");
+                    lbl2.setText("cannot capture royals ");
+                    lbl3.setText("can only be captured ");
+                    lbl4.setText("by royals.");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
+                    cb.addItem("King");
+                    cb.addItem("Royalty");
+                    cb.addItem("OK");
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Spearman")) {
+                    lbl.setText("Moves but does not capture 1 space ");
+                    lbl2.setText("orthogonally, captures 2 or 3 spaces ");
+                    lbl3.setText("orthogonally, cannot jump over ");
+                    lbl4.setText("pieces.");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
+                    cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
 
                 }
