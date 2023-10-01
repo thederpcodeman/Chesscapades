@@ -213,4 +213,45 @@ public class Moves {
         }
         return false;
     }
+
+    public static boolean norseMove(Board chessboard, int dex, int sx, int sy, int ex, int ey){
+        if (dex == 0){
+            return (sx == ex && sy == ey);
+        }else if (dex == 1){
+            return ((Math.abs(sx - ex) <= 1 && sy == ey) || (Math.abs(sy - ey) <= 1 && sx == ex));
+        } else{
+            if ((Math.abs(sx - ex) <= 1 && sy == ey) || (Math.abs(sy - ey) <= 1 && sx == ex)){
+                return true;
+            }
+            if (ex +1 < 8){
+                if (chessboard.getTile(Board.getLocationFromCords(ex +1, ey)).getPiece() == null) {
+                    if (norseMove(chessboard, dex - 1, sx, sy, ex + 1, ey)) {
+                        return true;
+                    }
+                }
+            }
+            if (ey +1 < 8){
+                if (chessboard.getTile(Board.getLocationFromCords(ex, ey +1)).getPiece() == null) {
+                    if (norseMove(chessboard, dex - 1, sx, sy, ex, ey +1)) {
+                        return true;
+                    }
+                }
+            }
+            if (ex -1 >= 0){
+                if (chessboard.getTile(Board.getLocationFromCords(ex -1, ey)).getPiece() == null) {
+                    if (norseMove(chessboard, dex - 1, sx, sy, ex -1, ey)) {
+                        return true;
+                    }
+                }
+            }
+            if (ey -1 >= 0){
+                if (chessboard.getTile(Board.getLocationFromCords(ex, ey -1)).getPiece() == null) {
+                    if (norseMove(chessboard, dex - 1, sx, sy, ex, ey -1)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }

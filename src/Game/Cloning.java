@@ -4,7 +4,7 @@ import pieces.*;
 
 public class Cloning {
     public static Piece Common(int color){
-        int ran = (int) (Math.random() * 14);
+        int ran = (int) (Math.random() * 15);
         if (ran == 0){
             return new Elephant(color);
         } else if (ran == 1){
@@ -33,6 +33,8 @@ public class Cloning {
             return new Immortal(color);
         } else if (ran == 13) {
             return new Spearman(color);
+        } else if (ran == 14) {
+            return new Viking(color);
         }
         return null;
     }
@@ -40,7 +42,7 @@ public class Cloning {
         return new Pawn(color);
     }
     public static Piece Advanced(int color){
-        int ran = (int) (Math.random() * 11);
+        int ran = (int) (Math.random() * 12);
         if (ran == 0){
             return new Archbishop(color);
         } else if (ran == 1){
@@ -61,12 +63,14 @@ public class Cloning {
             return new Bladesinger(color);
         } else if (ran == 10) {
             return new Buffalo(color);
+        } else if (ran == 11) {
+            return new Berserker(color);
         }
         return null;
     }
 
     public static Piece Super(int color){
-        int ran = (int) (Math.random() * 4);
+        int ran = (int) (Math.random() * 5);
         if (ran == 0){
             return new Amazon(color);
         } else if (ran == 1){
@@ -75,6 +79,8 @@ public class Cloning {
             return new Greatwyrm(color);
         } else if (ran == 3){
             return new Quetzacoatl(color);
+        } else if (ran == 4){
+            return new Wolf(color);
         }
         return null;
     }
