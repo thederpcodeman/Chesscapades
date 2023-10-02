@@ -36,9 +36,7 @@ public class Spearman extends Piece {
                 return false;
             }
             if (Math.abs(dx) == 1){
-                if (board.getTile(Board.getLocationFromCords(newX, newY)).getPiece() == null){
-                    return true;
-                }
+                return (board.getTile(Board.getLocationFromCords(newX, newY)).getPiece() == null);
             }
             if (Math.abs(dx) == 0){
                 return false;
@@ -51,9 +49,7 @@ public class Spearman extends Piece {
                 return false;
             }
             if (Math.abs(dy) == 1){
-                if (board.getTile(Board.getLocationFromCords(newX, newY)).getPiece() == null){
-                    return true;
-                }
+                return (board.getTile(Board.getLocationFromCords(newX, newY)).getPiece() == null);
             }
             if (Moves.rookMove(x, y, dx, dy, board) && board.getTile(Board.getLocationFromCords(newX, newY)).getPiece() != null && Moves.allClear(getColor(), board.getTile(Board.getLocationFromCords(newX, newY)))){
                 return true;

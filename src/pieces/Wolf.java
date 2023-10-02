@@ -33,6 +33,6 @@ public class Wolf extends Piece {
                 speed++;
             }
         }
-        return (Moves.norseMove(board, speed, x, y, newX, newY));
+        return (Moves.allClear(color, destination) && Moves.norseMove(board, speed, x, y, newX, newY));
     }
 }
