@@ -17,10 +17,10 @@ public class Spearman extends Piece {
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/bPikeman.png"));
+            return(new ImageIcon("src/resources/bSpear.jpg"));
 
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wPikeman.png"));
+            return(new ImageIcon("src/resources/wSpear.jpg"));
         } else {
             return null;
         }
