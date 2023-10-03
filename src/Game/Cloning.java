@@ -4,37 +4,54 @@ import pieces.*;
 
 public class Cloning {
     public static Piece Common(int color){
-        int ran = (int) (Math.random() * 15);
-        if (ran == 0){
-            return new Elephant(color);
-        } else if (ran == 1){
+        double ran = (Math.random() * (1.2 + 1.6 + 0.334 + 1.5 + 0.01));
+        if (ran < 1){
             return new Rook(color);
-        } else if (ran == 2){
+        } ran -= 1;
+        if (ran < 1){
             return new Bishop(color);
-        } else if (ran == 3){
+        } ran -= 1;
+        if (ran < 1){
+            return new Elephant(color);
+        } ran -= 1;
+        if (ran < 1){
             return new Frog(color);
-        } else if (ran == 4){
+        } ran -= 1;
+        if (ran < 1){
             return new Knight(color);
-        } else if (ran == 5){
-            return new Camel(color);
-        } else if (ran == 6){
+        } ran -= 1;
+        if (ran < 0.8){
             return new Bull(color);
-        } else if (ran == 7){
-            return Cloning.Advanced(color);
-        } else if (ran == 8){
-            return new Boat(color);
-        }  else if (ran == 9) {
-            return new Spider(color);
-        }  else if (ran == 10) {
-        return new Mage(color);
-        }  else if (ran == 11) {
-            return new Bow(color);
-        }  else if (ran == 12) {
-            return new Immortal(color);
-        } else if (ran == 13) {
-            return new Spearman(color);
-        } else if (ran == 14) {
+        } ran -= 0.8;
+        if (ran < 0.8){
+            return new Camel(color);
+        } ran -= 0.8;
+        if (ran < 0.5){
             return new Viking(color);
+        } ran -= 0.5;
+        if (ran < 0.5){
+            return new Boat(color);
+        } ran -= 0.5;
+        if (ran < 0.5){
+            return new Bow(color);
+        } ran -= 0.5;
+        if (ran < 0.334){
+            return new Spearman(color);
+        } ran -= 0.334;
+        if (ran < 0.3){
+            return new Pegasus(color);
+        } ran -= 0.3;
+        if (ran < 0.25){
+            return new Immortal(color);
+        } ran -= 0.25;
+        if (ran < 0.2){
+            return new Mage(color);
+        } ran -= 0.2;
+        if (ran < 0.15){
+            return new Bladesinger(color);
+        } ran -= 0.15;
+        if (ran < 0.1){
+            return new Buffalo(color);
         }
         return null;
     }
@@ -42,29 +59,63 @@ public class Cloning {
         return new Pawn(color);
     }
     public static Piece Advanced(int color){
-        int ran = (int) (Math.random() * 12);
-        if (ran == 0){
+        double ran = (Math.random() * (5 + 0.8 + 0.8 + 0.5 + 0.5 + 0.4 + 0.25 + 0.2 + 0.2 + 0.2 + 0.15 + 0.15 + 0.1 + 0.1 + 0.06 + 0.05));
+        if (ran < 1){
             return new Archbishop(color);
-        } else if (ran == 1){
+        } ran -= 1;
+        if (ran < 1){
             return new Chancellor(color);
-        } else if (ran == 2){
-            return Cloning.Royal(color);
-        } else if (ran == 3 || ran == 4){
-            return Cloning.Super(color);
-        } else if (ran == 5){
-            return new Queen(color);
-        } else if (ran == 6){
+        } ran -= 1;
+        if (ran < 1){
+            return new Spider(color);
+        } ran -= 1;
+        if (ran < 1){
             return new Gryphon(color);
-        } else if (ran == 7){
-            return new Pegasus(color);
-        } else if (ran == 8){
+        } ran -= 1;
+        if (ran < 1){
             return new Manticore(color);
-        } else if (ran == 9){
-            return new Bladesinger(color);
-        } else if (ran == 10) {
-            return new Buffalo(color);
-        } else if (ran == 11) {
+        } ran -= 1;
+        if (ran < 0.8){
             return new Berserker(color);
+        } ran -= 0.8;
+        if (ran < 0.8){
+            return new Queen(color);
+        } ran -= 0.8;
+        if (ran < 0.5){
+            return new Buffalo(color);
+        } ran -= 0.5;
+        if (ran < 0.4){
+            return new Pegasus(color);
+        } ran -= 0.4;
+        if (ran < 0.25){
+            return new Lion(color);
+        } ran -= 0.25;
+        if (ran < 0.2){
+            return new Amazon(color);
+        } ran -= 0.2;
+        if (ran < 0.2){
+            return new Greatwyrm(color);
+        } ran -= 0.2;
+        if (ran < 0.2){
+            return new King(color);
+        } ran -= 0.2;
+        if (ran < 0.15){
+            return new Bow(color);
+        } ran -= 0.15;
+        if (ran < 0.15){
+            return new Quetzacoatl(color);
+        } ran -= 0.15;
+        if (ran < 0.1){
+            return new General(color);
+        } ran -= 0.1;
+        if (ran < 0.1){
+            return new Wolf(color);
+        } ran -= 0.1;
+        if (ran < 0.06){
+            return new Empress(color);
+        } ran -= 0.06;
+        if (ran < 0.05){
+            return new Tyrant(color);
         }
         return null;
     }
@@ -72,44 +123,56 @@ public class Cloning {
     public static Piece Super(int color){
         int ran = (int) (Math.random() * 5);
         if (ran == 0){
-            return new Amazon(color);
-        } else if (ran == 1){
             return new Lion(color);
+        } else if (ran == 1){
+            return new Amazon(color);
         } else if (ran == 2){
             return new Greatwyrm(color);
         } else if (ran == 3){
             return new Quetzacoatl(color);
-        } else if (ran == 4){
+        }  else if (ran == 4){
             return new Wolf(color);
         }
         return null;
     }
+
     public static Piece Royal(int color){
-        int ran = (int) (Math.random() * 5);
-        if (ran == 0 || ran == 1){
+        double ran = (Math.random() * (1.2 + 1 + 0.334 + 0.25 + 0.01));
+        if (ran < 1.2){
             return new King(color);
-        } else if (ran == 2){
+        } ran -= 1.2;
+        if (ran < 1){
             return new General(color);
-        } else if (ran == 3){
-            return new Tyrant(color);
-        } else if (ran == 4){
+        } ran -= 1;
+        if (ran < 0.334){
             return new Empress(color);
+        } ran -= 0.334;
+        if (ran < 0.25){
+            return new Tyrant(color);
+        } ran -= 0.25;
+        if (ran < 0.01){
+            return new Keegan(color);
         }
         return null;
     }
     public static Piece rPawn(int color){
-        int ran = (int) (Math.random() * 8);
-        if (ran == 0 || ran == 1 || ran == 2){
+        double ran = (Math.random() * (3 + 1.5 + 1 + 1 + 0.5 + 0.2));
+        if (ran < 3){
             return new Pawn(color);
-        } else if (ran == 3){
+        } ran -= 3;
+        if (ran < 1.5){
             return new Soldier(color);
-        } else if (ran == 4){
-            return new Prince(color);
-        } else if (ran == 5){
+        } ran -= 1.5;
+        if (ran < 1){
             return new Pikeman(color);
-        } else if (ran == 6){
+        } ran -= 1;
+        if (ran < 1){
+            return new Prince(color);
+        } ran -= 1;
+        if (ran < 0.5){
             return new Wall(color);
-        } else if (ran == 7){
+        } ran -= 0.5;
+        if (ran < 0.2){
             return new Checker(color);
         }
         return null;
