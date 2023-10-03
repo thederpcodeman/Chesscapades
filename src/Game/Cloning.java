@@ -59,7 +59,7 @@ public class Cloning {
         return new Pawn(color);
     }
     public static Piece Advanced(int color){
-        double ran = (Math.random() * (5 + 0.8 + 0.8 + 0.5 + 0.5 + 0.4 + 0.25 + 0.2 + 0.2 + 0.2 + 0.15 + 0.15 + 0.1 + 0.1 + 0.06 + 0.05));
+        double ran = (Math.random() * (5 + 0.8 + 0.8 + 0.5 + 0.4 + 0.25 + 0.2 + 0.2 + 0.2 + 0.15 + 0.15 + 0.1 + 0.1 + 0.06 + 0.05));
         if (ran < 1){
             return new Archbishop(color);
         } ran -= 1;
