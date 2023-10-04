@@ -158,28 +158,6 @@ public class Board extends JPanel {
         {
             fen.append(" w ");
         }
-        if (getKing(1).isCastleable())
-        {
-            if(getTile(63).isCastleable())
-            {
-                fen.append("K");
-            }
-            if(getTile(56).isCastleable())
-            {
-                fen.append("Q");
-            }
-        }
-        if (getKing(0).isCastleable())
-        {
-            if(getTile(7).isCastleable())
-            {
-                fen.append("k");
-            }
-            if(getTile(0).isCastleable())
-            {
-                fen.append("q");
-            }
-        }
         if (fen.charAt(fen.length() - 1) == ' ')
         {
             fen.append('-');
