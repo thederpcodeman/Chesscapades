@@ -15,9 +15,9 @@ public class Assassin extends Piece {
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/wBladesinger.png"));
+            return(new ImageIcon("src/resources/wAssassin.png"));
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/bBladesinger.png"));
+            return(new ImageIcon("src/resources/bAssassin.png"));
         } else {
             return null;
         }

@@ -22,7 +22,7 @@ public class Skatterer {
                     a = "src/resources/bBishop.png";
                     break;
                 case 4:
-                    a = "src/resources/bBladesinger.png";
+                    a = "src/resources/bAssassin.png";
                     break;
                 case 5:
                     a = "src/resources/bBoat.png";
@@ -123,7 +123,7 @@ public class Skatterer {
                     a = "src/resources/wBishop.png";
                     break;
                 case 4:
-                    a = "src/resources/wBladesinger.png";
+                    a = "src/resources/wAssassin.png";
                     break;
                 case 5:
                     a = "src/resources/wBoat.png";
