@@ -4,6 +4,9 @@ import pieces.*;
 import pieces.pawns.Checker;
 import pieces.pawns.Pawn;
 import pieces.pawns.Prince;
+import pieces.royals.General;
+import pieces.royals.King;
+import pieces.royals.Tyrant;
 
 import javax.swing.*;
 import java.awt.*;

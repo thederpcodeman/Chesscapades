@@ -2,6 +2,8 @@ package Game;
 
 import pieces.*;
 import pieces.pawns.Pawn;
+import pieces.royals.General;
+import pieces.royals.King;
 
 import javax.swing.*;
 import java.awt.*;

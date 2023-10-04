@@ -2,6 +2,10 @@ package Game;
 
 import pieces.*;
 import pieces.pawns.*;
+import pieces.royals.Empress;
+import pieces.royals.General;
+import pieces.royals.King;
+import pieces.royals.Tyrant;
 
 public class Cloning {
     public static Piece Common(int color){

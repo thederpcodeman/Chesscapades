@@ -2,6 +2,7 @@ package Game;
 
 import pieces.*;
 import pieces.pawns.Pawn;
+import pieces.royals.King;
 
 import java.util.ArrayList;
 
