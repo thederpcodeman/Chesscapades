@@ -5,8 +5,8 @@ import Game.Tile;
 
 import javax.swing.*;
 
-public class Bladesinger extends Piece {
-    public Bladesinger(int color) {
+public class Assassin extends Piece {
+    public Assassin(int color) {
         super(color);
         value = 6;
         name = "Assassin";

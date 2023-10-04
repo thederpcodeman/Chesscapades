@@ -48,7 +48,7 @@ public class Cloning {
             return new Mage(color);
         } ran -= 0.2;
         if (ran < 0.15){
-            return new Bladesinger(color);
+            return new Assassin(color);
         } ran -= 0.15;
         if (ran < 0.1){
             return new Buffalo(color);
@@ -220,7 +220,7 @@ public class Cloning {
         } else if (ran == 19) {
             return new Greatwyrm(color);
         } else if (ran == 20) {
-            return new Bladesinger(color);
+            return new Assassin(color);
         } else if (ran == 21) {
             return new Spider(color);
         } else if (ran == 22) {

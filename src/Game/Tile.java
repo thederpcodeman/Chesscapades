@@ -316,7 +316,7 @@ public class Tile extends JPanel {
             } else if (s == "Tyrant") {
                 setPiece(new Tyrant(piece.getColor()));
             } else if (s == "Assassin's creed fanboy") {
-                setPiece(new Bladesinger(piece.getColor()));
+                setPiece(new Assassin(piece.getColor()));
             } else if (s == "Spider") {
                 setPiece(new Spider(piece.getColor()));
             } else if (s == "Manticore") {
