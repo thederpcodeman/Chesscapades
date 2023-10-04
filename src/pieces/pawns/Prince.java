@@ -1,11 +1,12 @@
-package pieces;
+package pieces.pawns;
 
 import Game.Board;
 import Game.Tile;
+import pieces.Moves;
 
 import javax.swing.*;
 
-    public class Prince extends Pawn{
+    public class Prince extends Pawn {
         public Prince(int color){
             super(color);
             value = 2;

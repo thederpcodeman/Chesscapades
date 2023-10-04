@@ -1,11 +1,11 @@
-package pieces;
+package pieces.pawns;
 
 import Game.Board;
 import Game.Tile;
 
 import javax.swing.*;
 
-public class Wall extends Pawn{
+public class Wall extends Pawn {
     public Wall(int color){
         super(color);
         wall = true;

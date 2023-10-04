@@ -1,6 +1,7 @@
 package Game;
 
 import pieces.*;
+import pieces.pawns.Pawn;
 
 import java.util.ArrayList;
 

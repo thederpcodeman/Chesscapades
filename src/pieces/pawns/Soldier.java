@@ -1,11 +1,12 @@
-package pieces;
+package pieces.pawns;
 
 import Game.Board;
 import Game.Tile;
+import pieces.Moves;
 
 import javax.swing.*;
 
-public class Soldier extends Pawn{
+public class Soldier extends Pawn {
     public Soldier(int color){
         super(color);
         name = "Soldier (pawn)";

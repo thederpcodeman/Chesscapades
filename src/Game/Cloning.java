@@ -1,6 +1,7 @@
 package Game;
 
 import pieces.*;
+import pieces.pawns.*;
 
 public class Cloning {
     public static Piece Common(int color){

@@ -1,10 +1,10 @@
 package Game;
 
 import pieces.*;
+import pieces.pawns.Pawn;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 

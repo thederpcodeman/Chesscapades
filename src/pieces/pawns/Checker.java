@@ -1,12 +1,13 @@
-package pieces;
+package pieces.pawns;
 
 import Game.Board;
 import Game.ChessGame;
 import Game.Tile;
+import pieces.pawns.Pawn;
 
 import javax.swing.*;
 
-public class Checker extends Pawn{
+public class Checker extends Pawn {
     public Checker(int color){
         super(color);
         value = 2;
