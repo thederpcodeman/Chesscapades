@@ -9,7 +9,7 @@ import pieces.royals.Tyrant;
 
 public class Cloning {
     public static Piece Common(int color){
-        double ran = (Math.random() * (1.2 + 1.6 + 0.334 + 1.5 + 0.01));
+        double ran = (Math.random() * (5 +  1.6 + 1.5 + 0.334 + 0.3 + 0.25 + 0.2 + 0.15 + 0.1));
         if (ran < 1){
             return new Rook(color);
         } ran -= 1;

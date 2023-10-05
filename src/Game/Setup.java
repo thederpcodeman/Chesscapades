@@ -145,7 +145,7 @@ public class Setup {
                 Tile tile = (Tile) chessBoard.getComponent(i);
                 tile.setPiece(Cloning.rPawn(1));
             }
-        }else if (rand == 6) {
+        }else if (rand == 6 && (int) (Math.random()* 2)  == 1) {
 
             //B.S.O.P. chess
 
