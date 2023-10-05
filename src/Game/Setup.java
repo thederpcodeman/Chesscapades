@@ -7,7 +7,7 @@ import pieces.royals.King;
 import java.util.ArrayList;
 
 public class Setup {
-    public static void refresh(Board chessBoard, boolean ep){
+    public static void refresh(Board chessBoard){
         int rand = (int) (Math.random() * 9);
         if (rand == 1 || rand == 0){
             //setup black pieces
@@ -313,21 +313,22 @@ public class Setup {
                 }
             }
         }
-        if (ep){
+        if ((int) (Math.random() * 9) == 1){
             for (Tile i : chessBoard.getOccupiedTiles()){
                 if (i.getPiece() != null && !(i.getPiece() instanceof Pawn)){
                     i.getPiece().royal = true;
                 }
             }
         }
-
-
-
-        //if Royal no protection
-        for (Tile i : chessBoard.getOccupiedTiles()){
-            if (i.getPiece() != null && (i.getPiece().royal)){
-                i.getPiece().wall = false;
+        if ((int) (Math.random() * 9) == 1){
+            for (Tile i : chessBoard.getOccupiedTiles()){
+                if (i.getPiece() != null && (i.getPiece() instanceof Pawn)){
+                    i.getPiece().wall = true;
+                }
             }
         }
+
+
+
     }
 }

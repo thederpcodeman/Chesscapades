@@ -55,8 +55,6 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
     public boolean bTrayal;
 
-    public static boolean epic;
-
     public static boolean ruth;
 
     public boolean decay;
@@ -115,7 +113,6 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         ruth = !((int) (Math.random() * 6.0) == 1);
         re = ((int) (Math.random() * 100) == 1);
         recheck = false;
-        epic = false;
         bTrayal = ((int) (Math.random() * 6.5) == 1);
         bStab = ((int) (Math.random() * 5.5) == 1);
         touchRule = ((int) (Math.random() * 8.5) == 1);
@@ -146,12 +143,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         }
 
         AudioPlayer.play("src/resources/audio/startgame.wav");
-        if (Math.random() * 7 == 1) {
-            epic = true;
-        }else {
-            epic = false;
-        }
-        Setup.refresh(chessBoard, epic);
+
+        Setup.refresh(chessBoard);
         turn = 1;
     }
 
