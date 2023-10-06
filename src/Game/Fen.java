@@ -1,6 +1,7 @@
 package Game;
 
 import pieces.*;
+import pieces.Assassins.Assassin;
 import pieces.pawns.*;
 import pieces.royals.Empress;
 import pieces.royals.General;

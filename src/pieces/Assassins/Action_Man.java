@@ -1,25 +1,26 @@
-package pieces;
+package pieces.Assassins;
 
 import Game.Board;
 import Game.Tile;
+import pieces.Keegan;
+import pieces.Moves;
+import pieces.Piece;
 
 import javax.swing.*;
 
-public class Keegan extends Piece {
-    public Keegan(int color) {
+public class Action_Man extends Piece {
+    public Action_Man(int color) {
         super(color);
-        value = 12;
-        this.royal = true;
-        this.wall = true;
-        name = "Keegan";
+        value = 6;
+        name = "Assassin";
     }
 
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/bUnknown.png"));
+            return(new ImageIcon("src/resources/bAssassin.png"));
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wUnknown.png"));
+            return(new ImageIcon("src/resources/wAssassin.png"));
         } else {
             return null;
         }
@@ -33,7 +34,7 @@ public class Keegan extends Piece {
         if (!Moves.allClear(color, destination)){
             return false;
         }
-        if (destination.getPiece() != null && !(destination.getPiece() instanceof Keegan)){
+        if (destination.getPiece() != null && !(destination.getPiece() instanceof Keegan) && !(destination.getPiece() instanceof Action_Man)){
             if (destination.isLegalMove(Board.getLocationFromCords(x, y), board, false)){
                 return true;
             }

@@ -1,7 +1,9 @@
-package pieces;
+package pieces.Assassins;
 
 import Game.Board;
 import Game.Tile;
+import pieces.Moves;
+import pieces.Piece;
 
 import javax.swing.*;
 

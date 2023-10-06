@@ -1,8 +1,8 @@
 package Game;
 
 import pieces.*;
+import pieces.Assassins.Assassin;
 import pieces.pawns.Pawn;
-import pieces.pawns.Prince;
 import pieces.royals.General;
 import pieces.royals.King;
 import pieces.royals.Tyrant;
@@ -11,7 +11,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class ChessGame extends JFrame implements MouseListener, MouseMotionListener {
     JLayeredPane layeredPane;
