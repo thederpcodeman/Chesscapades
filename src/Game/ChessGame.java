@@ -2,11 +2,16 @@ package Game;
 
 import pieces.*;
 import pieces.pawns.Pawn;
+import pieces.pawns.Prince;
+import pieces.royals.General;
+import pieces.royals.King;
+import pieces.royals.Tyrant;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ChessGame extends JFrame implements MouseListener, MouseMotionListener {
     JLayeredPane layeredPane;
@@ -38,6 +43,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     Action spaceAction;
     Action helpAction;
     Action resetAction;
+    Action toggleAction;
 
     ArrayList<String> fens;
     public int atomic;
@@ -60,11 +66,14 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     public boolean decay;
     public static boolean skatter;
 
+    public static boolean debugToggle;
+
     public int cooldown;
 
     public int gravity;
 
     public ChessGame(int size){
+        debugToggle = false;
         Dimension boardSize = new Dimension(size, size);
 
         layeredPane = new JLayeredPane();
@@ -76,6 +85,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         spaceAction = new SpaceAction();
         helpAction = new HelpAction();
         resetAction = new ResetAction();
+        toggleAction = new ToggleAction();
 
 
 
@@ -97,12 +107,15 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         chessBoard.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), spaceAction);
         chessBoard.getInputMap().put(KeyStroke.getKeyStroke("H"), helpAction);
         chessBoard.getInputMap().put(KeyStroke.getKeyStroke("R"), resetAction);
+        chessBoard.getInputMap().put(KeyStroke.getKeyStroke("O"), toggleAction);
         chessBoard.getActionMap().put(spaceAction, spaceAction);
         chessBoard.getActionMap().put(helpAction, helpAction);
         chessBoard.getActionMap().put(resetAction, resetAction);
+        chessBoard.getActionMap().put(toggleAction, toggleAction);
     }
 
     public void setupPieces() {
+        debugToggle = false;
         selectedTile = null;
         gravity = (((int) (Math.random() * 3) -1));
         if ((int) (Math.random() * 7.0) != 1){
@@ -364,125 +377,130 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     public void mousePressed(MouseEvent e) {
         Tile[] tiles = chessBoard.getTiles();
         Tile tile = (Tile) chessBoard.getComponentAt(e.getX(), e.getY());
-        if (tile.getPiece() == null){
-            setTitle("Chesscapades");
-            setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/wKnight.png"));
+        if (debugToggle) {
+            debugClick(tile);
         }else{
-            String newname = "";
-            if (myst) {
-                newname = "Unknown Piece";
-                if (tile.getPiece().royal) {
-                    newname += " [Royal]";
-                }
-                if (tile.getPiece().color == 1) {
-                    setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/wUnknown.png"));
-                } else {
-                    setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/bUnknown.png"));
-                }
-            }else if (skatter){
-                newname = "Chesscapades";
+            if (tile.getPiece() == null){
+                setTitle("Chesscapades");
                 setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/wKnight.png"));
             }else{
-                newname = tile.getPiece().name;
-                setIconImage(tile.getPiece().getImageIcon().getImage());
-                if (tile.getPiece() instanceof Mage){
-                    newname += " (mana: " + (((Mage) tile.getPiece()).mana - 1) + ")";
-                }
-                if (tile.getPiece().royal){
-                    newname += " [Royal]";
-                }
-                if (tile.getPiece().wall){
-                    newname += " [Protected]";
-                }
-            }
-            setTitle(newname);
-        }
-
-
-
-
-
-
-
-        if (!tLocked){
-            for (Tile rTile : tiles) {
-                rTile.setBackground(rTile.getColor());
-            }
-            if (selectedTile != null && (!selectedTile.isLegalMove(tile.getLocationOnBoard(), chessBoard, false))){
-                selectedTile = null;
-            }
-        }
-        Piece piece = tile.getPiece();
-        if (piece != null && !(selectedTile != null && selectedTile.isLegalMove(tile.getLocationOnBoard(), chessBoard, false))) {
-            if (piece.getColor() == turn && !tLocked) {
-                if (!tLocked){
-                    selectedTile = tile;
-                }
-                tile.setBackground(selfColor);
-                Tile[] legalMoves = chessBoard.getTiles();
-                for (Tile legalTile : legalMoves) {
-                    if (tile.isPlayableMove(legalTile.getLocationOnBoard(), chessBoard, false) == 1){
-                        if (legalTile.getColor() == Tile.tan) {
-                            legalTile.setBackground(highlightedColor2);
-                        } else {
-                            legalTile.setBackground(highlightedColor);
-                        }
-                        if (touchRule) {
-                            tLocked = true;
-                        }
-
-                    }else if (tile.isPlayableMove(legalTile.getLocationOnBoard(), chessBoard, false) == 2) {
-                        legalTile.setBackground(dangerColor);
-                    }else if (tile == legalTile){
-                        legalTile.setBackground(selfColor);
-                    }else if ((legalTile.getPiece() != null) && (legalTile.getPiece().getColor() == turn)) {
-                        if (legalTile.getColor() == Tile.tan){
-                            if (legalTile.getPiece().royal){
-                                if (legalTile.getPiece().wall){
-                                    legalTile.setBackground(IRoyal);
-                                }else{
-                                    legalTile.setBackground(rTan);
-                                }
-                            }else if (legalTile.getPiece().wall){
-                                legalTile.setBackground(InvicibleAlly);
-                            }else {
-                                legalTile.setBackground(allyTan);
-                            }
-
-                        }else {
-                            if (legalTile.getPiece().royal){
-                                if (legalTile.getPiece().wall){
-                                    legalTile.setBackground(IRoyal);
-                                }else{
-                                    legalTile.setBackground(rRed);
-                                }
-                            }else if (legalTile.getPiece().wall){
-                                legalTile.setBackground(InvicibleAlly);
-                            }else{
-                                legalTile.setBackground(allyRed);
-                            }
-                        }
-                    }else if ((legalTile.getPiece() != null) && (legalTile.getPiece().getColor() != turn)){
-                        if (legalTile.getPiece().royal) {
-                            if (legalTile.getColor() == Tile.tan) {
-                                legalTile.setBackground(pTan);
-                            } else {
-                                legalTile.setBackground(pRed);
-                            }
-                        }else if (legalTile.getPiece().wall) {
-                            if (legalTile.getPiece().color == turn){
-                                legalTile.setBackground(InvicibleAlly);
-                            } else {
-                                legalTile.setBackground(Invicible);
-                            }
-                        }
+                String newname = "";
+                if (myst) {
+                    newname = "Unknown Piece";
+                    if (tile.getPiece().royal) {
+                        newname += " [Royal]";
                     }
-
+                    if (tile.getPiece().color == 1) {
+                        setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/wUnknown.png"));
+                    } else {
+                        setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/bUnknown.png"));
+                    }
+                }else if (skatter){
+                    newname = "Chesscapades";
+                    setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/wKnight.png"));
+                }else{
+                    newname = tile.getPiece().name;
+                    setIconImage(tile.getPiece().getImageIcon().getImage());
+                    if (tile.getPiece() instanceof Mage){
+                        newname += " (mana: " + (((Mage) tile.getPiece()).mana - 1) + ")";
+                    }
+                    if (tile.getPiece().royal){
+                        newname += " [Royal]";
+                    }
+                    if (tile.getPiece().wall){
+                        newname += " [Protected]";
+                    }
                 }
-                return;
+                setTitle(newname);
             }
+
+
+
+
+
+
+
+            if (!tLocked){
+                for (Tile rTile : tiles) {
+                    rTile.setBackground(rTile.getColor());
+                }
+                if (selectedTile != null && (!selectedTile.isLegalMove(tile.getLocationOnBoard(), chessBoard, false))){
+                    selectedTile = null;
+                }
+            }
+            Piece piece = tile.getPiece();
+            if (piece != null && !(selectedTile != null && selectedTile.isLegalMove(tile.getLocationOnBoard(), chessBoard, false))) {
+                if (piece.getColor() == turn && !tLocked) {
+                    if (!tLocked){
+                        selectedTile = tile;
+                    }
+                    tile.setBackground(selfColor);
+                    Tile[] legalMoves = chessBoard.getTiles();
+                    for (Tile legalTile : legalMoves) {
+                        if (tile.isPlayableMove(legalTile.getLocationOnBoard(), chessBoard, false) == 1){
+                            if (legalTile.getColor() == Tile.tan) {
+                                legalTile.setBackground(highlightedColor2);
+                            } else {
+                                legalTile.setBackground(highlightedColor);
+                            }
+                            if (touchRule) {
+                                tLocked = true;
+                            }
+
+                        }else if (tile.isPlayableMove(legalTile.getLocationOnBoard(), chessBoard, false) == 2) {
+                            legalTile.setBackground(dangerColor);
+                        }else if (tile == legalTile){
+                            legalTile.setBackground(selfColor);
+                        }else if ((legalTile.getPiece() != null) && (legalTile.getPiece().getColor() == turn)) {
+                            if (legalTile.getColor() == Tile.tan){
+                                if (legalTile.getPiece().royal){
+                                    if (legalTile.getPiece().wall){
+                                        legalTile.setBackground(IRoyal);
+                                    }else{
+                                        legalTile.setBackground(rTan);
+                                    }
+                                }else if (legalTile.getPiece().wall){
+                                    legalTile.setBackground(InvicibleAlly);
+                                }else {
+                                    legalTile.setBackground(allyTan);
+                                }
+
+                            }else {
+                                if (legalTile.getPiece().royal){
+                                    if (legalTile.getPiece().wall){
+                                        legalTile.setBackground(IRoyal);
+                                    }else{
+                                        legalTile.setBackground(rRed);
+                                    }
+                                }else if (legalTile.getPiece().wall){
+                                    legalTile.setBackground(InvicibleAlly);
+                                }else{
+                                    legalTile.setBackground(allyRed);
+                                }
+                            }
+                        }else if ((legalTile.getPiece() != null) && (legalTile.getPiece().getColor() != turn)){
+                            if (legalTile.getPiece().royal) {
+                                if (legalTile.getColor() == Tile.tan) {
+                                    legalTile.setBackground(pTan);
+                                } else {
+                                    legalTile.setBackground(pRed);
+                                }
+                            }else if (legalTile.getPiece().wall) {
+                                if (legalTile.getPiece().color == turn){
+                                    legalTile.setBackground(InvicibleAlly);
+                                } else {
+                                    legalTile.setBackground(Invicible);
+                                }
+                            }
+                        }
+
+                    }
+                    return;
+                }
+            }
+            playMove(new moveInfo(selectedTile, tile, chessBoard));
         }
-        playMove(new moveInfo(selectedTile, tile, chessBoard));
+
     }
     public void obliterate(int square, boolean kingSlayer, boolean pawnSlayer){
         if ( (chessBoard.getTile(square) != null) && (chessBoard.getTile(square).getPiece() != null) && (kingSlayer || !(chessBoard.getTile(square).getPiece().royal)) && (pawnSlayer || !(chessBoard.getTile(square).getPiece() instanceof Pawn))) {
@@ -605,6 +623,140 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             }
             fens.clear();
             setupPieces();
+        }
+    }
+
+    public class ToggleAction extends AbstractAction {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            debugToggle = !debugToggle;
+        }
+    }
+
+    public void debugClick(Tile tile){
+        int input;
+
+        AudioPlayer.play("src/resources/audio/promote.wav");
+        ArrayList<String> possibilities = new ArrayList<String>();
+
+        possibilities.add("Queen");
+        possibilities.add("Rook");
+        possibilities.add("Knight");
+        possibilities.add("Bishop");
+        possibilities.add("King");
+        possibilities.add("Amazon");
+        possibilities.add("Archbishop");
+        possibilities.add("Chancellor");
+        possibilities.add("Camel");
+        possibilities.add("General");
+        possibilities.add("Lion");
+        possibilities.add("Frog");
+        possibilities.add("Elephant");
+        possibilities.add("Bull");
+        possibilities.add("Gryphon");
+        possibilities.add("Pegasus");
+        possibilities.add("Tyrant");
+        possibilities.add("Boat");
+        possibilities.add("Spider");
+        possibilities.add("Assassin");
+        possibilities.add("Manticore");
+        possibilities.add("Greatwyrm");
+        possibilities.add("Mage");
+        possibilities.add("Immortal");
+        possibilities.add("Spearman");
+
+        if (tile.getPiece() != null){
+            possibilities.add("Turn around");
+            possibilities.add("Change Team");
+            possibilities.add("+ Royal");
+            possibilities.add("- Royal");
+            possibilities.add("+ Protected");
+            possibilities.add("- Protected");
+            possibilities.add("Empty");
+        }
+        possibilities.add("Exit Debug Mode");
+        possibilities.add("Do Nothing.");
+
+        JPanel jPanel = new JPanel(new GridBagLayout());
+        JComboBox comboBox = new JComboBox(possibilities.toArray());
+        input = JOptionPane.showConfirmDialog(null, comboBox, "Choose a piece to promote to: ", JOptionPane.DEFAULT_OPTION);
+        jPanel.add(comboBox);
+
+        if(input == JOptionPane.OK_OPTION) {
+            String s = (String) comboBox.getSelectedItem();
+            int c = turn;
+            if (tile.getPiece() != null){
+                c = tile.getPiece().getColor();
+            }
+            if (s == "Queen") {
+                tile.setPiece(new Queen(c));
+            } else if (s == "Rook") {
+                tile.setPiece(new Rook(c));
+            } else if (s == "Knight") {
+                tile.setPiece(new Knight(c));
+            } else if (s == "Bishop") {
+                tile.setPiece(new Bishop(c));
+            } else if (s == "King") {
+                tile.setPiece(new King(c));
+            } else if (s == "Turn around") {
+                tile.getPiece().setForwardDirection(tile.getPiece().getForwardDirection() * -1);
+                tile.setPiece(tile.getPiece());
+            } else if (s == "Amazon") {
+                tile.setPiece(new Amazon(c));
+            } else if (s == "Archbishop") {
+                tile.setPiece(new Archbishop(c));
+            } else if (s == "Chancellor") {
+                tile.setPiece(new Chancellor(c));
+            } else if (s == "Camel") {
+                tile.setPiece(new Camel(c));
+            } else if (s == "General") {
+                tile.setPiece(new General(c));
+            } else if (s == "Lion") {
+                tile.setPiece(new Lion(c));
+            } else if (s == "Frog") {
+                tile.setPiece(new Frog(c));
+            } else if (s == "Elephant") {
+                tile.setPiece(new Elephant(c));
+            } else if (s == "Bull") {
+                tile.setPiece(new Bull(c));
+            } else if (s == "Gryphon") {
+                tile.setPiece(new Gryphon(c));
+            } else if (s == "Empty") {
+                tile.setPiece(null);
+            } else if (s == "Boat") {
+                tile.setPiece(new Boat(c));
+            } else if (s == "Pegasus") {
+                tile.setPiece(new Pegasus(c));
+            } else if (s == "Tyrant") {
+                tile.setPiece(new Tyrant(c));
+            } else if (s == "Assassin") {
+                tile.setPiece(new Assassin(c));
+            } else if (s == "Spider") {
+                tile.setPiece(new Spider(c));
+            } else if (s == "Manticore") {
+                tile.setPiece(new Manticore(c));
+            } else if (s == "Greatwyrm") {
+                tile.setPiece(new Greatwyrm(c));
+            } else if (s == "Mage") {
+                tile.setPiece(new Mage(c));
+            } else if (s == "Spearman") {
+                tile.setPiece(new Spearman(c));
+            } else if (s == "Immortal") {
+                tile.setPiece(new Immortal(c));
+            } else if (s == "+ Royal") {
+                tile.getPiece().royal = true;
+            } else if (s == "- Royal") {
+                tile.getPiece().royal = false;
+            } else if (s == "+ Protected") {
+                tile.getPiece().wall = true;
+            } else if (s == "- Protected") {
+                tile.getPiece().wall = false;
+            } else if (s == "Exit Debug Mode") {
+                debugToggle = false;
+            } else if (s == "Change Team") {
+                tile.getPiece().color = 1 - tile.getPiece().getColor();
+                tile.setPiece(tile.getPiece());
+            }
         }
     }
 }
