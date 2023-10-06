@@ -9,7 +9,7 @@ public class Bladedancer extends Piece {
     public Bladedancer(int color) {
         super(color);
         value = 7;
-        name = "Blade Dancer";
+        name = "Assassin";
     }
 
     @Override
@@ -29,7 +29,7 @@ public class Bladedancer extends Piece {
         if (Math.abs(dy ) <= 1 && Math.abs(dx ) <= 1){
             return false;
         }
-        if (Math.abs(dy ) > 2 && Math.abs(dx ) > 2){
+        if (Math.abs(dy ) > 2 || Math.abs(dx ) > 2){
             return false;
         }
         Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
