@@ -1,7 +1,9 @@
 package Game;
 
 import pieces.*;
+import pieces.Assassins.Action_Man;
 import pieces.Assassins.Assassin;
+import pieces.Assassins.Bladedancer;
 import pieces.pawns.Pawn;
 import pieces.royals.General;
 import pieces.royals.King;
@@ -657,7 +659,9 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         possibilities.add("Tyrant");
         possibilities.add("Boat");
         possibilities.add("Spider");
-        possibilities.add("Assassin");
+        possibilities.add("Assassin1");
+        possibilities.add("Assassin2");
+        possibilities.add("Assassin3");
         possibilities.add("Manticore");
         possibilities.add("Greatwyrm");
         possibilities.add("Mage");
@@ -728,8 +732,12 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 tile.setPiece(new Pegasus(c));
             } else if (s == "Tyrant") {
                 tile.setPiece(new Tyrant(c));
-            } else if (s == "Assassin") {
+            } else if (s == "Assassin1") {
                 tile.setPiece(new Assassin(c));
+            } else if (s == "Assassin2") {
+                tile.setPiece(new Bladedancer(c));
+            } else if (s == "Assassin3") {
+                tile.setPiece(new Action_Man(c));
             } else if (s == "Spider") {
                 tile.setPiece(new Spider(c));
             } else if (s == "Manticore") {

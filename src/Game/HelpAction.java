@@ -155,7 +155,9 @@ public class HelpAction extends AbstractAction {
                     cb.addItem("---");
                     cb.addItem("Immortal");
                     cb.addItem("Archer");
-                    cb.addItem("Assassin");
+                    cb.addItem("Assassin1");
+                    cb.addItem("Assassin2");
+                    cb.addItem("Assassin3");
                     cb.addItem("Mage");
                     cb.addItem("High Mage");
                     cb.addItem("---");
@@ -475,7 +477,7 @@ public class HelpAction extends AbstractAction {
                     cb.addItem("Queen");
                     cb.addItem("King");
                     cb.addItem("OK");
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "Assassin")) {
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Assassin1")) {
                     lbl.setText("Moves but cant capture like a ");
                     lbl2.setText("Queen or a Greatwyrm, but can ");
                     lbl3.setText("only move like a King to capture. ");
@@ -483,6 +485,33 @@ public class HelpAction extends AbstractAction {
                     lbl5.setText("");
                     cb.removeAllItems();
                     cb.addItem("Piece Specific Rules");
+                    cb.addItem("Assassin2");
+                    cb.addItem("Assassin3");
+                    cb.addItem("Queen");
+                    cb.addItem("Greatwyrm");
+                    cb.addItem("King");
+                    cb.addItem("OK");
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Assassin2")) {
+                    lbl.setText("Moves 2 spaces in 1 direction, and 0-2 in another. ");
+                    lbl2.setText("jumps over pieces. ");
+                    lbl3.setText("On capture, go again. ");
+                    lbl4.setText("This cannot gain a bonus move again ");
+                    lbl5.setText("until it moves without capturing.");
+                    cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
+                    cb.addItem("Assassin1");
+                    cb.addItem("Assassin3");
+                    cb.addItem("OK");
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Assassin3")) {
+                    lbl.setText("Moves like a king, ");
+                    lbl2.setText("can also capture any piece ");
+                    lbl3.setText("that can see it.");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
+                    cb.addItem("Assassin1");
+                    cb.addItem("Assassin2");
                     cb.addItem("Queen");
                     cb.addItem("Greatwyrm");
                     cb.addItem("King");

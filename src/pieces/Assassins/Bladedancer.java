@@ -1,6 +1,7 @@
 package pieces.Assassins;
 
 import Game.Board;
+import Game.ChessGame;
 import Game.Tile;
 import pieces.Moves;
 import pieces.Piece;
@@ -8,10 +9,12 @@ import pieces.Piece;
 import javax.swing.*;
 
 public class Bladedancer extends Piece {
+    boolean bonusMove;
     public Bladedancer(int color) {
         super(color);
         value = 7;
         name = "Assassin";
+        bonusMove = true;
     }
 
     @Override
@@ -35,6 +38,16 @@ public class Bladedancer extends Piece {
             return false;
         }
         Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
+        if (forReal){
+            if (destination.getPiece() != null){
+                if (bonusMove){
+                    bonusMove = false;
+                    ChessGame.turn = (1 - ChessGame.turn);
+                }
+            }else{
+                bonusMove = true;
+            }
+        }
         return (Moves.allClear(getColor(), destination));
     }
 }

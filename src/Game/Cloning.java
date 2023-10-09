@@ -1,7 +1,9 @@
 package Game;
 
 import pieces.*;
+import pieces.Assassins.Action_Man;
 import pieces.Assassins.Assassin;
+import pieces.Assassins.Bladedancer;
 import pieces.pawns.*;
 import pieces.royals.Empress;
 import pieces.royals.General;
@@ -53,9 +55,15 @@ public class Cloning {
         if (ran < 0.2){
             return new Mage(color);
         } ran -= 0.2;
-        if (ran < 0.15){
+        if (ran < 0.05){
             return new Assassin(color);
-        } ran -= 0.15;
+        } ran -= 0.05;
+        if (ran < 0.05){
+            return new Bladedancer(color);
+        } ran -= 0.05;
+        if (ran < 0.05){
+            return new Action_Man(color);
+        } ran -= 0.05;
         if (ran < 0.1){
             return new Buffalo(color);
         }
