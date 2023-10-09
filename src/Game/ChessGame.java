@@ -667,6 +667,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         possibilities.add("Mage");
         possibilities.add("Immortal");
         possibilities.add("Spearman");
+        possibilities.add("Keegan");
 
         if (tile.getPiece() != null){
             possibilities.add("Turn around");
@@ -750,6 +751,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 tile.setPiece(new Spearman(c));
             } else if (s == "Immortal") {
                 tile.setPiece(new Immortal(c));
+            } else if (s == "Keegan") {
+                tile.setPiece(new Keegan(c));
             } else if (s == "+ Royal") {
                 tile.getPiece().royal = true;
             } else if (s == "- Royal") {

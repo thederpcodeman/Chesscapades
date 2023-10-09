@@ -34,11 +34,14 @@ public class Keegan extends Piece {
         if (!Moves.allClear(color, destination)){
             return false;
         }
+        wall = false;
         if (destination.getPiece() != null && !(destination.getPiece() instanceof Keegan) && !(destination.getPiece() instanceof Action_Man)){
             if (destination.isLegalMove(Board.getLocationFromCords(x, y), board, false)){
+                wall = true;
                 return true;
             }
         }
+        wall = true;
         return ((Math.abs(dx) <= 1) && (Math.abs(dy) <= 1));
     }
 }

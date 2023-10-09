@@ -1,7 +1,9 @@
 package Game;
 
 import pieces.*;
+import pieces.Assassins.Action_Man;
 import pieces.Assassins.Assassin;
+import pieces.Assassins.Bladedancer;
 import pieces.pawns.Checker;
 import pieces.pawns.Pawn;
 import pieces.pawns.Prince;
@@ -323,7 +325,14 @@ public class Tile extends JPanel {
             } else if (s == "Tyrant") {
                 setPiece(new Tyrant(piece.getColor()));
             } else if (s == "Assassin's creed fanboy") {
-                setPiece(new Assassin(piece.getColor()));
+                int ran = (int) (Math.random() * 3);
+                if (ran == 0){
+                    setPiece(new Assassin(piece.getColor()));
+                }else if (ran == 1){
+                    setPiece(new Bladedancer(piece.getColor()));
+                }else if (ran == 2){
+                    setPiece(new Action_Man(piece.getColor()));
+                }
             } else if (s == "Spider") {
                 setPiece(new Spider(piece.getColor()));
             } else if (s == "Manticore") {
