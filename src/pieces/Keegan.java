@@ -9,9 +9,8 @@ import javax.swing.*;
 public class Keegan extends Piece {
     public Keegan(int color) {
         super(color);
-        value = 12;
+        value = 4;
         this.royal = true;
-        this.wall = true;
         name = "Keegan";
     }
 
@@ -28,20 +27,9 @@ public class Keegan extends Piece {
 
     @Override
     public boolean isLegalMove(int x, int y, int newX, int newY, Board board, boolean forReal) {
-        int dx = newX - x;
         int dy = newY - y;
+        int dx = newX - x;
         Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
-        if (!Moves.allClear(color, destination)){
-            return false;
-        }
-        wall = false;
-        if (destination.getPiece() != null && !(destination.getPiece() instanceof Keegan) && !(destination.getPiece() instanceof Action_Man)){
-            if (destination.isLegalMove(Board.getLocationFromCords(x, y), board, false)){
-                wall = true;
-                return true;
-            }
-        }
-        wall = true;
-        return ((Math.abs(dx) <= 2) && (Math.abs(dy) <= 1));
+        return (Moves.allClear(getColor(), destination) && (Moves.frogMove(dx, dy) || Moves.elephantMove(dx, dy)));
     }
 }
