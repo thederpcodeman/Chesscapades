@@ -2,6 +2,7 @@ package pieces;
 
 import Game.Board;
 import Game.Tile;
+import pieces.Assassins.Action_Man;
 
 import javax.swing.*;
 
@@ -33,7 +34,7 @@ public class Keegan extends Piece {
         if (!Moves.allClear(color, destination)){
             return false;
         }
-        if (destination.getPiece() != null && !(destination.getPiece() instanceof Keegan)){
+        if (destination.getPiece() != null && !(destination.getPiece() instanceof Keegan) && !(destination.getPiece() instanceof Action_Man)){
             if (destination.isLegalMove(Board.getLocationFromCords(x, y), board, false)){
                 return true;
             }
