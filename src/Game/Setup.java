@@ -8,8 +8,9 @@ import java.util.ArrayList;
 
 public class Setup {
     public static void refresh(Board chessBoard){
-        int rand = (int) (Math.random() * 9);
-        if (rand == 1 || rand == 0){
+        double rand = (Math.random() * (8.5));
+        if (rand < 1.5){
+            // 960
             //setup black pieces
             chessBoard.getTile(0).setPiece(Cloning.Common(0));
             chessBoard.getTile(7).setPiece(Cloning.Common(0));
@@ -35,7 +36,7 @@ public class Setup {
                 Tile tile = (Tile) chessBoard.getComponent(i);
                 tile.setPiece(Cloning.rPawn(1));
             }
-        }else if (rand == 2){
+        }else if (rand < 2.5){
 
             //power chess
 
@@ -71,7 +72,7 @@ public class Setup {
                 Tile tile = (Tile) chessBoard.getComponent(i);
                 tile.setPiece(Cloning.rPawn(1));
             }
-        }else if (rand == 3) {
+        }else if (rand < 3.5) {
 
             //revolt chess
 
@@ -100,7 +101,7 @@ public class Setup {
                 Tile tile = (Tile) chessBoard.getComponent(i);
                 tile.setPiece(Cloning.rPawn(1));
             }
-        }else if (rand == 4){
+        }else if (rand < 4){
 
             //fear chess
 
@@ -116,7 +117,7 @@ public class Setup {
             chessBoard.getTile(i).setPiece(Cloning.Royal(0));
             i = (int) (Math.random() * 8);
             chessBoard.getTile(i + 56).setPiece(Cloning.Royal(1));
-        }else if (rand == 5){
+        }else if (rand < 5){
 
             //grand chess
 
@@ -145,7 +146,7 @@ public class Setup {
                 Tile tile = (Tile) chessBoard.getComponent(i);
                 tile.setPiece(Cloning.rPawn(1));
             }
-        }else if (rand == 6 && (int) (Math.random()* 2)  == 1) {
+        }else if (rand < 5.5) {
 
             //B.S.O.P. chess
 
@@ -174,7 +175,7 @@ public class Setup {
                 Tile tile = (Tile) chessBoard.getComponent(i);
                 tile.setPiece(Cloning.rPawn(1));
             }
-        }else {
+        }else if (rand < 7.5){
             // 1/3 960
             //setup black pieces
             chessBoard.getTile(0).setPiece(new Rook(0));
@@ -249,7 +250,83 @@ public class Setup {
                     chessBoard.getTile(i).setPiece(Cloning.rPawn(1));
                 }
             }
+        }else {////////////////////////////////////////////////
+            // 2/3 revolt
+            //setup black pieces
+            chessBoard.getTile(0).setPiece(new Rook(0));
+            chessBoard.getTile(7).setPiece(new Rook(0));
+            chessBoard.getTile(1).setPiece(new Knight(0));
+            chessBoard.getTile(6).setPiece(new Knight(0));
+            chessBoard.getTile(2).setPiece(new Bishop(0));
+            chessBoard.getTile(5).setPiece(new Bishop(0));
+            chessBoard.getTile(3).setPiece(new Queen(0));
+            chessBoard.getTile(4).setPiece(new King(0));
+            for (int i = 32; i < 40; i++) {
+                chessBoard.getTile(i).setPiece(new Pawn(0));
+            }
+            //setup white pieces
+            chessBoard.getTile(56).setPiece(new Rook(1));
+            chessBoard.getTile(63).setPiece(new Rook(1));
+            chessBoard.getTile(57).setPiece(new Knight(1));
+            chessBoard.getTile(62).setPiece(new Knight(1));
+            chessBoard.getTile(58).setPiece(new Bishop(1));
+            chessBoard.getTile(61).setPiece(new Bishop(1));
+            chessBoard.getTile(59).setPiece(new Queen(1));
+            chessBoard.getTile(60).setPiece(new King(1));
+            for (int i = 24; i < 32; i++) {
+                Tile tile = (Tile) chessBoard.getComponent(i);
+                tile.setPiece(new Pawn(1));
+            }
+
+            //Modify pieces
+            ArrayList<Integer> loop = new ArrayList<Integer>();
+            loop.add(0);
+            loop.add(1);
+            loop.add(2);
+            loop.add(5);
+            loop.add(6);
+            loop.add(7);
+            for (Integer i : loop) {
+                if ((int) (Math.random() * 3) == 1) {
+                    chessBoard.getTile(i).setPiece(Cloning.Common(0));
+                }
+            }
+            loop.clear();
+            loop.add(56);
+            loop.add(63);
+            loop.add(57);
+            loop.add(62);
+            loop.add(58);
+            loop.add(61);
+            for (Integer i : loop) {
+                if ((int) (Math.random() * 3) == 1) {
+                    chessBoard.getTile(i).setPiece(Cloning.Common(1));
+                }
+            }
+            if ((int) (Math.random() * 3) == 1) {
+                chessBoard.getTile(3).setPiece(Cloning.Advanced(0));
+            }
+            if ((int) (Math.random() * 3) == 1) {
+                chessBoard.getTile(59).setPiece(Cloning.Advanced(1));
+            }
+            if ((int) (Math.random() * 3) == 1) {
+                chessBoard.getTile(4).setPiece(Cloning.Royal(0));
+            }
+            if ((int) (Math.random() * 3) == 1) {
+                chessBoard.getTile(60).setPiece(Cloning.Royal(1));
+            }
+            for (int i = 32; i < 40; i++) {
+                if ((int) (Math.random() * 3) == 1) {
+                    chessBoard.getTile(i).setPiece(Cloning.rPawn(0));
+                }
+            }
+            for (int i = 24; i < 32; i++) {
+                if ((int) (Math.random() * 3) == 1) {
+                    chessBoard.getTile(i).setPiece(Cloning.rPawn(1));
+                }
+            }
         }
+
         // ensures* fairness*
         boolean unfair = true;
         int max = 20;
@@ -290,28 +367,14 @@ public class Setup {
         }
 
         // modifiers
-        if (Math.random() * 7 == 1){
+        if (Math.random() * 9 == 1){
             Tile sel;
-            int tries = 10;
-            while (tries > 0){
-                tries --;
                 Tile[] tot = chessBoard.getOccupiedTilesOfColor(1);
                 sel = tot[(int)(Math.random() * tot.length)];
-                if (!sel.getPiece().royal){
-                    sel.getPiece().bomb = true;
-                    tries = 0;
-                }
-            }
-            tries = 10;
-            while (tries > 0){
-                tries --;
-                Tile[] tot = chessBoard.getOccupiedTilesOfColor(0);
+                sel.getPiece().bomb = true;
+                tot = chessBoard.getOccupiedTilesOfColor(0);
                 sel = tot[(int)(Math.random() * tot.length)];
-                if (!sel.getPiece().royal){
-                    sel.getPiece().bomb = true;
-                    tries = 0;
-                }
-            }
+                sel.getPiece().bomb = true;
         }
         if ((int) (Math.random() * 9) == 1){
             for (Tile i : chessBoard.getOccupiedTiles()){
