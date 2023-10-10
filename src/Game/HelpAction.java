@@ -231,10 +231,10 @@ public class HelpAction extends AbstractAction {
                     cb.addItem("Randomized Rules");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Fast & Furious Chess")) {
-                    lbl.setText("When a piece is moved ");
-                    lbl2.setText("it slides in the direction ");
-                    lbl3.setText("of gravity ");
-                    lbl4.setText("unless something is in the way.");
+                    lbl.setText("When you capture a piece, ");
+                    lbl2.setText("the opponent has 2 turns");
+                    lbl3.setText("next turn.");
+                    lbl4.setText("");
                     lbl5.setText("");
                     cb.removeAllItems();
                     cb.addItem("Randomized Rules");

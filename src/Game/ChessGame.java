@@ -73,6 +73,10 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
     public int gravity;
 
+    public int wBonusTurns;
+
+    public int bBonusTurns;
+
     public ChessGame(int size){
         debugToggle = false;
         Dimension boardSize = new Dimension(size, size);
@@ -116,6 +120,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
+        wBonusTurns = 0;
+        bBonusTurns = 0;
         debugToggle = false;
         selectedTile = null;
         gravity = (((int) (Math.random() * 3) -1));
@@ -125,8 +131,9 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         cooldown = 0;
         decay = ((int) (Math.random() * 8.5) == 1);
         ruth = !((int) (Math.random() * 7.0) == 1);
-        re = ((int) (Math.random() * 100) == 1);
-        recheck = false;
+        re = ((int) (Math.random() * 10) == 1);
+        re = true;
+        recheck = true;
         bTrayal = ((int) (Math.random() * 6.5) == 1);
         bStab = ((int) (Math.random() * 5.5) == 1);
         touchRule = ((int) (Math.random() * 8.5) == 1);
@@ -244,7 +251,23 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
 
             AudioPlayer.play("src/resources/audio/move-self.wav");
-            turn = 1 - turn;
+            if (turn == 1){
+                if (wBonusTurns > 0){
+                    recheck = false;
+                    wBonusTurns --;
+                }else{
+                    recheck = true;
+                    turn = 1 - turn;
+                }
+            }else if (turn == 0){
+                if (bBonusTurns > 0){
+                    recheck = false;
+                    bBonusTurns --;
+                }else{
+                    recheck = true;
+                    turn = 1 - turn;
+                }
+            }
             for (int check = 0; check < 64; check++){
                 Piece checked = chessBoard.getTile(check).getPiece();
                 if (checked instanceof Pawn){
@@ -262,11 +285,12 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             String fen = chessBoard.computeFen(turn);
             fens.add(fen);
 
-            if (resp && !recheck){
-                recheck = true;
-                playGoodishMove();
-                turn = 1 - turn;
-                recheck = false;
+            if (resp && recheck){
+                if (turn == 1){
+                    wBonusTurns ++;
+                }else{
+                    bBonusTurns ++;
+                }
             }
 
             if (decay){
