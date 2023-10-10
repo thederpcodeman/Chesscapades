@@ -81,3 +81,7 @@ public class moveInfo {
         return score;
     }
 }
+
+//Import Python
+//Import SkyNet.py
+//SkyNet.becomeSkyNet(moveInfo.java)
