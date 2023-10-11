@@ -228,7 +228,7 @@ public class Tile extends JPanel {
         possibilities.add("Rook");
         possibilities.add("Knight");
         possibilities.add("Bishop");
-        possibilities.add("King 2, electric boogaloo");
+        possibilities.add("King");
         possibilities.add("Amazon");
         possibilities.add("Archbishop");
         possibilities.add("Chancellor");
@@ -242,14 +242,15 @@ public class Tile extends JPanel {
         possibilities.add("Pegasus rider");
         possibilities.add("Tyrant");
         possibilities.add("No thank you.");
-        possibilities.add("Boaty Mc Boatface");
+        possibilities.add("Ship");
         possibilities.add("Spider");
-        possibilities.add("Assassin's creed fanboy");
+        possibilities.add("Assassin");
         possibilities.add("Manticore");
         possibilities.add("Greatwyrm");
         possibilities.add("Mage");
         possibilities.add("Immortal");
         possibilities.add("Spearman");
+        possibilities.add("Falcon");
         Collections.shuffle(possibilities);
         int o = 3;
         if (getPiece().getColor() == 0){
@@ -281,7 +282,7 @@ public class Tile extends JPanel {
                 setPiece(new Knight(piece.getColor()));
             } else if (s == "Bishop") {
                 setPiece(new Bishop(piece.getColor()));
-            } else if (s == "King 2, electric boogaloo") {
+            } else if (s == "King") {
                 setPiece(new King(piece.getColor()));
             }  else if (s == "Turn around") {
                 if (getPiece().getColor() == 1){
@@ -318,13 +319,13 @@ public class Tile extends JPanel {
                     Board.bRadness += 3;
                 }
                 setPiece(null);
-            } else if (s == "Boaty Mc Boatface") {
+            } else if (s == "Ship") {
                 setPiece(new Boat(piece.getColor()));
             } else if (s == "Pegasus rider") {
                 setPiece(new Pegasus(piece.getColor()));
             } else if (s == "Tyrant") {
                 setPiece(new Tyrant(piece.getColor()));
-            } else if (s == "Assassin's creed fanboy") {
+            } else if (s == "Assassin") {
                 int ran = (int) (Math.random() * 3);
                 if (ran == 0){
                     setPiece(new Assassin(piece.getColor()));
@@ -347,6 +348,8 @@ public class Tile extends JPanel {
                 setPiece(new Spearman(piece.getColor()));
             } else if (s == "Immortal") {
                 setPiece(new Immortal(piece.getColor()));
+            } else if (s == "Falcon") {
+                setPiece(new Falcon(piece.getColor()));
             }
 
             if (roy){

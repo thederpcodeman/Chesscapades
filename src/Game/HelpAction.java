@@ -152,6 +152,7 @@ public class HelpAction extends AbstractAction {
                     cb.addItem("Ship");
                     cb.addItem("Bull");
                     cb.addItem("Spearman");
+                    cb.addItem("Falcon");
                     cb.addItem("---");
                     cb.addItem("Immortal");
                     cb.addItem("Archer");
@@ -757,6 +758,15 @@ public class HelpAction extends AbstractAction {
                     lbl2.setText("orthogonally, captures 2 or 3 spaces ");
                     lbl3.setText("orthogonally, cannot jump over ");
                     lbl4.setText("pieces.");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
+                    cb.addItem("OK");
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Falcon")) {
+                    lbl.setText("Moves 4 spaces in one direction, ");
+                    lbl2.setText("and 3 in another, ");
+                    lbl3.setText("or 2 in both. ");
+                    lbl4.setText("Jumps over pieces.");
                     lbl5.setText("");
                     cb.removeAllItems();
                     cb.addItem("Piece Specific Rules");
