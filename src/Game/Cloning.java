@@ -12,7 +12,7 @@ import pieces.royals.Tyrant;
 
 public class Cloning {
     public static Piece Common(int color){
-        double ran = (Math.random() * (5 +  1.6 + 2 + 0.334 + 0.3 + 0.25 + 0.2 + 0.15 + 0.1));
+        double ran = (Math.random() * (5 +  1.6 + 2.2 + 0.334 + 0.3 + 0.25 + 0.2 + 0.15 + 0.1));
         if (ran < 1){
             return new Rook(color);
         } ran -= 1;
@@ -34,14 +34,14 @@ public class Cloning {
         if (ran < 0.8){
             return new Camel(color);
         } ran -= 0.8;
+        if (ran < 0.7){
+            return new Falcon(color);
+        } ran -= 0.5;
         if (ran < 0.5){
             return new Viking(color);
         } ran -= 0.5;
         if (ran < 0.5){
             return new Boat(color);
-        } ran -= 0.5;
-        if (ran < 0.5){
-            return new Falcon(color);
         } ran -= 0.5;
         if (ran < 0.5){
             return new Bow(color);
