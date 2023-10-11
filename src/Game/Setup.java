@@ -349,7 +349,6 @@ public class Setup {
                 max -= 1;
                 if (max <= 0){
                     unfair = false;
-                    System.out.println("BS");
                 }
                 int rteam = 0;
                 int r = (int) (Math.random() * 8);

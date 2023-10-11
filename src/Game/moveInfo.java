@@ -77,7 +77,7 @@ public class moveInfo {
         }
         start.quietlyUpdatePiece(end.getPiece());
         end.quietlyUpdatePiece(store);
-        score += Math.random() * 20;
+        score += Math.random() * 8;
         return score;
     }
 }

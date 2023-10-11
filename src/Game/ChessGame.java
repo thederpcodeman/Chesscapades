@@ -131,8 +131,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         cooldown = 0;
         decay = ((int) (Math.random() * 8.5) == 1);
         ruth = !((int) (Math.random() * 7.0) == 1);
-        re = ((int) (Math.random() * 10) == 1);
-        re = true;
+        re = ((int) (Math.random() * 12) == 1);
         recheck = true;
         bTrayal = ((int) (Math.random() * 6.5) == 1);
         bStab = ((int) (Math.random() * 5.5) == 1);
