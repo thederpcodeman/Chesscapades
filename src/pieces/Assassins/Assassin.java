@@ -10,7 +10,7 @@ import javax.swing.*;
 public class Assassin extends Piece {
     public Assassin(int color) {
         super(color);
-        value = 6;
+        value = 5;
         name = "Assassin";
     }
 
