@@ -8,8 +8,8 @@ import javax.swing.*;
 public class Falcon extends Piece {
     public Falcon(int color) {
         super(color);
-        value = 3;
-        name = "Knight";
+        value = 4;
+        name = "Falcon";
     }
 
     @Override
