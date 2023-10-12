@@ -177,6 +177,9 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         Tile start = move.start;
         boolean resp = (move.end.getPiece() != null && re);
         if (start != null && (start.isPlayableMove(location, chessBoard, true) != 0)) {
+            if (start.getPiece() instanceof AugmentedKnight){
+                ((AugmentedKnight) start.getPiece()).justMoved(Board.getYFromLocation(move.end.getLocationOnBoard()));
+            }
             //process move
             tLocked = false;
             if ((chessBoard.getTile(location).getPiece() != null) && (atomic > 0)){
@@ -692,6 +695,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         possibilities.add("Spearman");
         possibilities.add("Falcon");
         possibilities.add("Keegan");
+        possibilities.add("AugKnight");
 
         if (tile.getPiece() != null){
             possibilities.add("Turn around");
@@ -779,6 +783,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 tile.setPiece(new Immortal(c));
             } else if (s == "Keegan") {
                 tile.setPiece(new Keegan(c));
+            } else if (s == "AugKnight") {
+                tile.setPiece(new AugmentedKnight(c));
             } else if (s == "+ Royal") {
                 tile.getPiece().royal = true;
             } else if (s == "- Royal") {
