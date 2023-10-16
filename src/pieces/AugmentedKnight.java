@@ -23,8 +23,8 @@ public class AugmentedKnight extends Piece {
     public AugmentedKnight(int color) {
         super(color);
         value = 5;
-        name = "Knight";
-        augment = (int) (Math.random() * 4);
+        name = "Augmented Knight";
+        augment = -1;
         augment2 = (-1);
         unlock = true;
         unlock2 = false;
@@ -192,6 +192,10 @@ public class AugmentedKnight extends Piece {
         AudioPlayer.play("src/resources/audio/promote.wav");
         ArrayList<String> possibilities = new ArrayList<String>();
 
+        if (newAugment == otherAugment){
+            otherAugment = -1;
+        }
+
         possibilities.add(option(newAugment, false));
         possibilities.add(option(otherAugment, true));
 
@@ -323,9 +327,9 @@ public class AugmentedKnight extends Piece {
         }else if (op == 12){
             return "Falcon's [4,3] move";
         }else if (op == 13){
-            return "1 space orthogonally";
-        }else if (op == -1){
             return "Become queen, at a price...";
+        }else if (op == -1){
+            return "Deactivate Augments";
         }else{
             return "???";
         }

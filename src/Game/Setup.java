@@ -2,13 +2,14 @@ package Game;
 
 import pieces.*;
 import pieces.pawns.Pawn;
+import pieces.royals.General;
 import pieces.royals.King;
 
 import java.util.ArrayList;
 
 public class Setup {
     public static void refresh(Board chessBoard){
-        double rand = (Math.random() * (8.5));
+        double rand = (Math.random() * (90)); // 9
         if (rand < 1.5){
             // 960
             //setup black pieces
@@ -250,7 +251,7 @@ public class Setup {
                     chessBoard.getTile(i).setPiece(Cloning.rPawn(1));
                 }
             }
-        }else {////////////////////////////////////////////////
+        }else if (rand < 8.5){////////////////////////////////////////////////
             // 2/3 revolt
             //setup black pieces
             chessBoard.getTile(0).setPiece(new Rook(0));
@@ -324,6 +325,34 @@ public class Setup {
                 if ((int) (Math.random() * 3) == 1) {
                     chessBoard.getTile(i).setPiece(Cloning.rPawn(1));
                 }
+            }
+        }else {
+
+            //cavalry chess
+
+            //setup black pieces
+            chessBoard.getTile(0).setPiece(new shortRook(0));
+            chessBoard.getTile(7).setPiece(new shortRook(0));
+            chessBoard.getTile(1).setPiece(new Knight(0));
+            chessBoard.getTile(6).setPiece(new Knight(0));
+            chessBoard.getTile(2).setPiece(new Camel(0));
+            chessBoard.getTile(5).setPiece(new Camel(0));
+            chessBoard.getTile(3).setPiece(new Buffalo(0));
+            chessBoard.getTile(4).setPiece(new General(0));
+            for (int i = 8; i < 16; i++) {
+                chessBoard.getTile(i).setPiece(new AugmentedKnight(0));
+            }
+            //setup white pieces
+            chessBoard.getTile(56).setPiece(new shortRook(1));
+            chessBoard.getTile(63).setPiece(new shortRook(1));
+            chessBoard.getTile(57).setPiece(new Knight(1));
+            chessBoard.getTile(62).setPiece(new Knight(1));
+            chessBoard.getTile(58).setPiece(new Camel(1));
+            chessBoard.getTile(61).setPiece(new Camel(1));
+            chessBoard.getTile(59).setPiece(new Buffalo(1));
+            chessBoard.getTile(60).setPiece(new General(1));
+            for (int i = 48; i < 56; i++) {
+                chessBoard.getTile(i).setPiece(new AugmentedKnight(1));
             }
         }
 
