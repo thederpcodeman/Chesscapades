@@ -12,6 +12,7 @@ import pieces.royals.Tyrant;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class AugmentedKnight extends Piece {
@@ -32,13 +33,29 @@ public class AugmentedKnight extends Piece {
 
     @Override
     public ImageIcon getImageIcon() {
+
+        ImageIcon large;
+
+        ImageIcon small;
         if(color == 0) {
-            return(new ImageIcon("src/resources/bKnight.png"));
-        } else if(color == 1) {
-            return(new ImageIcon("src/resources/wKnight.png"));
+            large = (new ImageIcon("src/resources/bKnight.png"));
         } else {
-            return null;
+            large = (new ImageIcon("src/resources/wKnight.png"));
         }
+        small = new ImageIcon("src/resources/bKnight.png");
+
+        int w = Math.max(large.getIconWidth(), small.getIconWidth());
+        int h = Math.max(large.getIconHeight(), small.getIconHeight());
+
+        BufferedImage combined = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+
+        // paint both images, preserving the alpha channels
+        Graphics g = combined.getGraphics();
+        g.drawImage(large.getImage(), 0, 0, null);
+        g.drawImage(small.getImage(), 0, 0, null);
+
+
+        return(new ImageIcon(combined));
     }
 
     @Override
