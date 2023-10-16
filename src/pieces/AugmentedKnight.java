@@ -64,12 +64,12 @@ public class AugmentedKnight extends Piece {
             }
         }
         if (((Math.abs(dx) == 3) && (Math.abs(dy) == 0)) || ((Math.abs(dx) == 0) && (Math.abs(dy) == 3))){
-            if (augment == 3 || augment2 == 3){
+            if (augment == 4 || augment2 == 4){
                 return true;
             }
         }
         if (((Math.abs(dx) == 2) && (Math.abs(dy) == 0)) || ((Math.abs(dx) == 0) && (Math.abs(dy) == 2))){
-            if (augment == 1 || augment2 == 1 || augment == 5 || augment2 == 5 || augment == 6 || augment2 == 6){
+            if (augment == 1 || augment2 == 1 || augment == 6 || augment2 == 6){
                 return true;
             }
         }
@@ -79,7 +79,7 @@ public class AugmentedKnight extends Piece {
             }
         }
         if (((Math.abs(dx) == 2) && (Math.abs(dy) == 2))){
-            if (augment == 3 || augment2 == 3 || augment == 5 || augment2 == 5 || augment == 6 || augment2 == 6){
+            if (augment == 3 || augment2 == 3 || augment == 6 || augment2 == 6){
                 return true;
             }
         }
