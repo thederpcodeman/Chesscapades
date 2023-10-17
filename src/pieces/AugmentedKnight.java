@@ -38,11 +38,11 @@ public class AugmentedKnight extends Piece {
 
         ImageIcon small;
         if(color == 0) {
-            large = (new ImageIcon("src/resources/bKnight.png"));
+            large = (new ImageIcon("src/resources/AugKnight/bAugKnight.png"));
         } else {
             large = (new ImageIcon("src/resources/wKnight.png"));
         }
-        small = new ImageIcon("src/resources/bKnight.png");
+        small = new ImageIcon("src/resources/AugKnight/AugmentsTemplate.png");
 
         int w = Math.max(large.getIconWidth(), small.getIconWidth());
         int h = Math.max(large.getIconHeight(), small.getIconHeight());
