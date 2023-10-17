@@ -178,7 +178,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         boolean resp = (move.end.getPiece() != null && re);
         if (start != null && (start.isPlayableMove(location, chessBoard, true) != 0)) {
             if (start.getPiece() instanceof AugmentedKnight){
-                ((AugmentedKnight) start.getPiece()).justMoved(Board.getYFromLocation(move.end.getLocationOnBoard()));
+                ((AugmentedKnight) start.getPiece()).justMoved(Board.getYFromLocation(move.end.getLocationOnBoard()), start);
             }
             //process move
             tLocked = false;

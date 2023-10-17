@@ -42,18 +42,16 @@ public class AugmentedKnight extends Piece {
         } else {
             large = (new ImageIcon("src/resources/AugKnight/wAugKnight.png"));
         }
-        small = new ImageIcon("src/resources/AugKnight/AugmentsTemplate.png");
 
 
-        int w = Math.max(large.getIconWidth(), small.getIconWidth());
-        int h = Math.max(large.getIconHeight(), small.getIconHeight());
+        int w = large.getIconWidth();
+        int h = large.getIconHeight();
 
         BufferedImage combined = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
 
         // paint both images, preserving the alpha channels
         Graphics g = combined.getGraphics();
         g.drawImage(large.getImage(), 0, 0, null);
-        g.drawImage(small.getImage(), 0, 0, null);
 
         ImageIcon extraLayers;
 
@@ -216,7 +214,7 @@ public class AugmentedKnight extends Piece {
     public void setAugment2(int newAugment){
         augment2 = newAugment;
     }
-    public void upAugment(){
+    public void upAugment(Tile self){
         if (!unlock){
             return;
         }
@@ -246,7 +244,7 @@ public class AugmentedKnight extends Piece {
         }else if (rand < 4.8){
             newAugment = 10;
         }else{
-            upAugment();
+            upAugment(self);
             return;
         }
         rand = (Math.random() * 4.8);
@@ -273,7 +271,7 @@ public class AugmentedKnight extends Piece {
         }else if (rand < 4.8){
             otherAugment = 10;
         }else{
-            upAugment();
+            upAugment(self);
             return;
         }
         int input;
@@ -286,7 +284,7 @@ public class AugmentedKnight extends Piece {
         }
 
         possibilities.add(option(newAugment, false));
-        possibilities.add(option(otherAugment, true));
+        possibilities.add(option(otherAugment, false));
 
         JPanel jPanel = new JPanel(new GridBagLayout());
         JComboBox comboBox = new JComboBox(possibilities.toArray());
@@ -321,8 +319,9 @@ public class AugmentedKnight extends Piece {
                 augment = -1;
             }
         }
+        self.setPiece(self.getPiece());
     }
-    public void upAugment2(){
+    public void upAugment2(Tile self){
         if (!unlock2){
             return;
         }
@@ -357,7 +356,7 @@ public class AugmentedKnight extends Piece {
         }else if (rand < 10.05){
             newAugment = 13;
         }else{
-            upAugment2();
+            upAugment2(self);
             return;
         }
         int input;
@@ -383,6 +382,7 @@ public class AugmentedKnight extends Piece {
                 augment = -1;
             }
         }
+        self.setPiece(self.getPiece());
     }
 
     public String option(int op, boolean two){
@@ -423,13 +423,13 @@ public class AugmentedKnight extends Piece {
             return "???";
         }
     }
-    public void justMoved(int newY){
+    public void justMoved(int newY, Tile self){
         if (((newY == 0) && getForwardDirection() == -1) || ((newY == 7) && getForwardDirection() == 1)){
             unlock = true;
             unlock2 = true;
 
         }
-        upAugment();
-        upAugment2();
+        upAugment(self);
+        upAugment2(self);
     }
 }
