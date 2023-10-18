@@ -2,7 +2,7 @@ package pieces.Assassins;
 
 import Game.Board;
 import Game.Tile;
-import pieces.Keegan;
+import pieces.royals.Keegan;
 import pieces.Moves;
 import pieces.Piece;
 

@@ -5,10 +5,7 @@ import pieces.Assassins.Action_Man;
 import pieces.Assassins.Assassin;
 import pieces.Assassins.Bladedancer;
 import pieces.pawns.*;
-import pieces.royals.Empress;
-import pieces.royals.General;
-import pieces.royals.King;
-import pieces.royals.Tyrant;
+import pieces.royals.*;
 
 public class Cloning {
     public static Piece Common(int color){

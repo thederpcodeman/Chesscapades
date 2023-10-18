@@ -6,6 +6,7 @@ import pieces.Assassins.Assassin;
 import pieces.Assassins.Bladedancer;
 import pieces.pawns.Pawn;
 import pieces.royals.General;
+import pieces.royals.Keegan;
 import pieces.royals.King;
 import pieces.royals.Tyrant;
 

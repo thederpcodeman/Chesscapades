@@ -1,8 +1,10 @@
-package pieces;
+package pieces.royals;
 
 import Game.Board;
 import Game.Tile;
 import pieces.Assassins.Action_Man;
+import pieces.Moves;
+import pieces.Piece;
 
 import javax.swing.*;
 

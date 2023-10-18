@@ -3,10 +3,7 @@ package Game;
 import pieces.*;
 import pieces.Assassins.Assassin;
 import pieces.pawns.*;
-import pieces.royals.Empress;
-import pieces.royals.General;
-import pieces.royals.King;
-import pieces.royals.Tyrant;
+import pieces.royals.*;
 
 public class Fen {
     public static String getFen(Piece piece) {
