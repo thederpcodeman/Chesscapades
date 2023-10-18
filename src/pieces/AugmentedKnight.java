@@ -275,16 +275,14 @@ public class AugmentedKnight extends Piece {
             return;
         }
         int input;
-
-        AudioPlayer.play("src/resources/audio/promote.wav");
         ArrayList<String> possibilities = new ArrayList<String>();
-
-        if (newAugment == otherAugment){
-            otherAugment = -1;
-        }
-
         possibilities.add(option(newAugment, false));
-        possibilities.add(option(otherAugment, false));
+        if (newAugment != otherAugment){
+            possibilities.add(option(otherAugment, false));
+        }
+        possibilities.add(option(-1, false));
+
+
 
         JPanel jPanel = new JPanel(new GridBagLayout());
         JComboBox comboBox = new JComboBox(possibilities.toArray());
