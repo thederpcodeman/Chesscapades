@@ -2,7 +2,9 @@ package Game;
 
 import pieces.*;
 import pieces.pawns.Pawn;
+import pieces.pawns.Prince;
 import pieces.pawns.Soldier;
+import pieces.pawns.StepPawn;
 import pieces.royals.General;
 import pieces.royals.King;
 
@@ -10,7 +12,7 @@ import java.util.ArrayList;
 
 public class Setup {
     public static void refresh(Board chessBoard){
-        double rand = (Math.random() * (800.7)); // 8.7
+        double rand = (Math.random() * (9.1)); // 9
         if (rand < 1.5){
             // 960
             //setup black pieces
@@ -327,7 +329,7 @@ public class Setup {
                     chessBoard.getTile(i).setPiece(Cloning.rPawn(1));
                 }
             }
-        }else {
+        }else if (rand < 9){
 
             //cavalry chess
 
@@ -354,6 +356,26 @@ public class Setup {
             chessBoard.getTile(60).setPiece(new King(1));
             for (int i = 48; i < 56; i++) {
                 chessBoard.getTile(i).setPiece(new Soldier(1));
+            }
+        }else {
+            //cavalry chess
+
+            //setup black pieces
+            for (int i = 8; i < 16; i++) {
+                Piece p = new StepPawn(0);
+                p.royal = true;
+                chessBoard.getTile(i).setPiece(p);
+            }
+            for (int i = 16; i < 24; i++) {
+                chessBoard.getTile(i).setPiece(new Pawn(0));
+            }
+            for (int i = 48; i < 56; i++) {
+                Piece p = new StepPawn(1);
+                p.royal = true;
+                chessBoard.getTile(i).setPiece(p);
+            }
+            for (int i = 40; i < 48; i++) {
+                chessBoard.getTile(i).setPiece(new Pawn(1));
             }
         }
 
