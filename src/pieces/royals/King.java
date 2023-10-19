@@ -2,8 +2,7 @@ package pieces.royals;
 
 import Game.Board;
 import Game.Tile;
-import pieces.Moves;
-import pieces.Piece;
+import pieces.*;
 
 import javax.swing.*;
 
@@ -63,7 +62,7 @@ public class King extends Piece {
                 }
                 int newRookDestination = Board.getLocationFromCords(newX - direction, newY);
                 Tile newRookTile = board.getTile(newRookDestination);
-                    if (!isInCheck(board))
+                    if (!isInCheck(board) && tile.getPiece() != null && (tile.getPiece() instanceof Rook || tile.getPiece() instanceof Queen || tile.getPiece() instanceof Chancellor || tile.getPiece() instanceof Amazon ))
                     {
                         if(forReal)
                         {
