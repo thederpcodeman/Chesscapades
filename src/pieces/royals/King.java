@@ -39,6 +39,40 @@ public class King extends Piece {
         {
             return true;
         }
+            if (newY == y && x == 4) {
+                int direction;
+                Tile tile;
+                if (newX == 2)
+                {
+                    direction = -1;
+                    tile = board.getTile(Board.getLocationFromCords(0, y));
+                    Tile extraTile = board.getTile(Board.getLocationFromCords(1, y));
+                    if(extraTile.getPiece() != null)
+                    {
+                        return false;
+                    }
+                }
+                else if (newX == 6)
+                {
+                    direction = 1;
+                    tile = board.getTile(Board.getLocationFromCords(7, y));
+                }
+                else
+                {
+                    return false;
+                }
+                int newRookDestination = Board.getLocationFromCords(newX - direction, newY);
+                Tile newRookTile = board.getTile(newRookDestination);
+                    if (!isInCheck(board))
+                    {
+                        if(forReal)
+                        {
+                            newRookTile.setPiece(tile.getPiece());
+                            tile.setPiece(null);
+                        }
+                        return true;
+                    }
+            }
         return false;
     }
 

@@ -2,6 +2,7 @@ package pieces.pawns;
 
 import Game.Board;
 import Game.Tile;
+import pieces.Moves;
 
 import javax.swing.*;
 
@@ -38,7 +39,7 @@ public class Pikeman extends Pawn {
         Tile destination = board.getTile(board.getLocationFromCords(newX, newY));
         int dy = newY - y;
         int dx = newX - x;
-        if (Math.abs(dx) > 1){
+        if (Math.abs(dx) > 1 || !Moves.allClear(color, destination)){
             return false;
         }else if (Math.abs(dx) == 1){
             return (dy == 0 && board.getTile(Board.getLocationFromCords(newX, newY)).getPiece() == null);

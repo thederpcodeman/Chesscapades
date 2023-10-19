@@ -195,7 +195,7 @@ public class Cloning {
         return null;
     }
     public static Piece Fear(int color){
-        int ran = (int) (Math.random() * 25);
+        int ran = (int) (Math.random() * 39);
         if (ran == 0){
             return new Elephant(color);
         } else if (ran == 1){
@@ -246,6 +246,34 @@ public class Cloning {
             return new Buffalo(color);
         } else if (ran == 24){
             return new Mage(color);
+        } else if (ran == 25){
+            return new Keegan(color);
+        } else if (ran == 26){
+            return new AugmentedKnight(color);
+        } else if (ran == 27){
+            return new Bladedancer(color);
+        } else if (ran == 28){
+            return new Action_Man(color);
+        } else if (ran == 29){
+            return new Viking(color);
+        } else if (ran == 30){
+            return new Berserker(color);
+        } else if (ran == 31){
+            return new Wolf(color);
+        } else if (ran == 32){
+            return new Spearman(color);
+        } else if (ran == 33){
+            return new Immortal(color);
+        } else if (ran == 34){
+            return new Pawn(color);
+        } else if (ran == 35){
+            return new Pikeman(color);
+        } else if (ran == 36){
+            return new Prince(color);
+        } else if (ran == 37){
+            return new Wall(color);
+        } else if (ran == 38){
+            return new Soldier(color);
         }
         return (null);
     }
