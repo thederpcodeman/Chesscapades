@@ -646,6 +646,93 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     public class ResetAction extends AbstractAction {
         @Override
         public void actionPerformed(ActionEvent e) {
+            int input;
+            AudioPlayer.play("src/resources/audio/promote.wav");
+            ArrayList<String> possibilities = new ArrayList<String>();
+
+            possibilities.add("Simple Reset");
+            possibilities.add("Full Query");
+            possibilities.add("Riffle Chess");
+            possibilities.add("Mystery");
+            possibilities.add("Skatter");
+            possibilities.add("Atomic");
+            possibilities.add("Gravity");
+            possibilities.add("Decay");
+            possibilities.add("Backstab");
+            possibilities.add("Betrayal");
+            possibilities.add("Formal");
+            possibilities.add("Friendly Fire");
+            possibilities.add("Fast and Furious");
+            possibilities.add("Exit Refresh Menu");
+
+            JPanel jPanel = new JPanel(new GridBagLayout());
+            JComboBox comboBox = new JComboBox(possibilities.toArray());
+            input = JOptionPane.showConfirmDialog(null, comboBox, "Choose a piece to promote to: ", JOptionPane.DEFAULT_OPTION);
+            jPanel.add(comboBox);
+
+            if(input == JOptionPane.OK_OPTION) {
+                String s = (String) comboBox.getSelectedItem();
+                int c = turn;
+                if (s == "Exit Refresh Menu") {
+                } else if (s == "Fast and Furious") {
+                    if (re = true){
+                        System.out.println("Fast and Furious Chess Disabled");
+                        re = false;
+                    }else{
+                        System.out.println("Fast and Furious Chess Enabled");
+                        re = true;
+                    }
+                } else if (s == "Friendly Fire") {
+                    if (ruth = true){
+                        System.out.println("Friendly Fire Chess Disabled");
+                        ruth = false;
+                    }else{
+                        System.out.println("Friendly Fire Chess Enabled");
+                        ruth = true;
+                    }
+                } else if (s == "Formal") {
+                    if (touchRule = true){
+                        System.out.println("Formal Chess Disabled");
+                        touchRule = false;
+                    }else{
+                        System.out.println("Formal Chess Enabled");
+                        touchRule = true;
+                    }
+                } else if (s == "Betrayal") {
+                    if (bTrayal = true){
+                        System.out.println("Betrayal Chess Disabled");
+                        bTrayal = false;
+                    }else{
+                        System.out.println("Betrayal Chess Enabled");
+                        bTrayal = true;
+                    }
+                } else if (s == "Fast and Furious") {
+                    if (re = true){
+                        System.out.println("Fast and Furious Chess Disabled");
+                        re = false;
+                    }else{
+                        System.out.println("Fast and Furious Chess Enabled");
+                        re = true;
+                    }
+                } else if (s == "Fast and Furious") {
+                    if (re = true){
+                        System.out.println("Fast and Furious Chess Disabled");
+                        re = false;
+                    }else{
+                        System.out.println("Fast and Furious Chess Enabled");
+                        re = true;
+                    }
+                } else if (s == "Fast and Furious") {
+                    if (re = true){
+                        System.out.println("Fast and Furious Chess Disabled");
+                        re = false;
+                    }else{
+                        System.out.println("Fast and Furious Chess Enabled");
+                        re = true;
+                    }
+                }
+            }
+
             for (int i = 0; i < 64; i++) {
                 chessBoard.getTile(i).setPiece(null);
             }
