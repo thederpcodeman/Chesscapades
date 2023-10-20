@@ -14,6 +14,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ChessGame extends JFrame implements MouseListener, MouseMotionListener {
     JLayeredPane layeredPane;
@@ -652,7 +653,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
             possibilities.add("Simple Reset");
             possibilities.add("Full Query");
-            possibilities.add("Riffle Chess");
+            possibilities.add("Riffle");
             possibilities.add("Mystery");
             possibilities.add("Skatter");
             possibilities.add("Atomic");
@@ -664,10 +665,23 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             possibilities.add("Friendly Fire");
             possibilities.add("Fast and Furious");
             possibilities.add("Exit Refresh Menu");
+            possibilities.add("Normal Chess");
+            possibilities.add("Chess 960");
+            possibilities.add("Two Thirds Chess");
+            possibilities.add("Revolt Chess");
+            possibilities.add("2/3 Revolt Chess");
+            possibilities.add("Grand Chess");
+            possibilities.add("Power Chess");
+            possibilities.add("Super Chess");
+            possibilities.add("Fear Chess");
+            possibilities.add("Cavalry Chess");
+            possibilities.add("Step Into Darkness Chess");
 
             JPanel jPanel = new JPanel(new GridBagLayout());
             JComboBox comboBox = new JComboBox(possibilities.toArray());
-            input = JOptionPane.showConfirmDialog(null, comboBox, "Choose a piece to promote to: ", JOptionPane.DEFAULT_OPTION);
+            ArrayList<String> als = new ArrayList<String>(Arrays.asList("OK"));
+            JComboBox secondary =  new JComboBox(als.toArray());
+            input = JOptionPane.showConfirmDialog(null, comboBox, "Refresh menu: ", JOptionPane.DEFAULT_OPTION);
             jPanel.add(comboBox);
 
             if(input == JOptionPane.OK_OPTION) {
@@ -675,69 +689,219 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 int c = turn;
                 if (s == "Exit Refresh Menu") {
                 } else if (s == "Fast and Furious") {
-                    if (re = true){
-                        System.out.println("Fast and Furious Chess Disabled");
+                    if (re){
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Fast and Furious Chess Disabled", JOptionPane.DEFAULT_OPTION);
                         re = false;
                     }else{
-                        System.out.println("Fast and Furious Chess Enabled");
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Fast and Furious Chess Enabled", JOptionPane.DEFAULT_OPTION);
                         re = true;
                     }
                 } else if (s == "Friendly Fire") {
-                    if (ruth = true){
-                        System.out.println("Friendly Fire Chess Disabled");
+                    if (ruth){
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Friendly Fire Chess Disabled", JOptionPane.DEFAULT_OPTION);
                         ruth = false;
                     }else{
-                        System.out.println("Friendly Fire Chess Enabled");
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Friendly Fire Chess Enabled", JOptionPane.DEFAULT_OPTION);
                         ruth = true;
                     }
                 } else if (s == "Formal") {
-                    if (touchRule = true){
-                        System.out.println("Formal Chess Disabled");
+                    if (touchRule){
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Formal Chess Disabled", JOptionPane.DEFAULT_OPTION);
                         touchRule = false;
                     }else{
-                        System.out.println("Formal Chess Enabled");
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Formal Chess Enabled", JOptionPane.DEFAULT_OPTION);
                         touchRule = true;
                     }
                 } else if (s == "Betrayal") {
-                    if (bTrayal = true){
-                        System.out.println("Betrayal Chess Disabled");
+                    if (bTrayal){
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Betrayal Chess Disabled", JOptionPane.DEFAULT_OPTION);
                         bTrayal = false;
                     }else{
-                        System.out.println("Betrayal Chess Enabled");
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Betrayal Chess Enabled", JOptionPane.DEFAULT_OPTION);
                         bTrayal = true;
                     }
-                } else if (s == "Fast and Furious") {
-                    if (re = true){
-                        System.out.println("Fast and Furious Chess Disabled");
-                        re = false;
+                } else if (s == "Backstab") {
+                    if (bStab){
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Backstab Chess Disabled", JOptionPane.DEFAULT_OPTION);
+                        bStab = false;
                     }else{
-                        System.out.println("Fast and Furious Chess Enabled");
-                        re = true;
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Backstab Chess Enabled", JOptionPane.DEFAULT_OPTION);
+                        bStab = true;
                     }
-                } else if (s == "Fast and Furious") {
-                    if (re = true){
-                        System.out.println("Fast and Furious Chess Disabled");
-                        re = false;
+                } else if (s == "Decay") {
+                    if (decay){
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Decay Chess Disabled", JOptionPane.DEFAULT_OPTION);
+                        decay = false;
                     }else{
-                        System.out.println("Fast and Furious Chess Enabled");
-                        re = true;
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Decay Chess Enabled", JOptionPane.DEFAULT_OPTION);
+                        decay = true;
                     }
-                } else if (s == "Fast and Furious") {
-                    if (re = true){
-                        System.out.println("Fast and Furious Chess Disabled");
-                        re = false;
+                } else if (s == "Gravity") {
+                    if (gravity == 1){
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Gravity set to Left", JOptionPane.DEFAULT_OPTION);
+                        gravity = -1;
+                    }else if (gravity == -1){
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Gravity chess disabled", JOptionPane.DEFAULT_OPTION);
+                        gravity = 0;
                     }else{
-                        System.out.println("Fast and Furious Chess Enabled");
-                        re = true;
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Gravity Chess Enabled (set to right)", JOptionPane.DEFAULT_OPTION);
+                        gravity = 1;
                     }
+                } else if (s == "Atomic") { // 1: both, 2: just kings, 3: just pawns, 4: nither
+                    if (atomic == 1){
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Now cannot kill pawns", JOptionPane.DEFAULT_OPTION);
+                        atomic = 2;
+                    }else if (atomic == 2){
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Now cannot kill Royal pieces", JOptionPane.DEFAULT_OPTION);
+                        atomic = 3;
+                    }else if (atomic == 3){
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Now cannot kill Pawns or Royal pieces", JOptionPane.DEFAULT_OPTION);
+                        atomic = 4;
+                    }else if (atomic == 4){
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Atomic chess disabled", JOptionPane.DEFAULT_OPTION);
+                        atomic = 0;
+                    }else if (atomic == 0){
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Atomic chess enabled, can kill Pawns and Royals", JOptionPane.DEFAULT_OPTION);
+                        atomic = 1;
+                    }
+                } else if (s == "Skatter") {
+                    if (skatter){
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Skatter Chess Disabled", JOptionPane.DEFAULT_OPTION);
+                        skatter = false;
+                        for (Tile t : chessBoard.getOccupiedTiles()){
+                            t.setPiece(t.getPiece());
+                        }
+                    }else{
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Skatter Chess Enabled", JOptionPane.DEFAULT_OPTION);
+                        skatter = true;
+                        for (Tile t : chessBoard.getOccupiedTiles()){
+                            t.setPiece(t.getPiece());
+                        }
+                    }
+                } else if (s == "Mystery") {
+                    if (myst){
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Mystery Chess Disabled", JOptionPane.DEFAULT_OPTION);
+                        myst = false;
+                        for (Tile t : chessBoard.getOccupiedTiles()){
+                            t.setPiece(t.getPiece());
+                        }
+                    }else{
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Mystery Chess Enabled", JOptionPane.DEFAULT_OPTION);
+                        myst = true;
+                        for (Tile t : chessBoard.getOccupiedTiles()){
+                            t.setPiece(t.getPiece());
+                        }
+                    }
+                } else if (s == "Riffle") {
+                    if (ranged == 1){
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Riffle Chess Disabled", JOptionPane.DEFAULT_OPTION);
+                        ranged = 0;
+                    }else{
+                        input = JOptionPane.showConfirmDialog(null, secondary, "Riffle Chess Enabled", JOptionPane.DEFAULT_OPTION);
+                        ranged = 1;
+                    }
+                } else if (s == "Simple Reset") {
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    setupPieces();
+                } else if (s == "Full query") {
+                } else if (s == "Normal Chess") {
+                } else if (s == "Chess 960") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.rChess(chessBoard);
+                    Setup.fairness(chessBoard);
+                    Setup.mods(chessBoard);
+                } else if (s == "Two Thirds Chess") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.twoThirdsChess(chessBoard);
+                    Setup.fairness(chessBoard);
+                    Setup.mods(chessBoard);
+                } else if (s == "Revolt Chess") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.revoltChess(chessBoard);
+                    Setup.fairness(chessBoard);
+                    Setup.mods(chessBoard);
+                } else if (s == "2/3 Revolt Chess") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.twoThirdsRevoltChess(chessBoard);
+                    Setup.fairness(chessBoard);
+                    Setup.mods(chessBoard);
+                } else if (s == "Grand Chess") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.grandChess(chessBoard);
+                    Setup.fairness(chessBoard);
+                    Setup.mods(chessBoard);
+                } else if (s == "Power Chess") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.powerChess(chessBoard);
+                    Setup.fairness(chessBoard);
+                    Setup.mods(chessBoard);
+                } else if (s == "Super Chess") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.superChess(chessBoard);
+                    Setup.fairness(chessBoard);
+                    Setup.mods(chessBoard);
+                } else if (s == "Fear Chess") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.fearChess(chessBoard);
+                    Setup.fairness(chessBoard);
+                    Setup.mods(chessBoard);
+                } else if (s == "Cavalry Chess") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.cavalryChess(chessBoard);
+                    Setup.fairness(chessBoard);
+                    Setup.mods(chessBoard);
+                } else if (s == "Step Into Darkness Chess") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.stepChess(chessBoard);
+                    Setup.fairness(chessBoard);
+                    Setup.mods(chessBoard);
                 }
             }
 
-            for (int i = 0; i < 64; i++) {
-                chessBoard.getTile(i).setPiece(null);
-            }
-            fens.clear();
-            setupPieces();
+
         }
     }
 
