@@ -946,6 +946,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         possibilities.add("Keegan");
         possibilities.add("AugKnight");
         possibilities.add("Flag bearer");
+        possibilities.add("Duck");
 
         if (tile.getPiece() != null){
             possibilities.add("Turn around");
@@ -1033,6 +1034,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 tile.setPiece(new Immortal(c));
             } else if (s == "Keegan") {
                 tile.setPiece(new Keegan(c));
+            } else if (s == "Duck") {
+                tile.setPiece(new Duck(c));
             } else if (s == "AugKnight") {
                 tile.setPiece(new AugmentedKnight(c));
             } else if (s == "+ Royal") {

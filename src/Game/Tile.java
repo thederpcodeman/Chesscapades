@@ -358,7 +358,7 @@ public class Tile extends JPanel {
                 setPiece(new Falcon(piece.getColor()));
             }
 
-            if (roy){
+            if (roy && getPiece() != null){
                 getPiece().royal = true;
             }
         }
