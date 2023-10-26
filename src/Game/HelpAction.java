@@ -142,6 +142,8 @@ public class HelpAction extends AbstractAction {
                     cb.addItem("General");
                     cb.addItem("Empress");
                     cb.addItem("Tyrant");
+                    cb.addItem("Keegan");
+                    cb.addItem("Flag bearer");
                     cb.addItem("---");
                     cb.addItem("Knight");
                     cb.addItem("Rook");
@@ -770,6 +772,26 @@ public class HelpAction extends AbstractAction {
                     lbl5.setText("");
                     cb.removeAllItems();
                     cb.addItem("Piece Specific Rules");
+                    cb.addItem("OK");
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Keegan")) {
+                    lbl.setText("Royal, ");
+                    lbl2.setText("moves like a ");
+                    lbl3.setText("spider.");
+                    lbl4.setText("");
+                    lbl5.setText("");
+                    cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
+                    cb.addItem("Spider");
+                    cb.addItem("OK");
+                } else if (Objects.equals(cb.getSelectedItem().toString(), "Flag bearer")) {
+                    lbl.setText("Royal, moves like a king, ");
+                    lbl2.setText("when it reaches the other side, ");
+                    lbl3.setText("it turns all non royal, and ");
+                    lbl4.setText("half of the royal pieces, ");
+                    lbl5.setText("to it's side.");
+                    cb.removeAllItems();
+                    cb.addItem("Piece Specific Rules");
+                    cb.addItem("King");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "")) {
 
