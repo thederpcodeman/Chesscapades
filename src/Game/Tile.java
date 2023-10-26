@@ -253,6 +253,7 @@ public class Tile extends JPanel {
         possibilities.add("Spearman");
         possibilities.add("Falcon");
         possibilities.add("Flag bearer");
+        possibilities.add("Crusader");
         Collections.shuffle(possibilities);
         int o = 3;
         if (getPiece().getColor() == 0){
@@ -280,6 +281,8 @@ public class Tile extends JPanel {
                 setPiece(new Queen(piece.getColor()));
             } else if (s == "Rook") {
                 setPiece(new Rook(piece.getColor()));
+            } else if (s == "Crusader") {
+                setPiece(new Crusader(piece.getColor()));
             } else if (s == "Knight") {
                 setPiece(new Knight(piece.getColor()));
             } else if (s == "Bishop") {
