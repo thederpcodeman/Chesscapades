@@ -20,7 +20,7 @@ public class Flag extends Piece {
         if(color == 0) {
             return(new ImageIcon("src/resources/bFlag.png"));
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wFlag.png"));
+            return(new ImageIcon("src/resources/wFlag.jpg"));
         } else {
             return null;
         }
@@ -36,9 +36,14 @@ public class Flag extends Piece {
         int dy = Math.abs(newY - y);
         if(dx <= 1 && dy <= 1)
         {
-            if (forReal && isEndSquare(y)){
-                for (Tile i : board.getOccupiedTilesOfColor(color - 1)){
-                    i.getPiece().color = color;
+            if (forReal && isEndSquare(newY)){
+                for (Tile i : board.getOccupiedTiles()){
+                    if (!i.getPiece().royal || (int) (Math.random() * 2) == 1){
+                        i.getPiece().color = color;
+                        i.getPiece().royal = true;
+                        i.setPiece(i.getPiece());
+                    }
+
                 }
             }
             return true;

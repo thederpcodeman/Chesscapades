@@ -5,10 +5,7 @@ import pieces.Assassins.Action_Man;
 import pieces.Assassins.Assassin;
 import pieces.Assassins.Bladedancer;
 import pieces.pawns.Pawn;
-import pieces.royals.General;
-import pieces.royals.Keegan;
-import pieces.royals.King;
-import pieces.royals.Tyrant;
+import pieces.royals.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -948,6 +945,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         possibilities.add("Falcon");
         possibilities.add("Keegan");
         possibilities.add("AugKnight");
+        possibilities.add("Flag bearer");
 
         if (tile.getPiece() != null){
             possibilities.add("Turn around");
@@ -1050,6 +1048,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             } else if (s == "Change Team") {
                 tile.getPiece().color = 1 - tile.getPiece().getColor();
                 tile.setPiece(tile.getPiece());
+            } else if (s == "Flag bearer") {
+                tile.setPiece(new Flag(c));
             }
         }
     }
