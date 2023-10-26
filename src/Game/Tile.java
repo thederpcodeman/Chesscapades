@@ -7,6 +7,7 @@ import pieces.Assassins.Bladedancer;
 import pieces.pawns.Checker;
 import pieces.pawns.Pawn;
 import pieces.pawns.Prince;
+import pieces.royals.Flag;
 import pieces.royals.General;
 import pieces.royals.King;
 import pieces.royals.Tyrant;
@@ -251,6 +252,7 @@ public class Tile extends JPanel {
         possibilities.add("Immortal");
         possibilities.add("Spearman");
         possibilities.add("Falcon");
+        possibilities.add("Flag bearer");
         Collections.shuffle(possibilities);
         int o = 3;
         if (getPiece().getColor() == 0){
@@ -342,6 +344,10 @@ public class Tile extends JPanel {
                 setPiece(new Greatwyrm(piece.getColor()));
             } else if (s == "Mage") {
                 Piece spin = new Mage(piece.getColor());
+                spin.setForwardDirection(getPiece().getForwardDirection() * -1);
+                setPiece(spin);
+            } else if (s == "Flag bearer") {
+                Piece spin = new Flag(piece.getColor());
                 spin.setForwardDirection(getPiece().getForwardDirection() * -1);
                 setPiece(spin);
             } else if (s == "Spearman") {

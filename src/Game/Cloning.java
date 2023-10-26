@@ -154,7 +154,7 @@ public class Cloning {
     }
 
     public static Piece Royal(int color){
-        double ran = (Math.random() * (1.2 + 1 + 0.334 + 0.25 + 0.1));
+        double ran = (Math.random() * (1.2 + 1 + 0.334 + 0.25 + 0.15));
         if (ran < 1.2){
             return new King(color);
         } ran -= 1.2;
@@ -167,8 +167,11 @@ public class Cloning {
         if (ran < 0.25){
             return new Tyrant(color);
         } ran -= 0.25;
-        if (ran < 0.1){
+        if (ran < 0.05){
             return new Keegan(color);
+        } ran -= 0.05;
+        if (ran < 0.1){
+            return new Flag(color);
         }
         return null;
     }
