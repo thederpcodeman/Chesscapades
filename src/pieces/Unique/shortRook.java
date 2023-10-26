@@ -1,7 +1,8 @@
-package pieces;
+package pieces.Unique;
 
 import Game.Board;
 import Game.Tile;
+import pieces.Rook;
 
 import javax.swing.*;
 

@@ -1,8 +1,9 @@
-package pieces.pawns;
+package pieces.Unique;
 
 import Game.Board;
 import Game.Tile;
 import pieces.Moves;
+import pieces.pawns.Prince;
 
 import javax.swing.*;
 

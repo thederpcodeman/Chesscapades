@@ -2,10 +2,8 @@ package Game;
 
 import pieces.*;
 import pieces.pawns.Pawn;
-import pieces.pawns.Prince;
 import pieces.pawns.Soldier;
-import pieces.pawns.StepPawn;
-import pieces.royals.General;
+import pieces.Unique.StepPawn;
 import pieces.royals.King;
 
 import java.util.ArrayList;
