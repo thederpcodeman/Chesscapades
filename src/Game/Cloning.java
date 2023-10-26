@@ -76,7 +76,7 @@ public class Cloning {
         return new Pawn(color);
     }
     public static Piece Advanced(int color){
-        double ran = (Math.random() * (5 + 0.8 + 0.8 + 0.5 + 0.4 + 0.25 + 0.2 + 0.2 + 0.2 + 0.15 + 0.15 + 0.1 + 0.1 + 0.06 + 0.05));
+        double ran = (Math.random() * (5 + 0.8 + 0.8 + 0.5 + 0.4 + 0.25 + 0.2 + 0.2 + 0.2 + 0.15 + 0.15 + 0.1 + 0.1 + 0.06 + 0.05 + 0.04 + 0.1));
         if (ran < 1){
             return new Archbishop(color);
         } ran -= 1;
@@ -133,6 +133,12 @@ public class Cloning {
         } ran -= 0.06;
         if (ran < 0.05){
             return new Tyrant(color);
+        } ran -= 0.05;
+        if (ran < 0.04){
+            return new Theocrat(color);
+        } ran -= 0.04;
+        if (ran < 0.1){
+            return new Flag(color);
         }
         return null;
     }
@@ -154,7 +160,7 @@ public class Cloning {
     }
 
     public static Piece Royal(int color){
-        double ran = (Math.random() * (1.2 + 1 + 0.334 + 0.25 + 0.15));
+        double ran = (Math.random() * (1.2 + 1 + 0.334 + 0.25 + 0.3));
         if (ran < 1.2){
             return new King(color);
         } ran -= 1.2;
@@ -172,6 +178,9 @@ public class Cloning {
         } ran -= 0.05;
         if (ran < 0.1){
             return new Flag(color);
+        } ran -= 0.1;
+        if (ran < 0.15){
+            return new Theocrat(color);
         }
         return null;
     }
