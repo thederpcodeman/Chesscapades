@@ -15,9 +15,9 @@ public class Crusader extends Piece {
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/bRook.png"));
+            return(new ImageIcon("src/resources/bViking.png"));
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wRook.png"));
+            return(new ImageIcon("src/resources/wViking.png"));
         } else {
             return null;
         }
@@ -27,6 +27,11 @@ public class Crusader extends Piece {
         int dy = newY - y;
         int dx = newX - x;
         Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
-        return (Moves.allClear(getColor(), destination) && Moves.rookMove(x, y, dx, dy, board));
+        if (Math.signum(dy) == Math.signum(getForwardDirection())){
+            return (Moves.allClear(getColor(), destination) && Moves.bishopMove(x, y, dx, dy, board));
+        }else if (dy != 0){
+            return (Moves.allClear(getColor(), destination) && Moves.rookMove(x, y, dx, dy, board));
+        }
+        return false;
     }
 }

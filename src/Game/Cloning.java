@@ -31,6 +31,9 @@ public class Cloning {
         if (ran < 0.8){
             return new Camel(color);
         } ran -= 0.8;
+        if (ran < 0.8){
+            return new Crusader(color);
+        } ran -= 0.8;
         if (ran < 0.7){
             return new Falcon(color);
         } ran -= 0.5;
@@ -210,7 +213,7 @@ public class Cloning {
         return null;
     }
     public static Piece Fear(int color){
-        int ran = (int) (Math.random() * 45);
+        int ran = (int) (Math.random() * 46);
         if (ran == 0){
             return new Elephant(color);
         } else if (ran == 1){
@@ -301,6 +304,8 @@ public class Cloning {
             return new Theocrat(color);
         } else if (ran == 44){
             return new Empress(color);
+        } else if (ran == 45){
+            return new Crusader(color);
         }
         return (null);
     }
