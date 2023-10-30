@@ -13,7 +13,7 @@ public class moveInfo {
         end = e;
         board = cboard;
     }
-    public double score(){
+    public double score(int rng){
         double score = 0;
         int sK = 1;
         for (Tile king : board.getKings(start.getPiece().getColor())){
@@ -77,7 +77,7 @@ public class moveInfo {
         }
         start.quietlyUpdatePiece(end.getPiece());
         end.quietlyUpdatePiece(store);
-        score += Math.random() * 8;
+        score += Math.random() * rng;
         return score;
     }
 }

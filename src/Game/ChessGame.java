@@ -626,7 +626,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         double moveMin = -999999;
         int selected = 0;
         for (int mov = 0; mov < choices.size(); mov++){
-            double sc = choices.get(mov).score();
+            double sc = choices.get(mov).score(8);
             if (sc > moveMin){
                 moveMin = sc;
                 selected = mov;
@@ -673,6 +673,9 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             possibilities.add("Fear Chess");
             possibilities.add("Cavalry Chess");
             possibilities.add("Step Into Darkness Chess");
+            possibilities.add("End Game Chess");
+            possibilities.add("Randomized End Game Chess");
+            possibilities.add("Upside-Down Chess");
 
             JPanel jPanel = new JPanel(new GridBagLayout());
             JComboBox comboBox = new JComboBox(possibilities.toArray());
@@ -803,8 +806,79 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     }
                     fens.clear();
                     setupPieces();
-                } else if (s == "Full query") {
-                } else if (s == "Normal Chess") {
+                } else if (s == "Full Query") {
+                    String info = "";
+                    if (ranged == 1){
+                        info += "Riffle Chess, ";
+                    }
+                    if (myst){
+                        info += "Mystery Chess, ";
+                    }
+                    if (skatter){
+                        info += "Skatter Chess, ";
+                    }
+                    if (atomic == 1){
+                        info += "Atomic Chess (1), ";
+                    }else if (atomic == 2){
+                        info += "Atomic Chess (2), ";
+                    }else if (atomic == 3){
+                        info += "Atomic Chess (3), ";
+                    }else if (atomic == 4){
+                        info += "Atomic Chess (4), ";
+                    }
+                    if (gravity == 1){
+                        info += "Gravity chess (Right), ";
+                    }else if (gravity == -1){
+                        info += "Mystery Chess (Left), ";
+                    }
+                    if (decay){
+                        info += "Decay Chess, ";
+                    }
+                    if (bStab){
+                        info += "Backstab Chess, ";
+                    }
+                    if (bTrayal){
+                        info += "Betrayal Chess, ";
+                    }
+                    if (touchRule){
+                        info += "Formal Chess, ";
+                    }
+                    if (ruth){
+                        info += "Friendly Fire Chess, ";
+                    }
+                    if (re){
+                        info += "Fast & Furious Chess, ";
+                    }
+                    for (int i = 0; i < 64; i++){
+                        if (chessBoard.getTile(i).getPiece() != null && chessBoard.getTile(i).getPiece().bomb){
+                            info += "Secret bomber at tile " + i + ", ";
+                        }
+                    }
+
+                    AudioPlayer.play("src/resources/audio/promote.wav");
+
+                    final String showToUser = info;
+
+
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            JFrame frame = new JFrame("Gamemodes in play...");
+                            frame.setVisible(true);
+                            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                            frame.setSize(500, 75);
+                            frame.setLocation(430, 100);
+                            JPanel panel = new JPanel();
+
+                            frame.add(panel);
+
+                            JLabel lbl = new JLabel(showToUser);
+                            lbl.setVisible(true);
+                            panel.add(lbl);
+                            frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/wKnight.png"));
+                        }
+                    } );
+
+
                 } else if (s == "Chess 960") {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
@@ -893,6 +967,42 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     }
                     fens.clear();
                     Setup.stepChess(chessBoard);
+                    Setup.fairness(chessBoard);
+                    Setup.mods(chessBoard);
+                } else if (s == "End Game Chess") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.egChess(chessBoard);
+                    Setup.fairness(chessBoard);
+                    Setup.mods(chessBoard);
+                } else if (s == "Randomized End Game Chess") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.regChess(chessBoard);
+                    Setup.fairness(chessBoard);
+                    Setup.mods(chessBoard);
+                } else if (s == "Normal Chess") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.normalChess(chessBoard);
+                    Setup.fairness(chessBoard);
+                    Setup.mods(chessBoard);
+                } else if (s == "Upside-Down Chess") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.upSideDownChess(chessBoard);
                     Setup.fairness(chessBoard);
                     Setup.mods(chessBoard);
                 }
