@@ -1,6 +1,7 @@
 package Game;
 
 import pieces.*;
+import pieces.pawns.Checker;
 import pieces.pawns.Pawn;
 import pieces.pawns.Soldier;
 import pieces.Unique.StepPawn;
@@ -536,6 +537,93 @@ public class Setup {
         for (int i = 48; i < 56; i++) {
             Tile tile = (Tile) chessBoard.getComponent(i);
             tile.setPiece(new Pawn(0));
+        }
+    }
+
+    public static void MaharajahChess (Board chessBoard){
+        //setup black pieces
+        chessBoard.getTile(0).setPiece(new Rook(0));
+        chessBoard.getTile(7).setPiece(new Rook(0));
+        chessBoard.getTile(1).setPiece(new Knight(0));
+        chessBoard.getTile(6).setPiece(new Knight(0));
+        chessBoard.getTile(2).setPiece(new Bishop(0));
+        chessBoard.getTile(5).setPiece(new Bishop(0));
+        chessBoard.getTile(3).setPiece(new Queen(0));
+        chessBoard.getTile(4).setPiece(new King(0));
+        for (int i = 8; i < 16; i++) {
+            chessBoard.getTile(i).setPiece(new Pawn(0));
+        }
+        chessBoard.getTile(60).setPiece(new Amazon(1));
+        ChessGame.wTotalWar = true;
+    }
+    public static void hoardChess (Board chessBoard){
+        //setup black pieces
+        chessBoard.getTile(0).setPiece(new Rook(0));
+        chessBoard.getTile(7).setPiece(new Rook(0));
+        chessBoard.getTile(1).setPiece(new Knight(0));
+        chessBoard.getTile(6).setPiece(new Knight(0));
+        chessBoard.getTile(2).setPiece(new Bishop(0));
+        chessBoard.getTile(5).setPiece(new Bishop(0));
+        chessBoard.getTile(3).setPiece(new Queen(0));
+        chessBoard.getTile(4).setPiece(new King(0));
+        for (int i = 8; i < 16; i++) {
+            chessBoard.getTile(i).setPiece(new Pawn(0));
+        }
+        for (int i = 32; i < 64; i++) {
+            Tile tile = (Tile) chessBoard.getComponent(i);
+            tile.setPiece(new Pawn(1));
+        }
+        ChessGame.wTotalWar = true;
+    }
+    public static void checkersVChess (Board chessBoard){
+        //setup black pieces
+        chessBoard.getTile(0).setPiece(new Rook(0));
+        chessBoard.getTile(7).setPiece(new Rook(0));
+        chessBoard.getTile(1).setPiece(new Knight(0));
+        chessBoard.getTile(6).setPiece(new Knight(0));
+        chessBoard.getTile(2).setPiece(new Bishop(0));
+        chessBoard.getTile(5).setPiece(new Bishop(0));
+        chessBoard.getTile(3).setPiece(new Queen(0));
+        chessBoard.getTile(4).setPiece(new King(0));
+        for (int i = 8; i < 16; i++) {
+            chessBoard.getTile(i).setPiece(new Pawn(0));
+        }
+        for (int i = 32; i < 64; i++) {
+            Tile tile = (Tile) chessBoard.getComponent(i);
+            tile.setPiece(new Checker(1));
+        }
+        ChessGame.wTotalWar = true;
+    }
+    public static void weakChess (Board chessBoard){
+        //setup black pieces
+        chessBoard.getTile(0).setPiece(new Knight(0));
+        chessBoard.getTile(7).setPiece(new Knight(0));
+        chessBoard.getTile(1).setPiece(new Knight(0));
+        chessBoard.getTile(6).setPiece(new Knight(0));
+        chessBoard.getTile(2).setPiece(new Knight(0));
+        chessBoard.getTile(5).setPiece(new Knight(0));
+        chessBoard.getTile(3).setPiece(new Knight(0));
+        chessBoard.getTile(4).setPiece(new King(0));
+        for (int i = 8; i < 16; i++) {
+            chessBoard.getTile(i).setPiece(new Pawn(0));
+        }
+        chessBoard.getTile(18).setPiece(new Pawn(0));
+        chessBoard.getTile(21).setPiece(new Pawn(0));
+        for (int i = 24; i < 32; i++) {
+            chessBoard.getTile(i).setPiece(new Pawn(0));
+        }
+        //setup white pieces
+        chessBoard.getTile(56).setPiece(new Rook(1));
+        chessBoard.getTile(63).setPiece(new Rook(1));
+        chessBoard.getTile(57).setPiece(new Knight(1));
+        chessBoard.getTile(62).setPiece(new Knight(1));
+        chessBoard.getTile(58).setPiece(new Bishop(1));
+        chessBoard.getTile(61).setPiece(new Bishop(1));
+        chessBoard.getTile(59).setPiece(new Queen(1));
+        chessBoard.getTile(60).setPiece(new King(1));
+        for (int i = 48; i < 56; i++) {
+            Tile tile = (Tile) chessBoard.getComponent(i);
+            tile.setPiece(new Pawn(1));
         }
     }
 }

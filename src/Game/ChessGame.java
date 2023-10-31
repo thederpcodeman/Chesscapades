@@ -46,6 +46,10 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     Action toggleAction;
 
     ArrayList<String> fens;
+
+    public static boolean wTotalWar;
+
+    public static boolean bTotalWar;
     public int atomic;
     public int ranged;
 
@@ -119,6 +123,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
+        wTotalWar = false;
+        bTotalWar = false;
         wBonusTurns = 0;
         bBonusTurns = 0;
         debugToggle = false;
@@ -335,6 +341,16 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             }
             if (wNumPieces <= 1){
                 wKing = false;
+            }
+            if (wTotalWar){
+                if (wNumPieces > 0){
+                    wKing = true;
+                }
+            }
+            if (bTotalWar){
+                if (bNumPieces > 0){
+                    bKing = true;
+                }
             }
             if (!wKing){
                 if (!bKing){
@@ -676,6 +692,11 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             possibilities.add("End Game Chess");
             possibilities.add("Randomized End Game Chess");
             possibilities.add("Upside-Down Chess");
+            possibilities.add("Maharajah and the Sepoys Chess");
+            possibilities.add("Hoard Chess");
+            possibilities.add("Chess vs Checkers");
+            possibilities.add("Weak!");
+
 
             JPanel jPanel = new JPanel(new GridBagLayout());
             JComboBox comboBox = new JComboBox(possibilities.toArray());
@@ -994,7 +1015,6 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     }
                     fens.clear();
                     Setup.normalChess(chessBoard);
-                    Setup.fairness(chessBoard);
                     Setup.mods(chessBoard);
                 } else if (s == "Upside-Down Chess") {
                     setupPieces();
@@ -1003,7 +1023,37 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     }
                     fens.clear();
                     Setup.upSideDownChess(chessBoard);
-                    Setup.fairness(chessBoard);
+                    Setup.mods(chessBoard);
+                } else if (s == "Maharajah and the Sepoys Chess") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.MaharajahChess(chessBoard);
+                    Setup.mods(chessBoard);
+                } else if (s == "Hoard Chess") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.hoardChess(chessBoard);
+                } else if (s == "Chess vs Checkers") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.checkersVChess(chessBoard);
+                }
+                else if (s == "Weak!") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.weakChess(chessBoard);
                     Setup.mods(chessBoard);
                 }
             }
