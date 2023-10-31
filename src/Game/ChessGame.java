@@ -696,7 +696,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             possibilities.add("Hoard Chess");
             possibilities.add("Chess vs Checkers");
             possibilities.add("Weak!");
-
+            possibilities.add("Randomized Hoard Chess");
 
             JPanel jPanel = new JPanel(new GridBagLayout());
             JComboBox comboBox = new JComboBox(possibilities.toArray());
@@ -1055,6 +1055,14 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     fens.clear();
                     Setup.weakChess(chessBoard);
                     Setup.mods(chessBoard);
+                }
+                else if (s == "Randomized Hoard Chess") {
+                    setupPieces();
+                    for (int i = 0; i < 64; i++) {
+                        chessBoard.getTile(i).setPiece(null);
+                    }
+                    fens.clear();
+                    Setup.rHoardChess(chessBoard);
                 }
             }
 

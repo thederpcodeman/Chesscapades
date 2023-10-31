@@ -626,4 +626,22 @@ public class Setup {
             tile.setPiece(new Pawn(1));
         }
     }
+    public static void rHoardChess (Board chessBoard){
+        //setup black pieces
+        chessBoard.getTile(0).setPiece(Cloning.Common(0));
+        chessBoard.getTile(7).setPiece(Cloning.Common(0));
+        chessBoard.getTile(1).setPiece(Cloning.Common(0));
+        chessBoard.getTile(6).setPiece(Cloning.Common(0));
+        chessBoard.getTile(2).setPiece(Cloning.Common(0));
+        chessBoard.getTile(5).setPiece(Cloning.Common(0));
+        chessBoard.getTile(3).setPiece(Cloning.Advanced(0));
+        chessBoard.getTile(4).setPiece(Cloning.Royal(0));
+        for (int i = 8; i < 16; i++) {
+            chessBoard.getTile(i).setPiece(Cloning.rPawn(0));
+        }
+        for (int i = 32; i < 64; i++) {
+            chessBoard.getTile(i).setPiece(Cloning.rPawn(1));
+        }
+        ChessGame.wTotalWar = true;
+    }
 }
