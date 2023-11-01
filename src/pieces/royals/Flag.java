@@ -38,7 +38,7 @@ public class Flag extends Piece {
         {
             if (forReal && isEndSquare(newY)){
                 for (Tile i : board.getOccupiedTiles()){
-                    if (!i.getPiece().royal || (int) (Math.random() * 2) == 1){
+                    if (!i.getPiece().royal){
                         i.getPiece().color = color;
                         i.getPiece().royal = true;
                         i.setPiece(i.getPiece());

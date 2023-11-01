@@ -1,6 +1,7 @@
 package Game;
 
 import pieces.*;
+import pieces.Unique.CheckerButNot;
 import pieces.pawns.Checker;
 import pieces.pawns.Pawn;
 import pieces.pawns.Soldier;
@@ -590,7 +591,7 @@ public class Setup {
         }
         for (int i = 32; i < 64; i++) {
             Tile tile = (Tile) chessBoard.getComponent(i);
-            tile.setPiece(new Checker(1));
+            tile.setPiece(new CheckerButNot(1));
         }
         ChessGame.wTotalWar = true;
     }
