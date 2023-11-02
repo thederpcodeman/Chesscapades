@@ -18,6 +18,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     Board chessBoard;
     Tile selectedTile;
     public static int turn;
+    public static boolean wBackWall;
     static final Color highlightedColor = new Color(00, 100, 200);
     static final Color selfColor = new Color(55, 160, 80);
     static final Color dangerColor = new Color(179, 0, 27);
@@ -81,6 +82,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     public int bBonusTurns;
 
     public ChessGame(int size){
+        wBackWall = false;
         debugToggle = false;
         Dimension boardSize = new Dimension(size, size);
 
@@ -123,6 +125,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void setupPieces() {
+        wBackWall = false;
         wTotalWar = false;
         bTotalWar = false;
         wBonusTurns = 0;

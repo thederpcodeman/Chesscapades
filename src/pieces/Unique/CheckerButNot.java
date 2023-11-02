@@ -57,6 +57,9 @@ public class CheckerButNot extends Pawn {
                 }
             }
         }
+        if (y == 1 && newY == 0){
+
+        }
         return false;
     }
 

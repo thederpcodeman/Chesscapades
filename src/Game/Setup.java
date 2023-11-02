@@ -1,7 +1,6 @@
 package Game;
 
 import pieces.*;
-import pieces.Unique.CheckerButNot;
 import pieces.pawns.Checker;
 import pieces.pawns.Pawn;
 import pieces.pawns.Soldier;
@@ -589,11 +588,15 @@ public class Setup {
         for (int i = 8; i < 16; i++) {
             chessBoard.getTile(i).setPiece(new Pawn(0));
         }
-        for (int i = 32; i < 64; i++) {
-            Tile tile = (Tile) chessBoard.getComponent(i);
-            tile.setPiece(new CheckerButNot(1));
+        for (int i = 40; i < 64; i++) {
+            chessBoard.getTile(i).setPiece(new Checker(1));
         }
+        chessBoard.getTile(34).setPiece(new Checker(1));
+        chessBoard.getTile(35).setPiece(new Checker(1));
+        chessBoard.getTile(36).setPiece(new Checker(1));
+        chessBoard.getTile(37).setPiece(new Checker(1));
         ChessGame.wTotalWar = true;
+        ChessGame.wBackWall = true;
     }
     public static void weakChess (Board chessBoard){
         //setup black pieces

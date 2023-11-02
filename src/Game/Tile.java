@@ -140,6 +140,9 @@ public class Tile extends JPanel {
         if (location == getLocationOnBoard()) {
             return false;
         }
+        if (ChessGame.wBackWall && Board.getYFromLocation(location) == 7){
+            return false;
+        }
         int x = getLocationOnBoard() % 8;
         int y = getLocationOnBoard() / 8;
 
