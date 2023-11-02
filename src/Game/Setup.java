@@ -1,6 +1,7 @@
 package Game;
 
 import pieces.*;
+import pieces.Unique.CheckerButNot;
 import pieces.pawns.Checker;
 import pieces.pawns.Pawn;
 import pieces.pawns.Soldier;
@@ -589,12 +590,12 @@ public class Setup {
             chessBoard.getTile(i).setPiece(new Pawn(0));
         }
         for (int i = 40; i < 64; i++) {
-            chessBoard.getTile(i).setPiece(new Checker(1));
+            chessBoard.getTile(i).setPiece(new CheckerButNot(1));
         }
-        chessBoard.getTile(34).setPiece(new Checker(1));
-        chessBoard.getTile(35).setPiece(new Checker(1));
-        chessBoard.getTile(36).setPiece(new Checker(1));
-        chessBoard.getTile(37).setPiece(new Checker(1));
+        chessBoard.getTile(34).setPiece(new CheckerButNot(1));
+        chessBoard.getTile(35).setPiece(new CheckerButNot(1));
+        chessBoard.getTile(36).setPiece(new CheckerButNot(1));
+        chessBoard.getTile(37).setPiece(new CheckerButNot(1));
         ChessGame.wTotalWar = true;
         ChessGame.wBackWall = true;
     }
