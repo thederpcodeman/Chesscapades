@@ -12,6 +12,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 public class ChessGame extends JFrame implements MouseListener, MouseMotionListener {
     JLayeredPane layeredPane;
@@ -19,7 +21,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     Tile selectedTile;
     public static int turn;
     public static boolean wBackWall;
-    static final Color highlightedColor = new Color(00, 100, 200);
+    static final Color highlightedColor = new Color(0, 100, 200);
     static final Color selfColor = new Color(55, 160, 80);
     static final Color dangerColor = new Color(179, 0, 27);
 
@@ -228,7 +230,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             if (((ranged == 0 && !(start.getPiece() instanceof Mage || start.getPiece() instanceof Archmage)) || (move.end.getPiece() == null))){
                 move.end.setPiece(start.getPiece());
                 start.setPiece(null);
-                if (bTrayal && move.end.getPiece() != null && move.end.getPiece().royal == false && (int) (Math.random() * 5) == 1){
+                if (bTrayal && move.end.getPiece() != null && !move.end.getPiece().royal && (int) (Math.random() * 5) == 1){
                     move.end.getPiece().color = (move.end.getPiece().color + 1) % 2;
                     move.end.getPiece().setForwardDirection(move.end.getPiece().getForwardDirection() * -1);
                     move.end.setPiece(move.end.getPiece());
@@ -322,7 +324,6 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 }
             }
 
-            Tile[] enemyTiles = chessBoard.getOccupiedTilesOfColor(turn);
             int wNumPieces = 0;
             int bNumPieces = 0;
             boolean wKing = false;
@@ -429,7 +430,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 setTitle("Chesscapades");
                 setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/wKnight.png"));
             }else{
-                String newname = "";
+                String newname;
                 if (myst) {
                     newname = "Unknown Piece";
                     if (tile.getPiece().royal) {
@@ -705,16 +706,15 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
             JPanel jPanel = new JPanel(new GridBagLayout());
             JComboBox comboBox = new JComboBox(possibilities.toArray());
-            ArrayList<String> als = new ArrayList<String>(Arrays.asList("OK"));
+            ArrayList<String> als = new ArrayList<String>(List.of("OK"));
             JComboBox secondary =  new JComboBox(als.toArray());
             input = JOptionPane.showConfirmDialog(null, comboBox, "Refresh menu: ", JOptionPane.DEFAULT_OPTION);
             jPanel.add(comboBox);
 
             if(input == JOptionPane.OK_OPTION) {
                 String s = (String) comboBox.getSelectedItem();
-                int c = turn;
-                if (s == "Exit Refresh Menu") {
-                } else if (s == "Fast and Furious") {
+                if (Objects.equals(s, "Exit Refresh Menu")) {
+                } else if (Objects.equals(s, "Fast and Furious")) {
                     if (re){
                         input = JOptionPane.showConfirmDialog(null, secondary, "Fast and Furious Chess Disabled", JOptionPane.DEFAULT_OPTION);
                         re = false;
@@ -722,7 +722,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                         input = JOptionPane.showConfirmDialog(null, secondary, "Fast and Furious Chess Enabled", JOptionPane.DEFAULT_OPTION);
                         re = true;
                     }
-                } else if (s == "Friendly Fire") {
+                } else if (Objects.equals(s, "Friendly Fire")) {
                     if (ruth){
                         input = JOptionPane.showConfirmDialog(null, secondary, "Friendly Fire Chess Disabled", JOptionPane.DEFAULT_OPTION);
                         ruth = false;
@@ -730,7 +730,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                         input = JOptionPane.showConfirmDialog(null, secondary, "Friendly Fire Chess Enabled", JOptionPane.DEFAULT_OPTION);
                         ruth = true;
                     }
-                } else if (s == "Formal") {
+                } else if (Objects.equals(s, "Formal")) {
                     if (touchRule){
                         input = JOptionPane.showConfirmDialog(null, secondary, "Formal Chess Disabled", JOptionPane.DEFAULT_OPTION);
                         touchRule = false;
@@ -738,7 +738,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                         input = JOptionPane.showConfirmDialog(null, secondary, "Formal Chess Enabled", JOptionPane.DEFAULT_OPTION);
                         touchRule = true;
                     }
-                } else if (s == "Betrayal") {
+                } else if (Objects.equals(s, "Betrayal")) {
                     if (bTrayal){
                         input = JOptionPane.showConfirmDialog(null, secondary, "Betrayal Chess Disabled", JOptionPane.DEFAULT_OPTION);
                         bTrayal = false;
@@ -746,7 +746,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                         input = JOptionPane.showConfirmDialog(null, secondary, "Betrayal Chess Enabled", JOptionPane.DEFAULT_OPTION);
                         bTrayal = true;
                     }
-                } else if (s == "Backstab") {
+                } else if (Objects.equals(s, "Backstab")) {
                     if (bStab){
                         input = JOptionPane.showConfirmDialog(null, secondary, "Backstab Chess Disabled", JOptionPane.DEFAULT_OPTION);
                         bStab = false;
@@ -754,7 +754,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                         input = JOptionPane.showConfirmDialog(null, secondary, "Backstab Chess Enabled", JOptionPane.DEFAULT_OPTION);
                         bStab = true;
                     }
-                } else if (s == "Decay") {
+                } else if (Objects.equals(s, "Decay")) {
                     if (decay){
                         input = JOptionPane.showConfirmDialog(null, secondary, "Decay Chess Disabled", JOptionPane.DEFAULT_OPTION);
                         decay = false;
@@ -762,7 +762,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                         input = JOptionPane.showConfirmDialog(null, secondary, "Decay Chess Enabled", JOptionPane.DEFAULT_OPTION);
                         decay = true;
                     }
-                } else if (s == "Gravity") {
+                } else if (Objects.equals(s, "Gravity")) {
                     if (gravity == 1){
                         input = JOptionPane.showConfirmDialog(null, secondary, "Gravity set to Left", JOptionPane.DEFAULT_OPTION);
                         gravity = -1;
@@ -773,7 +773,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                         input = JOptionPane.showConfirmDialog(null, secondary, "Gravity Chess Enabled (set to right)", JOptionPane.DEFAULT_OPTION);
                         gravity = 1;
                     }
-                } else if (s == "Atomic") { // 1: both, 2: just kings, 3: just pawns, 4: nither
+                } else if (Objects.equals(s, "Atomic")) { // 1: both, 2: just kings, 3: just pawns, 4: nither
                     if (atomic == 1){
                         input = JOptionPane.showConfirmDialog(null, secondary, "Now cannot kill pawns", JOptionPane.DEFAULT_OPTION);
                         atomic = 2;
@@ -790,7 +790,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                         input = JOptionPane.showConfirmDialog(null, secondary, "Atomic chess enabled, can kill Pawns and Royals", JOptionPane.DEFAULT_OPTION);
                         atomic = 1;
                     }
-                } else if (s == "Skatter") {
+                } else if (Objects.equals(s, "Skatter")) {
                     if (skatter){
                         input = JOptionPane.showConfirmDialog(null, secondary, "Skatter Chess Disabled", JOptionPane.DEFAULT_OPTION);
                         skatter = false;
@@ -804,7 +804,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                             t.setPiece(t.getPiece());
                         }
                     }
-                } else if (s == "Mystery") {
+                } else if (Objects.equals(s, "Mystery")) {
                     if (myst){
                         input = JOptionPane.showConfirmDialog(null, secondary, "Mystery Chess Disabled", JOptionPane.DEFAULT_OPTION);
                         myst = false;
@@ -818,7 +818,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                             t.setPiece(t.getPiece());
                         }
                     }
-                } else if (s == "Riffle") {
+                } else if (Objects.equals(s, "Riffle")) {
                     if (ranged == 1){
                         input = JOptionPane.showConfirmDialog(null, secondary, "Riffle Chess Disabled", JOptionPane.DEFAULT_OPTION);
                         ranged = 0;
@@ -826,7 +826,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                         input = JOptionPane.showConfirmDialog(null, secondary, "Riffle Chess Enabled", JOptionPane.DEFAULT_OPTION);
                         ranged = 1;
                     }
-                } else if (s == "Disable All Rules") {
+                } else if (Objects.equals(s, "Disable All Rules")) {
                     if (ranged == 1) {
                         ranged = 0;
                     }
@@ -871,7 +871,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                             chessBoard.getTile(i).getPiece().bomb = false;
                         }
                     }
-                } else if (s == "Randomize All Rules") {
+                } else if (Objects.equals(s, "Randomize All Rules")) {
                     wBackWall = false;
                     wTotalWar = false;
                     bTotalWar = false;
@@ -914,64 +914,64 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     for (Tile i : chessBoard.getTiles()){
                         i.setBackground(i.getColor());
                     }
-                }else if (s == "Simple Reset") {
+                }else if (Objects.equals(s, "Simple Reset")) {
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
                     }
                     fens.clear();
                     setupPieces();
-                } else if (s == "Full Query") {
-                    String info = "";
+                } else if (Objects.equals(s, "Full Query")) {
+                    StringBuilder info = new StringBuilder();
                     if (ranged == 1){
-                        info += "Riffle Chess, ";
+                        info.append("Riffle Chess, ");
                     }
                     if (myst){
-                        info += "Mystery Chess, ";
+                        info.append("Mystery Chess, ");
                     }
                     if (skatter){
-                        info += "Skatter Chess, ";
+                        info.append("Skatter Chess, ");
                     }
                     if (atomic == 1){
-                        info += "Atomic Chess (1), ";
+                        info.append("Atomic Chess (1), ");
                     }else if (atomic == 2){
-                        info += "Atomic Chess (2), ";
+                        info.append("Atomic Chess (2), ");
                     }else if (atomic == 3){
-                        info += "Atomic Chess (3), ";
+                        info.append("Atomic Chess (3), ");
                     }else if (atomic == 4){
-                        info += "Atomic Chess (4), ";
+                        info.append("Atomic Chess (4), ");
                     }
                     if (gravity == 1){
-                        info += "Gravity chess (Right), ";
+                        info.append("Gravity chess (Right), ");
                     }else if (gravity == -1){
-                        info += "Gravity Chess (Left), ";
+                        info.append("Gravity Chess (Left), ");
                     }
                     if (decay){
-                        info += "Decay Chess, ";
+                        info.append("Decay Chess, ");
                     }
                     if (bStab){
-                        info += "Backstab Chess, ";
+                        info.append("Backstab Chess, ");
                     }
                     if (bTrayal){
-                        info += "Betrayal Chess, ";
+                        info.append("Betrayal Chess, ");
                     }
                     if (touchRule){
-                        info += "Formal Chess, ";
+                        info.append("Formal Chess, ");
                     }
                     if (!ruth){
-                        info += "Friendly Fire Chess, ";
+                        info.append("Friendly Fire Chess, ");
                     }
                     if (re){
-                        info += "Fast & Furious Chess, ";
+                        info.append("Fast & Furious Chess, ");
                     }
                     for (int i = 0; i < 64; i++){
                         if (chessBoard.getTile(i).getPiece() != null && chessBoard.getTile(i).getPiece().bomb){
-                            info += "Secret bomber at tile " + i + ", ";
+                            info.append("Secret bomber at tile ").append(i).append(", ");
                         }
                     }
 
                     AudioPlayer.play("src/resources/audio/promote.wav");
 
-                    final String showToUser = info;
+                    final String showToUser = info.toString();
 
 
                     java.awt.EventQueue.invokeLater(new Runnable() {
@@ -993,7 +993,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     } );
 
 
-                } else if (s == "Chess 960") {
+                } else if (Objects.equals(s, "Chess 960")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
@@ -1002,7 +1002,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     Setup.rChess(chessBoard);
                     Setup.fairness(chessBoard);
                     Setup.mods(chessBoard);
-                } else if (s == "Two Thirds Chess") {
+                } else if (Objects.equals(s, "Two Thirds Chess")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
@@ -1011,7 +1011,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     Setup.twoThirdsChess(chessBoard);
                     Setup.fairness(chessBoard);
                     Setup.mods(chessBoard);
-                } else if (s == "Revolt Chess") {
+                } else if (Objects.equals(s, "Revolt Chess")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
@@ -1020,7 +1020,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     Setup.revoltChess(chessBoard);
                     Setup.fairness(chessBoard);
                     Setup.mods(chessBoard);
-                } else if (s == "2/3 Revolt Chess") {
+                } else if (Objects.equals(s, "2/3 Revolt Chess")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
@@ -1029,7 +1029,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     Setup.twoThirdsRevoltChess(chessBoard);
                     Setup.fairness(chessBoard);
                     Setup.mods(chessBoard);
-                } else if (s == "Grand Chess") {
+                } else if (Objects.equals(s, "Grand Chess")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
@@ -1038,7 +1038,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     Setup.grandChess(chessBoard);
                     Setup.fairness(chessBoard);
                     Setup.mods(chessBoard);
-                } else if (s == "Power Chess") {
+                } else if (Objects.equals(s, "Power Chess")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
@@ -1047,7 +1047,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     Setup.powerChess(chessBoard);
                     Setup.fairness(chessBoard);
                     Setup.mods(chessBoard);
-                } else if (s == "Super Chess") {
+                } else if (Objects.equals(s, "Super Chess")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
@@ -1056,7 +1056,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     Setup.superChess(chessBoard);
                     Setup.fairness(chessBoard);
                     Setup.mods(chessBoard);
-                } else if (s == "Fear Chess") {
+                } else if (Objects.equals(s, "Fear Chess")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
@@ -1065,7 +1065,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     Setup.fearChess(chessBoard);
                     Setup.fairness(chessBoard);
                     Setup.mods(chessBoard);
-                } else if (s == "Cavalry Chess") {
+                } else if (Objects.equals(s, "Cavalry Chess")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
@@ -1074,7 +1074,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     Setup.cavalryChess(chessBoard);
                     Setup.fairness(chessBoard);
                     Setup.mods(chessBoard);
-                } else if (s == "Step Into Darkness Chess") {
+                } else if (Objects.equals(s, "Step Into Darkness Chess")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
@@ -1083,7 +1083,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     Setup.stepChess(chessBoard);
                     Setup.fairness(chessBoard);
                     Setup.mods(chessBoard);
-                } else if (s == "End Game Chess") {
+                } else if (Objects.equals(s, "End Game Chess")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
@@ -1092,7 +1092,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     Setup.egChess(chessBoard);
                     Setup.fairness(chessBoard);
                     Setup.mods(chessBoard);
-                } else if (s == "Randomized End Game Chess") {
+                } else if (Objects.equals(s, "Randomized End Game Chess")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
@@ -1101,7 +1101,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     Setup.regChess(chessBoard);
                     Setup.fairness(chessBoard);
                     Setup.mods(chessBoard);
-                } else if (s == "Normal Chess") {
+                } else if (Objects.equals(s, "Normal Chess")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
@@ -1109,7 +1109,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     fens.clear();
                     Setup.normalChess(chessBoard);
                     Setup.mods(chessBoard);
-                } else if (s == "Upside-Down Chess") {
+                } else if (Objects.equals(s, "Upside-Down Chess")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
@@ -1117,7 +1117,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     fens.clear();
                     Setup.upSideDownChess(chessBoard);
                     Setup.mods(chessBoard);
-                } else if (s == "Maharajah and the Sepoys Chess") {
+                } else if (Objects.equals(s, "Maharajah and the Sepoys Chess")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
@@ -1125,14 +1125,14 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     fens.clear();
                     Setup.MaharajahChess(chessBoard);
                     Setup.mods(chessBoard);
-                } else if (s == "Hoard Chess") {
+                } else if (Objects.equals(s, "Hoard Chess")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
                     }
                     fens.clear();
                     Setup.hoardChess(chessBoard);
-                } else if (s == "Chess vs Checkers") {
+                } else if (Objects.equals(s, "Chess vs Checkers")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
@@ -1140,7 +1140,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     fens.clear();
                     Setup.checkersVChess(chessBoard);
                 }
-                else if (s == "Weak!") {
+                else if (Objects.equals(s, "Weak!")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
@@ -1149,7 +1149,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     Setup.weakChess(chessBoard);
                     Setup.mods(chessBoard);
                 }
-                else if (s == "Randomized Hoard Chess") {
+                else if (Objects.equals(s, "Randomized Hoard Chess")) {
                     setupPieces();
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
@@ -1232,87 +1232,87 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             if (tile.getPiece() != null){
                 c = tile.getPiece().getColor();
             }
-            if (s == "Queen") {
+            if (Objects.equals(s, "Queen")) {
                 tile.setPiece(new Queen(c));
-            } else if (s == "Rook") {
+            } else if (Objects.equals(s, "Rook")) {
                 tile.setPiece(new Rook(c));
-            } else if (s == "Knight") {
+            } else if (Objects.equals(s, "Knight")) {
                 tile.setPiece(new Knight(c));
-            } else if (s == "Bishop") {
+            } else if (Objects.equals(s, "Bishop")) {
                 tile.setPiece(new Bishop(c));
-            } else if (s == "King") {
+            } else if (Objects.equals(s, "King")) {
                 tile.setPiece(new King(c));
-            } else if (s == "Turn around") {
+            } else if (Objects.equals(s, "Turn around")) {
                 tile.getPiece().setForwardDirection(tile.getPiece().getForwardDirection() * -1);
                 tile.setPiece(tile.getPiece());
-            } else if (s == "Amazon") {
+            } else if (Objects.equals(s, "Amazon")) {
                 tile.setPiece(new Amazon(c));
-            } else if (s == "Archbishop") {
+            } else if (Objects.equals(s, "Archbishop")) {
                 tile.setPiece(new Archbishop(c));
-            } else if (s == "Chancellor") {
+            } else if (Objects.equals(s, "Chancellor")) {
                 tile.setPiece(new Chancellor(c));
-            } else if (s == "Camel") {
+            } else if (Objects.equals(s, "Camel")) {
                 tile.setPiece(new Camel(c));
-            } else if (s == "Falcon") {
+            } else if (Objects.equals(s, "Falcon")) {
                 tile.setPiece(new Falcon(c));
-            } else if (s == "General") {
+            } else if (Objects.equals(s, "General")) {
                 tile.setPiece(new General(c));
-            } else if (s == "Lion") {
+            } else if (Objects.equals(s, "Lion")) {
                 tile.setPiece(new Lion(c));
-            } else if (s == "Frog") {
+            } else if (Objects.equals(s, "Frog")) {
                 tile.setPiece(new Frog(c));
-            } else if (s == "Elephant") {
+            } else if (Objects.equals(s, "Elephant")) {
                 tile.setPiece(new Elephant(c));
-            } else if (s == "Bull") {
+            } else if (Objects.equals(s, "Bull")) {
                 tile.setPiece(new Bull(c));
-            } else if (s == "Gryphon") {
+            } else if (Objects.equals(s, "Gryphon")) {
                 tile.setPiece(new Gryphon(c));
-            } else if (s == "Empty") {
+            } else if (Objects.equals(s, "Empty")) {
                 tile.setPiece(null);
-            } else if (s == "Boat") {
+            } else if (Objects.equals(s, "Boat")) {
                 tile.setPiece(new Boat(c));
-            } else if (s == "Pegasus") {
+            } else if (Objects.equals(s, "Pegasus")) {
                 tile.setPiece(new Pegasus(c));
-            } else if (s == "Tyrant") {
+            } else if (Objects.equals(s, "Tyrant")) {
                 tile.setPiece(new Tyrant(c));
-            } else if (s == "Assassin1") {
+            } else if (Objects.equals(s, "Assassin1")) {
                 tile.setPiece(new Assassin(c));
-            } else if (s == "Assassin2") {
+            } else if (Objects.equals(s, "Assassin2")) {
                 tile.setPiece(new Bladedancer(c));
-            } else if (s == "Assassin3") {
+            } else if (Objects.equals(s, "Assassin3")) {
                 tile.setPiece(new Action_Man(c));
-            } else if (s == "Spider") {
+            } else if (Objects.equals(s, "Spider")) {
                 tile.setPiece(new Spider(c));
-            } else if (s == "Manticore") {
+            } else if (Objects.equals(s, "Manticore")) {
                 tile.setPiece(new Manticore(c));
-            } else if (s == "Greatwyrm") {
+            } else if (Objects.equals(s, "Greatwyrm")) {
                 tile.setPiece(new Greatwyrm(c));
-            } else if (s == "Mage") {
+            } else if (Objects.equals(s, "Mage")) {
                 tile.setPiece(new Mage(c));
-            } else if (s == "Spearman") {
+            } else if (Objects.equals(s, "Spearman")) {
                 tile.setPiece(new Spearman(c));
-            } else if (s == "Immortal") {
+            } else if (Objects.equals(s, "Immortal")) {
                 tile.setPiece(new Immortal(c));
-            } else if (s == "Keegan") {
+            } else if (Objects.equals(s, "Keegan")) {
                 tile.setPiece(new Keegan(c));
-            } else if (s == "Duck") {
+            } else if (Objects.equals(s, "Duck")) {
                 tile.setPiece(new Duck(c));
-            } else if (s == "AugKnight") {
+            } else if (Objects.equals(s, "AugKnight")) {
                 tile.setPiece(new AugmentedKnight(c));
-            } else if (s == "+ Royal") {
+            } else if (Objects.equals(s, "+ Royal")) {
                 tile.getPiece().royal = true;
-            } else if (s == "- Royal") {
+            } else if (Objects.equals(s, "- Royal")) {
                 tile.getPiece().royal = false;
-            } else if (s == "+ Protected") {
+            } else if (Objects.equals(s, "+ Protected")) {
                 tile.getPiece().wall = true;
-            } else if (s == "- Protected") {
+            } else if (Objects.equals(s, "- Protected")) {
                 tile.getPiece().wall = false;
-            } else if (s == "Exit Debug Mode") {
+            } else if (Objects.equals(s, "Exit Debug Mode")) {
                 debugToggle = false;
-            } else if (s == "Change Team") {
+            } else if (Objects.equals(s, "Change Team")) {
                 tile.getPiece().color = 1 - tile.getPiece().getColor();
                 tile.setPiece(tile.getPiece());
-            } else if (s == "Flag bearer") {
+            } else if (Objects.equals(s, "Flag bearer")) {
                 tile.setPiece(new Flag(c));
             }
         }

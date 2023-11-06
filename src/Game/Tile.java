@@ -24,7 +24,6 @@ public class Tile extends JPanel {
     static final Color red = new Color(215, 122, 97);
 
     private final Color normalColor;
-    private boolean castleable;
     int size;
 
     public Tile(int location, BorderLayout layout, int size)
@@ -54,17 +53,9 @@ public class Tile extends JPanel {
         return piece;
     }
 
-    public boolean isCastleable() {
-        return castleable;
-    }
-
-    public void setCastleable(boolean b) {
-        castleable = b;
-    }
 
     public void setPiece(Piece piece) {
         this.piece = piece;
-        setCastleable(false);
         for(int i = 0; i < getComponentCount(); i++)
         {
             remove(i);
@@ -72,7 +63,7 @@ public class Tile extends JPanel {
         if(piece != null)
         {
             ImageIcon imageIcon = null;
-            if (ChessGame.myst == true){
+            if (ChessGame.myst){
                 if (getPiece().color == 1){
                     imageIcon = new ImageIcon(new ImageIcon("src/resources/wUnknown.png").getImage().getScaledInstance(size * 7 / 8, size * 7 / 8, Image.SCALE_DEFAULT));
                 }else if (getPiece().color == 0){
@@ -101,7 +92,6 @@ public class Tile extends JPanel {
     public void forceSetPiece(Piece piece)
     {
         this.piece = piece;
-        setCastleable(false);
         for(int i = 0; i < getComponentCount(); i++)
         {
             remove(i);
