@@ -669,6 +669,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
             possibilities.add("Simple Reset");
             possibilities.add("Full Query");
+            possibilities.add("Disable All Rules");
+            possibilities.add("Randomize All Rules");
             possibilities.add("Riffle");
             possibilities.add("Mystery");
             possibilities.add("Skatter");
@@ -824,7 +826,95 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                         input = JOptionPane.showConfirmDialog(null, secondary, "Riffle Chess Enabled", JOptionPane.DEFAULT_OPTION);
                         ranged = 1;
                     }
-                } else if (s == "Simple Reset") {
+                } else if (s == "Disable All Rules") {
+                    if (ranged == 1) {
+                        ranged = 0;
+                    }
+                    if (myst) {
+                        myst = false;
+                        for (Tile t : chessBoard.getOccupiedTiles()) {
+                            t.setPiece(t.getPiece());
+                        }
+                    }
+                    if (skatter) {
+                        skatter = false;
+                        for (Tile t : chessBoard.getOccupiedTiles()) {
+                            t.setPiece(t.getPiece());
+                        }
+                    }
+                    if (atomic > 0) {
+                        atomic = 0;
+                    }
+                    if (gravity != 0) {
+                        gravity = 0;
+                    }
+                    if (decay) {
+                        decay = false;
+                    }
+                    if (bStab) {
+                        bStab = false;
+                    }
+                    if (bTrayal) {
+                        bTrayal = false;
+                    }
+                    if (touchRule) {
+                        touchRule = false;
+                    }
+                    if (!ruth) {
+                        ruth = true;
+                    }
+                    if (re) {
+                        re = false;
+                    }
+                    for (int i = 0; i < 64; i++) {
+                        if (chessBoard.getTile(i).getPiece() != null && chessBoard.getTile(i).getPiece().bomb) {
+                            chessBoard.getTile(i).getPiece().bomb = false;
+                        }
+                    }
+                } else if (s == "Randomize All Rules") {
+                    wBackWall = false;
+                    wTotalWar = false;
+                    bTotalWar = false;
+                    wBonusTurns = 0;
+                    bBonusTurns = 0;
+                    debugToggle = false;
+                    selectedTile = null;
+                    gravity = (((int) (Math.random() * 3) -1));
+                    if ((int) (Math.random() * 7.0) != 1){
+                        gravity = 0;
+                    }
+                    cooldown = 0;
+                    decay = ((int) (Math.random() * 8.5) == 1);
+                    ruth = !((int) (Math.random() * 7.0) == 1);
+                    re = ((int) (Math.random() * 12) == 1);
+                    recheck = true;
+                    bTrayal = ((int) (Math.random() * 6.5) == 1);
+                    bStab = ((int) (Math.random() * 5.5) == 1);
+                    touchRule = ((int) (Math.random() * 8.5) == 1);
+                    tLocked = false;
+                    myst = ((int) (Math.random() * 15) == 1);
+                    skatter = false;
+                    if (!myst){
+                        skatter = ((int) (Math.random() * 20) == 1);
+                    }
+                    if (myst || skatter && !touchRule){
+                        touchRule = ((int) (Math.random() * 2.5) == 1);
+                    }
+                    atomic = (int) (Math.random() * 25);
+                    if (atomic < 21){
+                        atomic = 0;
+                    } else {
+                        atomic -= 20;//
+                    }
+                    if ((int) (Math.random() * 6.2) == 1){
+                        ranged = 1;
+                    } else {
+                        ranged = 0;
+                    }
+                    for (Tile i : chessBoard.getTiles()){
+                        i.setBackground(i.getColor());
+                    }
+                }else if (s == "Simple Reset") {
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
                     }
@@ -853,7 +943,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     if (gravity == 1){
                         info += "Gravity chess (Right), ";
                     }else if (gravity == -1){
-                        info += "Mystery Chess (Left), ";
+                        info += "Gravity Chess (Left), ";
                     }
                     if (decay){
                         info += "Decay Chess, ";
@@ -867,7 +957,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     if (touchRule){
                         info += "Formal Chess, ";
                     }
-                    if (ruth){
+                    if (!ruth){
                         info += "Friendly Fire Chess, ";
                     }
                     if (re){
