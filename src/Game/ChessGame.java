@@ -4,6 +4,7 @@ import pieces.*;
 import pieces.Assassins.Action_Man;
 import pieces.Assassins.Assassin;
 import pieces.Assassins.Bladedancer;
+import pieces.Unique.CheckerButNot;
 import pieces.pawns.Pawn;
 import pieces.pawns.Wall;
 import pieces.royals.*;
@@ -570,13 +571,13 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         }
     }
 
-    void checkmate() {
+    void checkmate(int win) {
         AudioPlayer.play("src/resources/audio/win.wav");
         System.out.println("Checkmate! Here's the FEN for the final position!");
         System.out.println(fens.get(fens.size() - 1));
         int option;
         String buttons[] = {"Replay", "Quit"};
-        if (turn == 1) {
+        if (win == 0) {
             option = JOptionPane.showOptionDialog(null, "Black wins! Play again or quit?", "Checkmate", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, buttons, "default");
         } else {
             option = JOptionPane.showOptionDialog(null, "White wins! Play again or quit?", "Checkmate", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, buttons, "default");
@@ -642,7 +643,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             }
         }
         if (choices.size() == 0){
-            System.exit(0);
+            checkmate(turn -1);
         }
         double moveMin = -999999;
         int selected = 0;
@@ -878,9 +879,6 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                         }
                     }
                 } else if (Objects.equals(s, "Randomize All Rules")) {
-                    wBackWall = false;
-                    wTotalWar = false;
-                    bTotalWar = false;
                     wBonusTurns = 0;
                     bBonusTurns = 0;
                     debugToggle = false;
@@ -1225,7 +1223,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         possibilities.add("AugKnight");
         possibilities.add("Flag bearer");
         possibilities.add("Duck");
-
+        possibilities.add("CheckerButNot");
         if (tile.getPiece() != null){
             possibilities.add("Turn around");
             possibilities.add("Change Team");
@@ -1331,6 +1329,9 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                 tile.setPiece(tile.getPiece());
             } else if (Objects.equals(s, "Flag bearer")) {
                 tile.setPiece(new Flag(c));
+            }
+            else if (Objects.equals(s, "CheckerButNot")) {
+                tile.setPiece(new CheckerButNot(c));
             }
         }
     }
