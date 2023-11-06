@@ -5,6 +5,7 @@ import pieces.Assassins.Action_Man;
 import pieces.Assassins.Assassin;
 import pieces.Assassins.Bladedancer;
 import pieces.pawns.Pawn;
+import pieces.pawns.Wall;
 import pieces.royals.*;
 
 import javax.swing.*;
@@ -871,6 +872,11 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                             chessBoard.getTile(i).getPiece().bomb = false;
                         }
                     }
+                    for (int i = 0; i < 64; i++) {
+                        if (chessBoard.getTile(i).getPiece() != null && chessBoard.getTile(i).getPiece().wall && !(chessBoard.getTile(i).getPiece() instanceof Wall || chessBoard.getTile(i).getPiece() instanceof Immortal)) {
+                            chessBoard.getTile(i).getPiece().wall = false;
+                        }
+                    }
                 } else if (Objects.equals(s, "Randomize All Rules")) {
                     wBackWall = false;
                     wTotalWar = false;
@@ -914,6 +920,17 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
                     for (Tile i : chessBoard.getTiles()){
                         i.setBackground(i.getColor());
                     }
+                    for (int i = 0; i < 64; i++) {
+                        if (chessBoard.getTile(i).getPiece() != null && chessBoard.getTile(i).getPiece().bomb) {
+                            chessBoard.getTile(i).getPiece().bomb = false;
+                        }
+                    }
+                    for (int i = 0; i < 64; i++) {
+                        if (chessBoard.getTile(i).getPiece() != null && chessBoard.getTile(i).getPiece().wall && !(chessBoard.getTile(i).getPiece() instanceof Wall || chessBoard.getTile(i).getPiece() instanceof Immortal)) {
+                            chessBoard.getTile(i).getPiece().wall = false;
+                        }
+                    }
+                    Setup.mods(chessBoard);
                 }else if (Objects.equals(s, "Simple Reset")) {
                     for (int i = 0; i < 64; i++) {
                         chessBoard.getTile(i).setPiece(null);
