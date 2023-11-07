@@ -30,6 +30,6 @@ public class Theocrat extends Piece {
         int dx = newX - x;
         int dy = newY - y;
         Tile destination = board.getTile(Board.getLocationFromCords(newX, newY));
-        return (destination.getPiece() == null && (Moves.knightMove(dx, dy) || (Moves.bishopMove(x, y, dx, dy,board))));
+        return ((destination.getPiece() == null || destination.getPiece().royal) && ((Moves.knightMove(dx, dy) || (Moves.bishopMove(x, y, dx, dy,board)))));
     }
 }

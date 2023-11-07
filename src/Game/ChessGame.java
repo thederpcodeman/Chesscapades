@@ -49,6 +49,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     Action helpAction;
     Action resetAction;
     Action toggleAction;
+    Action aiAction;
 
     ArrayList<String> fens;
 
@@ -59,6 +60,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     public int ranged;
 
     public boolean touchRule;
+
+    public int rng;
 
     public boolean tLocked;
     public static boolean myst;
@@ -86,6 +89,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     public int bBonusTurns;
 
     public ChessGame(int size){
+        rng = 0;
         wBackWall = false;
         debugToggle = false;
         Dimension boardSize = new Dimension(size, size);
@@ -100,6 +104,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         helpAction = new HelpAction();
         resetAction = new ResetAction();
         toggleAction = new ToggleAction();
+        aiAction = new AiAction();
 
 
 
@@ -122,10 +127,12 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         chessBoard.getInputMap().put(KeyStroke.getKeyStroke("H"), helpAction);
         chessBoard.getInputMap().put(KeyStroke.getKeyStroke("R"), resetAction);
         chessBoard.getInputMap().put(KeyStroke.getKeyStroke("O"), toggleAction);
+        chessBoard.getInputMap().put(KeyStroke.getKeyStroke("I"), aiAction);
         chessBoard.getActionMap().put(spaceAction, spaceAction);
         chessBoard.getActionMap().put(helpAction, helpAction);
         chessBoard.getActionMap().put(resetAction, resetAction);
         chessBoard.getActionMap().put(toggleAction, toggleAction);
+        chessBoard.getActionMap().put(aiAction, aiAction);
     }
 
     public void setupPieces() {
@@ -648,7 +655,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         double moveMin = -999999;
         int selected = 0;
         for (int mov = 0; mov < choices.size(); mov++){
-            double sc = choices.get(mov).score(8);
+            double sc = choices.get(mov).score(rng);
             if (sc > moveMin){
                 moveMin = sc;
                 selected = mov;
@@ -1182,6 +1189,75 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         @Override
         public void actionPerformed(ActionEvent e) {
             debugToggle = !debugToggle;
+        }
+    }
+    public class AiAction extends AbstractAction {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int input;
+
+            AudioPlayer.play("src/resources/audio/promote.wav");
+            ArrayList<String> possibilities = new ArrayList<String>();
+
+            possibilities.add("Rebecca"); // 0
+            possibilities.add("Bob"); // 10
+            possibilities.add("Mr. & Mrs. Patel"); // 25
+            possibilities.add("Whitney"); // 62
+            possibilities.add("Luigi"); // 155
+            possibilities.add("John"); // 232
+            possibilities.add("Carl"); // 348
+            possibilities.add("David"); // 522
+            possibilities.add("Doug"); // 783
+            possibilities.add("Sarah"); // 1174
+            possibilities.add("Timothy"); // 1761
+            possibilities.add("Jessie"); // 2641
+            possibilities.add("Peter"); // 3961
+            possibilities.add("George"); // 5941
+            possibilities.add("Cthulhu"); // 8911
+            possibilities.add("Jerry from Hypixel Skyblock"); // 13366
+
+
+            JPanel jPanel = new JPanel(new GridBagLayout());
+            JComboBox comboBox = new JComboBox(possibilities.toArray());
+            input = JOptionPane.showConfirmDialog(null, comboBox, "Choose an AI, none of them are really good: ", JOptionPane.DEFAULT_OPTION);
+            jPanel.add(comboBox);
+
+            if(input == JOptionPane.OK_OPTION) {
+                String s = (String) comboBox.getSelectedItem();
+                if (Objects.equals(s, "Rebecca")) {
+                    rng = 0;
+                }else if (Objects.equals(s, "Bob")) {
+                    rng = 10;
+                }else if (Objects.equals(s, "Mr. & Mrs. Patel")) {
+                    rng = 25;
+                }else if (Objects.equals(s, "Whitney")) {
+                    rng = 62;
+                }else if (Objects.equals(s, "Luigi")) {
+                    rng = 155;
+                }else if (Objects.equals(s, "John")) {
+                    rng = 232;
+                }else if (Objects.equals(s, "Carl")) {
+                    rng = 348;
+                }else if (Objects.equals(s, "David")) {
+                    rng = 522;
+                }else if (Objects.equals(s, "Doug")) {
+                    rng = 783;
+                }else if (Objects.equals(s, "Sarah")) {
+                    rng = 1174;
+                }else if (Objects.equals(s, "Timothy")) {
+                    rng = 1761;
+                }else if (Objects.equals(s, "Jessie")) {
+                    rng = 2641;
+                }else if (Objects.equals(s, "Peter")) {
+                    rng = 3961;
+                }else if (Objects.equals(s, "George")) {
+                    rng = 5941;
+                }else if (Objects.equals(s, "Cthulhu")) {
+                    rng = 8911;
+                }else if (Objects.equals(s, "Jerry from Hypixel Skyblock")) {
+                    rng = 13366;
+                }
+            }
         }
     }
 
