@@ -89,7 +89,7 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
     public int bBonusTurns;
 
     public ChessGame(int size){
-        rng = 0;
+        rng = 10;
         wBackWall = false;
         debugToggle = false;
         Dimension boardSize = new Dimension(size, size);
