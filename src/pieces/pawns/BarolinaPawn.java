@@ -7,7 +7,7 @@ import pieces.Piece;
 
 import javax.swing.*;
 
-public class BarolinaPawn extends Piece {
+public class BarolinaPawn extends Pawn {
     private int forwards;
     public BarolinaPawn(int color) {
         super(color);
