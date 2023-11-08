@@ -3,6 +3,7 @@ package pieces.pawns;
 import Game.Board;
 import Game.ChessGame;
 import Game.Tile;
+import pieces.Moves;
 import pieces.Piece;
 
 import javax.swing.*;
@@ -46,7 +47,7 @@ public class Pawn extends Piece {
             {
                 if(destination.isOccupied() && dy == getForwardDirection())
                 {
-                    if (destination.getPiece().getColor() != getColor())
+                    if (Moves.allClear(color, destination))
                     {
                         return true;
                     }
