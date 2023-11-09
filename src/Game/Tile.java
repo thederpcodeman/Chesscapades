@@ -345,7 +345,9 @@ public class Tile extends JPanel {
             } else if (s == "Rook") {
                 setPiece(new Rook(piece.getColor()));
             } else if (s == "Crusader") {
-                setPiece(new Crusader(piece.getColor()));
+                Piece spin = new Crusader(piece.getColor());
+                spin.setForwardDirection(getPiece().getForwardDirection() * -1);
+                setPiece(spin);
             } else if (s == "Knight") {
                 setPiece(new Knight(piece.getColor()));
             } else if (s == "Bishop") {
