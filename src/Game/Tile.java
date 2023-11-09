@@ -83,6 +83,7 @@ public class Tile extends JPanel {
             return;
         }else if ( (getPiece() instanceof Crusader && (((Board.getYFromLocation(getLocationOnBoard()) == 0) && (( getPiece()).getForwardDirection() == -1)) || ((Board.getYFromLocation(getLocationOnBoard()) == 7) && (( getPiece()).getForwardDirection() == 1))))){
             int col = getPiece().color;
+            AudioPlayer.play("src/resources/audio/promote.wav");
             setPiece(new Paladin(col));
         }
         revalidate();
