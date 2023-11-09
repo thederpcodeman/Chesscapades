@@ -305,6 +305,9 @@ public class Tile extends JPanel {
         possibilities.add("Berserker");
         possibilities.add("Berserker");
 
+        possibilities.add("Paladin");
+        possibilities.add("Paladin");
+
         possibilities.add("King");
         possibilities.add("Amazon");
         possibilities.add("General");
@@ -445,6 +448,8 @@ public class Tile extends JPanel {
                 setPiece(new Keegan(piece.getColor()));
             } else if (s == "Empress") {
                 setPiece(new Empress(piece.getColor()));
+            } else if (s == "Paladin") {
+                setPiece(new Paladin(piece.getColor()));
             }
 
             if (roy && getPiece() != null){
