@@ -81,6 +81,9 @@ public class Tile extends JPanel {
         }else if ( (getPiece() instanceof Mage && (((Board.getYFromLocation(getLocationOnBoard()) == 0) && (( getPiece()).getForwardDirection() == -1)) || ((Board.getYFromLocation(getLocationOnBoard()) == 7) && (( getPiece()).getForwardDirection() == 1))))){
             setPiece(new Archmage(getPiece().getColor()));
             return;
+        }else if ( (getPiece() instanceof Crusader && (((Board.getYFromLocation(getLocationOnBoard()) == 0) && (( getPiece()).getForwardDirection() == -1)) || ((Board.getYFromLocation(getLocationOnBoard()) == 7) && (( getPiece()).getForwardDirection() == 1))))){
+            int col = getPiece().color;
+            setPiece(new Paladin(col));
         }
         revalidate();
         repaint();
