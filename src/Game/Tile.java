@@ -7,10 +7,7 @@ import pieces.Assassins.Bladedancer;
 import pieces.pawns.Checker;
 import pieces.pawns.Pawn;
 import pieces.pawns.Prince;
-import pieces.royals.Flag;
-import pieces.royals.General;
-import pieces.royals.King;
-import pieces.royals.Tyrant;
+import pieces.royals.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -218,35 +215,105 @@ public class Tile extends JPanel {
 
         ArrayList<String> possibilities = new ArrayList<String>();
         possibilities.add("Turn around");
+        possibilities.add("Turn around");
+        possibilities.add("Turn around");
+        possibilities.add("Turn around");
+
+        possibilities.add("No thank you.");
+        possibilities.add("No thank you.");
+        possibilities.add("No thank you.");
+
         possibilities.add("Queen");
+        possibilities.add("Queen");
+
         possibilities.add("Rook");
+        possibilities.add("Rook");
+
         possibilities.add("Knight");
+        possibilities.add("Knight");
+
         possibilities.add("Bishop");
+        possibilities.add("Bishop");
+
+        possibilities.add("Archbishop");
+        possibilities.add("Archbishop");
+
+        possibilities.add("Chancellor");
+        possibilities.add("Chancellor");
+
+        possibilities.add("Camel");
+        possibilities.add("Camel");
+
+        possibilities.add("Frog");
+        possibilities.add("Frog");
+
+        possibilities.add("Elephant");
+        possibilities.add("Elephant");
+
+        possibilities.add("Gryphon");
+        possibilities.add("Gryphon");
+
+        possibilities.add("Bull");
+        possibilities.add("Bull");
+
+        possibilities.add("Pegasus rider");
+        possibilities.add("Pegasus rider");
+
+        possibilities.add("Ship");
+        possibilities.add("Ship");
+
+        possibilities.add("Spider");
+        possibilities.add("Spider");
+
+        possibilities.add("Assassin");
+        possibilities.add("Assassin");
+
+        possibilities.add("Manticore");
+        possibilities.add("Manticore");
+
+        possibilities.add("Mage");
+        possibilities.add("Mage");
+
+        possibilities.add("Immortal");
+        possibilities.add("Immortal");
+
+        possibilities.add("Spearman");
+        possibilities.add("Spearman");
+
+        possibilities.add("Falcon");
+        possibilities.add("Falcon");
+
+        possibilities.add("Crusader");
+        possibilities.add("Crusader");
+
+        possibilities.add("Viking");
+        possibilities.add("Viking");
+
+        possibilities.add("Archer");
+        possibilities.add("Archer");
+
+        possibilities.add("Augmented Knight");
+        possibilities.add("Augmented Knight");
+
+        possibilities.add("Buffalo");
+        possibilities.add("Buffalo");
+
+        possibilities.add("Berserker");
+        possibilities.add("Berserker");
+
         possibilities.add("King");
         possibilities.add("Amazon");
-        possibilities.add("Archbishop");
-        possibilities.add("Chancellor");
-        possibilities.add("Camel");
         possibilities.add("General");
         possibilities.add("Lion");
-        possibilities.add("Frog");
-        possibilities.add("Elephant");
-        possibilities.add("Bull");
-        possibilities.add("Gryphon");
-        possibilities.add("Pegasus rider");
         possibilities.add("Tyrant");
-        possibilities.add("No thank you.");
-        possibilities.add("Ship");
-        possibilities.add("Spider");
-        possibilities.add("Assassin");
-        possibilities.add("Manticore");
         possibilities.add("Greatwyrm");
-        possibilities.add("Mage");
-        possibilities.add("Immortal");
-        possibilities.add("Spearman");
-        possibilities.add("Falcon");
         possibilities.add("Flag bearer");
-        possibilities.add("Crusader");
+        possibilities.add("Quetzalcoatl");
+        possibilities.add("Wolf");
+        possibilities.add("Empress");
+        possibilities.add("Theocrat");
+        possibilities.add("Keegan");
+
         Collections.shuffle(possibilities);
         int o = 3;
         if (getPiece().getColor() == 0){
@@ -352,6 +419,26 @@ public class Tile extends JPanel {
                 setPiece(new Immortal(piece.getColor()));
             } else if (s == "Falcon") {
                 setPiece(new Falcon(piece.getColor()));
+            } else if (s == "Viking") {
+                setPiece(new Viking(piece.getColor()));
+            } else if (s == "Archer") {
+                setPiece(new Bow(piece.getColor()));
+            } else if (s == "Augmented Knight") {
+                setPiece(new AugmentedKnight(piece.getColor()));
+            } else if (s == "Buffalo") {
+                setPiece(new Buffalo(piece.getColor()));
+            } else if (s == "Berserker") {
+                setPiece(new Berserker(piece.getColor()));
+            } else if (s == "Quetzacoatl") {
+                setPiece(new Quetzacoatl(piece.getColor()));
+            } else if (s == "Wolf") {
+                setPiece(new Wolf(piece.getColor()));
+            } else if (s == "Theocrat") {
+                setPiece(new Theocrat(piece.getColor()));
+            } else if (s == "Keegan") {
+                setPiece(new Keegan(piece.getColor()));
+            } else if (s == "Empress") {
+                setPiece(new Empress(piece.getColor()));
             }
 
             if (roy && getPiece() != null){
