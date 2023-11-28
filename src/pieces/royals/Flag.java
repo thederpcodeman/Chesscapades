@@ -18,7 +18,7 @@ public class Flag extends Piece {
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/bFlag.png"));
+            return(new ImageIcon("src/resources/bFlagbearer.png"));
         } else if(color == 1) {
             return(new ImageIcon("src/resources/wFlag.jpg"));
         } else {
