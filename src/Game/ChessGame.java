@@ -715,7 +715,8 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
 
             JPanel jPanel = new JPanel(new GridBagLayout());
             JComboBox comboBox = new JComboBox(possibilities.toArray());
-            ArrayList<String> als = new ArrayList<String>(List.of("OK"));
+            ArrayList<String> als = new ArrayList<String>();
+            als.add("OK");
             JComboBox secondary =  new JComboBox(als.toArray());
             input = JOptionPane.showConfirmDialog(null, comboBox, "Refresh menu: ", JOptionPane.DEFAULT_OPTION);
             jPanel.add(comboBox);
