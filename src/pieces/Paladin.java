@@ -15,9 +15,9 @@ public class Paladin extends Piece {
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/bQueen.png"));
+            return(new ImageIcon("src/resources/bPaladin.png"));
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wQueen.png"));
+            return(new ImageIcon("src/resources/wPaladin.png"));
         } else {
             return null;
         }

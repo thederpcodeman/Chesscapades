@@ -15,9 +15,9 @@ public class Duck extends Piece {
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/bUnknown.png"));
+            return(new ImageIcon("src/resources/bDuck.png"));
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wUnknown.png"));
+            return(new ImageIcon("src/resources/wDuck.png"));
         } else {
             return null;
         }

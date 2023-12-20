@@ -15,9 +15,9 @@ public class Crusader extends Piece {
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/bViking.png"));
+            return(new ImageIcon("src/resources/bCrus.png"));
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wViking.png"));
+            return(new ImageIcon("src/resources/wCrus.png"));
         } else {
             return null;
         }

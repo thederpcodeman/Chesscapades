@@ -15,9 +15,9 @@ public class Berserker extends Piece {
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/bViking.png"));
+            return(new ImageIcon("src/resources/bBerzerker.png"));
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wViking.png"));
+            return(new ImageIcon("src/resources/wBerzerker.png"));
         } else {
             return null;
         }
