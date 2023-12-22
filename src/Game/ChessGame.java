@@ -693,22 +693,22 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             possibilities.add("Formal");
             possibilities.add("Friendly Fire");
             possibilities.add("Fast and Furious");
-            possibilities.add("Exit Refresh Menu");
-            possibilities.add("Normal Chess");
-            possibilities.add("Chess 960");
-            possibilities.add("Two Thirds Chess");
-            possibilities.add("Revolt Chess");
-            possibilities.add("2/3 Revolt Chess");
-            possibilities.add("Grand Chess");
-            possibilities.add("Power Chess");
-            possibilities.add("Super Chess");
-            possibilities.add("Fear Chess");
-            possibilities.add("Cavalry Chess");
-            possibilities.add("Step Into Darkness Chess");
-            possibilities.add("End Game Chess");
-            possibilities.add("Randomized End Game Chess");
-            possibilities.add("Upside-Down Chess");
-            possibilities.add("Maharajah and the Sepoys Chess");
+            possibilities.add("Exit Refresh Menu");//
+            possibilities.add("Normal Chess");//
+            possibilities.add("Chess 960");//
+            possibilities.add("Two Thirds Chess");//
+            possibilities.add("Revolt Chess");//
+            possibilities.add("2/3 Revolt Chess");//
+            possibilities.add("Grand Chess");//
+            possibilities.add("Power Chess");//
+            possibilities.add("Super Chess");//
+            possibilities.add("Fear Chess");//
+            possibilities.add("Cavalry Chess");//
+            possibilities.add("Step Into Darkness Chess");//
+            possibilities.add("End Game Chess");//
+            possibilities.add("Randomized End Game Chess");//
+            possibilities.add("Upside-Down Chess");//
+            possibilities.add("Maharajah and the Sepoys Chess");//
             possibilities.add("Hoard Chess");
             possibilities.add("Chess vs Checkers");
             possibilities.add("Weak!");
@@ -1316,12 +1316,12 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         possibilities.add("Step Into Darkness Pawn");//
         possibilities.add("Short Rook (WIP: functions but uses rook image)");//
         possibilities.add("Pawn");//
-        possibilities.add("Soldier");//-
-        possibilities.add("Pikeman");//-
-        possibilities.add("Prince");//-
-        possibilities.add("Checker");//-
-        possibilities.add("Wall");//-
-        possibilities.add("Barolina Pawn");//-
+        possibilities.add("Soldier");//
+        possibilities.add("Pikeman");//
+        possibilities.add("Prince");//
+        possibilities.add("Checker");//
+        possibilities.add("Wall");//
+        possibilities.add("Barolina Pawn");//
         if (tile.getPiece() != null){
             possibilities.add("Turn around");
             possibilities.add("Change Team");

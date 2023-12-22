@@ -59,7 +59,6 @@ public class HelpAction extends AbstractAction {
                     cb.addItem("Basic Rules");
                     cb.addItem("Randomized Rules");
                     cb.addItem("Piece Specific Rules");
-                    cb.addItem("Setup Variants");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Randomized Rules")) {
                     lbl.setText("Some additional rules have a random chance to be in play,");
                     lbl2.setText("These are hidden,");
@@ -68,17 +67,17 @@ public class HelpAction extends AbstractAction {
                     lbl5.setText("(here is the list of rules)");
                     cb.removeAllItems();
                     cb.addItem("OK");
-                    cb.addItem("Traitor Chess");
-                    cb.addItem("Mystery Chess");
-                    cb.addItem("Skatter Chess");
-                    cb.addItem("Epic Chess");
-                    cb.addItem("Riffle Chess");
-                    cb.addItem("Atomic Chess");
-                    cb.addItem("Gravity Chess");
-                    cb.addItem("Secret bomber Chess");
-                    cb.addItem("Formal Chess");
-                    cb.addItem("Backstab Chess");
-                    cb.addItem("Friendly fire Chess");
+                    cb.addItem("Traitor Chess");//
+                    cb.addItem("Mystery Chess");//
+                    cb.addItem("Skatter Chess");//
+                    cb.addItem("Epic Chess");//
+                    cb.addItem("Riffle Chess");//
+                    cb.addItem("Atomic Chess");//
+                    cb.addItem("Gravity Chess");//
+                    cb.addItem("Secret bomber Chess");//
+                    cb.addItem("Formal Chess");//
+                    cb.addItem("Backstab Chess");//
+                    cb.addItem("Friendly fire Chess");//
                     cb.addItem("Fast & Furious Chess");
                     cb.addItem("Total War Chess");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Piece Specific Rules")) {
@@ -96,21 +95,6 @@ public class HelpAction extends AbstractAction {
                     cb.addItem("Queen");
                     cb.addItem("King");
                     cb.addItem("Show More");
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "Setup Variants")) {
-                    lbl.setText("The setup rules ");
-                    lbl2.setText("are not ");
-                    lbl3.setText("the same ");
-                    lbl4.setText("each time. ");
-                    lbl5.setText("Here are some examples.");
-                    cb.removeAllItems();
-                    cb.addItem("OK");
-                    cb.addItem("2/3 Chess");
-                    cb.addItem("Chess 960");
-                    cb.addItem("Power Chess");
-                    cb.addItem("Fear Chess");
-                    cb.addItem("Grand Chess");
-                    cb.addItem("Revolt Chess");
-
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "OK")) {
                     lbl.setText("");
                     lbl2.setText("");
@@ -680,60 +664,6 @@ public class HelpAction extends AbstractAction {
                     lbl4.setText("put a Royal piece in danger.");
                     lbl5.setText("");
                     cb.removeAllItems();
-                    cb.addItem("OK");
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "2/3 Chess")) {
-                    lbl.setText("Each piece has a 1/3 chance ");
-                    lbl2.setText("to be a random piece of it's type.");
-                    lbl3.setText("");
-                    lbl4.setText("");
-                    lbl5.setText("");
-                    cb.removeAllItems();
-                    cb.addItem("Setup Variants");
-                    cb.addItem("OK");
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "Chess 960")) {
-                    lbl.setText("Each piece is a random ");
-                    lbl2.setText("piece of it's type.");
-                    lbl3.setText("");
-                    lbl4.setText("");
-                    lbl5.setText("");
-                    cb.removeAllItems();
-                    cb.addItem("Setup Variants");
-                    cb.addItem("OK");
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "Power Chess")) {
-                    lbl.setText("each side has a row of ");
-                    lbl2.setText("random pawns with a row of ");
-                    lbl3.setText("random common pieces behind ");
-                    lbl4.setText("it, and behind that a row of ");
-                    lbl5.setText("queen like pieces, with at least 2 royals");
-                    cb.removeAllItems();
-                    cb.addItem("Setup Variants");
-                    cb.addItem("OK");
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "Fear Chess")) {
-                    lbl.setText("each side has 2 rows of ");
-                    lbl2.setText("random pieces ");
-                    lbl3.setText("");
-                    lbl4.setText("");
-                    lbl5.setText("");
-                    cb.removeAllItems();
-                    cb.addItem("Setup Variants");
-                    cb.addItem("OK");
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "Grand Chess")) {
-                    lbl.setText("each side has 2 Royals, ");
-                    lbl2.setText("2 powerful pieces ");
-                    lbl3.setText("and a ton of random pawns.");
-                    lbl4.setText("");
-                    lbl5.setText("");
-                    cb.removeAllItems();
-                    cb.addItem("Setup Variants");
-                    cb.addItem("OK");
-                } else if (Objects.equals(cb.getSelectedItem().toString(), "Revolt Chess")) {
-                    lbl.setText("Pawns are random pawns, ");
-                    lbl2.setText("and are in the center of the board. ");
-                    lbl3.setText("");
-                    lbl4.setText("");
-                    lbl5.setText("");
-                    cb.removeAllItems();
-                    cb.addItem("Setup Variants");
                     cb.addItem("OK");
                 } else if (Objects.equals(cb.getSelectedItem().toString(), "Skatter Chess")) {
                     lbl.setText("All pieces render ");
