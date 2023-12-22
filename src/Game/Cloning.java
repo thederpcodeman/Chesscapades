@@ -188,7 +188,7 @@ public class Cloning {
         return null;
     }
     public static Piece rPawn(int color){
-        double ran = (Math.random() * (3 + 1.5 + 1 + 1 + 1 + 0.5 + 0.2 + 0.01));
+        double ran = (Math.random() * (3 + 1.5 + 1 + 1 + 0.5 + 0.5 + 0.2 + 0.01));
         if (ran < 3){
             return new Pawn(color);
         } ran -= 3;
@@ -201,9 +201,9 @@ public class Cloning {
         if (ran < 1){
             return new Prince(color);
         } ran -= 1;
-        if (ran < 1){
+        if (ran < 0.5){
             return new BarolinaPawn(color);
-        } ran -= 1;
+        } ran -= 0.5;
         if (ran < 0.5){
             return new Wall(color);
         } ran -= 0.5;

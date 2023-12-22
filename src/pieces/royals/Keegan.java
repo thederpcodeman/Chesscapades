@@ -19,9 +19,9 @@ public class Keegan extends Piece {
     @Override
     public ImageIcon getImageIcon() {
         if(color == 0) {
-            return(new ImageIcon("src/resources/bUnknown.png"));
+            return(new ImageIcon("src/resources/bKeegan.png"));
         } else if(color == 1) {
-            return(new ImageIcon("src/resources/wUnknown.png"));
+            return(new ImageIcon("src/resources/wKeegan.png"));
         } else {
             return null;
         }

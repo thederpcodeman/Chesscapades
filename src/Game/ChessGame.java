@@ -5,8 +5,9 @@ import pieces.Assassins.Action_Man;
 import pieces.Assassins.Assassin;
 import pieces.Assassins.Bladedancer;
 import pieces.Unique.CheckerButNot;
-import pieces.pawns.Pawn;
-import pieces.pawns.Wall;
+import pieces.Unique.StepPawn;
+import pieces.Unique.shortRook;
+import pieces.pawns.*;
 import pieces.royals.*;
 
 import javax.swing.*;
@@ -1268,39 +1269,59 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
         AudioPlayer.play("src/resources/audio/promote.wav");
         ArrayList<String> possibilities = new ArrayList<String>();
 
-        possibilities.add("Queen");
-        possibilities.add("Rook");
-        possibilities.add("Knight");
-        possibilities.add("Bishop");
-        possibilities.add("King");
-        possibilities.add("Amazon");
-        possibilities.add("Archbishop");
-        possibilities.add("Chancellor");
-        possibilities.add("Camel");
-        possibilities.add("General");
-        possibilities.add("Lion");
-        possibilities.add("Frog");
-        possibilities.add("Elephant");
-        possibilities.add("Bull");
-        possibilities.add("Gryphon");
-        possibilities.add("Pegasus");
-        possibilities.add("Tyrant");
-        possibilities.add("Boat");
-        possibilities.add("Spider");
-        possibilities.add("Assassin1");
-        possibilities.add("Assassin2");
-        possibilities.add("Assassin3");
-        possibilities.add("Manticore");
-        possibilities.add("Greatwyrm");
-        possibilities.add("Mage");
-        possibilities.add("Immortal");
-        possibilities.add("Spearman");
-        possibilities.add("Falcon");
-        possibilities.add("Keegan");
-        possibilities.add("AugKnight");
-        possibilities.add("Flag bearer");
-        possibilities.add("Duck");
-        possibilities.add("CheckerButNot");
+        possibilities.add("Queen");//
+        possibilities.add("Rook");//
+        possibilities.add("Knight");//
+        possibilities.add("Bishop");//
+        possibilities.add("King");//
+        possibilities.add("Amazon");//
+        possibilities.add("Archbishop");//
+        possibilities.add("Chancellor");//
+        possibilities.add("Camel");//
+        possibilities.add("General");//
+        possibilities.add("Lion");//
+        possibilities.add("Frog");//
+        possibilities.add("Elephant");//
+        possibilities.add("Bull");//
+        possibilities.add("Gryphon");//
+        possibilities.add("Pegasus");//
+        possibilities.add("Tyrant");//
+        possibilities.add("Boat");//
+        possibilities.add("Spider");//
+        possibilities.add("Assassin1");//
+        possibilities.add("Assassin2");//
+        possibilities.add("Assassin3");//
+        possibilities.add("Manticore");//
+        possibilities.add("Greatwyrm");//
+        possibilities.add("Mage");//
+        possibilities.add("Immortal");//
+        possibilities.add("Spearman");//
+        possibilities.add("Falcon");//
+        possibilities.add("Keegan");//
+        possibilities.add("AugKnight");//
+        possibilities.add("Flag bearer");//
+        possibilities.add("Duck");//
+        possibilities.add("CheckerButNot");//
+        possibilities.add("Empress");//
+        possibilities.add("Theocrat");//
+        possibilities.add("Archmage");//
+        possibilities.add("Berserker");//
+        possibilities.add("Archer");//
+        possibilities.add("Buffalo");//
+        possibilities.add("Crusader");//
+        possibilities.add("Paladin");//
+        possibilities.add("Quetzacoatl");//
+        possibilities.add("Viking");//
+        possibilities.add("Wolf");//
+        possibilities.add("Step Into Darkness Pawn");//
+        possibilities.add("Short Rook (WIP: functions but uses rook image)");//
+        possibilities.add("Pawn");//
+        possibilities.add("Soldier");//-
+        possibilities.add("Pikeman");//-
+        possibilities.add("Prince");//-
+        possibilities.add("Checker");//-
+        possibilities.add("Wall");//-
+        possibilities.add("Barolina Pawn");//-
         if (tile.getPiece() != null){
             possibilities.add("Turn around");
             possibilities.add("Change Team");
@@ -1326,6 +1347,46 @@ public class ChessGame extends JFrame implements MouseListener, MouseMotionListe
             }
             if (Objects.equals(s, "Queen")) {
                 tile.setPiece(new Queen(c));
+            } else if (Objects.equals(s, "Empress")) {
+                tile.setPiece(new Empress(c));
+            } else if (Objects.equals(s, "Theocrat")) {
+                tile.setPiece(new Theocrat(c));
+            } else if (Objects.equals(s, "Archmage")) {
+                tile.setPiece(new Archmage(c));
+            } else if (Objects.equals(s, "Berserker")) {
+                tile.setPiece(new Berserker(c));
+            } else if (Objects.equals(s, "Archer")) {
+                tile.setPiece(new Bow(c));
+            } else if (Objects.equals(s, "Buffalo")) {
+                tile.setPiece(new Buffalo(c));
+            } else if (Objects.equals(s, "Crusader")) {
+                tile.setPiece(new Crusader(c));
+            } else if (Objects.equals(s, "Paladin")) {
+                tile.setPiece(new Paladin(c));
+            } else if (Objects.equals(s, "Quetzacoatl")) {
+                tile.setPiece(new Quetzacoatl(c));
+            } else if (Objects.equals(s, "Viking")) {
+                tile.setPiece(new Viking(c));
+            } else if (Objects.equals(s, "Wolf")) {
+                tile.setPiece(new Wolf(c));
+            } else if (Objects.equals(s, "Step Into Darkness Pawn")) {
+                tile.setPiece(new StepPawn(c));
+            } else if (Objects.equals(s, "Short Rook (WIP: functions but uses rook image)")) {
+                tile.setPiece(new shortRook(c));
+            } else if (Objects.equals(s, "Pawn")) {
+                tile.setPiece(new Pawn(c));
+            } else if (Objects.equals(s, "Soldier")) {
+                tile.setPiece(new Soldier(c));
+            } else if (Objects.equals(s, "Pikeman")) {
+                tile.setPiece(new Pikeman(c));
+            } else if (Objects.equals(s, "Prince")) {
+                tile.setPiece(new Prince(c));
+            } else if (Objects.equals(s, "Checker")) {
+                tile.setPiece(new Checker(c));
+            } else if (Objects.equals(s, "Wall")) {
+                tile.setPiece(new Wall(c));
+            } else if (Objects.equals(s, "Barolina Pawn")) {
+                tile.setPiece(new BarolinaPawn(c));
             } else if (Objects.equals(s, "Rook")) {
                 tile.setPiece(new Rook(c));
             } else if (Objects.equals(s, "Knight")) {
